@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebius Power DC Map — Alpha</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">N</div>
+    <div>
+      <div class="logo-text">Nebius Power DC Map</div>
+      <div class="logo-sub">AI Data Center Intelligence</div>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat"><div class="stat-val">3+ GW</div><div class="stat-label">Contracted Power</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-val">170 MW</div><div class="stat-label">Online (end 2025)</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-val">800+ MW</div><div class="stat-label">Target 2026</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-val" id="site-count">14</div><div class="stat-label">Sites Tracked</div></div>
+    <div class="last-update">Last update <span id="last-update">—</span></div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All Sites</button>
+  <button class="filter-btn" data-filter="online"><span class="filter-dot dot-online"></span>Online</button>
+  <button class="filter-btn" data-filter="construction"><span class="filter-dot dot-construction"></span>Under Construction</button>
+  <button class="filter-btn" data-filter="planned"><span class="filter-dot dot-planned"></span>Planned</button>
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input class="search-input" id="search" type="text" placeholder="Search location...">
+  </div>
+</div>
+
+<div class="main" style="position:relative;">
+  <div class="sidebar" id="sidebar"></div>
+  <div id="map"></div>
+
+  <div class="timeline-panel" id="timelinePanel">
+    <button class="timeline-toggle" id="tlToggle">&#9650; Timeline</button>
+    <div class="timeline-header">
+      <span class="timeline-title">Key Events &mdash; Jan 2025 &rarr; Apr 2026+</span>
+    </div>
+    <div class="timeline-scroll">
+      <div class="timeline-inner" id="tlInner">
+        <div class="tl-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="event-tooltip" id="evTooltip"></div>
+
+<!-- Data lives in data.js (sites + events + last_update). -->
+<script src="data.js"></script>
+<script>
+// Render LAST_UPDATE timestamp into the header.
+if (typeof LAST_UPDATE !== "undefined") {
+  document.getElementById("last-update").textContent = LAST_UPDATE;
+}
+
+// Status colors
+const statusColor = { online: '#22c55e', construction: '#f59e0b', planned: '#60a5fa' };
+const statusLabel = { online: 'Online', construction: 'Under Construction', planned: 'Planned' };
+
+// MW to radius
+function mwToRadius(mw) {
+  if (mw < 20) return 8;
+  if (mw < 100) return 12;
+  if (mw < 300) return 18;
+  if (mw < 600) return 24;
+  return 32;
+}
+
+let map, markers = [], activeSite = null;
+let filterStatus = 'all', searchTerm = '';
+
+function initMap() {
+  map = L.map('map', { center: [45, -10], zoom: 3, zoomControl: true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+  renderMarkers();
+  renderSidebar();
+  renderTimeline();
+}
+
+function createMarker(site) {
+  const col = statusColor[site.status];
+  const r = mwToRadius(site.mw);
+  const icon = L.divIcon({
+    html: `<div style="width:${r*2}px;height:${r*2}px;border-radius:50%;background:${col};border:3px solid rgba(255,255,255,0.3);box-shadow:0 0 ${r}px ${col}88;display:flex;align-items:center;justify-content:center;font-size:${Math.max(8,r-4)}px;color:#000;font-weight:700;">${site.mw>=100?site.mw+'MW':''}</div>`,
+    className: '',
+    iconSize: [r*2, r*2],
+    iconAnchor: [r, r],
+    popupAnchor: [0, -r]
+  });
+  const m = L.marker([site.lat, site.lng], { icon }).addTo(map);
+  const badgeClass = `badge-${site.status}`;
+  m.bindPopup(`
+    <div class="popup-title">${site.name}</div>
+    <div class="popup-row">Status: <span><span class="status-badge ${badgeClass}">${statusLabel[site.status]}</span></span></div>
+    <div class="popup-row">Capacity: <span>${site.mw} MW</span></div>
+    <div class="popup-row">Region: <span>${site.region}</span></div>
+    <div class="popup-row">Partner: <span>${site.partner}</span></div>
+    <div class="popup-row">Expected Online: <span>${site.online}</span></div>
+    <div class="popup-chips">${site.chips.map(c=>`<span class="popup-chip">${c}</span>`).join('')}</div>
+    <div class="popup-desc">${site.desc}</div>
+  `, { maxWidth: 300 });
+  m.siteId = site.id;
+  return m;
+}
+
+function renderMarkers() {
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+  const filtered = SITES.filter(s => {
+    const matchStatus = filterStatus === 'all' || s.status === filterStatus;
+    const matchSearch = !searchTerm || s.name.toLowerCase().includes(searchTerm.toLowerCase()) || s.region.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchStatus && matchSearch;
+  });
+  filtered.forEach(site => {
+    const m = createMarker(site);
+    markers.push(m);
+    m.on('click', () => { activateSite(site.id); });
+  });
+  document.getElementById('site-count').textContent = filtered.length;
+}
+
+function renderSidebar() {
+  const sb = document.getElementById('sidebar');
+  const regions = [...new Set(SITES.map(s => s.region))];
+  const filtered = SITES.filter(s => {
+    const matchStatus = filterStatus === 'all' || s.status === filterStatus;
+    const matchSearch = !searchTerm || s.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchStatus && matchSearch;
+  });
+  let html = '';
+  regions.forEach(r => {
+    const rsites = filtered.filter(s => s.region === r);
+    if (!rsites.length) return;
+    html += `<div class="sidebar-section"><div class="sidebar-title">${r}</div></div>`;
+    rsites.forEach(s => {
+      html += `<div class="site-card${activeSite===s.id?' active':''}" data-id="${s.id}">
+        <div class="site-name">${s.name}</div>
+        <div class="site-meta">
+          <span class="status-badge badge-${s.status}">${statusLabel[s.status]}</span>
+          <span>${s.mw} MW</span>
+        </div>
+      </div>`;
+    });
+  });
+  sb.innerHTML = html;
+  sb.querySelectorAll('.site-card').forEach(el => {
+    el.addEventListener('click', () => {
+      const id = +el.dataset.id;
+      activateSite(id);
+      const site = SITES.find(s => s.id === id);
+      map.setView([site.lat, site.lng], 7, { animate: true });
+      const m = markers.find(m => m.siteId === id);
+      if (m) m.openPopup();
+    });
+  });
+}
+
+function activateSite(id) { activeSite = id; renderSidebar(); }
+
+function renderTimeline() {
+  const inner = document.getElementById('tlInner');
+  let html = '<div class="tl-line"></div>';
+  EVENTS.forEach((ev, i) => {
+    const isTop = ev.pos === 'top';
+    html += `<div class="tl-event" data-i="${i}">
+      ${isTop ? `<div class="top"><div class="tl-label">${ev.label}</div></div>` : ''}
+      <div class="tl-dot" style="background:${ev.color};"></div>
+      <div class="bot"><div class="tl-date">${ev.date}</div></div>
+      ${!isTop ? `<div class="top" style="top:auto;bottom:calc(50% + 12px);"><div class="tl-label">${ev.label}</div></div>` : ''}
+    </div>`;
+  });
+  inner.innerHTML = html;
+
+  const tooltip = document.getElementById('evTooltip');
+  inner.querySelectorAll('.tl-event').forEach(el => {
+    const i = +el.dataset.i;
+    const ev = EVENTS[i];
+    el.addEventListener('mouseenter', (e) => {
+      tooltip.innerHTML = `
+        <div class="tooltip-date">${ev.date}</div>
+        <div class="tooltip-title">${ev.title}</div>
+        <div class="tooltip-desc">${ev.desc}</div>
+        <div class="tooltip-tags">${ev.tags.map(t=>`<span class="tooltip-tag">${t}</span>`).join('')}</div>
+      `;
+      tooltip.style.display = 'block';
+      posTooltip(e);
+    });
+    el.addEventListener('mousemove', posTooltip);
+    el.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+  });
+}
+
+function posTooltip(e) {
+  const tt = document.getElementById('evTooltip');
+  let x = e.clientX + 12, y = e.clientY - 80;
+  if (x + 310 > window.innerWidth) x = e.clientX - 322;
+  if (y < 0) y = 4;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+
+// Timeline toggle
+let tlOpen = true;
+document.getElementById('tlToggle').addEventListener('click', () => {
+  const panel = document.getElementById('timelinePanel');
+  tlOpen = !tlOpen;
+  panel.style.height = tlOpen ? '200px' : '0px';
+  document.getElementById('tlToggle').textContent = tlOpen ? '▲ Timeline' : '▼ Timeline';
+  panel.style.overflow = tlOpen ? 'visible' : 'hidden';
+  setTimeout(() => map.invalidateSize(), 310);
+});
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterStatus = btn.dataset.filter;
+    renderMarkers();
+    renderSidebar();
+  });
+});
+
+// Search
+document.getElementById('search').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  renderMarkers();
+  renderSidebar();
+});
+
+window.addEventListener('load', initMap);
+</script>
+</body>
+</html>

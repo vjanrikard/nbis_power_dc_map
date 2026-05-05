@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1a2235"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#00d4ff"/>
+    </marker>
+    <marker id="arrow-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#f59e0b"/>
+    </marker>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" fill="#e2e8f0" font-size="22" font-weight="700" letter-spacing="-0.02em">
+    Nebius Power DC Map — Data Flow (v1.0)
+  </text>
+  <text x="600" y="68" text-anchor="middle" fill="#64748b" font-size="13">
+    Daily scan ➝ change log ➝ dataset ➝ Leaflet map ➝ public surfaces
+  </text>
+
+  <!-- Lane labels -->
+  <text x="40" y="108" fill="#00d4ff" font-size="11" font-weight="700" letter-spacing="0.08em">SOURCES</text>
+  <text x="40" y="248" fill="#00d4ff" font-size="11" font-weight="700" letter-spacing="0.08em">SCAN &amp; LOG</text>
+  <text x="40" y="408" fill="#00d4ff" font-size="11" font-weight="700" letter-spacing="0.08em">DATASET</text>
+  <text x="40" y="548" fill="#00d4ff" font-size="11" font-weight="700" letter-spacing="0.08em">PUBLIC</text>
+
+  <!-- Lane 1: SOURCES -->
+  <g transform="translate(150, 90)">
+    <rect width="190" height="70" rx="8" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.5"/>
+    <text x="95" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700">MT Newswires</text>
+    <text x="95" y="48" text-anchor="middle" fill="#a0aec0" font-size="11">primary news feed (MCP)</text>
+    <text x="95" y="61" text-anchor="middle" fill="#64748b" font-size="10">NBIS filter</text>
+  </g>
+  <g transform="translate(370, 90)">
+    <rect width="180" height="70" rx="8" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.5"/>
+    <text x="90" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700">web_search</text>
+    <text x="90" y="48" text-anchor="middle" fill="#a0aec0" font-size="11">fallback if MT down</text>
+  </g>
+  <g transform="translate(580, 90)">
+    <rect width="200" height="70" rx="8" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.5"/>
+    <text x="100" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700">Nebius newsroom</text>
+    <text x="100" y="48" text-anchor="middle" fill="#a0aec0" font-size="11">DCD, regional press</text>
+    <text x="100" y="61" text-anchor="middle" fill="#64748b" font-size="10">primary disclosures</text>
+  </g>
+  <g transform="translate(810, 90)">
+    <rect width="200" height="70" rx="8" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.5"/>
+    <text x="100" y="28" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700">Quarterly earnings</text>
+    <text x="100" y="48" text-anchor="middle" fill="#a0aec0" font-size="11">10-Q / press release</text>
+    <text x="100" y="61" text-anchor="middle" fill="#64748b" font-size="10">guidance + KPIs</text>
+  </g>
+
+  <!-- Lane 2: SCAN & LOG -->
+  <g transform="translate(150, 230)">
+    <rect width="430" height="100" rx="10" fill="rgba(245,158,11,0.10)" stroke="#f59e0b" stroke-opacity="0.6" filter="url(#glow)"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">nbis-power-dc-map-daily-scan</text>
+    <text x="20" y="46" fill="#f59e0b" font-size="11" font-weight="600">07:05 local · scheduled task (Cowork)</text>
+    <text x="20" y="65" fill="#a0aec0" font-size="11">1. Pull NBIS news from sources above</text>
+    <text x="20" y="80" fill="#a0aec0" font-size="11">2. Filter for material changes (MW · status · partner · date · permit)</text>
+    <text x="20" y="93" fill="#a0aec0" font-size="11">3. Prepend entry to change log</text>
+  </g>
+
+  <g transform="translate(620, 230)">
+    <rect width="390" height="100" rx="10" fill="rgba(245,158,11,0.06)" stroke="#f59e0b" stroke-opacity="0.4"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">NEBIUS_POWER_DC_MAP_LOG.md</text>
+    <text x="20" y="46" fill="#a0aec0" font-size="11">Append-only change log (newest on top)</text>
+    <text x="20" y="62" fill="#a0aec0" font-size="11">## YYYY-MM-DD — headline</text>
+    <text x="20" y="76" fill="#a0aec0" font-size="11">**Site** — what changed (Source URL)</text>
+    <text x="20" y="92" fill="#22c55e" font-size="11" font-weight="600">→ committed to GitHub on each material event</text>
+  </g>
+
+  <!-- Lane 3: DATASET -->
+  <g transform="translate(150, 380)">
+    <rect width="280" height="120" rx="10" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-opacity="0.5"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">data.js</text>
+    <text x="20" y="44" fill="#22c55e" font-size="11" font-weight="600">manual edit · operator approval required</text>
+    <text x="20" y="64" fill="#a0aec0" font-size="11">• SITES[14] — lat/lng, MW, status, chips</text>
+    <text x="20" y="78" fill="#a0aec0" font-size="11">• EVENTS[13] — milestone timeline</text>
+    <text x="20" y="92" fill="#a0aec0" font-size="11">• NEBIUS_EARNINGS_Q1_2026</text>
+    <text x="20" y="106" fill="#a0aec0" font-size="11">• STATUS_CONFIG / REGION_CONFIG</text>
+  </g>
+
+  <g transform="translate(470, 380)">
+    <rect width="240" height="120" rx="10" fill="rgba(34,197,94,0.05)" stroke="#22c55e" stroke-opacity="0.35"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">style.css</text>
+    <text x="20" y="44" fill="#a0aec0" font-size="11">Dark navy / teal theme</text>
+    <text x="20" y="60" fill="#a0aec0" font-size="11">CSS vars for status colors</text>
+    <text x="20" y="76" fill="#a0aec0" font-size="11">Custom Leaflet popups + tiles filter</text>
+    <text x="20" y="106" fill="#64748b" font-size="10">no build step · plain CSS</text>
+  </g>
+
+  <g transform="translate(750, 380)">
+    <rect width="260" height="120" rx="10" fill="rgba(34,197,94,0.05)" stroke="#22c55e" stroke-opacity="0.35"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">index.html</text>
+    <text x="20" y="44" fill="#a0aec0" font-size="11">Header + KPI cards + filter bar</text>
+    <text x="20" y="60" fill="#a0aec0" font-size="11">Leaflet map + size-coded MW circles</text>
+    <text x="20" y="76" fill="#a0aec0" font-size="11">Regional sidebar + search</text>
+    <text x="20" y="92" fill="#a0aec0" font-size="11">Horizontal milestone timeline</text>
+    <text x="20" y="106" fill="#64748b" font-size="10">CDN deps · no backend</text>
+  </g>
+
+  <!-- Lane 4: PUBLIC -->
+  <g transform="translate(180, 530)">
+    <rect width="280" height="120" rx="10" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.6"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">GitHub Pages</text>
+    <text x="20" y="46" fill="#00d4ff" font-size="11" font-weight="600">vjanrikard.github.io/nbis_power_dc_map/v1.0/</text>
+    <text x="20" y="68" fill="#a0aec0" font-size="11">Public · static · auto-redeploys on push</text>
+    <text x="20" y="84" fill="#a0aec0" font-size="11">Branch: main · Path: /</text>
+    <text x="20" y="106" fill="#64748b" font-size="10">CDN cache ~30s · cold load &lt;1s</text>
+  </g>
+
+  <g transform="translate(500, 530)">
+    <rect width="280" height="120" rx="10" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.6"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">Notion page</text>
+    <text x="20" y="46" fill="#00d4ff" font-size="11" font-weight="600">/embed of the GitHub Pages URL</text>
+    <text x="20" y="68" fill="#a0aec0" font-size="11">Optional: Notion MCP automation</text>
+    <text x="20" y="84" fill="#a0aec0" font-size="11">Share → Publish to web → public link</text>
+    <text x="20" y="106" fill="#64748b" font-size="10">always reflects latest GitHub Pages build</text>
+  </g>
+
+  <g transform="translate(820, 530)">
+    <rect width="200" height="120" rx="10" fill="rgba(0,212,255,0.10)" stroke="#00d4ff" stroke-opacity="0.6"/>
+    <text x="20" y="26" fill="#e2e8f0" font-size="14" font-weight="700">Operator (RikardV)</text>
+    <text x="20" y="46" fill="#00d4ff" font-size="11" font-weight="600">Local file:// or browser</text>
+    <text x="20" y="68" fill="#a0aec0" font-size="11">Reviews scan output</text>
+    <text x="20" y="84" fill="#a0aec0" font-size="11">Approves data.js edits</text>
+    <text x="20" y="106" fill="#64748b" font-size="10">activate Alpha with `op`</text>
+  </g>
+
+  <!-- Arrows -->
+  <path d="M245,160 L245,200 L365,200 L365,230" fill="none" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M460,160 L460,200 L365,200" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+  <path d="M680,160 L680,200 L365,200" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+
+  <path d="M910,160 L910,360 L290,360 L290,380" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-warn)"/>
+  <text x="930" y="240" fill="#f59e0b" font-size="10" font-weight="600">quarterly direct edit</text>
+
+  <path d="M580,280 L620,280" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-warn)"/>
+
+  <path d="M815,330 L815,355 L290,355 L290,380" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <text x="540" y="350" fill="#22c55e" font-size="10" font-weight="600">manual sync (operator approval)</text>
+
+  <path d="M430,440 L750,440" fill="none" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M710,440 L750,440" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+
+  <path d="M880,500 L880,515 L320,515 L320,530" fill="none" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="600" y="510" fill="#00d4ff" font-size="10" font-weight="600">git push → Pages redeploy</text>
+
+  <path d="M460,590 L500,590" fill="none" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M460,610 L820,610" fill="none" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <path d="M920,530 L920,360 L430,360" fill="none" stroke="#a0aec0" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+  <text x="940" y="450" fill="#a0aec0" font-size="10" font-style="italic">approval loop</text>
+
+  <!-- Legend -->
+  <g transform="translate(40, 680)">
+    <rect width="14" height="3" y="6" fill="#00d4ff"/>
+    <text x="22" y="11" fill="#a0aec0" font-size="10">data flow</text>
+    <rect x="100" width="14" height="3" y="6" fill="#f59e0b"/>
+    <text x="122" y="11" fill="#a0aec0" font-size="10">automated scan</text>
+    <rect x="220" width="14" height="3" y="6" fill="#22c55e"/>
+    <text x="242" y="11" fill="#a0aec0" font-size="10">manual / dataset</text>
+    <text x="350" y="11" fill="#a0aec0" font-size="10">— — — — dashed = requires operator approval</text>
+  </g>
+</svg>
