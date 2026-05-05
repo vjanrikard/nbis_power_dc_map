@@ -107,7 +107,7 @@ function renderCapacityRollup() {
 
   const regionsPresent = [...new Set(SITES.map(s => s.region))];
   const regionShort = regionsPresent
-    .map(r => ({ "North America": "NA", "Europe": "EU", "Middle East": "ME", "APAC": "APAC" }[r] || r))
+    .map(r => ({ "Americas": "AM", "Europe": "EU", "Middle East": "ME", "APAC": "APAC" }[r] || r))
     .join(" / ");
 
   const e = (typeof NEBIUS_EARNINGS_Q1_2026 !== "undefined") ? NEBIUS_EARNINGS_Q1_2026 : {};
@@ -199,7 +199,7 @@ function renderMarkers() {
 
 function renderSidebar() {
   const sb = document.getElementById('sidebar');
-  const regionOrder = ["North America", "Europe", "Middle East", "APAC"];
+  const regionOrder = ["Americas", "Europe", "Middle East", "APAC"];
   const presentRegions = [...new Set(SITES.map(s => s.region))]
     .sort((a, b) => regionOrder.indexOf(a) - regionOrder.indexOf(b));
   const filtered = SITES.filter(s => {
@@ -335,7 +335,7 @@ function renderBelowMapCharts() {
 
   const regionMap = {};
   SITES.forEach(s => { regionMap[s.region] = (regionMap[s.region] || 0) + s.mw; });
-  const regionOrder = ["North America", "Europe", "Middle East", "APAC"];
+  const regionOrder = ["Americas", "Europe", "Middle East", "APAC"];
   const sortedRegions = Object.keys(regionMap).sort((a,b) => regionOrder.indexOf(a) - regionOrder.indexOf(b));
 
   new Chart(document.getElementById("region-chart"), {
@@ -376,10 +376,10 @@ function renderSitesTable() {
   }
 
   const regionPrefix = {
-    "North America": "🇺🇸 N. America",
-    "Europe":        "🇪🇺 Europe",
-    "Middle East":   "🇮🇱 Middle East",
-    "APAC":          "🇸🇬 APAC"
+    "Americas":    "🌎 Americas",
+    "Europe":      "🇪🇺 Europe",
+    "Middle East": "🇮🇱 Middle East",
+    "APAC":        "🇸🇬 APAC"
   };
 
   new gridjs.Grid({
@@ -387,13 +387,14 @@ function renderSitesTable() {
       { name: "Region",   width: "130px" },
       { name: "Site",     width: "180px" },
       { name: "Partner",  width: "190px" },
-      { name: "MW",       sort: true, width: "70px" },
+      { name: "MW",       width: "70px",
+        sort: { compare: (a, b) => Number(a) - Number(b) } },
       { name: "Status",   width: "150px",
         formatter: (cell, row) => gridjs.html(statusBadge(row.cells[9].data)) },
       { name: "Delivery", width: "140px" },
       { name: "Risk",     width: "90px",
         formatter: (cell, row) => gridjs.html(riskBadge(cell, row.cells[10].data)) },
-      { name: "Why",      width: "260px" },
+      { name: "Remarks",  width: "260px" },
       { name: "Notes" },
       { name: "_status_raw", hidden: true },
       { name: "_riskReason", hidden: true }

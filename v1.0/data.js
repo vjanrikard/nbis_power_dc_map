@@ -1,9 +1,10 @@
 // ═══════════════════════════════════════════════════
 // Nebius Power DC Map — Data v1.0
 // Updated: 2026-05-05
-// 17 sites: 15 from nbis_construction_monitor + Madrid + Singapore
-// Fields per site: id, name, lat, lng, status, mw, region, chips,
-//                  partner, delivery, online, note, desc, risk, riskReason, sources
+// 17 sites, sorted by MW descending (largest first)
+// Regions: Americas / Europe / Middle East / APAC
+// Each site: id, name, lat, lng, status, mw, region, chips,
+//            partner, delivery, online, note, desc, risk, riskReason, sources
 // ═══════════════════════════════════════════════════
 
 const STATUS_CONFIG = {
@@ -20,31 +21,17 @@ const RISK_CONFIG = {
 };
 
 const REGION_CONFIG = {
-  'all':           { label: 'Global' },
-  'North America': { label: 'North America' },
-  'Europe':        { label: 'Europe' },
-  'Middle East':   { label: 'Middle East' },
-  'APAC':          { label: 'Asia Pacific' }
+  'all':         { label: 'Global' },
+  'Americas':    { label: 'Americas' },
+  'Europe':      { label: 'Europe' },
+  'Middle East': { label: 'Middle East' },
+  'APAC':        { label: 'Asia Pacific' }
 };
 
+// Sites sorted by MW descending. id is preserved (not renumbered).
 const SITES = [
-  // ─── North America ───────────────────────────────
-  { id: 1, name: "Vineland, NJ", lat: 39.4864, lng: -75.0260,
-    status: "construction", mw: 300, region: "North America",
-    chips: ["NVIDIA Blackwell", "B200"], partner: "DataOne / Microsoft",
-    delivery: "2026-11", online: "Nov 2026 (full)",
-    note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target",
-    desc: "First major US AI data center. ~2.6M sqft. Built by DataOne with Nebius-designed infrastructure. Phased in 100 MW modules. PILOT ordinance approved Jan 27 2026. $17.4B Microsoft contract anchor through 2031.",
-    risk: "CRITICAL",
-    riskReason: "Single-customer anchor concentration ($17.4B MSFT through 2031); residual NJ EJ Law community-opposition exposure.",
-    sources: [
-      "https://northwiseproject.com/nbis-stock-vineland-nj-data-center/",
-      "https://www.reddit.com/r/NBIS_Stock/comments/1l7yvvo/nj_datacenter_update/",
-      "https://www.aiwire.net/2025/03/05/nebius-accelerates-ai-cloud-growth-with-us-and-european-expansion/"
-    ]
-  },
   { id: 2, name: "Independence, MO", lat: 39.0911, lng: -94.4155,
-    status: "construction", mw: 1200, region: "North America",
+    status: "construction", mw: 1200, region: "Americas",
     chips: ["NVIDIA GB200", "GB300"], partner: "Independence Power Partners (IPP)",
     delivery: "2028-Q1", online: "2028 (Phase 1)",
     note: "Eastgate 398-acre; 250 MW Oct 2027 → 1.1 GW Dec 2029",
@@ -54,69 +41,6 @@ const SITES = [
     sources: [
       "https://nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory",
       "https://www.datacenterdynamics.com/en/news/nebius-plans-800mw-data-center-campus-in-kansas-city-missouri/"
-    ]
-  },
-  { id: 3, name: "Kansas City, MO", lat: 39.0997, lng: -94.5786,
-    status: "online", mw: 40, region: "North America",
-    chips: ["NVIDIA Blackwell", "H200"], partner: "Patmos AI Campus",
-    delivery: "2025-01", online: "Q1 2025",
-    note: "5 MW live Q1 2025; expansion to 40 MW late 2026",
-    desc: "US gateway facility at Patmos AI Campus (former KC Star). 5 MW live Q1 2025; contracted expansion to 40 MW late 2026. Up to 35,000 GPUs at full capacity.",
-    risk: "LOW",
-    riskReason: "Operational since Q1 2025; small footprint; established Patmos partnership.",
-    sources: [
-      "https://www.businesswire.com/news/home/20241119926895/en/Patmos-Announces-Nebius-as-First-Tenant-in-New-Kansas-City-Data-Center",
-      "https://www.linkedin.com/posts/nebius_nebius-opens-its-first-availability-zone-activity-7264608685820104705-R0xP",
-      "https://finance.yahoo.com/news/nebius-announces-300-mw-data-120018907.html"
-    ]
-  },
-  { id: 4, name: "Birmingham, AL (BHM01)", lat: 33.5186, lng: -86.8104,
-    status: "planned", mw: 300, region: "North America",
-    chips: ["NVIDIA Blackwell"], partner: "Hoar Construction",
-    delivery: "2027-2028", online: "2027-2028",
-    note: "Permit Jan 29 2026; substation vote DELAYED by opposition",
-    desc: "80 acres at 201 Milan Parkway. Permit filed Jan 29 2026. GC: Hoar Construction. 30-month phased buildout. Zoning Board substation variance vote DELAYED April 2026 after community protests.",
-    risk: "MEDIUM",
-    riskReason: "Substation vote delayed Apr 2026 after protest (Oxmoor Valley, Grasselli Heights, Ross Bridge). Same EJ playbook as Vineland.",
-    sources: [
-      "https://yellowhammernews.com/permit-filed-for-multibillion-dollar-75-acre-data-center-in-birmingham/",
-      "https://www.wbrc.com/2026/04/19/birmingham-residents-rally-against-proposed-ai-factory/"
-    ]
-  },
-  { id: 5, name: "Minneapolis, MN", lat: 44.9778, lng: -93.2650,
-    status: "online", mw: 100, region: "North America",
-    chips: ["NVIDIA Blackwell"], partner: "Cloud Capital / Arcapita JV",
-    delivery: "2026-01", online: "Jan 2026",
-    note: "21 MW stabilized; adaptive reuse, anchor tenant",
-    desc: "Adaptive reuse strategy. 21 MW stabilized acquired Jan 2026 by Cloud Capital/Arcapita JV; Nebius is anchor tenant.",
-    risk: "LOW",
-    riskReason: "Anchor tenant via JV (no Nebius capital at risk); 21 MW stabilized via adaptive reuse.",
-    sources: ["https://northwiseproject.com/nbis-minneapolis-minnesota/"]
-  },
-  { id: 6, name: "Oklahoma", lat: 35.4676, lng: -97.5164,
-    status: "planned", mw: 100, region: "North America",
-    chips: ["NVIDIA GPU"], partner: "TBD",
-    delivery: "2027", online: "2027",
-    note: "Part of 16-DC by 2026 expansion strategy",
-    desc: "Planned US expansion site. Part of Nebius's strategy to establish 16 global data center locations by end of 2026.",
-    risk: "LOW",
-    riskReason: "Planned but not yet committed; small (100 MW) within 16-DC strategy. Site partner TBD.",
-    sources: []
-  },
-
-  // ─── Europe ──────────────────────────────────────
-  { id: 7, name: "Mäntsälä, Finland", lat: 60.6333, lng: 25.3167,
-    status: "online", mw: 75, region: "Europe",
-    chips: ["NVIDIA GB300 NVL72", "H100", "H200"], partner: "Self (owns land)",
-    delivery: "2014-01", online: "2014 (expanded 2025)",
-    note: "Flagship EU site; tripled to 75 MW; ISEG supercomputer",
-    desc: "Flagship European DC since 2014. Tripled to 75 MW. Hosts ISEG supercomputer (16th on Top500). Up to 60,000 GPUs. Heat exported to district heating. 100% renewable energy.",
-    risk: "LOW",
-    riskReason: "Operational since 2014, owned land, 100% renewable. Flagship EU reference site.",
-    sources: [
-      "https://nebius.com/hardware",
-      "https://group.nebius.com/newsroom/nebius-to-triple-capacity-at-finland-data-center-to-75-mw",
-      "https://www.piller.com/major-expansion-of-high-performance-data-center-in-southern-finland/"
     ]
   },
   { id: 8, name: "Lappeenranta, Finland", lat: 61.0587, lng: 28.1887,
@@ -129,15 +53,122 @@ const SITES = [
     riskReason: "On-track per Mar 2026 announcement; strong Finnish industrial track record; staged delivery from 2027.",
     sources: ["https://nebius.com/newsroom/nebius-to-construct-310-mw-ai-factory-in-finland"]
   },
+  { id: 1, name: "Vineland, NJ", lat: 39.4864, lng: -75.0260,
+    status: "construction", mw: 300, region: "Americas",
+    chips: ["NVIDIA Blackwell", "B200"], partner: "DataOne / Microsoft",
+    delivery: "2026-11", online: "Nov 2026 (full)",
+    note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target",
+    desc: "First major US AI data center. ~2.6M sqft. Built by DataOne with Nebius-designed infrastructure. Phased in 100 MW modules. PILOT ordinance approved Jan 27 2026. $17.4B Microsoft contract anchor through 2031.",
+    risk: "CRITICAL",
+    riskReason: "Single-customer anchor concentration ($17.4B MSFT through 2031); residual NJ EJ Law community-opposition exposure.",
+    sources: [
+      "https://northwiseproject.com/nbis-stock-vineland-nj-data-center/",
+      "https://www.reddit.com/r/NBIS_Stock/comments/1l7yvvo/nj_datacenter_update/",
+      "https://www.aiwire.net/2025/03/05/nebius-accelerates-ai-cloud-growth-with-us-and-european-expansion/"
+    ]
+  },
+  { id: 4, name: "Birmingham, AL (BHM01)", lat: 33.5186, lng: -86.8104,
+    status: "planned", mw: 300, region: "Americas",
+    chips: ["NVIDIA Blackwell"], partner: "Hoar Construction",
+    delivery: "2027-2028", online: "2027-2028",
+    note: "Permit Jan 29 2026; substation vote DELAYED by opposition",
+    desc: "80 acres at 201 Milan Parkway. Permit filed Jan 29 2026. GC: Hoar Construction. 30-month phased buildout. Zoning Board substation variance vote DELAYED April 2026.",
+    risk: "MEDIUM",
+    riskReason: "Substation vote delayed Apr 2026 after protest. Same EJ playbook as Vineland.",
+    sources: [
+      "https://yellowhammernews.com/permit-filed-for-multibillion-dollar-75-acre-data-center-in-birmingham/",
+      "https://www.wbrc.com/2026/04/19/birmingham-residents-rally-against-proposed-ai-factory/"
+    ]
+  },
   { id: 9, name: "Béthune, France", lat: 50.5306, lng: 2.6388,
     status: "construction", mw: 240, region: "Europe",
     chips: ["NVIDIA Blackwell", "Vera Rubin"], partner: "Azur Datacenter",
     delivery: "2026-07", online: "Jul 2026 (Phase 1)",
     note: "Phase 1 Jul 2026; 120 MW EOY 2026; 240 MW EOY 2027",
-    desc: "240 MW on former Bridgestone tyre plant. 26,000 sqm. Phase 1 Jul 2026, 120 MW EOY 2026, 240 MW EOY 2027. Azur Datacenter finances building.",
+    desc: "240 MW on former Bridgestone tyre plant. 26,000 sqm. Phase 1 Jul 2026, 120 MW EOY 2026, 240 MW EOY 2027.",
     risk: "LOW",
     riskReason: "Phase 1 on schedule; established Azur partnership; brownfield lowers permitting risk.",
     sources: ["https://www.datacenterdynamics.com/en/news/nebius-plans-240mw-data-center-in-b%C3%A9thune-france/"]
+  },
+  { id: 5, name: "Minneapolis, MN", lat: 44.9778, lng: -93.2650,
+    status: "online", mw: 100, region: "Americas",
+    chips: ["NVIDIA Blackwell"], partner: "Cloud Capital / Arcapita JV",
+    delivery: "2026-01", online: "Jan 2026",
+    note: "21 MW stabilized; adaptive reuse, anchor tenant",
+    desc: "Adaptive reuse strategy. 21 MW stabilized acquired Jan 2026 by Cloud Capital/Arcapita JV; Nebius is anchor tenant.",
+    risk: "LOW",
+    riskReason: "Anchor tenant via JV (no Nebius capital at risk); 21 MW stabilized via adaptive reuse.",
+    sources: ["https://northwiseproject.com/nbis-minneapolis-minnesota/"]
+  },
+  { id: 6, name: "Oklahoma", lat: 35.4676, lng: -97.5164,
+    status: "planned", mw: 100, region: "Americas",
+    chips: ["NVIDIA GPU"], partner: "TBD",
+    delivery: "2027", online: "2027",
+    note: "Part of 16-DC by 2026 expansion strategy",
+    desc: "Planned US expansion site. Part of Nebius's strategy to establish 16 global data center locations by end of 2026.",
+    risk: "LOW",
+    riskReason: "Planned but not yet committed; small (100 MW) within 16-DC strategy. Site partner TBD.",
+    sources: []
+  },
+  { id: 7, name: "Mäntsälä, Finland", lat: 60.6333, lng: 25.3167,
+    status: "online", mw: 75, region: "Europe",
+    chips: ["NVIDIA GB300 NVL72", "H100", "H200"], partner: "Self (owns land)",
+    delivery: "2014-01", online: "2014 (expanded 2025)",
+    note: "Flagship EU site; tripled to 75 MW; ISEG supercomputer",
+    desc: "Flagship European DC since 2014. Tripled to 75 MW. Hosts ISEG supercomputer (16th on Top500). Up to 60,000 GPUs. 100% renewable energy.",
+    risk: "LOW",
+    riskReason: "Operational since 2014, owned land, 100% renewable. Flagship EU reference site.",
+    sources: [
+      "https://nebius.com/hardware",
+      "https://group.nebius.com/newsroom/nebius-to-triple-capacity-at-finland-data-center-to-75-mw",
+      "https://www.piller.com/major-expansion-of-high-performance-data-center-in-southern-finland/"
+    ]
+  },
+  { id: 16, name: "Beit Shemesh, Israel", lat: 31.7456, lng: 34.9885,
+    status: "construction", mw: 58, region: "Middle East",
+    chips: ["NVIDIA GPU"], partner: "Mega Or / Mega DC",
+    delivery: "2026-Q3 → 2027-Q1", online: "Q3 2026 → Q1 2027",
+    note: "Part of $880M deal; expandable to 222 MW",
+    desc: "58 MW delivery in stages from Q3 2026 through Q1 2027. Expandable to 222 MW. Part of $880M Mega Or deal.",
+    risk: "MEDIUM",
+    riskReason: "Geopolitical exposure + phased Q3 2026 → Q1 2027 delivery; expandable to 222 MW.",
+    sources: ["https://www.datacenterdynamics.com/en/news/nebius-signs-80mw-data-center-lease-with-mega-or-in-israel/"]
+  },
+  { id: 3, name: "Kansas City, MO", lat: 39.0997, lng: -94.5786,
+    status: "online", mw: 40, region: "Americas",
+    chips: ["NVIDIA Blackwell", "H200"], partner: "Patmos AI Campus",
+    delivery: "2025-01", online: "Q1 2025",
+    note: "5 MW live Q1 2025; expansion to 40 MW late 2026",
+    desc: "US gateway facility at Patmos AI Campus (former KC Star). 5 MW live Q1 2025; contracted expansion to 40 MW late 2026.",
+    risk: "LOW",
+    riskReason: "Operational since Q1 2025; small footprint; established Patmos partnership.",
+    sources: [
+      "https://www.businesswire.com/news/home/20241119926895/en/Patmos-Announces-Nebius-as-First-Tenant-in-New-Kansas-City-Data-Center",
+      "https://finance.yahoo.com/news/nebius-announces-300-mw-data-120018907.html"
+    ]
+  },
+  { id: 15, name: "Masmiyya, Israel", lat: 31.7308, lng: 34.7644,
+    status: "construction", mw: 22, region: "Middle East",
+    chips: ["NVIDIA GPU"], partner: "Mega Or / Mega DC",
+    delivery: "2026-09", online: "Sep 2026",
+    note: "Part of $880M deal; expandable to 64 MW",
+    desc: "22 MW delivery Q3 2026. Expandable to 64 MW. 5-year lease. Part of $880M Mega Or deal.",
+    risk: "MEDIUM",
+    riskReason: "Geopolitical exposure + construction risk; part of $880M Mega Or deal; Q3 2026 delivery.",
+    sources: ["https://www.datacenterdynamics.com/en/news/nebius-signs-80mw-data-center-lease-with-mega-or-in-israel/"]
+  },
+  { id: 11, name: "Longcross Park, UK", lat: 51.3920, lng: -0.5520,
+    status: "online", mw: 16, region: "Europe",
+    chips: ["NVIDIA B300 (Blackwell Ultra)"], partner: "Ark Data Centres",
+    delivery: "2025-11", online: "Nov 2025",
+    note: "4,000 Blackwell Ultra GPUs; phase 2 = 3,000 B300s",
+    desc: "First UK DC at Ark Longcross Park. 3 data halls, 126 racks, 16 MW. Phase 1: 4,000 Blackwell Ultra. Phase 2: 3,000 B300s.",
+    risk: "LOW",
+    riskReason: "Operational since Nov 2025; small (16 MW); Ark established UK colo partner.",
+    sources: [
+      "https://group.nebius.com/newsroom/nebius-launches-in-uk-expands-britains-ai-infrastructure-with-nvidia-blackwell-ultra",
+      "https://www.ark-d-c.com/insights/ark-data-centres-collaborates-with-nebius"
+    ]
   },
   { id: 10, name: "Saint-Denis (Paris), France", lat: 48.9362, lng: 2.3574,
     status: "online", mw: 10, region: "Europe",
@@ -146,24 +177,10 @@ const SITES = [
     note: "First H200 site in Europe; Nebius-designed servers",
     desc: "Colocation at Equinix PA10 campus. First European site with NVIDIA H200 GPUs. First facility with only Nebius-designed servers.",
     risk: "LOW",
-    riskReason: "Operational colocation at Equinix PA10; small footprint; reference site for Nebius-designed servers.",
+    riskReason: "Operational colocation at Equinix PA10; small footprint.",
     sources: [
       "https://group.nebius.com/newsroom/nebius-group-n-v-announces-fourth-quarter-and-full-year-2024-financial-results",
       "https://www.sentisight.ai/european-countries-with-most-data-centers/"
-    ]
-  },
-  { id: 11, name: "Longcross Park, UK", lat: 51.3920, lng: -0.5520,
-    status: "online", mw: 16, region: "Europe",
-    chips: ["NVIDIA B300 (Blackwell Ultra)"], partner: "Ark Data Centres",
-    delivery: "2025-11", online: "Nov 2025",
-    note: "4,000 Blackwell Ultra GPUs; phase 2 = 3,000 B300s",
-    desc: "First UK DC at Ark Longcross Park. 3 data halls, 126 racks, 16 MW. Phase 1: 4,000 Blackwell Ultra. Phase 2: 3,000 B300s. Liquid cooling, InfiniBand Q-X800.",
-    risk: "LOW",
-    riskReason: "Operational since Nov 2025; small (16 MW); Ark established UK colo partner.",
-    sources: [
-      "https://group.nebius.com/newsroom/nebius-launches-in-uk-expands-britains-ai-infrastructure-with-nvidia-blackwell-ultra",
-      "https://www.datacenterdynamics.com/en/news/nebius-to-host-uk-nvidia-blackwell-ultra-gpu-cluster-in-ark-data-centres-facility-in-surrey/",
-      "https://www.ark-d-c.com/insights/ark-data-centres-collaborates-with-nebius"
     ]
   },
   { id: 12, name: "Keflavik, Iceland", lat: 63.9850, lng: -22.6056,
@@ -189,44 +206,6 @@ const SITES = [
     riskReason: "Early-stage; small expected footprint; evidence from job listings, no committed CapEx disclosed.",
     sources: ["https://cloudnews.tech/neubius-launches-new-ai-data-center-in-madrid/"]
   },
-
-  // ─── Middle East ─────────────────────────────────
-  { id: 14, name: "Modi'in, Israel", lat: 31.8928, lng: 35.0107,
-    status: "online", mw: 8, region: "Middle East",
-    chips: ["NVIDIA B200"], partner: "Mega Or / Mega DC",
-    delivery: "2025-09", online: "Sep 2025",
-    note: "4,000 NVIDIA GPUs; hosts national supercomputer",
-    desc: "8 MW colocation at Mega Or facility. Deployed 4,000 NVIDIA GPUs. Hosts part of Israel's national supercomputer via Israel Innovation Authority.",
-    risk: "MEDIUM",
-    riskReason: "Geopolitical exposure (Israel); small (8 MW) but politically sensitive — hosts national supercomputer.",
-    sources: [
-      "https://www.jpost.com/business-and-innovation/article-871239",
-      "https://www.idcnova.com/html/1/59/153/index.html",
-      "https://www.datacenterdynamics.com/en/news/nebius-to-build-and-operate-140m-israeli-national-supercomputer/"
-    ]
-  },
-  { id: 15, name: "Masmiyya, Israel", lat: 31.7308, lng: 34.7644,
-    status: "construction", mw: 22, region: "Middle East",
-    chips: ["NVIDIA GPU"], partner: "Mega Or / Mega DC",
-    delivery: "2026-09", online: "Sep 2026",
-    note: "Part of $880M deal; expandable to 64 MW",
-    desc: "22 MW delivery Q3 2026. Expandable to 64 MW. 5-year lease. Part of $880M Mega Or deal.",
-    risk: "MEDIUM",
-    riskReason: "Geopolitical exposure + construction risk; part of $880M Mega Or deal; Q3 2026 delivery.",
-    sources: ["https://www.datacenterdynamics.com/en/news/nebius-signs-80mw-data-center-lease-with-mega-or-in-israel/"]
-  },
-  { id: 16, name: "Beit Shemesh, Israel", lat: 31.7456, lng: 34.9885,
-    status: "construction", mw: 58, region: "Middle East",
-    chips: ["NVIDIA GPU"], partner: "Mega Or / Mega DC",
-    delivery: "2026-Q3 → 2027-Q1", online: "Q3 2026 → Q1 2027",
-    note: "Part of $880M deal; expandable to 222 MW",
-    desc: "58 MW delivery in stages from Q3 2026 through Q1 2027. Expandable to 222 MW. Part of $880M Mega Or deal.",
-    risk: "MEDIUM",
-    riskReason: "Geopolitical exposure + phased Q3 2026 → Q1 2027 delivery; expandable to 222 MW.",
-    sources: ["https://www.datacenterdynamics.com/en/news/nebius-signs-80mw-data-center-lease-with-mega-or-in-israel/"]
-  },
-
-  // ─── APAC ────────────────────────────────────────
   { id: 17, name: "Singapore", lat: 1.3521, lng: 103.8198,
     status: "planned", mw: 10, region: "APAC",
     chips: ["TBD"], partner: "TBD",
@@ -238,6 +217,19 @@ const SITES = [
     sources: [
       "https://nebius.com/newsroom/nebius-expands-into-asia-pacific-region-to-support-rapid-global-growth",
       "https://www.crnasia.com/news/2025/artificial-intelligence/nebius-eyes-singapore-as-hub-for-expansion"
+    ]
+  },
+  { id: 14, name: "Modi'in, Israel", lat: 31.8928, lng: 35.0107,
+    status: "online", mw: 8, region: "Middle East",
+    chips: ["NVIDIA B200"], partner: "Mega Or / Mega DC",
+    delivery: "2025-09", online: "Sep 2025",
+    note: "4,000 NVIDIA GPUs; hosts national supercomputer",
+    desc: "8 MW colocation at Mega Or facility. Deployed 4,000 NVIDIA GPUs. Hosts part of Israel's national supercomputer via Israel Innovation Authority.",
+    risk: "MEDIUM",
+    riskReason: "Geopolitical exposure (Israel); small (8 MW) but politically sensitive — hosts national supercomputer.",
+    sources: [
+      "https://www.jpost.com/business-and-innovation/article-871239",
+      "https://www.datacenterdynamics.com/en/news/nebius-to-build-and-operate-140m-israeli-national-supercomputer/"
     ]
   }
 ];
@@ -272,10 +264,18 @@ const EVENTS = [
   { date: "Apr 29, 2026", label: "Q1 2026: >2 GW contracted", color: "#a78bfa", pos: "bot",
     title: "Q1 2026 Earnings — >2 GW Contracted", desc: ">2 GW contracted. Guidance raised to >3 GW. $4B convertible raised.", tags: ["Earnings"] },
   { date: "2026 Target", label: ">3 GW / 800 MW live", color: "#22c55e", pos: "top",
-    title: "2026 Target", desc: "Targets >3 GW contracted, 800 MW–1 GW connected. 16+ DCs. Revenue $3–$3.4B.", tags: ["Target"] }
+    title: "2026 Target", desc: "Targets >3 GW contracted, 800 MW–1 GW connected. 16+ DCs. Revenue $3–$3.4B.", tags: ["Target"] },
+  { date: "2027 Target", label: "Lappeenranta + IPP 250 MW", color: "#f59e0b", pos: "bot",
+    title: "2027: Lappeenranta P1 + IPP 250 MW", desc: "Lappeenranta Phase 1 live. IPP 250 MW phase by Oct 2027. Béthune ramps to full 240 MW EOY 2027.", tags: ["Target", "2027"] },
+  { date: "2028 Target", label: "Independence MO P1", color: "#a78bfa", pos: "top",
+    title: "2028: Independence MO Phase 1", desc: "1.2 GW Independence MO Phase 1 online. CapEx ramps to >$10.6B annually 2028-2030.", tags: ["Target", "2028"] },
+  { date: "2029 Target", label: "IPP scales to 1.1 GW", color: "#00d4ff", pos: "bot",
+    title: "2029: IPP Power Plant 1.1 GW", desc: "IPP scales 250 MW (Oct 2027) to 1.1 GW by Dec 2029.", tags: ["Target", "2029"] },
+  { date: "2030 Target", label: "Independence full op", color: "#22c55e", pos: "top",
+    title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-05-05 14:30";
+const LAST_UPDATE = "2026-05-05 16:30";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
   contractedPowerGW: 2.0,
