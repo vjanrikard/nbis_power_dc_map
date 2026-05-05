@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="no" data-lang="no">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alpha Portal — NBIS analytisk hub</title>
+  <title>Alpha Portal — NBIS analyst hub</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="logo-icon">α</div>
     <div>
       <div class="logo-text" data-i18n="portal_title">Alpha Portal</div>
-      <div class="logo-sub" data-i18n="portal_sub">NBIS analytisk hub</div>
+      <div class="logo-sub" data-i18n="portal_sub">NBIS analyst hub</div>
     </div>
   </div>
 
@@ -30,27 +30,27 @@
   </div>
 
   <div class="lang-toggle">
-    <button class="active" data-lang-set="no">🇳🇴 NO</button>
-    <button data-lang-set="en">🇬🇧 EN</button>
+    <button data-lang-set="no">🇳🇴 NO</button>
+    <button class="active" data-lang-set="en">🇬🇧 EN</button>
   </div>
 </header>
 
 <nav class="tabs">
   <button class="tab-btn active" data-tab="powermap">      <span class="tab-num">1</span><span data-i18n="tab_powermap">Power Map</span></button>
-  <button class="tab-btn"        data-tab="analysts">     <span class="tab-num">2</span><span data-i18n="tab_analysts">Analytikere</span></button>
-  <button class="tab-btn"        data-tab="technicals">   <span class="tab-num">3</span><span data-i18n="tab_technicals">Teknisk</span></button>
-  <button class="tab-btn"        data-tab="microstructure"><span class="tab-num">4</span><span data-i18n="tab_microstructure">Mikrostruktur</span></button>
-  <button class="tab-btn"        data-tab="capacity">     <span class="tab-num">5</span><span data-i18n="tab_capacity">Kapasitet</span></button>
-  <button class="tab-btn"        data-tab="news">         <span class="tab-num">6</span><span data-i18n="tab_news">Nyheter</span></button>
-  <button class="tab-btn"        data-tab="thesis">       <span class="tab-num">7</span><span data-i18n="tab_thesis">Tese</span></button>
+  <button class="tab-btn"        data-tab="analysts">     <span class="tab-num">2</span><span data-i18n="tab_analysts">Analysts</span></button>
+  <button class="tab-btn"        data-tab="technicals">   <span class="tab-num">3</span><span data-i18n="tab_technicals">Technical</span></button>
+  <button class="tab-btn"        data-tab="macro">        <span class="tab-num">4</span><span data-i18n="tab_macro">Macro</span></button>
+  <button class="tab-btn"        data-tab="capacity">     <span class="tab-num">5</span><span data-i18n="tab_capacity">Capacity</span></button>
+  <button class="tab-btn"        data-tab="news">         <span class="tab-num">6</span><span data-i18n="tab_news">News</span></button>
+  <button class="tab-btn"        data-tab="thesis">       <span class="tab-num">7</span><span data-i18n="tab_thesis">Thesis</span></button>
 </nav>
 
 <main>
 
   <!-- ═══ 1. POWER MAP ═══ -->
   <section id="sec-powermap" class="section active">
-    <h1 class="section-h1" data-i18n="h1_powermap">Power Map — Datasenter-rollout</h1>
-    <p class="section-sub" data-i18n="sub_powermap">17 lokasjoner. Innebygd visning av v1.0-kartet.</p>
+    <h1 class="section-h1" data-i18n="h1_powermap">Power Map — Data Center Rollout</h1>
+    <p class="section-sub" data-i18n="sub_powermap">17 locations. Embedded view of the v1.0 map.</p>
     <div class="iframe-wrap">
       <iframe src="../v1.0/" title="Nebius Power DC Map v1.0"></iframe>
     </div>
@@ -58,8 +58,8 @@
 
   <!-- ═══ 2. ANALYSTS ═══ -->
   <section id="sec-analysts" class="section">
-    <h1 class="section-h1" data-i18n="h1_analysts">Analytiker-konsensus</h1>
-    <p class="section-sub" data-i18n="sub_analysts">Buy/Sell/Hold-rangering, kursmål og endringer.</p>
+    <h1 class="section-h1" data-i18n="h1_analysts">Analyst Consensus</h1>
+    <p class="section-sub" data-i18n="sub_analysts">Buy/Sell/Hold ratings, price targets and changes.</p>
 
     <div class="stat-grid">
       <div class="stat-card">
@@ -96,20 +96,20 @@
         </tr>
       </thead>
       <tbody id="an-rows">
-        <tr><td colspan="5" style="text-align:center; color:var(--muted);" data-i18n="loading">Laster...</td></tr>
+        <tr><td colspan="5" style="text-align:center; color:var(--muted);" data-i18n="loading">Loading...</td></tr>
       </tbody>
     </table>
 
     <p class="source-note">
-      Kilde: MarketScreener, MarketBeat, TipRanks, Benzinga consensus aggregates · Sist oppdatert 2026-05-05 ·
-      <em>Manuell JSON i <code>data/analysts.json</code> — wire opp TipRanks/Seeking Alpha MCP i v2.1 for auto-refresh.</em>
+      Source: MarketScreener, MarketBeat, TipRanks, Benzinga consensus aggregates · Last updated 2026-05-05 ·
+      <em>Manual JSON in <code>data/analysts.json</code> — wire up TipRanks/Seeking Alpha MCP in v2.1 for auto-refresh.</em>
     </p>
   </section>
 
   <!-- ═══ 3. TECHNICAL ═══ -->
   <section id="sec-technicals" class="section">
-    <h1 class="section-h1" data-i18n="h1_technicals">Teknisk dashboard</h1>
-    <p class="section-sub" data-i18n="sub_technicals">RSI, MACD, ATR og momentum — speiler NBIS Alpha Dashboard Pine Script.</p>
+    <h1 class="section-h1" data-i18n="h1_technicals">Technical Dashboard</h1>
+    <p class="section-sub" data-i18n="sub_technicals">RSI, MACD, ATR and momentum — mirrors the NBIS Alpha Dashboard Pine Script.</p>
 
     <div class="stat-grid">
       <div class="stat-card">
@@ -146,58 +146,34 @@
       </div>
     </div>
 
-    <div class="stub" style="margin-top:20px;">
-      <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
-      Verdier i <code>data/technicals.json</code>. Eksport fra Pine Script via webhook → JSON-fil i v2.1.
-    </div>
+    <p class="source-note">
+      Source: Yahoo Finance, TradingView, Investing.com, Barchart aggregate (web search 2026-05-05) ·
+      <em>Values in <code>data/technicals.json</code>. For complete snapshot, export from NBIS_Alpha_Dashboard.pine via TradingView webhook in v2.1.</em>
+    </p>
   </section>
 
-  <!-- ═══ 4. MICROSTRUCTURE ═══ -->
-  <section id="sec-microstructure" class="section">
-    <h1 class="section-h1" data-i18n="h1_microstructure">Markedsmikrostruktur</h1>
-    <p class="section-sub" data-i18n="sub_microstructure">Short interest, hedgefond-eierskap og 13F-aktivitet.</p>
+  <!-- ═══ 4. MACRO (Fed Macro Terminal embed) ═══ -->
+  <section id="sec-macro" class="section">
+    <h1 class="section-h1" data-i18n="h1_macro">Macro Terminal</h1>
+    <p class="section-sub" data-i18n="sub_macro">Live FRED data: rates, inflation, labor and credit spreads. Embedded from fed_macro_terminal.</p>
 
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-label">Short interest</div>
-        <div class="stat-value" id="ms-si">—</div>
-        <div class="stat-detail">% of float</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Days to cover</div>
-        <div class="stat-value" id="ms-dtc">—</div>
-        <div class="stat-detail">avg daily vol</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Inst. ownership</div>
-        <div class="stat-value" id="ms-io">—</div>
-        <div class="stat-detail">% of shares</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">As of</div>
-        <div class="stat-value" id="ms-asof" style="font-size:14px;">—</div>
-        <div class="stat-detail">last filing</div>
-      </div>
+    <div class="iframe-wrap">
+      <iframe src="https://vjanrikard.github.io/fed_macro_terminal/"
+              title="Fed Macro Terminal — Live FRED data"
+              loading="lazy"></iframe>
     </div>
 
-    <h2 class="section-h2">Top holders (13F)</h2>
-    <table>
-      <thead><tr><th>Holder</th><th>Shares</th><th>% portfolio</th><th>Last filing</th></tr></thead>
-      <tbody id="ms-holders">
-        <tr><td colspan="4" style="text-align:center; color:var(--muted);" data-i18n="no_data">Ingen data ennå</td></tr>
-      </tbody>
-    </table>
-
-    <div class="stub" style="margin-top:20px;">
-      <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
-      Wire opp Finviz / Ortex / WhaleWisdom MCP i <code>data/microstructure.json</code>.
-    </div>
+    <p class="source-note" style="margin-top:16px;">
+      Source: <a href="https://api.stlouisfed.org/fred" target="_blank" rel="noopener">St. Louis Federal Reserve (FRED)</a>
+      via <a href="https://vjanrikard.github.io/fed_macro_terminal/" target="_blank" rel="noopener">fed_macro_terminal</a> ·
+      <em>Click through the tabs inside the terminal for Inflation, Labor, Growth, Rates &amp; Credit, Financial Cond. and FED Analysis.</em>
+    </p>
   </section>
 
   <!-- ═══ 5. CAPACITY ═══ -->
   <section id="sec-capacity" class="section">
-    <h1 class="section-h1" data-i18n="h1_capacity">Kapasitetstracker</h1>
-    <p class="section-sub" data-i18n="sub_capacity">MW koblet vs. mål. Live tall fra v1.0/data.js.</p>
+    <h1 class="section-h1" data-i18n="h1_capacity">Capacity Tracker</h1>
+    <p class="section-sub" data-i18n="sub_capacity">MW connected vs. target. Live numbers from v1.0/data.js.</p>
 
     <div class="stat-grid">
       <div class="stat-card">
@@ -242,23 +218,23 @@
     <table>
       <thead><tr><th>Region</th><th>Sites</th><th>Online MW</th><th>Construction MW</th><th>Planned MW</th><th>Total MW</th></tr></thead>
       <tbody id="cap-by-region">
-        <tr><td colspan="6" style="text-align:center; color:var(--muted);" data-i18n="loading">Laster...</td></tr>
+        <tr><td colspan="6" style="text-align:center; color:var(--muted);" data-i18n="loading">Loading...</td></tr>
       </tbody>
     </table>
   </section>
 
   <!-- ═══ 6. NEWS ═══ -->
   <section id="sec-news" class="section">
-    <h1 class="section-h1" data-i18n="h1_news">Nyhetsfeed</h1>
-    <p class="section-sub" data-i18n="sub_news">Daglig NBIS-scan oppsummert herfra. Kilde: NEBIUS_POWER_DC_MAP_LOG.md.</p>
+    <h1 class="section-h1" data-i18n="h1_news">News Feed</h1>
+    <p class="section-sub" data-i18n="sub_news">Daily NBIS scan rolled up here. Source: NEBIUS_POWER_DC_MAP_LOG.md.</p>
 
     <div class="card">
       <h3>Daily scan status</h3>
       <table>
         <thead><tr><th>Task</th><th>Schedule</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 lokal tid</td><td>Henter siste 24t fra newsroom + DCD + regional press</td></tr>
-          <tr><td><code>nbis-power-dc-map-daily-check</code></td><td>07:30 lokal tid</td><td>Verifiserer at log + Pages er friske</td></tr>
+          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 local time</td><td>Pulls last 24h from newsroom + DCD + regional press</td></tr>
+          <tr><td><code>nbis-power-dc-map-daily-check</code></td><td>07:30 local time</td><td>Verifies log + Pages are healthy</td></tr>
         </tbody>
       </table>
     </div>
@@ -266,17 +242,17 @@
     <h2 class="section-h2">Recent entries</h2>
     <div id="news-list">
       <div class="stub">
-        <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
-        Parser <code>../v1.0/NEBIUS_POWER_DC_MAP_LOG.md</code> ved sideload.
-        Aktiveres automatisk når daily-scan starter å skrive nye entries.
+        <strong data-i18n="stub_label">AWAITING DATA</strong>
+        Parses <code>../v1.0/NEBIUS_POWER_DC_MAP_LOG.md</code> on page load.
+        Auto-activates as soon as the daily scan starts writing entries.
       </div>
     </div>
   </section>
 
   <!-- ═══ 7. THESIS ═══ -->
   <section id="sec-thesis" class="section">
-    <h1 class="section-h1" data-i18n="h1_thesis">Investeringstese</h1>
-    <p class="section-sub" data-i18n="sub_thesis">Bull / bear case + kvartals_rapport_sjekkliste.</p>
+    <h1 class="section-h1" data-i18n="h1_thesis">Investment Thesis</h1>
+    <p class="section-sub" data-i18n="sub_thesis">Bull / bear case + quarterly report checklist.</p>
 
     <div class="stat-grid">
       <div class="stat-card" style="border-color:rgba(34,197,94,0.4);">
@@ -293,17 +269,17 @@
       </div>
     </div>
 
-    <h2 class="section-h2">Kvartals_rapport_sjekkliste</h2>
+    <h2 class="section-h2">Quarterly Report Checklist</h2>
     <div class="card">
       <table>
-        <thead><tr><th>#</th><th>Spørsmål</th><th>Status (placeholder)</th></tr></thead>
+        <thead><tr><th>#</th><th>Question</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>NJ Vineland permit — løst / blokkert / trukket?</td><td><span class="badge badge-hold">TBD</span></td></tr>
-          <tr><td>2</td><td>MW koblet — på vei mot 800 MW–1 GW?</td><td><span class="badge badge-hold">TBD</span></td></tr>
-          <tr><td>3</td><td>ARR — på vei mot $7–9B Q4 2026?</td><td><span class="badge badge-hold">TBD</span></td></tr>
-          <tr><td>4</td><td>EBITDA-margin — mot 40%?</td><td><span class="badge badge-hold">TBD</span></td></tr>
-          <tr><td>5</td><td>CapEx — holder $16–20B-planen?</td><td><span class="badge badge-hold">TBD</span></td></tr>
-          <tr><td>6</td><td>Nye anlegg eller kontraktoppdateringer?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>1</td><td>NJ Vineland permit — resolved / blocked / withdrawn?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>2</td><td>MW connected — tracking toward 800 MW–1 GW?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>3</td><td>ARR — tracking toward $7–9B Q4 2026?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>4</td><td>EBITDA margin — toward 40%?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>5</td><td>CapEx — within the $16–20B plan?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>6</td><td>New sites or contract updates?</td><td><span class="badge badge-hold">TBD</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -323,8 +299,8 @@
 </main>
 
 <footer>
-  <span data-i18n="footer">Alpha Portal v2.0 stub · Bygget av RikardV · </span>
-  <a href="../v1.0/" data-i18n="view_v10">v1.0-kart</a> ·
+  <span data-i18n="footer">Alpha Portal v2.0 · Built by RikardV · </span>
+  <a href="../v1.0/" data-i18n="view_v10">v1.0 map</a> ·
   <a href="https://github.com/vjanrikard/nbis_power_dc_map" data-i18n="view_repo">GitHub</a>
 </footer>
 
@@ -337,7 +313,7 @@
 // ═══════════════════════════════════════
 
 let I18N = {};
-let CURRENT_LANG = 'no';
+let CURRENT_LANG = 'en';
 
 // ─── Tabs ───
 document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -380,7 +356,6 @@ function applyLang(lang) {
   renderCapacity();
   renderAnalysts();
   renderTechnicals();
-  renderMicrostructure();
 }
 document.querySelectorAll('.lang-toggle button').forEach(b => {
   b.addEventListener('click', () => applyLang(b.dataset.langSet));
@@ -451,36 +426,7 @@ function renderTechnicals() {
   `).join('');
 }
 
-// ─── Section 4: Microstructure ───
-let MICRO = null;
-async function loadMicro() {
-  try {
-    const r = await fetch('data/microstructure.json');
-    MICRO = await r.json();
-    renderMicrostructure();
-  } catch (e) { console.warn('microstructure load failed', e); }
-}
-function renderMicrostructure() {
-  if (!MICRO) return;
-  const si = MICRO.shortInterest;
-  const io = MICRO.institutionalOwnership;
-  document.getElementById('ms-si').textContent  = si.percent !== null ? si.percent + '%' : '—';
-  document.getElementById('ms-dtc').textContent = si.daysToCover !== null ? si.daysToCover : '—';
-  document.getElementById('ms-io').textContent  = io.percent !== null ? io.percent + '%' : '—';
-  document.getElementById('ms-asof').textContent = si.asOf || '—';
-
-  const tbody = document.getElementById('ms-holders');
-  if (io.topHolders && io.topHolders.length) {
-    tbody.innerHTML = io.topHolders.map(h => `
-      <tr>
-        <td>${h.name}</td>
-        <td>${h.shares ? h.shares.toLocaleString() : '—'}</td>
-        <td>${h.pct ? h.pct + '%' : '—'}</td>
-        <td>${h.asOf || '—'}</td>
-      </tr>
-    `).join('');
-  }
-}
+// ─── Section 4: Macro is an iframe (Fed Macro Terminal) — no data fetch needed ───
 
 // ─── Section 5: Capacity (live from v1.0/data.js) ───
 function renderCapacity() {
@@ -563,7 +509,6 @@ async function loadNews() {
 loadI18N();
 loadAnalysts();
 loadTechnicals();
-loadMicro();
 renderCapacity();
 loadNews();
 </script>
