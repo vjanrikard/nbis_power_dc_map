@@ -85,7 +85,7 @@ header {
 }
 .cap-stat-label {
   font-size: 8.5px;
-  color: #ffa726;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 700;
@@ -114,7 +114,7 @@ header {
 
 .last-update-block {
   font-size: 9px;
-  color: #ffa726;
+  color: #ffffff;
   text-align: right;
   border-left: 1px solid var(--border);
   padding-left: 10px;
@@ -125,8 +125,8 @@ header {
   font-weight: 600;
 }
 .last-update-block span {
-  color: var(--teal);
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
   font-size: 10px;
 }
 
