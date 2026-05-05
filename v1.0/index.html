@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nebius Power DC Map — Alpha</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridjs@5.0.2/dist/theme/mermaid.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gridjs@5.0.2/dist/gridjs.umd.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,19 +17,13 @@
   <div class="logo">
     <div class="logo-icon">N</div>
     <div>
-      <div class="logo-text">Nebius Power DC Map</div>
-      <div class="logo-sub">AI Data Center Intelligence</div>
+      <div class="logo-text">Nebius</div>
+      <div class="logo-sub">Power DC Map</div>
     </div>
   </div>
-  <div class="header-stats">
-    <div class="stat"><div class="stat-val">3+ GW</div><div class="stat-label">Contracted Power</div></div>
-    <div class="stat-divider"></div>
-    <div class="stat"><div class="stat-val">170 MW</div><div class="stat-label">Online (end 2025)</div></div>
-    <div class="stat-divider"></div>
-    <div class="stat"><div class="stat-val">800+ MW</div><div class="stat-label">Target 2026</div></div>
-    <div class="stat-divider"></div>
-    <div class="stat"><div class="stat-val" id="site-count">14</div><div class="stat-label">Sites Tracked</div></div>
-    <div class="last-update">Last update <span id="last-update">—</span></div>
+  <div class="capacity-rollup" id="capacity-rollup"></div>
+  <div class="last-update-block">
+    Last update<br><span id="last-update">—</span>
   </div>
 </header>
 
@@ -45,11 +42,10 @@
 <div class="main" style="position:relative;">
   <div class="sidebar" id="sidebar"></div>
   <div id="map"></div>
-
   <div class="timeline-panel" id="timelinePanel">
     <button class="timeline-toggle" id="tlToggle">&#9650; Timeline</button>
     <div class="timeline-header">
-      <span class="timeline-title">Key Events &mdash; Jan 2025 &rarr; Apr 2026+</span>
+      <span class="timeline-title">Key Events &mdash; Nov 2024 &rarr; 2026 Target</span>
     </div>
     <div class="timeline-scroll">
       <div class="timeline-inner" id="tlInner">
@@ -61,19 +57,86 @@
 
 <div class="event-tooltip" id="evTooltip"></div>
 
-<!-- Data lives in data.js (sites + events + last_update). -->
+<!-- ─── Below-map analytics: MW by status / region + sortable table ─── -->
+<section class="below-map">
+  <h2 class="section-h2">MW by status &amp; region</h2>
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>MW by status (online / construction / planned)</h3>
+      <div class="chart-canvas-wrap"><canvas id="status-chart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>MW by region</h3>
+      <div class="chart-canvas-wrap"><canvas id="region-chart"></canvas></div>
+    </div>
+  </div>
+
+  <h2 class="section-h2">All sites &mdash; sortable table</h2>
+  <div id="grid-host"></div>
+
+  <h2 class="section-h2">Sources</h2>
+  <div class="sources-list" id="sources-list"></div>
+
+  <div class="footer-note">
+    Nebius Power DC Map &middot; data compiled from public filings, Nebius newsroom, DCD, regional press &middot;
+    refreshed by daily scheduled task &middot;
+    sister project <a href="https://vjanrikard.github.io/nbis_construction_monitor/v1.0/" target="_blank" rel="noopener">nbis_construction_monitor</a>
+  </div>
+</section>
+
 <script src="data.js"></script>
 <script>
-// Render LAST_UPDATE timestamp into the header.
+// ═══════════════════════════════════════════════════
+// LAST_UPDATE
+// ═══════════════════════════════════════════════════
 if (typeof LAST_UPDATE !== "undefined") {
   document.getElementById("last-update").textContent = LAST_UPDATE;
 }
 
-// Status colors
+// ═══════════════════════════════════════════════════
+// Capacity Rollup — 7 mini stat cards inline in header
+// ═══════════════════════════════════════════════════
+function renderCapacityRollup() {
+  const total = SITES.reduce((a, s) => a + s.mw, 0);
+  const op    = SITES.filter(s => s.status === "online").reduce((a, s) => a + s.mw, 0);
+  const con   = SITES.filter(s => s.status === "construction").reduce((a, s) => a + s.mw, 0);
+  const plan  = SITES.filter(s => s.status === "planned").reduce((a, s) => a + s.mw, 0);
+  const opCount   = SITES.filter(s => s.status === "online").length;
+  const conCount  = SITES.filter(s => s.status === "construction").length;
+  const planCount = SITES.filter(s => s.status === "planned").length;
+
+  const regionsPresent = [...new Set(SITES.map(s => s.region))];
+  const regionShort = regionsPresent
+    .map(r => ({ "North America": "NA", "Europe": "EU", "Middle East": "ME", "APAC": "APAC" }[r] || r))
+    .join(" / ");
+
+  const e = (typeof NEBIUS_EARNINGS_Q1_2026 !== "undefined") ? NEBIUS_EARNINGS_Q1_2026 : {};
+
+  const stats = [
+    { label: "Sites tracked",         value: SITES.length,                       detail: "across " + regionShort },
+    { label: "Total MW (mapped)",     value: total.toLocaleString() + " MW",     detail: (total/1000).toFixed(2) + " GW" },
+    { label: "Online",                value: op + " MW",                         detail: opCount + " sites" },
+    { label: "Under construction",    value: con + " MW",                        detail: conCount + " sites" },
+    { label: "Planned / permitting",  value: plan + " MW",                       detail: planCount + " sites" },
+    { label: "2026 connected target", value: e.connectedTargetEnd2026 || "—",    detail: e.connectedTargetEnd2026Note || "" },
+    { label: "Contracted (Q1 2026)",  value: ">" + (e.contractedGuidanceGW || 3) + " GW", detail: e.contractedQ1Note || "" }
+  ];
+
+  document.getElementById("capacity-rollup").innerHTML = stats.map(s => `
+    <div class="cap-stat">
+      <div class="cap-stat-label">${s.label}</div>
+      <div class="cap-stat-value">${s.value}</div>
+      <div class="cap-stat-detail">${s.detail}</div>
+    </div>`).join('');
+}
+renderCapacityRollup();
+
+// ═══════════════════════════════════════════════════
+// Map (Leaflet)
+// ═══════════════════════════════════════════════════
 const statusColor = { online: '#22c55e', construction: '#f59e0b', planned: '#60a5fa' };
 const statusLabel = { online: 'Online', construction: 'Under Construction', planned: 'Planned' };
 
-// MW to radius
 function mwToRadius(mw) {
   if (mw < 20) return 8;
   if (mw < 100) return 12;
@@ -86,10 +149,8 @@ let map, markers = [], activeSite = null;
 let filterStatus = 'all', searchTerm = '';
 
 function initMap() {
-  map = L.map('map', { center: [45, -10], zoom: 3, zoomControl: true });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap'
-  }).addTo(map);
+  map = L.map('map', { center: [30, 30], zoom: 2, zoomControl: true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
   renderMarkers();
   renderSidebar();
   renderTimeline();
@@ -100,13 +161,13 @@ function createMarker(site) {
   const r = mwToRadius(site.mw);
   const icon = L.divIcon({
     html: `<div style="width:${r*2}px;height:${r*2}px;border-radius:50%;background:${col};border:3px solid rgba(255,255,255,0.3);box-shadow:0 0 ${r}px ${col}88;display:flex;align-items:center;justify-content:center;font-size:${Math.max(8,r-4)}px;color:#000;font-weight:700;">${site.mw>=100?site.mw+'MW':''}</div>`,
-    className: '',
-    iconSize: [r*2, r*2],
-    iconAnchor: [r, r],
-    popupAnchor: [0, -r]
+    className: '', iconSize: [r*2, r*2], iconAnchor: [r, r], popupAnchor: [0, -r]
   });
   const m = L.marker([site.lat, site.lng], { icon }).addTo(map);
   const badgeClass = `badge-${site.status}`;
+  const srcArr = Array.isArray(site.sources) ? site.sources : (site.source ? [site.source] : []);
+  const sourceLinks = srcArr.length
+    ? `<div class="popup-row">Sources: ${srcArr.map((u,i)=>`<a href="${u}" target="_blank" rel="noopener">[${i+1}]</a>`).join(' ')}</div>` : '';
   m.bindPopup(`
     <div class="popup-title">${site.name}</div>
     <div class="popup-row">Status: <span><span class="status-badge ${badgeClass}">${statusLabel[site.status]}</span></span></div>
@@ -116,7 +177,7 @@ function createMarker(site) {
     <div class="popup-row">Expected Online: <span>${site.online}</span></div>
     <div class="popup-chips">${site.chips.map(c=>`<span class="popup-chip">${c}</span>`).join('')}</div>
     <div class="popup-desc">${site.desc}</div>
-  `, { maxWidth: 300 });
+    ${sourceLinks}`, { maxWidth: 340 });
   m.siteId = site.id;
   return m;
 }
@@ -134,30 +195,30 @@ function renderMarkers() {
     markers.push(m);
     m.on('click', () => { activateSite(site.id); });
   });
-  document.getElementById('site-count').textContent = filtered.length;
 }
 
 function renderSidebar() {
   const sb = document.getElementById('sidebar');
-  const regions = [...new Set(SITES.map(s => s.region))];
+  const regionOrder = ["North America", "Europe", "Middle East", "APAC"];
+  const presentRegions = [...new Set(SITES.map(s => s.region))]
+    .sort((a, b) => regionOrder.indexOf(a) - regionOrder.indexOf(b));
   const filtered = SITES.filter(s => {
     const matchStatus = filterStatus === 'all' || s.status === filterStatus;
     const matchSearch = !searchTerm || s.name.toLowerCase().includes(searchTerm.toLowerCase());
     return matchStatus && matchSearch;
   });
   let html = '';
-  regions.forEach(r => {
+  presentRegions.forEach(r => {
     const rsites = filtered.filter(s => s.region === r);
     if (!rsites.length) return;
-    html += `<div class="sidebar-section"><div class="sidebar-title">${r}</div></div>`;
+    html += `<div class="sidebar-section"><div class="sidebar-title">${r} (${rsites.length})</div></div>`;
     rsites.forEach(s => {
       html += `<div class="site-card${activeSite===s.id?' active':''}" data-id="${s.id}">
         <div class="site-name">${s.name}</div>
         <div class="site-meta">
           <span class="status-badge badge-${s.status}">${statusLabel[s.status]}</span>
           <span>${s.mw} MW</span>
-        </div>
-      </div>`;
+        </div></div>`;
     });
   });
   sb.innerHTML = html;
@@ -188,7 +249,6 @@ function renderTimeline() {
     </div>`;
   });
   inner.innerHTML = html;
-
   const tooltip = document.getElementById('evTooltip');
   inner.querySelectorAll('.tl-event').forEach(el => {
     const i = +el.dataset.i;
@@ -198,8 +258,7 @@ function renderTimeline() {
         <div class="tooltip-date">${ev.date}</div>
         <div class="tooltip-title">${ev.title}</div>
         <div class="tooltip-desc">${ev.desc}</div>
-        <div class="tooltip-tags">${ev.tags.map(t=>`<span class="tooltip-tag">${t}</span>`).join('')}</div>
-      `;
+        <div class="tooltip-tags">${ev.tags.map(t=>`<span class="tooltip-tag">${t}</span>`).join('')}</div>`;
       tooltip.style.display = 'block';
       posTooltip(e);
     });
@@ -217,7 +276,6 @@ function posTooltip(e) {
   tt.style.top = y + 'px';
 }
 
-// Timeline toggle
 let tlOpen = true;
 document.getElementById('tlToggle').addEventListener('click', () => {
   const panel = document.getElementById('timelinePanel');
@@ -228,7 +286,6 @@ document.getElementById('tlToggle').addEventListener('click', () => {
   setTimeout(() => map.invalidateSize(), 310);
 });
 
-// Filters
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -239,7 +296,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// Search
 document.getElementById('search').addEventListener('input', e => {
   searchTerm = e.target.value;
   renderMarkers();
@@ -247,6 +303,144 @@ document.getElementById('search').addEventListener('input', e => {
 });
 
 window.addEventListener('load', initMap);
+
+// ═══════════════════════════════════════════════════
+// Below-map: charts + sortable table + sources list
+// ═══════════════════════════════════════════════════
+function renderBelowMapCharts() {
+  if (typeof Chart === "undefined") return;
+  Chart.defaults.color = "#c6d3e8";
+  Chart.defaults.borderColor = "rgba(255,255,255,0.08)";
+
+  const op   = SITES.filter(s => s.status === "online").reduce((a,s) => a + s.mw, 0);
+  const con  = SITES.filter(s => s.status === "construction").reduce((a,s) => a + s.mw, 0);
+  const plan = SITES.filter(s => s.status === "planned").reduce((a,s) => a + s.mw, 0);
+
+  new Chart(document.getElementById("status-chart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Online", "Construction", "Planned"],
+      datasets: [{
+        data: [op, con, plan],
+        backgroundColor: ["#22c55e", "#f59e0b", "#60a5fa"],
+        borderColor: "rgba(10,14,26,0.7)",
+        borderWidth: 2
+      }]
+    },
+    options: {
+      plugins: { legend: { position: "bottom", labels: { color: "#c6d3e8", font: { size: 12 }, boxWidth: 12 } } },
+      responsive: true, maintainAspectRatio: false
+    }
+  });
+
+  const regionMap = {};
+  SITES.forEach(s => { regionMap[s.region] = (regionMap[s.region] || 0) + s.mw; });
+  const regionOrder = ["North America", "Europe", "Middle East", "APAC"];
+  const sortedRegions = Object.keys(regionMap).sort((a,b) => regionOrder.indexOf(a) - regionOrder.indexOf(b));
+
+  new Chart(document.getElementById("region-chart"), {
+    type: "bar",
+    data: {
+      labels: sortedRegions,
+      datasets: [{
+        label: "MW",
+        data: sortedRegions.map(r => regionMap[r]),
+        backgroundColor: "rgba(0,212,255,0.55)",
+        borderColor: "#00d4ff",
+        borderWidth: 1,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, ticks: { color: "#8ea4c4", font: { size: 11 } }, grid: { color: "rgba(255,255,255,0.06)" } },
+        x: { ticks: { color: "#8ea4c4", font: { size: 11 } }, grid: { color: "rgba(255,255,255,0.04)" } }
+      },
+      responsive: true, maintainAspectRatio: false
+    }
+  });
+}
+
+function renderSitesTable() {
+  if (typeof gridjs === "undefined") return;
+
+  function statusBadge(status) {
+    return `<span class="badge-cell badge-status-${status}">${statusLabel[status]}</span>`;
+  }
+  function riskBadge(r, reason) {
+    const safeReason = (reason || "").replace(/"/g, "&quot;");
+    const titleAttr = safeReason ? ` title="${safeReason}"` : "";
+    const cls = `badge-risk-${(r||'LOW').toLowerCase()}`;
+    return `<span class="badge-cell ${cls}"${titleAttr}>${r||'LOW'}</span>`;
+  }
+
+  const regionPrefix = {
+    "North America": "🇺🇸 N. America",
+    "Europe":        "🇪🇺 Europe",
+    "Middle East":   "🇮🇱 Middle East",
+    "APAC":          "🇸🇬 APAC"
+  };
+
+  new gridjs.Grid({
+    columns: [
+      { name: "Region",   width: "130px" },
+      { name: "Site",     width: "180px" },
+      { name: "Partner",  width: "190px" },
+      { name: "MW",       sort: true, width: "70px" },
+      { name: "Status",   width: "150px",
+        formatter: (cell, row) => gridjs.html(statusBadge(row.cells[9].data)) },
+      { name: "Delivery", width: "140px" },
+      { name: "Risk",     width: "90px",
+        formatter: (cell, row) => gridjs.html(riskBadge(cell, row.cells[10].data)) },
+      { name: "Why",      width: "260px" },
+      { name: "Notes" },
+      { name: "_status_raw", hidden: true },
+      { name: "_riskReason", hidden: true }
+    ],
+    data: SITES.map(s => [
+      regionPrefix[s.region] || s.region,
+      s.name,
+      s.partner,
+      s.mw,
+      s.status,
+      s.delivery || s.online || "",
+      s.risk || "LOW",
+      s.riskReason || "",
+      s.note || "",
+      s.status,
+      s.riskReason || ""
+    ]),
+    sort: true,
+    search: true,
+    pagination: { limit: 20 },
+    style: { table: { "font-size": "12.5px" } }
+  }).render(document.getElementById("grid-host"));
+}
+
+function renderSourcesList() {
+  const host = document.getElementById("sources-list");
+  if (!host) return;
+  const seen = new Set();
+  const items = [];
+  SITES.forEach(s => {
+    const arr = Array.isArray(s.sources) ? s.sources : (s.source ? [s.source] : []);
+    arr.forEach(url => {
+      if (url && !seen.has(url)) {
+        seen.add(url);
+        items.push({ site: s.name, url });
+      }
+    });
+  });
+  host.innerHTML = items.map(it => {
+    const h = (() => { try { return new URL(it.url).hostname.replace(/^www\./, ''); } catch(_) { return it.url; } })();
+    return `<a href="${it.url}" target="_blank" rel="noopener" title="${it.site}">${h}</a>`;
+  }).join(' &middot; ');
+}
+
+renderBelowMapCharts();
+renderSitesTable();
+renderSourcesList();
 </script>
 </body>
 </html>
