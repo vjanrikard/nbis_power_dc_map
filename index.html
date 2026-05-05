@@ -1,18 +1,171 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nebius Power DC Map — Alpha</title>
-  <meta http-equiv="refresh" content="0; url=v1.0/" />
-  <link rel="canonical" href="v1.0/" />
+  <title>Nebius Power DC Map — Alpha hub</title>
   <style>
-    body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: #0a0e1a; color: #e2e8f0; margin: 0; padding: 40px; }
-    a { color: #00d4ff; }
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface2: #1a2235;
+      --border: #1e3a5f;
+      --teal: #00d4ff;
+      --teal2: #0099cc;
+      --teal-dim: rgba(0,212,255,0.12);
+      --text: #ffffff;
+      --muted: #64748b;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--teal), var(--teal2));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 19px; color: var(--bg); letter-spacing: -1px;
+    }
+    .logo-text { font-size: 17px; font-weight: 700; color: var(--teal); letter-spacing: 0.3px; line-height: 1.1; }
+    .logo-sub  { font-size: 9.5px; color: var(--muted); letter-spacing: 0.6px; text-transform: uppercase; line-height: 1.2; margin-top: 2px; }
+
+    main {
+      flex: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      width: 100%;
+    }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .lede {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px) { .card-grid { grid-template-columns: 1fr; } }
+
+    .nav-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .nav-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+    .nav-card-num {
+      font-size: 11px;
+      color: var(--teal);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .nav-card-title { font-size: 20px; font-weight: 700; color: var(--teal); }
+    .nav-card-desc  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .nav-card-arrow { margin-top: auto; color: var(--teal); font-size: 14px; font-weight: 600; }
+
+    .meta-row {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .meta-row strong { color: var(--text); font-weight: 600; }
+    .meta-row a { color: var(--teal); text-decoration: none; }
+    .meta-row a:hover { text-decoration: underline; }
+
+    footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
-  <p>Redirecting to <a href="v1.0/">Nebius Power DC Map v1.0</a>…</p>
-  <script>window.location.replace("v1.0/");</script>
+
+<header>
+  <div class="logo-icon">α</div>
+  <div>
+    <div class="logo-text">Nebius — Alpha hub</div>
+    <div class="logo-sub">NBIS infrastructure intelligence</div>
+  </div>
+</header>
+
+<main>
+  <h1>Nebius Power DC Map</h1>
+  <p class="lede">
+    Geografisk og analytisk oversikt over Nebius (NBIS) sin AI-infrastruktur. Begge visninger
+    deler datakilder og oppdateres av samme daglige scan (07:05 lokal tid).
+  </p>
+
+  <div class="card-grid">
+    <a href="v1.0/" class="nav-card">
+      <span class="nav-card-num">v1.0 &middot; Maps</span>
+      <span class="nav-card-title">Power DC Map</span>
+      <span class="nav-card-desc">
+        Interaktivt verdenskart med 17 datasenter, sortert etter kapasitet. Tidslinje,
+        risikokategorier, kildelenker og s&oslash;kbar tabell.
+      </span>
+      <span class="nav-card-arrow">Open map &rarr;</span>
+    </a>
+
+    <a href="alpha/" class="nav-card">
+      <span class="nav-card-num">v2.0 &middot; Analyst hub</span>
+      <span class="nav-card-title">Alpha Portal</span>
+      <span class="nav-card-desc">
+        Analytiker-konsensus, teknisk dashboard, mikrostruktur, kapasitetstracker, nyhetsfeed
+        og investeringstese. Tospr&aring;klig.
+      </span>
+      <span class="nav-card-arrow">Open portal &rarr;</span>
+    </a>
+  </div>
+
+  <div class="meta-row">
+    <span><strong>Daily scan:</strong> 07:05 lokal tid</span>
+    <span><strong>Daily check:</strong> 07:30 lokal tid</span>
+    <span><strong>GitHub:</strong> <a href="https://github.com/vjanrikard/nbis_power_dc_map" target="_blank" rel="noopener">vjanrikard/nbis_power_dc_map</a></span>
+  </div>
+</main>
+
+<footer>
+  Built by RikardV &middot; Updated 2026-05-05
+</footer>
+
 </body>
 </html>

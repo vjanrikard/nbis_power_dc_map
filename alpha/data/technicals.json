@@ -1,0 +1,34 @@
+{
+  "lastUpdate": "2026-05-05",
+  "ticker": "NBIS",
+  "exchange": "NASDAQ",
+  "snapshot": {
+    "rsi14":    { "value": null, "status": "neutral", "note": "RSI < 30 oversold, > 70 overbought, > 80 = no buy filter" },
+    "stoch":    { "value": null, "status": "neutral", "note": "Triggers on zone crossings" },
+    "williamsR":{ "value": null, "status": "neutral", "note": "Fast extreme-zone signal" },
+    "macd":     { "value": null, "status": "neutral", "note": "Cross signals for entry/exit timing" },
+    "ao":       { "value": null, "status": "neutral", "note": "Awesome Oscillator (5,34) momentum baseline" },
+    "mom10":    { "value": null, "status": "neutral", "note": "Price acceleration" },
+    "adx14":    { "value": null, "status": "neutral", "note": "ADX < 20 = don't trade momentum" },
+    "ema21":    { "value": null, "status": "neutral", "note": "Short trend" },
+    "ema50":    { "value": null, "status": "neutral", "note": "Mid trend" },
+    "ema200":   { "value": null, "status": "neutral", "note": "Critical line" },
+    "vwap":     { "value": null, "status": "neutral", "note": "Above VWAP = institutional buying" },
+    "atrPct":   { "value": null, "status": "neutral", "note": "ATR > 4% = reduce position size" },
+    "volSpike": { "value": null, "status": "neutral", "note": "High vol + green = accumulation" }
+  },
+  "score": {
+    "bull": null,
+    "bear": null,
+    "max": 8,
+    "verdict": "—"
+  },
+  "alerts": [
+    "MACD cross up", "MACD cross down",
+    "Stochastic oversold", "Stochastic overbought",
+    "Volume accumulation", "Volume distribution",
+    "Strong bull (6+)", "Strong bear (6+)",
+    "High volatility (ATR > 4%)"
+  ],
+  "note": "Stub — populate from TradingView Pine Script export or Fiscal.ai MCP. Pine Script: NBIS_Alpha_Dashboard.pine"
+}

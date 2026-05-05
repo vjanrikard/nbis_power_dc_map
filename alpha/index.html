@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="no" data-lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alpha Portal — NBIS analytisk hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">α</div>
+    <div>
+      <div class="logo-text" data-i18n="portal_title">Alpha Portal</div>
+      <div class="logo-sub" data-i18n="portal_sub">NBIS analytisk hub</div>
+    </div>
+  </div>
+
+  <div class="header-spacer"></div>
+
+  <a href="../v1.0/" class="cross-nav-btn" title="Open Power DC Map v1.0">&larr;&nbsp;Power&nbsp;Map&nbsp;v1.0</a>
+
+  <div class="nbis-quick">
+    <span>NBIS</span>
+    <strong id="hdr-rating">Moderate Buy</strong>
+    <span>·</span>
+    <strong id="hdr-target">$169</strong>
+    <span>(<span id="hdr-range">$112–$291</span>)</span>
+  </div>
+
+  <div class="lang-toggle">
+    <button class="active" data-lang-set="no">🇳🇴 NO</button>
+    <button data-lang-set="en">🇬🇧 EN</button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="powermap">      <span class="tab-num">1</span><span data-i18n="tab_powermap">Power Map</span></button>
+  <button class="tab-btn"        data-tab="analysts">     <span class="tab-num">2</span><span data-i18n="tab_analysts">Analytikere</span></button>
+  <button class="tab-btn"        data-tab="technicals">   <span class="tab-num">3</span><span data-i18n="tab_technicals">Teknisk</span></button>
+  <button class="tab-btn"        data-tab="microstructure"><span class="tab-num">4</span><span data-i18n="tab_microstructure">Mikrostruktur</span></button>
+  <button class="tab-btn"        data-tab="capacity">     <span class="tab-num">5</span><span data-i18n="tab_capacity">Kapasitet</span></button>
+  <button class="tab-btn"        data-tab="news">         <span class="tab-num">6</span><span data-i18n="tab_news">Nyheter</span></button>
+  <button class="tab-btn"        data-tab="thesis">       <span class="tab-num">7</span><span data-i18n="tab_thesis">Tese</span></button>
+</nav>
+
+<main>
+
+  <!-- ═══ 1. POWER MAP ═══ -->
+  <section id="sec-powermap" class="section active">
+    <h1 class="section-h1" data-i18n="h1_powermap">Power Map — Datasenter-rollout</h1>
+    <p class="section-sub" data-i18n="sub_powermap">17 lokasjoner. Innebygd visning av v1.0-kartet.</p>
+    <div class="iframe-wrap">
+      <iframe src="../v1.0/" title="Nebius Power DC Map v1.0"></iframe>
+    </div>
+  </section>
+
+  <!-- ═══ 2. ANALYSTS ═══ -->
+  <section id="sec-analysts" class="section">
+    <h1 class="section-h1" data-i18n="h1_analysts">Analytiker-konsensus</h1>
+    <p class="section-sub" data-i18n="sub_analysts">Buy/Sell/Hold-rangering, kursmål og endringer.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Rating</div>
+        <div class="stat-value" id="an-rating">—</div>
+        <div class="stat-detail" id="an-rating-note">consensus</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg target</div>
+        <div class="stat-value" id="an-avg">—</div>
+        <div class="stat-detail">USD</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Range</div>
+        <div class="stat-value" id="an-range">—</div>
+        <div class="stat-detail" id="an-spread">spread</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Last update</div>
+        <div class="stat-value" id="an-update" style="font-size:14px;">—</div>
+        <div class="stat-detail">manual</div>
+      </div>
+    </div>
+
+    <h2 class="section-h2">Ratings table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Firm / Source</th>
+          <th>Rating</th>
+          <th>Target</th>
+          <th>Date</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody id="an-rows">
+        <tr><td colspan="5" style="text-align:center; color:var(--muted);" data-i18n="loading">Laster...</td></tr>
+      </tbody>
+    </table>
+
+    <div class="stub" style="margin-top:20px;">
+      <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
+      Manuell JSON i <code>data/analysts.json</code>. Wire opp TipRanks / Seeking Alpha MCP i v2.1.
+    </div>
+  </section>
+
+  <!-- ═══ 3. TECHNICAL ═══ -->
+  <section id="sec-technicals" class="section">
+    <h1 class="section-h1" data-i18n="h1_technicals">Teknisk dashboard</h1>
+    <p class="section-sub" data-i18n="sub_technicals">RSI, MACD, ATR og momentum — speiler NBIS Alpha Dashboard Pine Script.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Bull score</div>
+        <div class="stat-value" id="tech-bull">—</div>
+        <div class="stat-detail">/8</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Bear score</div>
+        <div class="stat-value" id="tech-bear">—</div>
+        <div class="stat-detail">/8</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Verdict</div>
+        <div class="stat-value" id="tech-verdict" style="font-size:18px;">—</div>
+        <div class="stat-detail">6+ = strong consensus</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">ATR%</div>
+        <div class="stat-value" id="tech-atr">—</div>
+        <div class="stat-detail">>4% = reduce size</div>
+      </div>
+    </div>
+
+    <h2 class="section-h2">Indicators</h2>
+    <div class="tech-grid" id="tech-grid">
+      <!-- populated by JS -->
+    </div>
+
+    <h2 class="section-h2">TradingView Chart (embed)</h2>
+    <div class="card">
+      <div id="tv-chart" style="height:480px; background:var(--surface2); border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px;">
+        TradingView widget — drop your embed snippet here, or load lazily on tab switch.
+      </div>
+    </div>
+
+    <div class="stub" style="margin-top:20px;">
+      <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
+      Verdier i <code>data/technicals.json</code>. Eksport fra Pine Script via webhook → JSON-fil i v2.1.
+    </div>
+  </section>
+
+  <!-- ═══ 4. MICROSTRUCTURE ═══ -->
+  <section id="sec-microstructure" class="section">
+    <h1 class="section-h1" data-i18n="h1_microstructure">Markedsmikrostruktur</h1>
+    <p class="section-sub" data-i18n="sub_microstructure">Short interest, hedgefond-eierskap og 13F-aktivitet.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Short interest</div>
+        <div class="stat-value" id="ms-si">—</div>
+        <div class="stat-detail">% of float</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Days to cover</div>
+        <div class="stat-value" id="ms-dtc">—</div>
+        <div class="stat-detail">avg daily vol</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Inst. ownership</div>
+        <div class="stat-value" id="ms-io">—</div>
+        <div class="stat-detail">% of shares</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">As of</div>
+        <div class="stat-value" id="ms-asof" style="font-size:14px;">—</div>
+        <div class="stat-detail">last filing</div>
+      </div>
+    </div>
+
+    <h2 class="section-h2">Top holders (13F)</h2>
+    <table>
+      <thead><tr><th>Holder</th><th>Shares</th><th>% portfolio</th><th>Last filing</th></tr></thead>
+      <tbody id="ms-holders">
+        <tr><td colspan="4" style="text-align:center; color:var(--muted);" data-i18n="no_data">Ingen data ennå</td></tr>
+      </tbody>
+    </table>
+
+    <div class="stub" style="margin-top:20px;">
+      <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
+      Wire opp Finviz / Ortex / WhaleWisdom MCP i <code>data/microstructure.json</code>.
+    </div>
+  </section>
+
+  <!-- ═══ 5. CAPACITY ═══ -->
+  <section id="sec-capacity" class="section">
+    <h1 class="section-h1" data-i18n="h1_capacity">Kapasitetstracker</h1>
+    <p class="section-sub" data-i18n="sub_capacity">MW koblet vs. mål. Live tall fra v1.0/data.js.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Sites tracked</div>
+        <div class="stat-value" id="cap-sites">—</div>
+        <div class="stat-detail">total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Online MW</div>
+        <div class="stat-value" id="cap-online" style="color:var(--green);">—</div>
+        <div class="stat-detail" id="cap-online-pct">— %</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Construction MW</div>
+        <div class="stat-value" id="cap-construction" style="color:var(--amber);">—</div>
+        <div class="stat-detail" id="cap-construction-pct">— %</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Planned MW</div>
+        <div class="stat-value" id="cap-planned" style="color:var(--blue);">—</div>
+        <div class="stat-detail" id="cap-planned-pct">— %</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total MW</div>
+        <div class="stat-value" id="cap-total">—</div>
+        <div class="stat-detail">across portfolio</div>
+      </div>
+    </div>
+
+    <h2 class="section-h2">Targets (CLAUDE.md)</h2>
+    <table>
+      <thead><tr><th>Phase</th><th>Capacity</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Connected today</td><td>~170 MW</td><td><span class="badge badge-bull">Q4 2025</span></td></tr>
+        <tr><td>Target connected Dec 2026</td><td>800 MW – 1 GW</td><td><span class="badge badge-neutral">In progress</span></td></tr>
+        <tr><td>Contracted power</td><td>2.5 GW</td><td><span class="badge badge-bull">Secured</span></td></tr>
+        <tr><td>Total secured</td><td>3+ GW</td><td><span class="badge badge-bull">Pipeline</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-h2">By region</h2>
+    <table>
+      <thead><tr><th>Region</th><th>Sites</th><th>Online MW</th><th>Construction MW</th><th>Planned MW</th><th>Total MW</th></tr></thead>
+      <tbody id="cap-by-region">
+        <tr><td colspan="6" style="text-align:center; color:var(--muted);" data-i18n="loading">Laster...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══ 6. NEWS ═══ -->
+  <section id="sec-news" class="section">
+    <h1 class="section-h1" data-i18n="h1_news">Nyhetsfeed</h1>
+    <p class="section-sub" data-i18n="sub_news">Daglig NBIS-scan oppsummert herfra. Kilde: NEBIUS_POWER_DC_MAP_LOG.md.</p>
+
+    <div class="card">
+      <h3>Daily scan status</h3>
+      <table>
+        <thead><tr><th>Task</th><th>Schedule</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 lokal tid</td><td>Henter siste 24t fra newsroom + DCD + regional press</td></tr>
+          <tr><td><code>nbis-power-dc-map-daily-check</code></td><td>07:30 lokal tid</td><td>Verifiserer at log + Pages er friske</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-h2">Recent entries</h2>
+    <div id="news-list">
+      <div class="stub">
+        <strong data-i18n="stub_label">STUB — VENTER PÅ DATA</strong>
+        Parser <code>../v1.0/NEBIUS_POWER_DC_MAP_LOG.md</code> ved sideload.
+        Aktiveres automatisk når daily-scan starter å skrive nye entries.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 7. THESIS ═══ -->
+  <section id="sec-thesis" class="section">
+    <h1 class="section-h1" data-i18n="h1_thesis">Investeringstese</h1>
+    <p class="section-sub" data-i18n="sub_thesis">Bull / bear case + kvartals_rapport_sjekkliste.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" style="border-color:rgba(34,197,94,0.4);">
+        <div class="stat-label" style="color:var(--green);">Bull case</div>
+        <div class="stat-detail" style="color:var(--text); font-size:12px; line-height:1.6; margin-top:8px;">
+          Meta + Microsoft validation. Every MW presold. EBITDA 24% → 40%. Power moat (3+ GW) competitors can't replicate. 2-3 yr horizon: stock re-rates.
+        </div>
+      </div>
+      <div class="stat-card" style="border-color:rgba(239,68,68,0.45);">
+        <div class="stat-label" style="color:var(--red);">Bear case</div>
+        <div class="stat-detail" style="color:var(--text); font-size:12px; line-height:1.6; margin-top:8px;">
+          $25B cap on $530M revenue = 47x sales. $518M loss. $16-20B capex needs raises. NJ Vineland is live crisis. Buildout slip → multiple compresses fast.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-h2">Kvartals_rapport_sjekkliste</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>#</th><th>Spørsmål</th><th>Status (placeholder)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>NJ Vineland permit — løst / blokkert / trukket?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>2</td><td>MW koblet — på vei mot 800 MW–1 GW?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>3</td><td>ARR — på vei mot $7–9B Q4 2026?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>4</td><td>EBITDA-margin — mot 40%?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>5</td><td>CapEx — holder $16–20B-planen?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+          <tr><td>6</td><td>Nye anlegg eller kontraktoppdateringer?</td><td><span class="badge badge-hold">TBD</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-h2">Critical risks (ranked)</h2>
+    <table>
+      <thead><tr><th>#</th><th>Risk</th><th>Severity</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>NJ Vineland permit</td><td><span class="badge badge-sell">CRITICAL</span></td><td>$17.4B Microsoft contract anchored here. Permit blocked since Feb 2025.</td></tr>
+        <tr><td>2</td><td>National DC opposition</td><td><span class="badge badge-hold">HIGH</span></td><td>$98B blocked Q2 2025 nationwide.</td></tr>
+        <tr><td>3</td><td>Independence MO power gap</td><td><span class="badge badge-hold">MED</span></td><td>Blue Valley plant not ready until Oct 2027.</td></tr>
+        <tr><td>4</td><td>Valuation / execution</td><td><span class="badge badge-hold">MED</span></td><td>~47x trailing sales. Zero margin for error.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <span data-i18n="footer">Alpha Portal v2.0 stub · Bygget av RikardV · </span>
+  <a href="../v1.0/" data-i18n="view_v10">v1.0-kart</a> ·
+  <a href="https://github.com/vjanrikard/nbis_power_dc_map" data-i18n="view_repo">GitHub</a>
+</footer>
+
+<!-- Load v1.0 site data so capacity tracker can compute live numbers -->
+<script src="../v1.0/data.js"></script>
+
+<script>
+// ═══════════════════════════════════════
+// Alpha Portal — boot
+// ═══════════════════════════════════════
+
+let I18N = {};
+let CURRENT_LANG = 'no';
+
+// ─── Tabs ───
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('sec-' + tab).classList.add('active');
+    history.replaceState(null, '', '#' + tab);
+  });
+});
+
+// Restore tab from hash
+const hash = (location.hash || '#powermap').slice(1);
+const restoreBtn = document.querySelector(`.tab-btn[data-tab="${hash}"]`);
+if (restoreBtn) restoreBtn.click();
+
+// ─── Language toggle ───
+async function loadI18N() {
+  try {
+    const r = await fetch('data/i18n.json');
+    I18N = await r.json();
+    applyLang(CURRENT_LANG);
+  } catch (e) { console.warn('i18n load failed', e); }
+}
+function applyLang(lang) {
+  CURRENT_LANG = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dataset.lang = lang;
+  const dict = I18N[lang] || {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.langSet === lang);
+  });
+  // Refresh dynamic sections that have static labels
+  renderCapacity();
+  renderAnalysts();
+  renderTechnicals();
+  renderMicrostructure();
+}
+document.querySelectorAll('.lang-toggle button').forEach(b => {
+  b.addEventListener('click', () => applyLang(b.dataset.langSet));
+});
+
+// ─── Section 2: Analysts ───
+let ANALYSTS = null;
+async function loadAnalysts() {
+  try {
+    const r = await fetch('data/analysts.json');
+    ANALYSTS = await r.json();
+    renderAnalysts();
+  } catch (e) { console.warn('analysts load failed', e); }
+}
+function renderAnalysts() {
+  if (!ANALYSTS) return;
+  const c = ANALYSTS.consensus;
+  document.getElementById('an-rating').textContent = c.rating;
+  document.getElementById('an-avg').textContent = '$' + c.avgTarget;
+  document.getElementById('an-range').textContent = `$${c.low}–$${c.high}`;
+  document.getElementById('an-spread').textContent = 'spread $' + c.spread;
+  document.getElementById('an-update').textContent = ANALYSTS.lastUpdate;
+  // header summary
+  document.getElementById('hdr-rating').textContent = c.rating;
+  document.getElementById('hdr-target').textContent = '$' + c.avgTarget;
+  document.getElementById('hdr-range').textContent = `$${c.low}–$${c.high}`;
+
+  const tbody = document.getElementById('an-rows');
+  tbody.innerHTML = ANALYSTS.ratings.map(r => {
+    const ratingLower = (r.rating || '').toLowerCase();
+    const cls = ratingLower.includes('buy') ? 'badge-buy' :
+                ratingLower.includes('sell') ? 'badge-sell' : 'badge-hold';
+    return `<tr>
+      <td>${r.firm}</td>
+      <td><span class="badge ${cls}">${r.rating}</span></td>
+      <td>${r.target ? '$' + r.target : '—'}</td>
+      <td>${r.date}</td>
+      <td style="color:var(--muted);">${r.note || ''}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── Section 3: Technical ───
+let TECH = null;
+async function loadTechnicals() {
+  try {
+    const r = await fetch('data/technicals.json');
+    TECH = await r.json();
+    renderTechnicals();
+  } catch (e) { console.warn('technicals load failed', e); }
+}
+function renderTechnicals() {
+  if (!TECH) return;
+  const s = TECH.snapshot;
+  document.getElementById('tech-bull').textContent = TECH.score.bull ?? '—';
+  document.getElementById('tech-bear').textContent = TECH.score.bear ?? '—';
+  document.getElementById('tech-verdict').textContent = TECH.score.verdict || '—';
+  document.getElementById('tech-atr').textContent = s.atrPct.value !== null ? s.atrPct.value + '%' : '—';
+
+  const grid = document.getElementById('tech-grid');
+  grid.innerHTML = Object.entries(s).map(([k, v]) => `
+    <div class="tech-card">
+      <div class="tech-name">${k.toUpperCase()}</div>
+      <div class="tech-value">${v.value !== null ? v.value : '—'}</div>
+      <div class="tech-status ${v.status}">${v.status}</div>
+      <div style="font-size:10px; color:var(--muted); margin-top:6px; line-height:1.4;">${v.note || ''}</div>
+    </div>
+  `).join('');
+}
+
+// ─── Section 4: Microstructure ───
+let MICRO = null;
+async function loadMicro() {
+  try {
+    const r = await fetch('data/microstructure.json');
+    MICRO = await r.json();
+    renderMicrostructure();
+  } catch (e) { console.warn('microstructure load failed', e); }
+}
+function renderMicrostructure() {
+  if (!MICRO) return;
+  const si = MICRO.shortInterest;
+  const io = MICRO.institutionalOwnership;
+  document.getElementById('ms-si').textContent  = si.percent !== null ? si.percent + '%' : '—';
+  document.getElementById('ms-dtc').textContent = si.daysToCover !== null ? si.daysToCover : '—';
+  document.getElementById('ms-io').textContent  = io.percent !== null ? io.percent + '%' : '—';
+  document.getElementById('ms-asof').textContent = si.asOf || '—';
+
+  const tbody = document.getElementById('ms-holders');
+  if (io.topHolders && io.topHolders.length) {
+    tbody.innerHTML = io.topHolders.map(h => `
+      <tr>
+        <td>${h.name}</td>
+        <td>${h.shares ? h.shares.toLocaleString() : '—'}</td>
+        <td>${h.pct ? h.pct + '%' : '—'}</td>
+        <td>${h.asOf || '—'}</td>
+      </tr>
+    `).join('');
+  }
+}
+
+// ─── Section 5: Capacity (live from v1.0/data.js) ───
+function renderCapacity() {
+  if (typeof SITES === 'undefined') {
+    console.warn('SITES not loaded yet (v1.0/data.js)');
+    return;
+  }
+  const total = SITES.length;
+  let mwOnline = 0, mwConstr = 0, mwPlanned = 0, mwTotal = 0;
+  const byRegion = {};
+
+  SITES.forEach(s => {
+    const mw = Number(s.mw) || 0;
+    mwTotal += mw;
+    if (s.status === 'online')       mwOnline += mw;
+    if (s.status === 'construction') mwConstr += mw;
+    if (s.status === 'planned')      mwPlanned += mw;
+
+    if (!byRegion[s.region]) byRegion[s.region] = { sites: 0, online: 0, construction: 0, planned: 0, total: 0 };
+    byRegion[s.region].sites++;
+    byRegion[s.region][s.status] = (byRegion[s.region][s.status] || 0) + mw;
+    byRegion[s.region].total += mw;
+  });
+
+  document.getElementById('cap-sites').textContent = total;
+  document.getElementById('cap-online').textContent = mwOnline.toLocaleString() + ' MW';
+  document.getElementById('cap-construction').textContent = mwConstr.toLocaleString() + ' MW';
+  document.getElementById('cap-planned').textContent = mwPlanned.toLocaleString() + ' MW';
+  document.getElementById('cap-total').textContent = mwTotal.toLocaleString() + ' MW';
+
+  document.getElementById('cap-online-pct').textContent       = mwTotal ? (mwOnline/mwTotal*100).toFixed(1) + ' % of total' : '—';
+  document.getElementById('cap-construction-pct').textContent = mwTotal ? (mwConstr/mwTotal*100).toFixed(1) + ' % of total' : '—';
+  document.getElementById('cap-planned-pct').textContent      = mwTotal ? (mwPlanned/mwTotal*100).toFixed(1) + ' % of total' : '—';
+
+  const order = ['Americas', 'Europe', 'Middle East', 'APAC'];
+  const tbody = document.getElementById('cap-by-region');
+  tbody.innerHTML = order.filter(r => byRegion[r]).map(r => {
+    const v = byRegion[r];
+    return `<tr>
+      <td>${r}</td>
+      <td>${v.sites}</td>
+      <td style="color:var(--green);">${(v.online||0).toLocaleString()}</td>
+      <td style="color:var(--amber);">${(v.construction||0).toLocaleString()}</td>
+      <td style="color:var(--blue);">${(v.planned||0).toLocaleString()}</td>
+      <td><strong>${v.total.toLocaleString()}</strong></td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── Section 6: News (parse v1.0/NEBIUS_POWER_DC_MAP_LOG.md) ───
+async function loadNews() {
+  try {
+    const r = await fetch('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md');
+    if (!r.ok) return;
+    const md = await r.text();
+    // Simple parser: split on "## YYYY-MM-DD" headings
+    const blocks = md.split(/^## /m).filter(b => /^\d{4}-\d{2}-\d{2}/.test(b));
+    if (!blocks.length) return;
+    const list = document.getElementById('news-list');
+    list.innerHTML = blocks.slice(0, 25).map(b => {
+      const lines = b.trim().split('\n');
+      const head = lines[0];
+      const body = lines.slice(1).join(' ').trim();
+      const dateMatch = head.match(/^(\d{4}-\d{2}-\d{2})/);
+      const date = dateMatch ? dateMatch[1] : '';
+      const title = head.replace(/^\d{4}-\d{2}-\d{2}\s*[—-]\s*/, '');
+      // Render markdown links inline
+      const bodyHtml = body.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                           .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      return `<div class="news-item">
+        <div class="news-date">${date}</div>
+        <div class="news-title">${title}</div>
+        <div class="news-body">${bodyHtml}</div>
+      </div>`;
+    }).join('');
+  } catch (e) { console.warn('news load failed', e); }
+}
+
+// ─── Boot ───
+loadI18N();
+loadAnalysts();
+loadTechnicals();
+loadMicro();
+renderCapacity();
+loadNews();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "lastUpdate": "2026-05-05",
+  "ticker": "NBIS",
+  "shortInterest": {
+    "percent": null,
+    "shares": null,
+    "daysToCover": null,
+    "source": "Finviz / Ortex / S3 Partners",
+    "asOf": null
+  },
+  "institutionalOwnership": {
+    "percent": null,
+    "totalHolders": null,
+    "topHolders": [],
+    "source": "WhaleWisdom (13F filings)",
+    "asOf": null
+  },
+  "overboughtOversold": {
+    "rsi14": null,
+    "stoch": null,
+    "williamsR": null,
+    "verdict": "—"
+  },
+  "note": "Stub — wire up to Finviz / Ortex / WhaleWisdom MCP in v2.1."
+}

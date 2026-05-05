@@ -1,0 +1,20 @@
+{
+  "lastUpdate": "2026-04-15",
+  "consensus": {
+    "rating": "Moderate Buy",
+    "avgTarget": 169,
+    "low": 112,
+    "high": 291,
+    "spread": 179,
+    "currency": "USD",
+    "currentPrice": null,
+    "note": "Filled in manually — replace with MCP feed (TipRanks / Seeking Alpha) in v2.1."
+  },
+  "ratings": [
+    { "firm": "Consensus avg",   "analyst": "—",         "rating": "Moderate Buy", "target": 169, "date": "2026-04-15", "note": "Per early 2026" },
+    { "firm": "Most bullish",    "analyst": "—",         "rating": "Buy",          "target": 291, "date": "2026-03-10", "note": "~3x upside from $112" },
+    { "firm": "Most conservative","analyst": "—",        "rating": "Hold/Sell",    "target": 112, "date": "2026-03-15", "note": "Valuation concern" },
+    { "firm": "Zacks",           "analyst": "Zacks",     "rating": "Sell (#4)",    "target": null,"date": "2026-01-12", "note": "Overvalued (Value Score F)" },
+    { "firm": "Zacks",           "analyst": "Zacks",     "rating": "Hold (#3)",    "target": null,"date": "2025-08-21", "note": "Earlier, more cautious" }
+  ]
+}

@@ -124,6 +124,26 @@ header {
   min-width: 95px;
   font-weight: 600;
 }
+
+/* Cross-nav button to Alpha Portal — kept compact and tonal */
+.cross-nav-btn {
+  background: var(--teal-dim);
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  padding: 6px 10px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+.cross-nav-btn:hover {
+  background: var(--teal);
+  color: var(--bg);
+}
 .last-update-block span {
   color: #ffffff;
   font-weight: 700;
