@@ -1,20 +1,24 @@
 {
-  "lastUpdate": "2026-04-15",
+  "lastUpdate": "2026-05-05",
+  "lastUpdateSource": "Web search aggregate (MarketScreener, MarketBeat, TipRanks, Benzinga)",
   "consensus": {
-    "rating": "Moderate Buy",
-    "avgTarget": 169,
-    "low": 112,
+    "rating": "Strong Buy",
+    "avgTarget": 170,
+    "low": 85,
     "high": 291,
-    "spread": 179,
+    "spread": 206,
     "currency": "USD",
-    "currentPrice": null,
-    "note": "Filled in manually — replace with MCP feed (TipRanks / Seeking Alpha) in v2.1."
+    "currentPrice": 175.40,
+    "currentPriceAsOf": "2026-05-05",
+    "analystCount": 14,
+    "note": "14 analysts surveyed via MarketScreener. Avg $170.29, range $85-$291. Sentiment shifted to Strong Buy after $27B Meta deal."
   },
   "ratings": [
-    { "firm": "Consensus avg",   "analyst": "—",         "rating": "Moderate Buy", "target": 169, "date": "2026-04-15", "note": "Per early 2026" },
-    { "firm": "Most bullish",    "analyst": "—",         "rating": "Buy",          "target": 291, "date": "2026-03-10", "note": "~3x upside from $112" },
-    { "firm": "Most conservative","analyst": "—",        "rating": "Hold/Sell",    "target": 112, "date": "2026-03-15", "note": "Valuation concern" },
-    { "firm": "Zacks",           "analyst": "Zacks",     "rating": "Sell (#4)",    "target": null,"date": "2026-01-12", "note": "Overvalued (Value Score F)" },
-    { "firm": "Zacks",           "analyst": "Zacks",     "rating": "Hold (#3)",    "target": null,"date": "2025-08-21", "note": "Earlier, more cautious" }
-  ]
+    { "firm": "MarketScreener consensus", "analyst": "14 analysts", "rating": "Buy",        "target": 170, "date": "2026-05-05", "note": "Avg $170.29, range $85-$291" },
+    { "firm": "MarketBeat consensus",     "analyst": "13 analysts", "rating": "Strong Buy", "target": 161, "date": "2026-05-04", "note": "Consensus PT $161.18" },
+    { "firm": "TipRanks consensus",       "analyst": "10 analysts", "rating": "Strong Buy", "target": 163, "date": null,         "note": "Date not in source — verify before use" },
+    { "firm": "Benzinga consensus",       "analyst": "11 analysts", "rating": "Buy",        "target": 174, "date": null,         "note": "High $215, low $126. Date not in source." },
+    { "firm": "Goldman Sachs",            "analyst": "GS Research", "rating": "Buy",        "target": null,"date": null,         "note": "Reset target for rest of 2026 (TheStreet) — exact PT and date not retrieved" }
+  ],
+  "note": "Only ratings with verifiable source data included. Dates set to null when not in search result rather than guessed."
 }

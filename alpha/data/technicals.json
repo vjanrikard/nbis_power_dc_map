@@ -1,27 +1,37 @@
 {
   "lastUpdate": "2026-05-05",
+  "lastUpdateSource": "Web search (TradingView/Investing.com/Barchart aggregate)",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
+  "price": {
+    "current": 175.40,
+    "dayLow": 158.00,
+    "dayHigh": 179.40,
+    "previousMove": "+13.24% on 2026-05-04",
+    "yearHigh": 179.40,
+    "yearLow": 23.25,
+    "asOf": "2026-05-05"
+  },
   "snapshot": {
-    "rsi14":    { "value": null, "status": "neutral", "note": "RSI < 30 oversold, > 70 overbought, > 80 = no buy filter" },
-    "stoch":    { "value": null, "status": "neutral", "note": "Triggers on zone crossings" },
-    "williamsR":{ "value": null, "status": "neutral", "note": "Fast extreme-zone signal" },
-    "macd":     { "value": null, "status": "neutral", "note": "Cross signals for entry/exit timing" },
-    "ao":       { "value": null, "status": "neutral", "note": "Awesome Oscillator (5,34) momentum baseline" },
-    "mom10":    { "value": null, "status": "neutral", "note": "Price acceleration" },
-    "adx14":    { "value": null, "status": "neutral", "note": "ADX < 20 = don't trade momentum" },
-    "ema21":    { "value": null, "status": "neutral", "note": "Short trend" },
-    "ema50":    { "value": null, "status": "neutral", "note": "Mid trend" },
-    "ema200":   { "value": null, "status": "neutral", "note": "Critical line" },
-    "vwap":     { "value": null, "status": "neutral", "note": "Above VWAP = institutional buying" },
-    "atrPct":   { "value": null, "status": "neutral", "note": "ATR > 4% = reduce position size" },
-    "volSpike": { "value": null, "status": "neutral", "note": "High vol + green = accumulation" }
+    "rsi14":     { "value": 60.25, "status": "neutral", "note": "Below 70 overbought, above 30 oversold — comfortably neutral" },
+    "stoch":     { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from Pine Script export" },
+    "williamsR": { "value": -39.49,"status": "neutral", "note": "Above -80 (oversold), below -20 (overbought) — neutral mid-range" },
+    "macd":      { "value": 9.80,  "status": "unknown", "note": "Positive value but signal-line cross status not retrieved" },
+    "ao":        { "value": null,  "status": "unknown", "note": "Awesome Oscillator (5,34) — not retrieved" },
+    "mom10":     { "value": null,  "status": "unknown", "note": "Pure value not retrieved (price up +13.24% on May 4 is context, not measurement)" },
+    "adx14":     { "value": null,  "status": "unknown", "note": "Not retrieved — ADX < 20 = don't trade momentum" },
+    "ema21":     { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from chart" },
+    "ema50":     { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from chart" },
+    "ema200":    { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from chart" },
+    "vwap":      { "value": null,  "status": "unknown", "note": "Not retrieved — verify intraday on TradingView" },
+    "atrPct":    { "value": null,  "status": "unknown", "note": "Not retrieved — ATR > 4% = reduce position size" },
+    "volSpike":  { "value": null,  "status": "unknown", "note": "Not retrieved (May 4 +13.24% suggests volume but not measured)" }
   },
   "score": {
     "bull": null,
     "bear": null,
     "max": 8,
-    "verdict": "—"
+    "verdict": "Insufficient data — only RSI/Williams %R/MACD value retrieved. Run NBIS_Alpha_Dashboard.pine for complete score."
   },
   "alerts": [
     "MACD cross up", "MACD cross down",
@@ -30,5 +40,5 @@
     "Strong bull (6+)", "Strong bear (6+)",
     "High volatility (ATR > 4%)"
   ],
-  "note": "Stub — populate from TradingView Pine Script export or Fiscal.ai MCP. Pine Script: NBIS_Alpha_Dashboard.pine"
+  "note": "Only values directly retrieved from web search. Inferred/derived values set to null with status 'unknown' rather than guessed. For complete snapshot, export from NBIS_Alpha_Dashboard.pine."
 }
