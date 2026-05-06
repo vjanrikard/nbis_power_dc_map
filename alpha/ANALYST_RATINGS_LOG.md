@@ -28,61 +28,61 @@ consistent so `analysts.json` updates stay easy.
 
 ## 2026-03-16 — DA Davidson — Maintains — $200 (▲50 vs prev $150) — Buy
 
-**Analyst:** Alex Platt. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Alex Platt. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Target raised by $50 to $200. Coverage maintained at Buy.
 
 ## 2026-03-16 — BWS Financial — Maintains — $200 (▲70 vs prev $130) — Buy
 
-**Analyst:** Hamed Khorsand. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Hamed Khorsand. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Target raised by $70 to $200 — sharpest single-step bump in the seed set. Coverage maintained at Buy.
 
 ## 2026-02-17 — BWS Financial — Maintains — $130 (no change vs prev $130) — Buy
 
-**Analyst:** Hamed Khorsand. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Hamed Khorsand. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Reiteration. No target change.
 
 ## 2025-11-13 — BWS Financial — Maintains — $130 (no change vs prev $130) — Buy
 
-**Analyst:** Hamed Khorsand. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Hamed Khorsand. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Reiteration. No target change.
 
 ## 2025-11-12 — Northland Capital Markets — Maintains — $211 (▲5 vs prev $206) — Outperform
 
-**Analyst:** Nehal Chokshi. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Nehal Chokshi. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Target nudged up by $5 to $211. The most bullish street target in the seed set.
 
 ## 2025-11-12 — DA Davidson — Maintains — $150 (no change vs prev $150) — Buy
 
-**Analyst:** Alex Platt. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Alex Platt. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Reiteration. No target change.
 
 ## 2025-09-17 — Goldman Sachs — Maintains — $120 (no change vs prev $120) — Buy
 
-**Analyst:** Alexander Duval. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Alexander Duval. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Reiteration. The most conservative street target in the seed set.
 
 ## 2025-09-10 — DA Davidson — Maintains — $125 (▲50 vs prev $75) — Buy
 
-**Analyst:** Alex Platt. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Alex Platt. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Target raised by $50 to $125 — first material bump in the seed set after initial coverage.
 
 ## 2025-09-09 — BWS Financial — Maintains — $130 (▲40 vs prev $90) — Buy
 
-**Analyst:** Hamed Khorsand. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Hamed Khorsand. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Target raised by $40 to $130 — sharpest BWS bump prior to the March 2026 reiteration.
 
 ## 2025-09-09 — DA Davidson — Maintains — $75 (no change vs prev $75) — Buy
 
-**Analyst:** Alex Platt. **Source:** Perplexity Finance snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
+**Analyst:** Alex Platt. **Source:** Snapshot 2026-04-25 (ported from `nbis_analysts_ratings.py`).
 
 Earliest entry in the seed set. Initial coverage baseline at $75.
 
