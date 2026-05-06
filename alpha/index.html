@@ -29,6 +29,10 @@
     <span>(<span id="hdr-range">$112–$291</span>)</span>
   </div>
 
+  <div class="today-block" style="font-size:10px; color:var(--muted); border-left:1px solid var(--border); padding-left:10px; line-height:1.3; min-width:90px;">
+    Today<br><strong id="hdr-today" style="color:var(--teal); font-size:12px;">—</strong>
+  </div>
+
   <div class="lang-toggle">
     <button data-lang-set="no">🇳🇴 NO</button>
     <button class="active" data-lang-set="en">🇬🇧 EN</button>
@@ -260,12 +264,14 @@
     <p class="section-sub" data-i18n="sub_news">Daily NBIS scan rolled up here. Source: NEBIUS_POWER_DC_MAP_LOG.md.</p>
 
     <div class="card">
-      <h3>Daily scan status</h3>
+      <h3>Daily scan status <span id="news-today" style="color:var(--teal); font-weight:600; font-size:12px; margin-left:8px;">—</span></h3>
       <table>
-        <thead><tr><th>Task</th><th>Schedule</th><th>Action</th></tr></thead>
+        <thead><tr><th>Task</th><th>Schedule</th><th>Last entry</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 local time</td><td>Pulls last 24h from newsroom + DCD + regional press</td></tr>
-          <tr><td><code>nbis-power-dc-map-daily-check</code></td><td>07:30 local time</td><td>Verifies log + Pages are healthy</td></tr>
+          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 local time</td><td id="news-last-dc" style="color:var(--teal);">—</td><td>Pulls last 24h from newsroom + DCD + regional press</td></tr>
+          <tr><td><code>nbis-analyst-ratings-daily-scan</code></td><td>07:10 local time</td><td id="news-last-an" style="color:var(--teal);">—</td><td>Pulls last 24h from analyst aggregators + broker research</td></tr>
+          <tr><td><code>nbis-power-dc-map-daily-check</code></td><td>07:30 local time</td><td>—</td><td>Verifies log + Pages are healthy</td></tr>
+          <tr><td><code>nbis-analyst-ratings-daily-check</code></td><td>07:35 local time</td><td>—</td><td>Verifies analyst log + Pages are healthy</td></tr>
         </tbody>
       </table>
     </div>
@@ -439,7 +445,9 @@ function renderAnalysts() {
     const changeStr = `${md.priceChange >= 0 ? '+' : ''}${md.priceChange.toFixed(2)} (${md.changePct >= 0 ? '+' : ''}${md.changePct.toFixed(2)}%) today`;
     document.getElementById('md-change').textContent = changeStr;
     document.getElementById('md-change').style.color = priceColor;
-    document.getElementById('md-range').textContent = `$${md.yearLow.toFixed(2)} → $${md.yearHigh.toFixed(2)}`;
+    const lowStr  = md.yearLow  != null ? '$' + md.yearLow.toFixed(2)  : '—';
+    const highStr = md.yearHigh != null ? '$' + md.yearHigh.toFixed(2) : '—';
+    document.getElementById('md-range').textContent = `${lowStr} → ${highStr}`;
     document.getElementById('md-mcap').textContent = fmtMcap(md.marketCap);
     document.getElementById('md-vol').textContent = fmtVol(md.volume);
   }
@@ -630,8 +638,25 @@ function renderCapacity() {
   }).join('');
 }
 
-// ─── Section 6: News (parse v1.0/NEBIUS_POWER_DC_MAP_LOG.md) ───
+// ─── Section 6: News (parse v1.0/NEBIUS_POWER_DC_MAP_LOG.md + alpha/ANALYST_RATINGS_LOG.md) ───
+async function loadLastEntryDate(path, targetId) {
+  try {
+    const r = await fetch(path);
+    if (!r.ok) return;
+    const md = await r.text();
+    const m = md.match(/^## (\d{4}-\d{2}-\d{2})/m);
+    if (m) {
+      const el = document.getElementById(targetId);
+      if (el) el.textContent = m[1];
+    }
+  } catch (e) { /* silent */ }
+}
+
 async function loadNews() {
+  // Show most-recent-entry date per scan
+  loadLastEntryDate('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md', 'news-last-dc');
+  loadLastEntryDate('ANALYST_RATINGS_LOG.md',              'news-last-an');
+
   try {
     const r = await fetch('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md');
     if (!r.ok) return;
@@ -659,7 +684,21 @@ async function loadNews() {
   } catch (e) { console.warn('news load failed', e); }
 }
 
+// ─── Today's date — populated immediately ───
+function todayISO() {
+  const d = new Date();
+  return d.toISOString().split('T')[0];
+}
+function setToday() {
+  const t = todayISO();
+  const hdr = document.getElementById('hdr-today');
+  const news = document.getElementById('news-today');
+  if (hdr)  hdr.textContent  = t;
+  if (news) news.textContent = 'Today: ' + t;
+}
+
 // ─── Boot ───
+setToday();
 loadI18N();
 loadAnalysts();
 loadTechnicals();

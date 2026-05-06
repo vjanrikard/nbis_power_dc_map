@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Segoe UI, system-ui, sans-serif">
+  <!-- ═══ Background ═══ -->
+  <rect width="1200" height="720" fill="#0a0e1a"/>
+
+  <!-- ═══ Title ═══ -->
+  <text x="600" y="40" text-anchor="middle" fill="#00d4ff" font-size="22" font-weight="700">Alpha Portal — Architecture &amp; Data Flow</text>
+  <text x="600" y="62" text-anchor="middle" fill="#64748b" font-size="11" font-style="italic">v2.0 · Embedded views, computed sections, and the daily scan/monitor loop</text>
+
+  <!-- ═══ Browser layer ═══ -->
+  <rect x="40" y="90" width="1120" height="240" rx="10" fill="#111827" stroke="#1e3a5f"/>
+  <text x="60" y="115" fill="#64748b" font-size="11" font-weight="700" letter-spacing="2">BROWSER (https://vjanrikard.github.io/nbis_power_dc_map/alpha/)</text>
+
+  <!-- 7 tabs -->
+  <g transform="translate(60, 135)">
+    <!-- 1 Power Map -->
+    <rect x="0" y="0" width="150" height="170" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+    <text x="75" y="22" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">1 · POWER MAP</text>
+    <line x1="10" y1="32" x2="140" y2="32" stroke="#1e3a5f"/>
+    <text x="75" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">iframe</text>
+    <text x="75" y="75" text-anchor="middle" fill="#64748b" font-size="9">../v1.0/</text>
+    <text x="75" y="105" text-anchor="middle" fill="#22c55e" font-size="9">live</text>
+
+    <!-- 2 Analysts -->
+    <rect x="160" y="0" width="150" height="170" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+    <text x="235" y="22" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">2 · ANALYSTS</text>
+    <line x1="170" y1="32" x2="300" y2="32" stroke="#1e3a5f"/>
+    <text x="235" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">market data</text>
+    <text x="235" y="72" text-anchor="middle" fill="#e2e8f0" font-size="10">consensus</text>
+    <text x="235" y="89" text-anchor="middle" fill="#e2e8f0" font-size="10">sortable table</text>
+    <text x="235" y="115" text-anchor="middle" fill="#64748b" font-size="9">data/analysts.json</text>
+    <text x="235" y="135" text-anchor="middle" fill="#22c55e" font-size="9">live · 10 ratings</text>
+
+    <!-- 3 Technical -->
+    <rect x="320" y="0" width="150" height="170" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+    <text x="395" y="22" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">3 · TECHNICAL</text>
+    <line x1="330" y1="32" x2="460" y2="32" stroke="#1e3a5f"/>
+    <text x="395" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">RSI / MACD / ATR</text>
+    <text x="395" y="75" text-anchor="middle" fill="#e2e8f0" font-size="10">Pine Script export</text>
+    <text x="395" y="105" text-anchor="middle" fill="#64748b" font-size="9">data/technicals.json</text>
+    <text x="395" y="125" text-anchor="middle" fill="#f59e0b" font-size="9">stub structure</text>
+
+    <!-- 4 Macro (green) -->
+    <rect x="480" y="0" width="150" height="170" rx="6" fill="#1a2235" stroke="#22c55e" stroke-width="2"/>
+    <text x="555" y="22" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">4 · FED MACRO</text>
+    <line x1="490" y1="32" x2="620" y2="32" stroke="#1e3a5f"/>
+    <text x="555" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">iframe</text>
+    <text x="555" y="75" text-anchor="middle" fill="#64748b" font-size="9">fed_macro_terminal</text>
+    <text x="555" y="105" text-anchor="middle" fill="#22c55e" font-size="9">live FRED feed</text>
+
+    <!-- 5 Capacity -->
+    <rect x="640" y="0" width="150" height="170" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+    <text x="715" y="22" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">5 · CAPACITY</text>
+    <line x1="650" y1="32" x2="780" y2="32" stroke="#1e3a5f"/>
+    <text x="715" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">MW per status</text>
+    <text x="715" y="72" text-anchor="middle" fill="#e2e8f0" font-size="10">MW per region</text>
+    <text x="715" y="89" text-anchor="middle" fill="#e2e8f0" font-size="10">live computed</text>
+    <text x="715" y="115" text-anchor="middle" fill="#64748b" font-size="9">../v1.0/data.js</text>
+    <text x="715" y="135" text-anchor="middle" fill="#22c55e" font-size="9">live · 17 sites</text>
+
+    <!-- 6 News -->
+    <rect x="800" y="0" width="150" height="170" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+    <text x="875" y="22" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">6 · NEWS</text>
+    <line x1="810" y1="32" x2="940" y2="32" stroke="#1e3a5f"/>
+    <text x="875" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">parses MD log</text>
+    <text x="875" y="75" text-anchor="middle" fill="#e2e8f0" font-size="10">last 25 entries</text>
+    <text x="875" y="105" text-anchor="middle" fill="#64748b" font-size="9">../v1.0/NEBIUS_</text>
+    <text x="875" y="118" text-anchor="middle" fill="#64748b" font-size="9">POWER_DC_MAP_LOG</text>
+    <text x="875" y="140" text-anchor="middle" fill="#22c55e" font-size="9">live · daily scan</text>
+
+    <!-- 7 Thesis -->
+    <rect x="960" y="0" width="120" height="170" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+    <text x="1020" y="22" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">7 · THESIS</text>
+    <line x1="970" y1="32" x2="1070" y2="32" stroke="#1e3a5f"/>
+    <text x="1020" y="55" text-anchor="middle" fill="#e2e8f0" font-size="10">bull / bear</text>
+    <text x="1020" y="72" text-anchor="middle" fill="#e2e8f0" font-size="10">checklist</text>
+    <text x="1020" y="89" text-anchor="middle" fill="#e2e8f0" font-size="10">risks ranked</text>
+    <text x="1020" y="120" text-anchor="middle" fill="#64748b" font-size="9">static</text>
+    <text x="1020" y="140" text-anchor="middle" fill="#22c55e" font-size="9">live · per-quarter</text>
+  </g>
+
+  <!-- ═══ Data layer ═══ -->
+  <rect x="40" y="370" width="540" height="200" rx="10" fill="#111827" stroke="#1e3a5f"/>
+  <text x="60" y="395" fill="#64748b" font-size="11" font-weight="700" letter-spacing="2">DATA · alpha/data/  +  alpha/ANALYST_RATINGS_LOG.md</text>
+
+  <rect x="60" y="415" width="160" height="60" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+  <text x="140" y="435" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">analysts.json</text>
+  <text x="140" y="453" text-anchor="middle" fill="#64748b" font-size="9">market + 10 ratings</text>
+  <text x="140" y="466" text-anchor="middle" fill="#64748b" font-size="9">operator-curated</text>
+
+  <rect x="230" y="415" width="160" height="60" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+  <text x="310" y="435" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">technicals.json</text>
+  <text x="310" y="453" text-anchor="middle" fill="#64748b" font-size="9">RSI / MACD / ATR</text>
+  <text x="310" y="466" text-anchor="middle" fill="#64748b" font-size="9">manual / Pine export</text>
+
+  <rect x="400" y="415" width="160" height="60" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+  <text x="480" y="435" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">i18n.json</text>
+  <text x="480" y="453" text-anchor="middle" fill="#64748b" font-size="9">EN (default) + NO</text>
+  <text x="480" y="466" text-anchor="middle" fill="#64748b" font-size="9">UI translations</text>
+
+  <rect x="60" y="490" width="500" height="60" rx="6" fill="#1a2235" stroke="#22c55e"/>
+  <text x="310" y="510" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">ANALYST_RATINGS_LOG.md</text>
+  <text x="310" y="528" text-anchor="middle" fill="#64748b" font-size="9">append-only · written by daily scan · operator reviews → analysts.json</text>
+  <text x="310" y="541" text-anchor="middle" fill="#64748b" font-size="9">10 seed entries from Python CLI</text>
+
+  <!-- ═══ Scan + Monitor layer ═══ -->
+  <rect x="600" y="370" width="560" height="200" rx="10" fill="#111827" stroke="#1e3a5f"/>
+  <text x="620" y="395" fill="#64748b" font-size="11" font-weight="700" letter-spacing="2">SCAN + MONITOR · daily scheduled tasks (Cowork / Alpha)</text>
+
+  <rect x="620" y="415" width="250" height="60" rx="6" fill="#1a2235" stroke="#22c55e"/>
+  <text x="745" y="435" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">nbis-analyst-ratings-daily-scan</text>
+  <text x="745" y="453" text-anchor="middle" fill="#64748b" font-size="9">07:10 local · web_search → filter → prepend</text>
+  <text x="745" y="466" text-anchor="middle" fill="#64748b" font-size="9">commits ANALYST_RATINGS_LOG.md only</text>
+
+  <rect x="880" y="415" width="260" height="60" rx="6" fill="#1a2235" stroke="#f59e0b"/>
+  <text x="1010" y="435" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">nbis-analyst-ratings-daily-check</text>
+  <text x="1010" y="453" text-anchor="middle" fill="#64748b" font-size="9">07:35 local · python monitor_check.py</text>
+  <text x="1010" y="466" text-anchor="middle" fill="#64748b" font-size="9">silent on green · alarms via chat + email</text>
+
+  <rect x="620" y="490" width="520" height="60" rx="6" fill="#1a2235" stroke="#1e3a5f"/>
+  <text x="880" y="510" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">DC sister tasks (run 5 min earlier each)</text>
+  <text x="880" y="528" text-anchor="middle" fill="#64748b" font-size="9">07:05 nbis-power-dc-map-daily-scan · 07:30 nbis-power-dc-map-daily-check</text>
+  <text x="880" y="541" text-anchor="middle" fill="#64748b" font-size="9">independent files · independent alarms</text>
+
+  <!-- ═══ Bottom: GitHub + Operator ═══ -->
+  <rect x="40" y="610" width="1120" height="80" rx="10" fill="#111827" stroke="#1e3a5f"/>
+  <text x="60" y="635" fill="#64748b" font-size="11" font-weight="700" letter-spacing="2">CONTROL · GitHub Pages + Operator</text>
+
+  <rect x="60" y="650" width="320" height="30" rx="4" fill="#1a2235" stroke="#1e3a5f"/>
+  <text x="220" y="669" text-anchor="middle" fill="#00d4ff" font-size="10">git push → GitHub Pages re-deploy ~30s</text>
+
+  <rect x="400" y="650" width="320" height="30" rx="4" fill="#1a2235" stroke="#1e3a5f"/>
+  <text x="560" y="669" text-anchor="middle" fill="#22c55e" font-size="10">silent on green · operator inbox quiet</text>
+
+  <rect x="740" y="650" width="380" height="30" rx="4" fill="#1a2235" stroke="#ef4444"/>
+  <text x="930" y="669" text-anchor="middle" fill="#ef4444" font-size="10">alarm → chat (NBIS UPDATE) + email vjanrikard@gmail.com</text>
+
+  <!-- ═══ Arrows: data → browser ═══ -->
+  <!-- analysts.json → Section 2 -->
+  <line x1="140" y1="415" x2="235" y2="305" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- technicals.json → Section 3 -->
+  <line x1="310" y1="415" x2="395" y2="305" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- i18n.json → all tabs (curve to top) -->
+  <path d="M 480 415 Q 200 360 200 305" stroke="#64748b" stroke-width="1" fill="none" stroke-dasharray="3,3" marker-end="url(#arrow-dim)"/>
+  <text x="200" y="358" fill="#64748b" font-size="9" text-anchor="middle">i18n → all tabs</text>
+
+  <!-- LOG → Section 6 (via daily scan) -->
+  <line x1="310" y1="490" x2="875" y2="305" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="2,2" marker-end="url(#arrow-green)"/>
+
+  <!-- Scan → LOG -->
+  <line x1="745" y1="475" x2="500" y2="510" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+
+  <!-- Monitor → email/chat -->
+  <line x1="1010" y1="475" x2="930" y2="650" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="2,2" marker-end="url(#arrow-amber)"/>
+
+  <!-- ═══ Arrow markers ═══ -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4ff"/>
+    </marker>
+    <marker id="arrow-dim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>
