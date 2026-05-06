@@ -439,12 +439,12 @@ function renderAnalysts() {
   // ── Market Data row ──
   if (md) {
     document.getElementById('md-asof').textContent = md.asOf ? '· as of ' + md.asOf : '';
-    const priceColor = md.changePct < 0 ? 'var(--red)' : 'var(--green)';
+    // Price is cyan (brand). Daily change keeps green/red signal.
     document.getElementById('md-price').textContent = '$' + md.currentPrice.toFixed(2);
-    document.getElementById('md-price').style.color = priceColor;
+    document.getElementById('md-price').style.color = 'var(--teal)';
     const changeStr = `${md.priceChange >= 0 ? '+' : ''}${md.priceChange.toFixed(2)} (${md.changePct >= 0 ? '+' : ''}${md.changePct.toFixed(2)}%) today`;
     document.getElementById('md-change').textContent = changeStr;
-    document.getElementById('md-change').style.color = priceColor;
+    document.getElementById('md-change').style.color = md.changePct < 0 ? 'var(--red)' : 'var(--green)';
     const lowStr  = md.yearLow  != null ? '$' + md.yearLow.toFixed(2)  : '—';
     const highStr = md.yearHigh != null ? '$' + md.yearHigh.toFixed(2) : '—';
     document.getElementById('md-range').textContent = `${lowStr} → ${highStr}`;
@@ -520,7 +520,7 @@ function renderAnalysts() {
       <td>${r.firm}</td>
       <td style="color:var(--muted);">${r.analyst}</td>
       <td><span class="badge ${cls}">${r.rating}</span></td>
-      <td style="text-align:right; white-space:nowrap;">$${r.target.toFixed(2)}${arrow}</td>
+      <td style="text-align:right; white-space:nowrap; color:var(--teal); font-weight:600;">$${r.target.toFixed(2)}${arrow}</td>
       <td style="text-align:right; color:var(--muted);">$${r.prevTarget.toFixed(2)}</td>
       <td style="text-align:right;">${upHtml}</td>
       <td>${barHtml}</td>
