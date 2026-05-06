@@ -243,6 +243,23 @@ td {
 tr:nth-child(even) td { background: var(--surface2); }
 tr:hover td { background: rgba(0,212,255,0.06); }
 
+/* Sortable table headers */
+th.th-sort {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+th.th-sort:hover {
+  color: var(--teal);
+}
+.sort-arrow {
+  font-size: 10px;
+  margin-left: 4px;
+}
+.ratings-table td {
+  font-size: 12px;
+}
+
 /* ═══ BADGES ═══ */
 .badge {
   display: inline-block;

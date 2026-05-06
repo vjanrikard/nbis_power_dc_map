@@ -1,24 +1,29 @@
 {
-  "lastUpdate": "2026-05-05",
-  "lastUpdateSource": "Web search aggregate (MarketScreener, MarketBeat, TipRanks, Benzinga)",
-  "consensus": {
-    "rating": "Strong Buy",
-    "avgTarget": 170,
-    "low": 85,
-    "high": 291,
-    "spread": 206,
+  "lastUpdate": "2026-04-25",
+  "lastUpdateSource": "Perplexity Finance (ported from nbis_analysts_ratings.py)",
+  "marketData": {
+    "asOf": "2026-04-25",
+    "currentPrice": 147.16,
+    "priceChange": -9.92,
+    "changePct": -6.32,
+    "marketCap": 35318400000,
+    "volume": 18156937,
+    "yearLow": 21.45,
+    "yearHigh": 168.71,
     "currency": "USD",
-    "currentPrice": 175.40,
-    "currentPriceAsOf": "2026-05-05",
-    "analystCount": 14,
-    "note": "14 analysts surveyed via MarketScreener. Avg $170.29, range $85-$291. Sentiment shifted to Strong Buy after $27B Meta deal."
+    "note": "Snapshot from 2026-04-25. May be stale — verify before acting."
   },
   "ratings": [
-    { "firm": "MarketScreener consensus", "analyst": "14 analysts", "rating": "Buy",        "target": 170, "date": "2026-05-05", "note": "Avg $170.29, range $85-$291" },
-    { "firm": "MarketBeat consensus",     "analyst": "13 analysts", "rating": "Strong Buy", "target": 161, "date": "2026-05-04", "note": "Consensus PT $161.18" },
-    { "firm": "TipRanks consensus",       "analyst": "10 analysts", "rating": "Strong Buy", "target": 163, "date": null,         "note": "Date not in source — verify before use" },
-    { "firm": "Benzinga consensus",       "analyst": "11 analysts", "rating": "Buy",        "target": 174, "date": null,         "note": "High $215, low $126. Date not in source." },
-    { "firm": "Goldman Sachs",            "analyst": "GS Research", "rating": "Buy",        "target": null,"date": null,         "note": "Reset target for rest of 2026 (TheStreet) — exact PT and date not retrieved" }
+    { "date": "2026-03-16", "firm": "DA Davidson",              "analyst": "Alex Platt",      "action": "Maintains", "rating": "Buy",        "target": 200, "prevTarget": 150, "sentiment": "bullish" },
+    { "date": "2026-03-16", "firm": "BWS Financial",            "analyst": "Hamed Khorsand",  "action": "Maintains", "rating": "Buy",        "target": 200, "prevTarget": 130, "sentiment": "bullish" },
+    { "date": "2026-02-17", "firm": "BWS Financial",            "analyst": "Hamed Khorsand",  "action": "Maintains", "rating": "Buy",        "target": 130, "prevTarget": 130, "sentiment": "bullish" },
+    { "date": "2025-11-13", "firm": "BWS Financial",            "analyst": "Hamed Khorsand",  "action": "Maintains", "rating": "Buy",        "target": 130, "prevTarget": 130, "sentiment": "bullish" },
+    { "date": "2025-11-12", "firm": "Northland Capital Markets","analyst": "Nehal Chokshi",   "action": "Maintains", "rating": "Outperform", "target": 211, "prevTarget": 206, "sentiment": "bullish" },
+    { "date": "2025-11-12", "firm": "DA Davidson",              "analyst": "Alex Platt",      "action": "Maintains", "rating": "Buy",        "target": 150, "prevTarget": 150, "sentiment": "bullish" },
+    { "date": "2025-09-17", "firm": "Goldman Sachs",            "analyst": "Alexander Duval", "action": "Maintains", "rating": "Buy",        "target": 120, "prevTarget": 120, "sentiment": "bullish" },
+    { "date": "2025-09-10", "firm": "DA Davidson",              "analyst": "Alex Platt",      "action": "Maintains", "rating": "Buy",        "target": 125, "prevTarget":  75, "sentiment": "bullish" },
+    { "date": "2025-09-09", "firm": "BWS Financial",            "analyst": "Hamed Khorsand",  "action": "Maintains", "rating": "Buy",        "target": 130, "prevTarget":  90, "sentiment": "bullish" },
+    { "date": "2025-09-09", "firm": "DA Davidson",              "analyst": "Alex Platt",      "action": "Maintains", "rating": "Buy",        "target":  75, "prevTarget":  75, "sentiment": "bullish" }
   ],
-  "note": "Only ratings with verifiable source data included. Dates set to null when not in search result rather than guessed."
+  "note": "10 ratings from 4 firms (DA Davidson, BWS Financial, Northland Capital Markets, Goldman Sachs). Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low."
 }

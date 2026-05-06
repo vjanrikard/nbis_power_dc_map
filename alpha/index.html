@@ -61,48 +61,79 @@
     <h1 class="section-h1" data-i18n="h1_analysts">Analyst Consensus</h1>
     <p class="section-sub" data-i18n="sub_analysts">Buy/Sell/Hold ratings, price targets and changes.</p>
 
+    <!-- ─── Market Data row ─── -->
+    <h2 class="section-h2">Market data <span id="md-asof" style="color:var(--amber); font-weight:600;"></span></h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Price</div>
+        <div class="stat-value" id="md-price">—</div>
+        <div class="stat-detail" id="md-change">— today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">52-week range</div>
+        <div class="stat-value" id="md-range" style="font-size:16px;">—</div>
+        <div class="stat-detail">low → high</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Market cap</div>
+        <div class="stat-value" id="md-mcap">—</div>
+        <div class="stat-detail">total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Volume</div>
+        <div class="stat-value" id="md-vol">—</div>
+        <div class="stat-detail">on day</div>
+      </div>
+    </div>
+
+    <!-- ─── Consensus (latest per firm) ─── -->
+    <h2 class="section-h2">Consensus <span style="color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0; font-size:11px;">— latest rating per firm only</span></h2>
     <div class="stat-grid">
       <div class="stat-card">
         <div class="stat-label">Rating</div>
-        <div class="stat-value" id="an-rating">—</div>
-        <div class="stat-detail" id="an-rating-note">consensus</div>
+        <div class="stat-value" id="an-rating" style="color:var(--green);">—</div>
+        <div class="stat-detail" id="an-rating-note">— firms · all bullish</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Avg target</div>
         <div class="stat-value" id="an-avg">—</div>
-        <div class="stat-detail">USD</div>
+        <div class="stat-detail" id="an-avg-up">upside —</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Range</div>
-        <div class="stat-value" id="an-range">—</div>
-        <div class="stat-detail" id="an-spread">spread</div>
+        <div class="stat-label">High target</div>
+        <div class="stat-value" id="an-high" style="color:var(--green);">—</div>
+        <div class="stat-detail" id="an-high-up">upside —</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Last update</div>
-        <div class="stat-value" id="an-update" style="font-size:14px;">—</div>
-        <div class="stat-detail">manual</div>
+        <div class="stat-label">Low target</div>
+        <div class="stat-value" id="an-low">—</div>
+        <div class="stat-detail" id="an-low-up">upside —</div>
       </div>
     </div>
 
-    <h2 class="section-h2">Ratings table</h2>
-    <table>
+    <!-- ─── All ratings table ─── -->
+    <h2 class="section-h2">All analyst ratings <span id="an-count" style="color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0; font-size:11px;"></span></h2>
+    <table class="ratings-table">
       <thead>
         <tr>
-          <th>Firm / Source</th>
-          <th>Rating</th>
-          <th>Target</th>
-          <th>Date</th>
-          <th>Note</th>
+          <th class="th-sort" data-sort="date" data-dir="desc">Date <span class="sort-arrow">▼</span></th>
+          <th class="th-sort" data-sort="firm">Firm</th>
+          <th class="th-sort" data-sort="analyst">Analyst</th>
+          <th class="th-sort" data-sort="rating">Rating</th>
+          <th class="th-sort" data-sort="target" style="text-align:right;">Target</th>
+          <th style="text-align:right;">Prev</th>
+          <th style="text-align:right;">Upside</th>
+          <th>Visual</th>
         </tr>
       </thead>
       <tbody id="an-rows">
-        <tr><td colspan="5" style="text-align:center; color:var(--muted);" data-i18n="loading">Loading...</td></tr>
+        <tr><td colspan="8" style="text-align:center; color:var(--muted);" data-i18n="loading">Loading...</td></tr>
       </tbody>
     </table>
 
     <p class="source-note">
-      Source: MarketScreener, MarketBeat, TipRanks, Benzinga consensus aggregates · Last updated 2026-05-05 ·
-      <em>Manual JSON in <code>data/analysts.json</code> — wire up TipRanks/Seeking Alpha MCP in v2.1 for auto-refresh.</em>
+      Source: <code>data/analysts.json</code> — ported from <code>nbis_analysts_ratings.py</code> (Perplexity Finance snapshot 2026-04-25) ·
+      <em>Consensus uses "latest per firm" rule — only the most recent rating per firm counts toward avg/high/low. Market data may be stale; verify before acting.</em>
     </p>
   </section>
 
@@ -361,8 +392,10 @@ document.querySelectorAll('.lang-toggle button').forEach(b => {
   b.addEventListener('click', () => applyLang(b.dataset.langSet));
 });
 
-// ─── Section 2: Analysts ───
+// ─── Section 2: Analysts (ported from nbis_analysts_ratings.py) ───
 let ANALYSTS = null;
+let AN_SORT = { key: 'date', dir: 'desc' };
+
 async function loadAnalysts() {
   try {
     const r = await fetch('data/analysts.json');
@@ -370,32 +403,153 @@ async function loadAnalysts() {
     renderAnalysts();
   } catch (e) { console.warn('analysts load failed', e); }
 }
+
+// "latest per firm" — only most recent rating per firm counts toward consensus
+function latestPerFirm(ratings) {
+  const seen = {};
+  ratings.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach(r => {
+    if (!seen[r.firm]) seen[r.firm] = r;
+  });
+  return Object.values(seen);
+}
+
+function fmtMcap(n) {
+  if (n >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
+  if (n >= 1e9)  return '$' + (n / 1e9).toFixed(2)  + 'B';
+  if (n >= 1e6)  return '$' + (n / 1e6).toFixed(0)  + 'M';
+  return '$' + n.toLocaleString();
+}
+function fmtVol(n) {
+  if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+  if (n >= 1e3) return (n / 1e3).toFixed(0) + 'K';
+  return String(n);
+}
+
 function renderAnalysts() {
   if (!ANALYSTS) return;
-  const c = ANALYSTS.consensus;
-  document.getElementById('an-rating').textContent = c.rating;
-  document.getElementById('an-avg').textContent = '$' + c.avgTarget;
-  document.getElementById('an-range').textContent = `$${c.low}–$${c.high}`;
-  document.getElementById('an-spread').textContent = 'spread $' + c.spread;
-  document.getElementById('an-update').textContent = ANALYSTS.lastUpdate;
-  // header summary
-  document.getElementById('hdr-rating').textContent = c.rating;
-  document.getElementById('hdr-target').textContent = '$' + c.avgTarget;
-  document.getElementById('hdr-range').textContent = `$${c.low}–$${c.high}`;
+  const md = ANALYSTS.marketData;
+  const ratings = ANALYSTS.ratings || [];
 
+  // ── Market Data row ──
+  if (md) {
+    document.getElementById('md-asof').textContent = md.asOf ? '· as of ' + md.asOf : '';
+    const priceColor = md.changePct < 0 ? 'var(--red)' : 'var(--green)';
+    document.getElementById('md-price').textContent = '$' + md.currentPrice.toFixed(2);
+    document.getElementById('md-price').style.color = priceColor;
+    const changeStr = `${md.priceChange >= 0 ? '+' : ''}${md.priceChange.toFixed(2)} (${md.changePct >= 0 ? '+' : ''}${md.changePct.toFixed(2)}%) today`;
+    document.getElementById('md-change').textContent = changeStr;
+    document.getElementById('md-change').style.color = priceColor;
+    document.getElementById('md-range').textContent = `$${md.yearLow.toFixed(2)} → $${md.yearHigh.toFixed(2)}`;
+    document.getElementById('md-mcap').textContent = fmtMcap(md.marketCap);
+    document.getElementById('md-vol').textContent = fmtVol(md.volume);
+  }
+
+  // ── Consensus from latest per firm ──
+  const latest = latestPerFirm(ratings);
+  const targets = latest.map(r => r.target).filter(t => t != null);
+  const avg  = targets.reduce((a, b) => a + b, 0) / targets.length;
+  const high = Math.max(...targets);
+  const low  = Math.min(...targets);
+  const cur  = md ? md.currentPrice : null;
+  const upside = t => cur ? ((t - cur) / cur * 100) : null;
+  const fmtUp  = u => u == null ? '—' : `${u >= 0 ? '+' : ''}${u.toFixed(1)}%`;
+
+  const allBullish = latest.every(r => r.sentiment === 'bullish');
+  const consensusRating = allBullish ? 'STRONG BUY' : 'MIXED';
+  document.getElementById('an-rating').textContent = consensusRating;
+  document.getElementById('an-rating-note').textContent = `${latest.length} firms · ${allBullish ? '100% bullish' : 'mixed'}`;
+  document.getElementById('an-avg').textContent  = '$' + avg.toFixed(2);
+  document.getElementById('an-avg-up').textContent  = 'upside ' + fmtUp(upside(avg));
+  document.getElementById('an-high').textContent = '$' + high.toFixed(2);
+  document.getElementById('an-high-up').textContent = 'upside ' + fmtUp(upside(high));
+  document.getElementById('an-low').textContent  = '$' + low.toFixed(2);
+  const lowUp = upside(low);
+  document.getElementById('an-low-up').textContent  = 'upside ' + fmtUp(lowUp);
+  document.getElementById('an-low').style.color = lowUp != null && lowUp < 0 ? 'var(--red)' : 'var(--text)';
+
+  // ── Header summary ──
+  document.getElementById('hdr-rating').textContent = consensusRating;
+  document.getElementById('hdr-target').textContent = '$' + avg.toFixed(0);
+  document.getElementById('hdr-range').textContent = `$${low}–$${high}`;
+
+  // ── All ratings count ──
+  document.getElementById('an-count').textContent = `(${ratings.length} rows · sort: ${AN_SORT.key} ${AN_SORT.dir})`;
+
+  // ── Sort + render rows ──
+  const sortKey = AN_SORT.key;
+  const sortDir = AN_SORT.dir;
+  const sorted = ratings.slice().sort((a, b) => {
+    const av = a[sortKey];
+    const bv = b[sortKey];
+    if (av == null && bv == null) return 0;
+    if (av == null) return 1;
+    if (bv == null) return -1;
+    if (typeof av === 'number') return sortDir === 'desc' ? bv - av : av - bv;
+    return sortDir === 'desc' ? String(bv).localeCompare(String(av)) : String(av).localeCompare(String(bv));
+  });
+
+  const maxTarget = Math.max(...ratings.map(r => r.target).filter(t => t != null)) * 1.05;
   const tbody = document.getElementById('an-rows');
-  tbody.innerHTML = ANALYSTS.ratings.map(r => {
+  tbody.innerHTML = sorted.map(r => {
     const ratingLower = (r.rating || '').toLowerCase();
-    const cls = ratingLower.includes('buy') ? 'badge-buy' :
-                ratingLower.includes('sell') ? 'badge-sell' : 'badge-hold';
+    const cls = ratingLower.includes('buy') || ratingLower.includes('outperform') ? 'badge-buy' :
+                ratingLower.includes('sell') || ratingLower.includes('underperform') ? 'badge-sell' : 'badge-hold';
+    const up = upside(r.target);
+    const upHtml = up == null ? '—' :
+                   `<span style="color:${up >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:600;">${up >= 0 ? '+' : ''}${up.toFixed(1)}%</span>`;
+    let arrow = '';
+    if (r.target > r.prevTarget)      arrow = `<span style="color:var(--green); margin-left:4px;">▲${r.target - r.prevTarget}</span>`;
+    else if (r.target < r.prevTarget) arrow = `<span style="color:var(--red); margin-left:4px;">▼${r.prevTarget - r.target}</span>`;
+    // visual bar
+    const barWidth = maxTarget ? Math.min((r.target / maxTarget) * 100, 100) : 0;
+    const barColor = up != null && up >= 0 ? 'var(--green)' : 'var(--red)';
+    const barHtml = `<div style="background:var(--surface2); border-radius:3px; height:10px; width:120px; overflow:hidden;">
+                       <div style="background:${barColor}; height:100%; width:${barWidth}%;"></div>
+                     </div>`;
+
     return `<tr>
+      <td style="color:var(--muted); white-space:nowrap;">${r.date}</td>
       <td>${r.firm}</td>
+      <td style="color:var(--muted);">${r.analyst}</td>
       <td><span class="badge ${cls}">${r.rating}</span></td>
-      <td>${r.target ? '$' + r.target : '—'}</td>
-      <td>${r.date}</td>
-      <td style="color:var(--muted);">${r.note || ''}</td>
+      <td style="text-align:right; white-space:nowrap;">$${r.target.toFixed(2)}${arrow}</td>
+      <td style="text-align:right; color:var(--muted);">$${r.prevTarget.toFixed(2)}</td>
+      <td style="text-align:right;">${upHtml}</td>
+      <td>${barHtml}</td>
     </tr>`;
   }).join('');
+
+  // Update sort arrow indicators
+  document.querySelectorAll('.th-sort').forEach(th => {
+    const arr = th.querySelector('.sort-arrow');
+    if (arr) arr.remove();
+    if (th.dataset.sort === AN_SORT.key) {
+      const span = document.createElement('span');
+      span.className = 'sort-arrow';
+      span.textContent = AN_SORT.dir === 'desc' ? ' ▼' : ' ▲';
+      span.style.color = 'var(--teal)';
+      th.appendChild(span);
+    }
+  });
+}
+
+// Wire up sort handlers (idempotent — ok if called multiple times)
+function wireSortHandlers() {
+  document.querySelectorAll('.th-sort').forEach(th => {
+    if (th.dataset.wired) return;
+    th.dataset.wired = '1';
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', () => {
+      const k = th.dataset.sort;
+      if (AN_SORT.key === k) {
+        AN_SORT.dir = AN_SORT.dir === 'desc' ? 'asc' : 'desc';
+      } else {
+        AN_SORT.key = k;
+        AN_SORT.dir = (k === 'date' || k === 'target') ? 'desc' : 'asc';
+      }
+      renderAnalysts();
+    });
+  });
 }
 
 // ─── Section 3: Technical ───
@@ -511,6 +665,7 @@ loadAnalysts();
 loadTechnicals();
 renderCapacity();
 loadNews();
+wireSortHandlers();
 </script>
 
 </body>
