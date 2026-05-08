@@ -4,13 +4,15 @@ Living change log for material updates to the Nebius (NBIS) data center map. Dai
 
 ---
 
+## 2026-05-06 — Vineland NJ — Bergen gas engines blocked, DataOne pursuing alternate power
+
+**Vineland NJ (power permit)** — NJDEP completed facility-wide air dispersion and health risk modeling; overall risks deemed negligible under regulatory standards, but one contaminant flagged for long-term cancer risk. Bergen natural gas engines not approved. DataOne attorney filed NJDEP delay request citing pursuit of alternate power source that is "more strategically aligned." ~125 MW reportedly active via interim linear generation. Microsoft Q2 tranche reportedly fulfilled from alternate Nebius capacity, not Vineland. Nov 2026 full delivery target at risk. ([Seeking Alpha comments, May 5–6 2026](https://seekingalpha.com/article/4898811-nebius-q1-one-number-may-settle-the-capex-funding-debate))
+
+---
+
 ## 2026-05-04 — Initial release of nbis_power_dc_map v1.0
 
-**Project structure** — Restructured `nbis_power_dc_map` to mirror `nbis_construction_monitor`. Created `v1.0/` with `index.html` (Leaflet map), `data.js` (14 sites + 13 events), `style.css`, `DOCS.md`, `ARCHITECTURE.svg`, `scan/`, and `monitor/`. GitHub Pages deployment from `main` branch root planned. ([Companion repo](https://github.com/vjanrikard/nbis_construction_monitor))
-
 **Q1 2026 earnings (Apr 29 2026)** — Contracted power >2 GW (Feb), 2026 guidance raised to >3 GW contracted. Connected target unchanged at 800 MW–1 GW by end 2026. Revenue guidance $3.0–3.4B. $4B convertible debt raised; $16–20B 2026 CapEx fully funded. ([Foreign Policy Journal coverage](https://www.foreignpolicyjournal.com/2026/04/30/nebius-group-nasdaq-nbis-stock-price-rises-4-2-amid-q1-earnings-and-ai-infrastructure-momentum/))
-
-**Vineland NJ** — Construction progressing with target Nov 2026 delivery. PILOT ordinance unanimously approved by Vineland City Council Jan 27 2026. DataOne CEO hand-delivered formal clarification letter to NJDEP Jan 30 2026. ([Northwise](https://northwiseproject.com/nbis-stock-vineland-nj-data-center/))
 
 **Independence MO** — Council approval Mar 3 2026. 1.2 GW gigawatt-scale campus. IPP power plant at retired Blue Valley site: 250 MW phase by Oct 2027 → 1.1 GW by Dec 2029. ([Nebius newsroom](https://nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory))
 
