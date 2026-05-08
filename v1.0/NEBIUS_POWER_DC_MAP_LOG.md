@@ -4,6 +4,12 @@ Living change log for material updates to the Nebius (NBIS) data center map. Dai
 
 ---
 
+## 2026-05-08 — Independence MO — Construction underway, bridge power secured
+
+**Independence MO (construction)** — Site work underway on ~400-acre Eastgate Commerce Center campus (Q2 2026 start). Bridge power secured ahead of Blue Valley reopening: NextEra Energy contract Jun 2026–May 2027, Evergy contract Jun–Nov 2027. Blue Valley Phase 1: 250 MW (15 gas turbines) by Oct 2027, Phase 2: up to 1.1 GW by Dec 2029. Tax package: 98% real property + 90% personal property abatement 20 years, sales tax exemption on construction materials, $651M PILOT over 20 years (~$30M/yr). ~1,200 construction jobs (IBEW Local 124), 130 permanent. ([DCD](https://www.datacenterdynamics.com/en/news/150bn-in-industrial-development-revenue-bonds-tax-breaks-approved-for-800mw-nebius-data-center-in-missouri/))
+
+---
+
 ## 2026-05-06 — Vineland NJ — Bergen gas engines blocked, DataOne pursuing alternate power
 
 **Vineland NJ (power permit)** — NJDEP completed facility-wide air dispersion and health risk modeling; overall risks deemed negligible under regulatory standards, but one contaminant flagged for long-term cancer risk. Bergen natural gas engines not approved. DataOne attorney filed NJDEP delay request citing pursuit of alternate power source that is "more strategically aligned." ~125 MW reportedly active via interim linear generation. Microsoft Q2 tranche reportedly fulfilled from alternate Nebius capacity, not Vineland. Nov 2026 full delivery target at risk. ([Seeking Alpha comments, May 5–6 2026](https://seekingalpha.com/article/4898811-nebius-q1-one-number-may-settle-the-capex-funding-debate))
