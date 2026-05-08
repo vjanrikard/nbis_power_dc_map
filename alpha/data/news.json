@@ -1,0 +1,32 @@
+{
+  "asOf": "2026-05-08",
+  "entries": [
+    {
+      "date": "2026-05-08",
+      "headline": "Q1 2026 earnings: May 13 before market open — contracted backlog ~$46B",
+      "category": "Earnings",
+      "body": "Nebius Group releases Q1 2026 results May 13 2026 before market open. Contracted backlog ~$46B: Microsoft $19.4B + Meta $27B + NVIDIA $2B. ARR target $7–9B by Q4 2026 unchanged.",
+      "source": "https://nebius.com/newsroom/nebius-group-announces-date-of-first-quarter-2026-results-and-conference-call",
+      "sourceLabel": "Nebius newsroom",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-05-04",
+      "headline": "TD SYNNEX launches AI-IaaS on Nebius NVIDIA HGX B300",
+      "category": "Partnership",
+      "body": "TD SYNNEX launched reserved NVIDIA HGX B300 GPU clusters via Nebius AI Cloud as a new AI Infrastructure-as-a-Service offering for its global MSP and enterprise channel. NBIS +13% on the day.",
+      "source": "https://news.tdsynnex.com/news/in-the-news-crn-exclusive-spotlights-td-synnexs-ai-infrastructure-as-a-service-portfolio-expansion-with-nebius-in-north-america/",
+      "sourceLabel": "TD SYNNEX newsroom",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-05-04",
+      "headline": "Nebius acquires Eigen AI for $643M — NBIS hits all-time high $176.42",
+      "category": "Acquisition",
+      "body": "Nebius agreed to acquire inference-optimization startup Eigen AI for $643M ($98M cash + 3.8M shares). Founded by MIT HAN Lab researchers. Strengthens Nebius Token Factory managed inference platform. NBIS closed at all-time high $176.42 (+14% on day, +33% in April, ~+600% over 12 months).",
+      "source": "https://nebius.com/newsroom/nebius-agrees-to-acquire-eigen-ai-strengthening-nebius-token-factory-as-a-frontier-inference-platform",
+      "sourceLabel": "Nebius newsroom",
+      "impact": "bull"
+    }
+  ]
+}

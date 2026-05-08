@@ -1,0 +1,82 @@
+{
+  "lastUpdate": "2026-05-07",
+  "lastUpdateSource": "User-provided file: # Show Nebius Group NV's journey over time.txt",
+  "ticker": "NBIS",
+  "milestones": [
+    {
+      "date": "1997-09-23",
+      "year": 1997,
+      "title": "Founding — Yandex search engine launched",
+      "category": "Founding",
+      "tags": ["Founding", "Product"],
+      "summary": "Arkady Volozh and co-founders launched the original search engine that became the core of the group. Created the technology and user base that underpinned the company's future expansion."
+    },
+    {
+      "date": "2011-05-24",
+      "year": 2011,
+      "title": "IPO — Listed on NASDAQ",
+      "category": "Capital Markets",
+      "tags": ["IPO", "Capital Markets"],
+      "summary": "Yandex completed its U.S. IPO, raising ~$1.3B and providing public capital to fund international expansion, data centers and acquisitions."
+    },
+    {
+      "date": "2024-08-16",
+      "year": 2024,
+      "title": "Corporate rebrand — Yandex N.V. renamed Nebius Group N.V.",
+      "category": "Strategic Pivot",
+      "tags": ["Rebrand", "Strategic Pivot"],
+      "summary": "Following the separation of Russian operations and strategic refocus, the company changed its name and ticker to reflect a new identity centered on AI infrastructure."
+    },
+    {
+      "date": "2024-10-02",
+      "year": 2024,
+      "title": "Strategic review — Goldman Sachs appointed as financial advisor",
+      "category": "Leadership",
+      "tags": ["Strategic Review", "Leadership"],
+      "summary": "Company engaged Goldman Sachs to review strategic options to accelerate investments in core AI infrastructure — signal of a decisive shift to capital-intensive cloud and data-center expansion."
+    },
+    {
+      "date": "2024-12-02",
+      "year": 2024,
+      "title": "Equity financing — $700M private placement announced",
+      "category": "Financing",
+      "tags": ["Financing", "Partnership"],
+      "summary": "Nebius secured an oversubscribed $700M strategic equity financing (including investors such as NVIDIA and Accel) to accelerate build-out of full-stack AI infrastructure."
+    },
+    {
+      "date": "2024-12-31",
+      "year": 2025,
+      "title": "Strategic pivot to AI infrastructure and product launches",
+      "category": "Strategic Pivot",
+      "tags": ["Product", "Strategic Pivot"],
+      "summary": "The group explicitly repositioned as an AI infrastructure company, launching Nebius AI Studio and expanding LLM/vision support — shifting revenue mix and capital allocation toward cloud and model offerings.",
+      "dateNote": "Multi-stage program through 2024–2025; date set to end of 2024 as anchor."
+    },
+    {
+      "date": "2025-06-15",
+      "year": 2025,
+      "title": "Capital markets activity — public offerings and convertible notes",
+      "category": "Capital Markets",
+      "tags": ["Capital Markets", "Financing"],
+      "summary": "Nebius completed public and private offerings raising multi-billion dollars to fund hyperscale deployments and M&A — materially increased balance sheet firepower.",
+      "dateNote": "Source describes mid-2025; exact closing dates available in company filings."
+    },
+    {
+      "date": "2026-02-10",
+      "year": 2026,
+      "title": "Acquisition — Agreement to acquire Tavily",
+      "category": "Acquisition",
+      "tags": ["Acquisition", "Product"],
+      "summary": "Nebius moved to add agentic search and real-time search capabilities via the Tavily acquisition, extending its cloud platform functionality for real-time/agentic applications."
+    },
+    {
+      "date": "2026-03-11",
+      "year": 2026,
+      "title": "Partnership — Strategic partnership with NVIDIA",
+      "category": "Partnership",
+      "tags": ["Partnership", "Technology"],
+      "summary": "Nebius and NVIDIA announced a partnership to develop hyperscale AI cloud infrastructure, strengthening access to AI accelerators and technical collaboration for large deployments."
+    }
+  ],
+  "note": "All dates and content sourced verbatim from the user-provided journey file. Mid-2025 'capital markets activity' uses an approximate anchor date (2025-06-15) since the source describes a multi-stage program rather than a single closing — flagged via dateNote."
+}

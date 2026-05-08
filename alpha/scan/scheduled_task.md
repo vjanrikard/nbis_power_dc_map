@@ -7,14 +7,14 @@ the operator has confirmed `sources.md` is current.
 
 ## Task metadata
 
-| Field          | Value |
-|----------------|-------|
-| Name           | nbis-analyst-ratings-daily-scan |
+| Field          | Value                                                                                                    |
+|----------------|----------------------------------------------------------------------------------------------------------|
+| Name           | nbis-analyst-ratings-daily-scan                                                                          |
 | Schedule       | Daily at **07:10 local time** (5 minutes after the power-DC scan, 20 before the analyst-ratings monitor) |
-| Owner          | Alpha (RikardV) |
-| Activation     | `op — register nbis-analyst-ratings-daily-scan` |
-| Deactivation   | `op — pause nbis-analyst-ratings-daily-scan` |
-| Manual trigger | `op — run nbis-analyst-ratings-daily-scan now` |
+| Owner          | Alpha (RikardV)                                                                                          |
+| Activation     | `op — register nbis-analyst-ratings-daily-scan`                                                          |
+| Deactivation   | `op — pause nbis-analyst-ratings-daily-scan`                                                             |
+| Manual trigger | `op — run nbis-analyst-ratings-daily-scan now`                                                           |
 
 ---
 

@@ -7,14 +7,14 @@ operator has confirmed the source list in **sources.md** is current.
 
 ## Task metadata
 
-| Field | Value |
-|---|---|
-| Name | nbis-power-dc-map-daily-scan |
-| Schedule | Daily at **07:05 local time** (25 minutes before the monitor health check) |
-| Owner | Alpha (RikardV) |
-| Activation | `op — register nbis-power-dc-map-daily-scan` |
-| Deactivation | `op — pause nbis-power-dc-map-daily-scan` |
-| Manual trigger | `op — run nbis-power-dc-map-daily-scan now` |
+| Field          | Value                                                                      |
+|----------------|----------------------------------------------------------------------------|
+| Name           | nbis-power-dc-map-daily-scan                                               |
+| Schedule       | Daily at **07:05 local time** (25 minutes before the monitor health check) |
+| Owner          | Alpha (RikardV)                                                            |
+| Activation     | `op — register nbis-power-dc-map-daily-scan`                               |
+| Deactivation   | `op — pause nbis-power-dc-map-daily-scan`                                  |
+| Manual trigger | `op — run nbis-power-dc-map-daily-scan now`                                |
 
 ---
 
@@ -24,17 +24,14 @@ operator has confirmed the source list in **sources.md** is current.
 >
 > ### Step 1 — Discover candidate news
 >
-> Issue `web_search` queries from the **Fallback** section of
-> `v1.0/scan/sources.md`, restricted to the last **24 hours**. In addition,
-> for each Nebius site listed in `v1.0/data.js` (`SITES`), run one
-> targeted query of the form `"Nebius" "<site city>"`.
+> Issue `web_search` queries from the **Fallback** section of `v1.0/scan/sources.md`, restricted to the last **24 hours**. 
+> In addition, for each Nebius site listed in `v1.0/data.js` (`SITES`), run one targeted query of the form `"Nebius" "<site city>"`.
 >
 > Collect the top 5 hits per query. Deduplicate by URL.
 >
 > ### Step 2 — Filter for material content
 >
-> Drop any hit whose body does **not** contain at least one of the following
-> material-change keywords:
+> Drop any hit whose body does **not** contain at least one of the following material-change keywords:
 >
 > - **Capacity:** MW, megawatt, gigawatt, GW, capacity, expansion
 > - **Status:** operational, online, energized, ground-breaking, broke ground, completed, delivered, delayed, slipped

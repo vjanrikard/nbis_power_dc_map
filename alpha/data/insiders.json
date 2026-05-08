@@ -1,0 +1,29 @@
+{
+  "lastUpdate": "2026-05-07",
+  "lastUpdateSource": "User-provided file: # Last Insider Transactions 07.may.2026.txt",
+  "asOf": "2026-05-07",
+  "ticker": "NBIS",
+  "summary": {
+    "totalTransactions": 10,
+    "buys": 0,
+    "sells": 10,
+    "totalSellValueUSD": 16019800,
+    "topSellerName": "Bunina Elena",
+    "topSellerRole": "Chief Executive Officer",
+    "topSellerTransactions": 4,
+    "note": "All 10 transactions in the source file are SELLS. CEO Bunina Elena leads with 4 sells totaling ~$3.9M. Volozh and Korolenko are the largest single sellers."
+  },
+  "transactions": [
+    { "date": "2026-05-04", "action": "Sell", "valueUSD": 999900,    "insider": "Bunina Elena",      "role": "Chief Executive Officer", "amount": -5882,   "avgPrice": 170.00 },
+    { "date": "2026-04-15", "action": "Sell", "valueUSD": 720500,    "insider": "Boroditsky Marc",   "role": null,                       "amount": -4500,   "avgPrice": 160.10 },
+    { "date": "2026-04-14", "action": "Sell", "valueUSD": 1000000,   "insider": "Bunina Elena",      "role": "Chief Executive Officer", "amount": -6250,   "avgPrice": 161.22 },
+    { "date": "2026-04-13", "action": "Sell", "valueUSD": 1000000,   "insider": "Bunina Elena",      "role": "Chief Executive Officer", "amount": -6667,   "avgPrice": 150.00 },
+    { "date": "2026-04-10", "action": "Sell", "valueUSD": 1000000,   "insider": "Bunina Elena",      "role": "Chief Executive Officer", "amount": -7143,   "avgPrice": 140.00 },
+    { "date": "2026-04-06", "action": "Sell", "valueUSD": 3500000,   "insider": "Korolenko Andrey",  "role": null,                       "amount": -31357,  "avgPrice": 111.20 },
+    { "date": "2026-04-01", "action": "Sell", "valueUSD": 3500000,   "insider": "Volozh Arkadiy",    "role": null,                       "amount": -33358,  "avgPrice": 103.73 },
+    { "date": "2026-03-31", "action": "Sell", "valueUSD": 1300000,   "insider": "Shtan Danila",      "role": null,                       "amount": -13489,  "avgPrice": 98.78 },
+    { "date": "2026-03-31", "action": "Sell", "valueUSD": 2700000,   "insider": "Korolenko Andrey",  "role": null,                       "amount": -26976,  "avgPrice": 98.78 },
+    { "date": "2026-03-31", "action": "Sell", "valueUSD": 299900,    "insider": "Tal Boaz",          "role": null,                       "amount": -3036,   "avgPrice": 98.78 }
+  ],
+  "note": "Sourced from user-provided file. Roles only explicitly stated for Bunina Elena (CEO). Other roles set to null per the verifiable-numbers rule. Volozh Arkadiy is the founder/CEO of Nebius Group N.V. (per CLAUDE.md context), but role attribution in this transaction record is left null because the source file does not specify it."
+}

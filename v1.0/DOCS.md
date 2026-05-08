@@ -122,17 +122,17 @@ checkpoints from `CLAUDE.md` against the report and updates:
 
 ### Per site (in `data.js` → `SITES`)
 
-| Field | Type | Example | When it changes |
-|---|---|---|---|
-| `status` | enum | `construction` → `online` | When a facility goes live |
-| `mw` | number | 300 | On contract expansion or capacity change |
-| `lat` / `lng` | number | 39.486 / -75.025 | If a site relocates (rare); set when a new site is added |
-| `partner` | string | `DataOne` | On new partner deals |
-| `chips` | array | `["NVIDIA Blackwell", "B200"]` | On hardware upgrade |
-| `online` | string | `Summer 2025 (Phase 1)` | When delivery date slips/shifts |
-| `desc` | string | Free text | On material updates |
-| `source` | URL | DCD / Nebius newsroom link | New primary source |
-| `region` | enum | `North America` / `EMEA` | Set once per site |
+| Field -------|   Type | Example                        | When it changes                                          |
+|--------------|--------|--------------------------------|----------------------------------------------------------|
+| `status`     | enum   | `construction` → `online`      | When a facility goes live                                |
+| `mw` 	       | number | 300                            | On contract expansion or capacity change                 |
+| `lat`/`lng`  | number | 39.486 / -75.025               | If a site relocates (rare); set when a new site is added |
+| `partner`    | string | `DataOne`                      | On new partner deals                                     |
+| `chips`      | array  | `["NVIDIA Blackwell", "B200"]` | On hardware upgrade                                      |
+| `online`     | string | `Summer 2025 (Phase 1)`        | When delivery date slips/shifts                          |
+| `desc`       | string | Free text                      | On material updates                                      |
+| `source`     | URL    | DCD / Nebius newsroom link     | New primary source                                       |
+| `region`     | enum   | `North America` / `EMEA`       | Set once per site                                        |
 
 ### Globally (in `data.js` → `NEBIUS_EARNINGS_*`)
 
@@ -140,9 +140,8 @@ Refreshed **quarterly** after earnings.
 
 ### Timeline (in `data.js` → `EVENTS`)
 
-Append-only list of `{ date, label, title, desc, color, pos, tags }`. Each
-material event from `NEBIUS_POWER_DC_MAP_LOG.md` is promoted here once
-confirmed.
+Append-only list of `{ date, label, title, desc, color, pos, tags }`. 
+Each material event from `NEBIUS_POWER_DC_MAP_LOG.md` is promoted here once confirmed.
 
 ### Change log (`NEBIUS_POWER_DC_MAP_LOG.md`)
 
@@ -186,7 +185,7 @@ git push
 # Pages re-deploys automatically within ~30 seconds
 ```
 
----
+--- Ikke implemnentert ennå -----------------------
 
 ## 7. Publishing to Notion
 
@@ -265,10 +264,10 @@ updating or the public URL goes down. Full spec lives in
 [`monitor/README.md`](monitor/README.md) and
 [`monitor/scheduled_task.md`](monitor/scheduled_task.md).
 
-| What is checked | How | Alarm threshold |
-|---|---|---|
-| `data.js` is being updated | GitHub commits API on `v1.0/data.js` | older than 2 days |
-| Pages URL is reachable | HTTP GET on the published URL + body marker check | non-200 or marker missing |
+| What is checked            | How                                               | Alarm threshold           |
+|----------------------------|---------------------------------------------------|---------------------------|
+| `data.js` is being updated | GitHub commits API on `v1.0/data.js`              | older than 2 days         |
+| Pages URL is reachable     | HTTP GET on the published URL + body marker check | non-200 or marker missing |
 
 **Alarm channels (only on red):**
 

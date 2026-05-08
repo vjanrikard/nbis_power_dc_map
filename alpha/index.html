@@ -46,7 +46,9 @@
   <button class="tab-btn"        data-tab="macro">        <span class="tab-num">4</span><span data-i18n="tab_macro">Macro</span></button>
   <button class="tab-btn"        data-tab="capacity">     <span class="tab-num">5</span><span data-i18n="tab_capacity">Capacity</span></button>
   <button class="tab-btn"        data-tab="news">         <span class="tab-num">6</span><span data-i18n="tab_news">News</span></button>
-  <button class="tab-btn"        data-tab="thesis">       <span class="tab-num">7</span><span data-i18n="tab_thesis">Thesis</span></button>
+  <button class="tab-btn"        data-tab="dcnews">       <span class="tab-num">7</span><span data-i18n="tab_dcnews">DC News</span></button>
+  <button class="tab-btn"        data-tab="thesis">       <span class="tab-num">8</span><span data-i18n="tab_thesis">Thesis</span></button>
+  <button class="tab-btn"        data-tab="insiders">     <span class="tab-num">9</span><span data-i18n="tab_insiders">Insiders</span></button>
 </nav>
 
 <main>
@@ -260,16 +262,28 @@
 
   <!-- ═══ 6. NEWS ═══ -->
   <section id="sec-news" class="section">
-    <h1 class="section-h1" data-i18n="h1_news">News Feed</h1>
-    <p class="section-sub" data-i18n="sub_news">Daily NBIS scan rolled up here. Source: NEBIUS_POWER_DC_MAP_LOG.md.</p>
+    <h1 class="section-h1" data-i18n="h1_news">NBIS News</h1>
+    <p class="section-sub" data-i18n="sub_news">Company news — acquisitions, partnerships, earnings and guidance.</p>
+    <div id="news-list">
+      <div class="stub">
+        <strong data-i18n="stub_label">AWAITING DATA</strong>
+        Loads from <code>data/news.json</code>.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 7. DC NEWS ═══ -->
+  <section id="sec-dcnews" class="section">
+    <h1 class="section-h1" data-i18n="h1_dcnews">DC News Feed</h1>
+    <p class="section-sub" data-i18n="sub_dcnews">Datacenter construction log. Daily scan from NEBIUS_POWER_DC_MAP_LOG.md.</p>
 
     <div class="card">
-      <h3>Daily scan status <span id="news-today" style="color:var(--teal); font-weight:600; font-size:12px; margin-left:8px;">—</span></h3>
+      <h3>Daily scan status <span id="dcnews-today" style="color:var(--teal); font-weight:600; font-size:12px; margin-left:8px;">—</span></h3>
       <table>
         <thead><tr><th>Task</th><th>Schedule</th><th>Last entry</th><th>Action</th></tr></thead>
         <tbody>
-          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 local time</td><td id="news-last-dc" style="color:var(--teal);">—</td><td>Pulls last 24h from newsroom + DCD + regional press</td></tr>
-          <tr><td><code>nbis-analyst-ratings-daily-scan</code></td><td>07:10 local time</td><td id="news-last-an" style="color:var(--teal);">—</td><td>Pulls last 24h from analyst aggregators + broker research</td></tr>
+          <tr><td><code>nbis-power-dc-map-daily-scan</code></td><td>07:05 local time</td><td id="dcnews-last-dc" style="color:var(--teal);">—</td><td>Pulls last 24h from newsroom + DCD + regional press</td></tr>
+          <tr><td><code>nbis-analyst-ratings-daily-scan</code></td><td>07:10 local time</td><td id="dcnews-last-an" style="color:var(--teal);">—</td><td>Pulls last 24h from analyst aggregators + broker research</td></tr>
           <tr><td><code>nbis-power-dc-map-daily-check</code></td><td>07:30 local time</td><td>—</td><td>Verifies log + Pages are healthy</td></tr>
           <tr><td><code>nbis-analyst-ratings-daily-check</code></td><td>07:35 local time</td><td>—</td><td>Verifies analyst log + Pages are healthy</td></tr>
         </tbody>
@@ -277,7 +291,7 @@
     </div>
 
     <h2 class="section-h2">Recent entries</h2>
-    <div id="news-list">
+    <div id="dcnews-list">
       <div class="stub">
         <strong data-i18n="stub_label">AWAITING DATA</strong>
         Parses <code>../v1.0/NEBIUS_POWER_DC_MAP_LOG.md</code> on page load.
@@ -289,8 +303,14 @@
   <!-- ═══ 7. THESIS ═══ -->
   <section id="sec-thesis" class="section">
     <h1 class="section-h1" data-i18n="h1_thesis">Investment Thesis</h1>
-    <p class="section-sub" data-i18n="sub_thesis">Bull / bear case + quarterly report checklist.</p>
+    <p class="section-sub" data-i18n="sub_thesis">Company timeline + bull / bear case + quarterly report checklist.</p>
 
+    <h2 class="section-h2">Company Timeline — major milestones</h2>
+    <div class="timeline-list" id="timeline-list">
+      <p style="color:var(--muted); font-size:11px;" data-i18n="loading">Loading...</p>
+    </div>
+
+    <h2 class="section-h2">Bull / bear case</h2>
     <div class="stat-grid">
       <div class="stat-card" style="border-color:rgba(34,197,94,0.4);">
         <div class="stat-label" style="color:var(--green);">Bull case</div>
@@ -331,6 +351,59 @@
         <tr><td>4</td><td>Valuation / execution</td><td><span class="badge badge-hold">MED</span></td><td>~47x trailing sales. Zero margin for error.</td></tr>
       </tbody>
     </table>
+  </section>
+
+  <!-- ═══ 8. INSIDERS ═══ -->
+  <section id="sec-insiders" class="section">
+    <h1 class="section-h1" data-i18n="h1_insiders">INSIDER TRANSACTIONS</h1>
+    <p class="section-sub" data-i18n="sub_insiders">Recent insider buys and sells. All transactions sourced from regulatory filings.</p>
+
+    <h2 class="section-h2">Summary <span id="ins-asof" style="color:var(--amber); font-weight:600;"></span></h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total transactions</div>
+        <div class="stat-value" id="ins-total">—</div>
+        <div class="stat-detail" id="ins-buys-sells">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total sell value</div>
+        <div class="stat-value" id="ins-value" style="color:var(--red);">—</div>
+        <div class="stat-detail">USD across all sells</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Top seller</div>
+        <div class="stat-value" id="ins-top" style="font-size:13px;">—</div>
+        <div class="stat-detail" id="ins-top-role">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Direction</div>
+        <div class="stat-value" id="ins-direction" style="font-size:13px;">—</div>
+        <div class="stat-detail">net signal</div>
+      </div>
+    </div>
+
+    <h2 class="section-h2">All transactions <span id="ins-count" style="color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0; font-size:11px;"></span></h2>
+    <table class="ratings-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Action</th>
+          <th>Insider</th>
+          <th>Role</th>
+          <th style="text-align:right;">Shares</th>
+          <th style="text-align:right;">Avg price</th>
+          <th style="text-align:right;">Value</th>
+        </tr>
+      </thead>
+      <tbody id="ins-rows">
+        <tr><td colspan="7" style="text-align:center; color:var(--muted);" data-i18n="loading">Loading...</td></tr>
+      </tbody>
+    </table>
+
+    <p class="source-note">
+      Source: <code>data/insiders.json</code> · As of 2026-05-07 · 10 transactions covering 2026-03-31 → 2026-05-04 ·
+      <em>All entries are sells. CEO Bunina Elena leads volume. Volozh and Korolenko largest single sellers. No insider buys in this period — bearish signal worth noting in the thesis.</em>
+    </p>
   </section>
 
 </main>
@@ -638,7 +711,30 @@ function renderCapacity() {
   }).join('');
 }
 
-// ─── Section 6: News (parse v1.0/NEBIUS_POWER_DC_MAP_LOG.md + alpha/ANALYST_RATINGS_LOG.md) ───
+// ─── Section 6: News (company news from data/news.json) ───
+async function loadCompanyNews() {
+  try {
+    const r = await fetch('data/news.json');
+    if (!r.ok) return;
+    const data = await r.json();
+    const list = document.getElementById('news-list');
+    if (!data.entries || !data.entries.length) return;
+    const impactColor = { bull: 'var(--green)', bear: 'var(--red)', neutral: 'var(--amber)' };
+    list.innerHTML = data.entries.map(e => {
+      const col = impactColor[e.impact] || 'var(--teal)';
+      const catBadge = `<span class="badge" style="background:rgba(0,212,255,0.15); color:var(--teal); border:1px solid rgba(0,212,255,0.3); font-size:10px;">${e.category}</span>`;
+      const impactBadge = `<span class="badge" style="background:rgba(0,0,0,0.2); color:${col}; border:1px solid ${col}44; font-size:10px;">${(e.impact||'').toUpperCase()}</span>`;
+      const srcLink = e.source ? `<a href="${e.source}" target="_blank" rel="noopener" style="color:var(--muted); font-size:10px;">${e.sourceLabel || 'Source'}</a>` : '';
+      return `<div class="news-item">
+        <div class="news-date">${e.date} ${catBadge} ${impactBadge}</div>
+        <div class="news-title">${e.headline}</div>
+        <div class="news-body">${e.body} ${srcLink}</div>
+      </div>`;
+    }).join('');
+  } catch (e) { console.warn('company news load failed', e); }
+}
+
+// ─── Section 7: DC News (parse v1.0/NEBIUS_POWER_DC_MAP_LOG.md + alpha/ANALYST_RATINGS_LOG.md) ───
 async function loadLastEntryDate(path, targetId) {
   try {
     const r = await fetch(path);
@@ -652,19 +748,17 @@ async function loadLastEntryDate(path, targetId) {
   } catch (e) { /* silent */ }
 }
 
-async function loadNews() {
-  // Show most-recent-entry date per scan
-  loadLastEntryDate('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md', 'news-last-dc');
-  loadLastEntryDate('ANALYST_RATINGS_LOG.md',              'news-last-an');
+async function loadDCNews() {
+  loadLastEntryDate('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md', 'dcnews-last-dc');
+  loadLastEntryDate('ANALYST_RATINGS_LOG.md',              'dcnews-last-an');
 
   try {
     const r = await fetch('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md');
     if (!r.ok) return;
     const md = await r.text();
-    // Simple parser: split on "## YYYY-MM-DD" headings
     const blocks = md.split(/^## /m).filter(b => /^\d{4}-\d{2}-\d{2}/.test(b));
     if (!blocks.length) return;
-    const list = document.getElementById('news-list');
+    const list = document.getElementById('dcnews-list');
     list.innerHTML = blocks.slice(0, 25).map(b => {
       const lines = b.trim().split('\n');
       const head = lines[0];
@@ -672,7 +766,6 @@ async function loadNews() {
       const dateMatch = head.match(/^(\d{4}-\d{2}-\d{2})/);
       const date = dateMatch ? dateMatch[1] : '';
       const title = head.replace(/^\d{4}-\d{2}-\d{2}\s*[—-]\s*/, '');
-      // Render markdown links inline
       const bodyHtml = body.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
                            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
       return `<div class="news-item">
@@ -681,7 +774,7 @@ async function loadNews() {
         <div class="news-body">${bodyHtml}</div>
       </div>`;
     }).join('');
-  } catch (e) { console.warn('news load failed', e); }
+  } catch (e) { console.warn('DC news load failed', e); }
 }
 
 // ─── Today's date — populated immediately ───
@@ -692,9 +785,80 @@ function todayISO() {
 function setToday() {
   const t = todayISO();
   const hdr = document.getElementById('hdr-today');
-  const news = document.getElementById('news-today');
-  if (hdr)  hdr.textContent  = t;
-  if (news) news.textContent = 'Today: ' + t;
+  const dcn = document.getElementById('dcnews-today');
+  if (hdr) hdr.textContent = t;
+  if (dcn) dcn.textContent = 'Today: ' + t;
+}
+
+// ─── Section 7 sub-block: Timeline ───
+async function loadTimeline() {
+  try {
+    const r = await fetch('data/timeline.json');
+    if (!r.ok) return;
+    const data = await r.json();
+    const list = document.getElementById('timeline-list');
+    list.innerHTML = data.milestones.map(m => {
+      const tags = (m.tags || []).map(t => `<span class="timeline-tag">${t}</span>`).join('');
+      const dateNote = m.dateNote ? ` <span style="color:var(--muted); font-style:italic;">(${m.dateNote})</span>` : '';
+      return `<div class="timeline-item">
+        <div class="timeline-date">${m.date}</div>
+        <div>
+          <div class="timeline-title">${m.title}</div>
+          <div class="timeline-summary">${m.summary}${dateNote}</div>
+          <div class="timeline-tags">${tags}</div>
+        </div>
+      </div>`;
+    }).join('');
+  } catch (e) { console.warn('timeline load failed', e); }
+}
+
+// ─── Section 8: Insiders ───
+let INSIDERS = null;
+async function loadInsiders() {
+  try {
+    const r = await fetch('data/insiders.json');
+    if (!r.ok) return;
+    INSIDERS = await r.json();
+    renderInsiders();
+  } catch (e) { console.warn('insiders load failed', e); }
+}
+function renderInsiders() {
+  if (!INSIDERS) return;
+  const s = INSIDERS.summary;
+  document.getElementById('ins-asof').textContent = INSIDERS.asOf ? '· as of ' + INSIDERS.asOf : '';
+  document.getElementById('ins-total').textContent = s.totalTransactions;
+  document.getElementById('ins-buys-sells').textContent = `${s.buys} buy · ${s.sells} sell`;
+  document.getElementById('ins-value').textContent = '$' + (s.totalSellValueUSD / 1e6).toFixed(2) + 'M';
+  document.getElementById('ins-top').textContent = s.topSellerName;
+  document.getElementById('ins-top-role').textContent = (s.topSellerRole || 'role n/a') + ` · ${s.topSellerTransactions} sells`;
+  // Direction signal: all sells = bearish; mostly buys = bullish; mixed = neutral
+  const dir = s.buys === 0 && s.sells > 0 ? { label: 'BEARISH', color: 'var(--red)' } :
+              s.sells === 0 && s.buys > 0 ? { label: 'BULLISH', color: 'var(--green)' } :
+              { label: 'MIXED', color: 'var(--amber)' };
+  const dirEl = document.getElementById('ins-direction');
+  dirEl.textContent = dir.label;
+  dirEl.style.color = dir.color;
+
+  document.getElementById('ins-count').textContent = `(${INSIDERS.transactions.length} rows · ${INSIDERS.transactions[0].date} → ${INSIDERS.transactions[INSIDERS.transactions.length-1].date})`;
+
+  const fmtUSD = n => n >= 1e6 ? '$' + (n/1e6).toFixed(2) + 'M' :
+                      n >= 1e3 ? '$' + (n/1e3).toFixed(1) + 'K' : '$' + n;
+
+  const tbody = document.getElementById('ins-rows');
+  tbody.innerHTML = INSIDERS.transactions.map(t => {
+    const isSell = t.action.toLowerCase() === 'sell';
+    const actionColor = isSell ? 'var(--red)' : 'var(--green)';
+    const valueColor  = isSell ? 'var(--red)' : 'var(--green)';
+    return `<tr>
+      <td style="color:var(--muted); white-space:nowrap;">${t.date}</td>
+      <td><span class="badge" style="background:rgba(${isSell ? '239,68,68' : '34,197,94'},0.20); color:${actionColor}; border:1px solid rgba(${isSell ? '239,68,68' : '34,197,94'},0.40);">${t.action.toUpperCase()}</span></td>
+      <td style="color:var(--teal); font-weight:600;">${t.insider}</td>
+      <td style="color:var(--muted); font-size:10px;">${t.role || '—'}</td>
+      <td style="text-align:right;">${t.amount.toLocaleString()}</td>
+      <td style="text-align:right; color:var(--teal);">$${t.avgPrice.toFixed(2)}</td>
+      <td style="text-align:right; color:${valueColor}; font-weight:600;">${fmtUSD(t.valueUSD)}</td>
+    </tr>`;
+  }).join('');
 }
 
 // ─── Boot ───
@@ -703,7 +867,10 @@ loadI18N();
 loadAnalysts();
 loadTechnicals();
 renderCapacity();
-loadNews();
+loadCompanyNews();
+loadDCNews();
+loadTimeline();
+loadInsiders();
 wireSortHandlers();
 </script>
 

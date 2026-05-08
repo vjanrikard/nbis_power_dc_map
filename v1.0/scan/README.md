@@ -95,11 +95,11 @@ but not logged. This keeps `NEBIUS_POWER_DC_MAP_LOG.md` focused.
 
 ## Commit policy
 
-| What gets committed | When                                                  |
-|---------------------|-------------------------------------------------------|
-| `NEBIUS_POWER_DC_MAP_LOG.md` | At least one new material entry was prepended |
-| `sources.md`        | A new credible source was added during the same scan  |
-| `data.js`           | **Never** by this task — operator approval required   |
+| What gets committed | When                                                           |
+|------------------------------|-------------------------------------------------------|
+| `NEBIUS_POWER_DC_MAP_LOG.md` | At least one new material entry was prepended         |
+| `sources.md`                 | A new credible source was added during the same scan  |
+| `data.js`                    | **Never** by this task — operator approval required   |
 
 Commit message format: `Daily scan YYYY-MM-DD: <N> new entries`.
 
@@ -111,23 +111,16 @@ map.
 
 ## How to tune later
 
-- **Too many false positives:** add `"Nebius" must appear in title` rule, or
-  remove a low-signal source from **sources.md**.
-- **Missed events:** add new keywords to the filter, or add new sources to
-  the matching tier in **sources.md**.
-- **Too noisy commit history:** switch to weekly digest by changing the
-  schedule to `Mon 07:05` and widening the search window to 7 days.
-- **Want pre-market run for European news:** add a second schedule at
-  `04:00 local`; adjust the chat briefing to label early vs. main run.
+- **Too many false positives:** add `"Nebius" must appear in title` rule, or remove a low-signal source from **sources.md**.
+- **Missed events:** add new keywords to the filter, or add new sources to the matching tier in **sources.md**.
+- **Too noisy commit history:** switch to weekly digest by changing the schedule to `Mon 07:05` and widening the search window to 7 days.
+- **Want pre-market run for European news:** add a second schedule at `04:00 local`; adjust the chat briefing to label early vs. main run.
 
 ---
 
 ## Related
 
-- **monitor/** — Daily health check. Verifies the scan keeps adding entries.
-  If the scan stops, the monitor alarms within 2 days.
+- **monitor/** — Daily health check. Verifies the scan keeps adding entries. If the scan stops, the monitor alarms within 2 days.
 - **DOCS.md §10** — Monitoring overview.
-- **CLAUDE.md** — Operator policies (autonomy limits, NBIS briefing template,
-  tool priorities).
-- **nbis_construction_monitor** — Sister project; shares this same source list
-  and filter policy. The two scans can be run in parallel or back-to-back.
+- **CLAUDE.md** — Operator policies (autonomy limits, NBIS briefing template, tool priorities).
+- **nbis_construction_monitor** — Sister project; shares this same source list and filter policy. The two scans can be run in parallel or back-to-back.
