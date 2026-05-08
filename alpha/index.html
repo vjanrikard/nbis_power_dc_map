@@ -756,21 +756,40 @@ async function loadDCNews() {
     const r = await fetch('../v1.0/NEBIUS_POWER_DC_MAP_LOG.md');
     if (!r.ok) return;
     const md = await r.text();
-    const blocks = md.split(/^## /m).filter(b => /^\d{4}-\d{2}-\d{2}/.test(b));
-    if (!blocks.length) return;
-    const list = document.getElementById('dcnews-list');
-    list.innerHTML = blocks.slice(0, 25).map(b => {
-      const lines = b.trim().split('\n');
-      const head = lines[0];
-      const body = lines.slice(1).join(' ').trim();
-      const dateMatch = head.match(/^(\d{4}-\d{2}-\d{2})/);
+    const dateBlocks = md.split(/^## /m).filter(b => /^\d{4}-\d{2}-\d{2}/.test(b));
+    if (!dateBlocks.length) return;
+
+    const items = [];
+    for (const block of dateBlocks) {
+      const firstLine = block.split('\n')[0];
+      const dateMatch = firstLine.match(/^(\d{4}-\d{2}-\d{2})/);
       const date = dateMatch ? dateMatch[1] : '';
-      const title = head.replace(/^\d{4}-\d{2}-\d{2}\s*[—-]\s*/, '');
-      const bodyHtml = body.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-                           .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      const bodyText = block.slice(firstLine.length).trim();
+      const paragraphs = bodyText.split(/\n\n+/);
+      const subEntries = paragraphs.filter(p => p.trim().startsWith('**'));
+      if (subEntries.length === 0) {
+        items.push({ date, title: firstLine.replace(/^\d{4}-\d{2}-\d{2}\s*[—-]\s*/, ''), body: '' });
+      } else {
+        for (const sub of subEntries) {
+          const lines = sub.trim().split('\n');
+          const head = lines[0];
+          const boldMatch = head.match(/^\*\*([^*]+)\*\*/);
+          const title = boldMatch ? boldMatch[1] : head;
+          const rest = head.replace(/^\*\*[^*]+\*\*\s*(?:[—-]\s*)?/, '');
+          const extra = lines.slice(1).join(' ').trim();
+          items.push({ date, title, body: rest + (extra ? ' ' + extra : '') });
+        }
+      }
+    }
+
+    const list = document.getElementById('dcnews-list');
+    list.innerHTML = items.slice(0, 25).map(item => {
+      const bodyHtml = item.body
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
       return `<div class="news-item">
-        <div class="news-date">${date}</div>
-        <div class="news-title">${title}</div>
+        <div class="news-date">${item.date}</div>
+        <div class="news-title">${item.title}</div>
         <div class="news-body">${bodyHtml}</div>
       </div>`;
     }).join('');
