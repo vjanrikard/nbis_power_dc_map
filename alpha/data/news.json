@@ -2,6 +2,15 @@
   "asOf": "2026-05-08",
   "entries": [
     {
+      "date": "2026-05-07",
+      "headline": "NBIS breaks $200 intraday — new all-time high, +33% in 4 days",
+      "category": "Price",
+      "body": "NBIS traded above $200 intraday May 6–7, reaching a recorded daily high of $197.89 on May 7 and closing $195.09 on May 6 (+10.9%). From the May 4 close of $176.42 to the $200+ intraday print is a ~14% move in 4 sessions. Institutional IV Percentile 90%, options market pricing ±11.7% move on Q1 earnings May 13.",
+      "source": "https://www.barchart.com/stocks/quotes/NBIS/overview",
+      "sourceLabel": "Barchart",
+      "impact": "bull"
+    },
+    {
       "date": "2026-05-08",
       "headline": "Q1 2026 earnings: May 13 before market open — contracted backlog ~$46B",
       "category": "Earnings",
