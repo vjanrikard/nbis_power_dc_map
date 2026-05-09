@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════
 // Nebius Power DC Map — Data v1.0
-// Updated: 2026-05-05
-// 17 sites, sorted by MW descending (largest first)
+// Updated: 2026-05-09
+// 19 sites, sorted by MW descending (largest first)
 // Regions: Americas / Europe / Middle East / APAC
 // Each site: id, name, lat, lng, status, mw, region, chips,
 //            partner, delivery, online, note, desc, risk, riskReason, sources
@@ -68,13 +68,13 @@ const SITES = [
     ]
   },
   { id: 4, name: "Birmingham, AL (BHM01)", lat: 33.5186, lng: -86.8104,
-    status: "planned", mw: 300, region: "Americas",
+    status: "construction", mw: 300, region: "Americas",
     chips: ["NVIDIA Blackwell"], partner: "Hoar Construction",
-    delivery: "2027-2028", online: "2027-2028",
-    note: "Permit Jan 29 2026; substation vote DELAYED by opposition",
-    desc: "80 acres at 201 Milan Parkway. Permit filed Jan 29 2026. GC: Hoar Construction. 30-month phased buildout. Zoning Board substation variance vote DELAYED April 2026.",
-    risk: "MEDIUM",
-    riskReason: "Substation vote delayed Apr 2026 after protest. Same EJ playbook as Vineland.",
+    delivery: "2027-2028", online: "Phase 1: Spring 2027",
+    note: "Construction underway; substation variance approved; SELC lawsuit pending",
+    desc: "80 acres at 201 Milan Parkway. GC: Hoar Construction. Phase 1 ~100 MW spring 2027, Phase 2 ~200 MW fall 2028. Substation variance approved after April 2026 delay. SELC/Humane Society lawsuits filed — same EJ playbook as Vineland.",
+    risk: "HIGH",
+    riskReason: "Active litigation (SELC + Humane Society). Environmental Justice exposure mirrors Vineland NJ. Substation approved but legal challenges could delay Phase 1.",
     sources: [
       "https://yellowhammernews.com/permit-filed-for-multibillion-dollar-75-acre-data-center-in-birmingham/",
       "https://www.wbrc.com/2026/04/19/birmingham-residents-rally-against-proposed-ai-factory/"
@@ -206,6 +206,26 @@ const SITES = [
     riskReason: "Early-stage; small expected footprint; evidence from job listings, no committed CapEx disclosed.",
     sources: ["https://cloudnews.tech/neubius-launches-new-ai-data-center-in-madrid/"]
   },
+  { id: 18, name: "East London, UK", lat: 51.5424, lng: 0.0055,
+    status: "planned", mw: 10, region: "Europe",
+    chips: ["TBD"], partner: "Colocation TBD",
+    delivery: "2026", online: "2026 (estimated)",
+    note: "Announced Q1 2026; partner + capacity TBD",
+    desc: "Planned colocation in East London. Announced Q1 2026 as part of Nebius's expansion to 16 global data center locations. Partner and final capacity not yet disclosed.",
+    risk: "LOW",
+    riskReason: "Early-stage; no committed CapEx disclosed; part of broader 16-DC expansion strategy.",
+    sources: []
+  },
+  { id: 19, name: "Amsterdam, Netherlands", lat: 52.3676, lng: 4.9041,
+    status: "planned", mw: 10, region: "Europe",
+    chips: ["TBD"], partner: "Colocation TBD",
+    delivery: "2026", online: "2026 (estimated)",
+    note: "Announced Q1 2026; Nebius HQ city; partner + capacity TBD",
+    desc: "Planned colocation in Amsterdam — Nebius Group headquarters city. Announced Q1 2026. Part of 16-DC global expansion. Partner and capacity not yet disclosed.",
+    risk: "LOW",
+    riskReason: "Early-stage; no committed CapEx; HQ proximity may accelerate setup.",
+    sources: []
+  },
   { id: 17, name: "Singapore", lat: 1.3521, lng: 103.8198,
     status: "planned", mw: 10, region: "APAC",
     chips: ["TBD"], partner: "TBD",
@@ -275,7 +295,7 @@ const EVENTS = [
     title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-05-05 16:30";
+const LAST_UPDATE = "2026-05-09";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
   contractedPowerGW: 2.0,

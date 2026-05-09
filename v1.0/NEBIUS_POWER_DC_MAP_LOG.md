@@ -4,6 +4,16 @@ Living change log for material updates to the Nebius (NBIS) data center map. Dai
 
 ---
 
+## 2026-05-09 — data.js oppdatert: Birmingham construction + East London + Amsterdam lagt til
+
+**Birmingham AL (status: planned → construction)** — Substation variance godkjent etter protest-forsinkelse i april 2026. GC Hoar Construction, 80 acres på 201 Milan Parkway. Phase 1 ~100 MW mål vår 2027, Phase 2 ~200 MW mål høst 2028. SELC (Southern Environmental Law Center) og Humane Society søksmål innlevert — samme Environmental Justice-opplegg som Vineland. Risk oppgradert til HIGH. Risikoprofil: aktiv rettslig prosess kan forsinke Phase 1.
+
+**East London, UK (ny: planned)** — Kunngjort Q1 2026 som del av Nebius' 16-DC globalplan. Partner og kapasitet ikke annonsert. Koordinater registrert, 10 MW placeholder i påvente av offisiell kunngjøring.
+
+**Amsterdam, Netherlands (ny: planned)** — Kunngjort Q1 2026. Nebius Groups HQ-by. Colocation-partner og kapasitet ikke offentliggjort. 10 MW placeholder registrert.
+
+---
+
 ## 2026-05-08 — Independence MO — Construction underway, bridge power secured
 
 **Independence MO (construction)** — Site work underway on ~400-acre Eastgate Commerce Center campus (Q2 2026 start). Bridge power secured ahead of Blue Valley reopening: NextEra Energy contract Jun 2026–May 2027, Evergy contract Jun–Nov 2027. Blue Valley Phase 1: 250 MW (15 gas turbines) by Oct 2027, Phase 2: up to 1.1 GW by Dec 2029. Tax package: 98% real property + 90% personal property abatement 20 years, sales tax exemption on construction materials, $651M PILOT over 20 years (~$30M/yr). ~1,200 construction jobs (IBEW Local 124), 130 permanent. ([DCD](https://www.datacenterdynamics.com/en/news/150bn-in-industrial-development-revenue-bonds-tax-breaks-approved-for-800mw-nebius-data-center-in-missouri/))
