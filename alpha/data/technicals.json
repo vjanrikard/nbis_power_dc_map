@@ -1,6 +1,6 @@
 {
   "lastUpdate": "2026-07-14",
-  "lastUpdateSource": "Computed 2026-07-14 from Yahoo Finance daily OHLCV (431 bars, close 2026-07-13) using the same formulas as NBIS_Alpha_Dashboard.pine. VWAP requires intraday data and is intentionally left null.",
+  "lastUpdateSource": "Computed 2026-07-14 from Yahoo Finance daily OHLCV (431 bars, close 2026-07-13) using the same formulas as NBIS_Alpha_Dashboard.pine. VWAP computed from Yahoo 5-min intraday bars (typical price x volume, session-anchored).",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
   "price": {
@@ -24,7 +24,7 @@
     "ema21":     { "value": 230.81, "status": "bear",    "note": "Price $210.51 BELOW EMA21 — short-term trend lost" },
     "ema50":     { "value": 216.76, "status": "bear",    "note": "Price BELOW EMA50 — reevaluation point per swing plan" },
     "ema200":    { "value": 147.46, "status": "bull",    "note": "Price 43% ABOVE EMA200 — long-term bull regime intact" },
-    "vwap":      { "value": null,   "status": "neutral", "note": "Requires intraday data — check TradingView. Daily bars cannot compute session VWAP." },
+    "vwap":      { "value": 211.13, "status": "bear",    "note": "Session VWAP 2026-07-13 from Yahoo 5-min bars (78 bars, full session). Close $210.51 just BELOW VWAP — sellers held control into the close. Resets daily." },
     "atrPct":    { "value": 11.68,  "status": "bear",    "note": "ATR 11.7% — EXTREME volatility (>4% = reduce size). Position sizing warning active." },
     "volSpike":  { "value": 0.61,   "status": "neutral", "note": "Volume 0.61x 20-day average — no spike; selloff volume fading, no capitulation signal" }
   },
