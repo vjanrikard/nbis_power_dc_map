@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBIS Technical Charts Suite v1.1</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#11151c; --panel2:#161b24; --border:#232a36;
+    --ink:#e6edf3; --ink2:#8b98a8; --ink3:#5c6773;
+    --up:#089981; --dn:#f23645;
+    --ma20:#d97706; --ma50:#4c8dff; --ma200:#d946ef; --teal:#0d9488;
+    --accent:#4c8dff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:14px 16px 24px}
+  header{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;margin-bottom:10px}
+  h1{font-size:19px;font-weight:700;letter-spacing:.2px}
+  h1 .v{color:var(--ink3);font-weight:400;font-size:13px}
+  .sub{color:var(--ink2);font-size:12.5px}
+  .quote{display:flex;align-items:baseline;gap:10px;margin-left:auto}
+  #qPrice{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+  #qChg{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+  #qRange{font-size:12px;color:var(--ink2)}
+  .badge{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);background:var(--panel)}
+  .badge.live{color:#3ddc97;border-color:#1d5c46}
+  .controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin-bottom:12px}
+  .grp{display:flex;gap:4px;align-items:center}
+  .grp .lbl{font-size:11px;color:var(--ink3);margin-right:4px;text-transform:uppercase;letter-spacing:.6px}
+  button.rng, label.tgl, #btnLive{background:var(--panel2);border:1px solid var(--border);color:var(--ink2);border-radius:7px;padding:4px 11px;font-size:12.5px;cursor:pointer;user-select:none}
+  button.rng:hover, label.tgl:hover, #btnLive:hover{color:var(--ink);border-color:#33405a}
+  button.rng.on{background:#1c3a6e;border-color:#2f5eb3;color:#dbe7ff}
+  label.tgl{display:inline-flex;align-items:center;gap:6px}
+  label.tgl input{display:none}
+  label.tgl .dot{width:9px;height:9px;border-radius:3px;background:var(--ink3);flex:0 0 auto}
+  label.tgl.on{color:var(--ink);border-color:#33405a;background:#182030}
+  #btnLive{color:#ffd479;border-color:#4d3d14}
+  #btnLive:disabled{opacity:.55;cursor:wait}
+  label.auto{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2);cursor:pointer}
+  #status{font-size:12px;color:var(--ink3);margin-left:auto}
+  #status.err{color:#f2a340}
+  #status.ok{color:#3ddc97}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+  .phead{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;padding:7px 12px 5px;font-size:12px}
+  .ptitle{font-weight:700;color:var(--ink);font-size:12.5px;letter-spacing:.3px}
+  .chip{display:inline-flex;align-items:center;gap:5px;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .chip .sw{width:8px;height:8px;border-radius:2px;flex:0 0 auto}
+  .chip b{color:var(--ink);font-weight:600}
+  .cwrap{position:relative;width:100%}
+  .cwrap canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+  .cwrap canvas.ov{pointer-events:none}
+  #eventLegend{display:none;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:12.5px;color:var(--ink2);columns:2;column-gap:28px}
+  #eventLegend.show{display:block}
+  #eventLegend div{break-inside:avoid;padding:2px 0}
+  #eventLegend .no{display:inline-block;width:17px;height:17px;border-radius:50%;background:#1c3a6e;color:#dbe7ff;text-align:center;line-height:17px;font-size:10.5px;margin-right:7px}
+  details{background:var(--panel);border:1px solid var(--border);border-radius:10px;margin-bottom:10px}
+  summary{padding:9px 14px;cursor:pointer;color:var(--ink2);font-size:13px}
+  .tscroll{overflow-x:auto;max-height:340px;overflow-y:auto}
+  table{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums}
+  th,td{padding:4px 12px;text-align:right;white-space:nowrap;border-top:1px solid var(--border)}
+  th{position:sticky;top:0;background:var(--panel2);color:var(--ink2);font-weight:600}
+  td:first-child,th:first-child{text-align:left}
+  .pos{color:var(--up)} .neg{color:var(--dn)}
+  footer{color:var(--ink3);font-size:12px;line-height:1.6;padding:4px 2px}
+  footer .keyrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px}
+  footer input{background:var(--panel2);border:1px solid var(--border);color:var(--ink);border-radius:6px;padding:4px 9px;font-size:12px;width:250px}
+  footer button{background:var(--panel2);border:1px solid var(--border);color:var(--ink2);border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer}
+  #tooltip{position:fixed;display:none;z-index:50;background:#0e1420f2;border:1px solid #2b3648;border-radius:8px;padding:8px 11px;font-size:12px;color:var(--ink2);pointer-events:none;font-variant-numeric:tabular-nums;box-shadow:0 6px 20px #0009;max-width:280px}
+  #tooltip b{color:var(--ink)}
+  #tooltip .ev{color:#ffd479;margin-top:4px;display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>NBIS · Technical Charts Suite <span class="v">v1.1</span></h1>
+    <div class="sub">Nebius Group N.V. — NASDAQ · dagsbarer</div>
+  </div>
+  <div class="quote">
+    <span id="qPrice">–</span>
+    <span id="qChg">–</span>
+    <span id="qRange">52u: –</span>
+    <span class="badge" id="qSource">Rekonstruert</span>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="grp" id="rangeGrp">
+    <span class="lbl">Periode</span>
+    <button class="rng" data-r="21">1M</button>
+    <button class="rng" data-r="63">3M</button>
+    <button class="rng" data-r="126">6M</button>
+    <button class="rng" data-r="252">1Y</button>
+    <button class="rng on" data-r="0">ALL</button>
+  </div>
+  <div class="grp" id="tglGrp">
+    <span class="lbl">Overlays</span>
+    <label class="tgl on" data-k="ma20"><span class="dot" style="background:var(--ma20)"></span>MA20<input type="checkbox" checked></label>
+    <label class="tgl on" data-k="ma50"><span class="dot" style="background:var(--ma50)"></span>MA50<input type="checkbox" checked></label>
+    <label class="tgl on" data-k="ma200"><span class="dot" style="background:var(--ma200)"></span>MA200<input type="checkbox" checked></label>
+    <label class="tgl" data-k="bb"><span class="dot" style="background:#6c85b3"></span>Bollinger<input type="checkbox"></label>
+    <label class="tgl on" data-k="events"><span class="dot" style="background:#ffd479"></span>Events<input type="checkbox" checked></label>
+    <label class="tgl on" data-k="signals"><span class="dot" style="background:var(--up)"></span>Signaler<input type="checkbox" checked></label>
+  </div>
+  <div class="grp">
+    <button id="btnLive">⚡ Live-oppdatering</button>
+    <label class="auto"><input type="checkbox" id="autoRef" checked> Auto hvert 5. min</label>
+  </div>
+  <span id="status">Rekonstruerte data lastet.</span>
+</div>
+
+<div id="eventLegend"></div>
+
+<main id="charts">
+  <section class="panel">
+    <div class="phead"><span class="ptitle">PRIS</span><span class="chips" id="chipsPrice"></span></div>
+    <div class="cwrap" style="height:380px" data-p="price"><canvas class="base"></canvas><canvas class="ov"></canvas></div>
+  </section>
+  <section class="panel">
+    <div class="phead"><span class="ptitle">VOLUM</span><span class="chips" id="chipsVol"></span></div>
+    <div class="cwrap" style="height:110px" data-p="vol"><canvas class="base"></canvas><canvas class="ov"></canvas></div>
+  </section>
+  <section class="panel">
+    <div class="phead"><span class="ptitle">RSI (14)</span><span class="chips" id="chipsRsi"></span></div>
+    <div class="cwrap" style="height:130px" data-p="rsi"><canvas class="base"></canvas><canvas class="ov"></canvas></div>
+  </section>
+  <section class="panel">
+    <div class="phead"><span class="ptitle">MACD (12, 26, 9)</span><span class="chips" id="chipsMacd"></span></div>
+    <div class="cwrap" style="height:160px" data-p="macd"><canvas class="base"></canvas><canvas class="ov"></canvas></div>
+  </section>
+</main>
+
+<details id="tableWrap">
+  <summary>📋 Datatabell (synlig område)</summary>
+  <div class="tscroll"><table id="dataTable"></table></div>
+</details>
+
+<footer>
+  📌 Prishistorikken er <b>rekonstruert</b> — seedet fra alle kjente NBIS-milepæler (relisting okt. 2024 → i dag) og er ikke tick-nøyaktig.
+  Ankerpunkter, milepæler og innstillinger redigerer du i <b>nbis_data.js</b> (må ligge i samme mappe).
+  ⚡ Live-oppdatering henter siste dagsbarer fra Yahoo Finance (via CORS-proxy). Kjøps-/salgssignaler: MACD-kryss filtrert på RSI — kun til orientering, ikke handelsråd.
+  <div class="keyrow">
+    🔑 Alpha Vantage API-nøkkel (valgfritt, gir mer robust live-henting):
+    <input id="avKey" type="password" placeholder="lim inn nøkkel…">
+    <button id="avSave">Lagre</button><span id="avState"></span>
+  </div>
+</footer>
+
+<div id="tooltip"></div>
+
+<script src="nbis_data.js"></script>
+<script>
+'use strict';
+/* ═══════════════ Konstanter og state ═══════════════ */
+const COL={up:'#089981',dn:'#f23645',ma20:'#d97706',ma50:'#4c8dff',ma200:'#d946ef',
+  bbLine:'rgba(108,133,179,.55)',bbFill:'rgba(76,141,255,.055)',teal:'#0d9488',sig:'#d97706',
+  grid:'rgba(148,163,184,.08)',ax:'#8b98a8',ax2:'#5c6773',evLine:'rgba(255,212,121,.35)',
+  rsiOb:'#f23645',rsiOs:'#089981',rsiMid:'#d97706'};
+const MND=['jan','feb','mar','apr','mai','jun','jul','aug','sep','okt','nov','des'];
+const UKE=['søn','man','tir','ons','tor','fre','lør'];
+const PADL=6, AXW=58, PADT=8;
+
+const state={bars:[],ind:null,events:[],range:0,src:'v1.1 · Rekonstruert',
+  tgl:{ma20:true,ma50:true,ma200:true,bb:false,events:true,signals:true},hover:-1};
+
+/* ═══════════════ Seeded PRNG ═══════════════ */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);
+  t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+/* ═══════════════ Rekonstruerte NBIS-data ═══════════════
+   Alle data (ankerpunkter, milepæler, innstillinger) ligger i
+   nbis_data.js — det er DEN filen du redigerer, ikke denne. */
+const DATA=window.NBIS_DATA||null;
+const EVENTS=DATA?DATA.events:[];
+
+function genData(){
+  const S=DATA.settings;
+  const A=DATA.anchors.map(([d,p])=>({t:new Date(d+'T12:00:00').getTime(),lp:Math.log(p)}));
+  const rnd=mulberry32(S.seed), bars=[];
+  const t0=new Date(S.start+'T12:00:00'), t1=new Date(S.end+'T12:00:00');
+  let dev=0, prevC=null;
+  for(let d=new Date(t0); d<=t1; d.setDate(d.getDate()+1)){
+    const dow=d.getDay(); if(dow===0||dow===6) continue;
+    const tm=d.getTime();
+    let i=0; while(i<A.length-2 && A[i+1].t<tm) i++;
+    const a=A[i], b=A[Math.min(i+1,A.length-1)];
+    const f=b.t===a.t?0:Math.min(1,Math.max(0,(tm-a.t)/(b.t-a.t)));
+    const base=a.lp+(b.lp-a.lp)*f;
+    const inJump=tm>=new Date(S.jumpWindow[0]+'T00:00:00').getTime()&&tm<=new Date(S.jumpWindow[1]+'T23:59:59').getTime();
+    const volD=inJump?S.volJump:(tm<new Date(S.volLateFrom+'T00:00:00').getTime()?S.volDefault:S.volLate);
+    dev=dev*0.85+(rnd()-0.5)*volD*1.6; dev=Math.max(-0.05,Math.min(0.05,dev));
+    const c=Math.exp(base+dev);
+    const o=prevC!==null?prevC*(1+(rnd()-0.5)*volD*0.9):c*0.985;
+    const rg=c*volD*(0.5+rnd()*0.9);
+    let h=Math.max(o,c)+rg*rnd()*0.7, l=Math.min(o,c)-rg*rnd()*0.7;
+    const p=(tm-t0.getTime())/(t1.getTime()-t0.getTime());
+    const isEv=EVENTS.some(e=>e.d===d.toISOString().slice(0,10));
+    let v=(14+70*p)*1e6*(0.55+rnd()*0.9)*(1+6*Math.abs(c-o)/c);
+    if(isEv) v*=2.6+rnd()*2;
+    bars.push({d:new Date(d),o:r2(o),h:r2(h),l:r2(l),c:r2(c),v:Math.round(v)});
+    prevC=c;
+  }
+  // Fest kjente ekstremer (definert i nbis_data.js under "pinned")
+  for(const bar of bars){
+    const ds=bar.d.toISOString().slice(0,10);
+    for(const p of DATA.pinned||[]){
+      if(ds!==p.date)continue;
+      if(p.field==='h')bar.h=Math.max(bar.h,p.value);
+      if(p.field==='l')bar.l=Math.min(bar.l,p.value);
+    }
+  }
+  const last=bars[bars.length-1]; last.c=S.finalClose; last.h=Math.max(last.h,last.c); last.l=Math.min(last.l,last.c);
+  return bars;
+}
+function r2(x){return Math.round(x*100)/100}
+
+/* ═══════════════ Indikatorer ═══════════════ */
+function sma(a,n){const o=new Array(a.length).fill(null);let s=0;
+  for(let i=0;i<a.length;i++){s+=a[i];if(i>=n)s-=a[i-n];if(i>=n-1)o[i]=s/n}return o}
+function emaArr(a,n){const o=new Array(a.length).fill(null);const k=2/(n+1);let e=null;
+  for(let i=0;i<a.length;i++){e=e===null?a[i]:a[i]*k+e*(1-k);if(i>=n-1)o[i]=e}return o}
+function computeInd(bars){
+  const cl=bars.map(b=>b.c), vol=bars.map(b=>b.v), n=cl.length;
+  const ma20=sma(cl,20), ma50=sma(cl,50), ma200=sma(cl,200), volAvg=sma(vol,20);
+  const bbU=new Array(n).fill(null), bbL=new Array(n).fill(null);
+  for(let i=19;i<n;i++){let s=0;for(let j=i-19;j<=i;j++){const d=cl[j]-ma20[i];s+=d*d}
+    const sd=Math.sqrt(s/20); bbU[i]=ma20[i]+2*sd; bbL[i]=ma20[i]-2*sd}
+  // RSI (Wilder)
+  const rsi=new Array(n).fill(null); let g=0,ls=0;
+  for(let i=1;i<n;i++){const ch=cl[i]-cl[i-1];
+    if(i<=14){g+=Math.max(ch,0);ls+=Math.max(-ch,0);
+      if(i===14){g/=14;ls/=14;rsi[i]=100-100/(1+(ls===0?100:g/ls))}}
+    else{g=(g*13+Math.max(ch,0))/14;ls=(ls*13+Math.max(-ch,0))/14;
+      rsi[i]=100-100/(1+(ls===0?100:g/ls))}}
+  // MACD
+  const e12=emaArr(cl,12), e26=emaArr(cl,26);
+  const macd=cl.map((_,i)=>e26[i]===null?null:e12[i]-e26[i]);
+  const mval=macd.map(x=>x===null?0:x);
+  const sigRaw=emaArr(mval,9);
+  const sig=macd.map((x,i)=>x===null||i<33?null:sigRaw[i]);
+  const hist=macd.map((x,i)=>x===null||sig[i]===null?null:x-sig[i]);
+  // Kjøps-/salgssignaler: MACD-kryss + RSI-filter
+  const signals=[];
+  for(let i=1;i<n;i++){
+    if(macd[i-1]===null||sig[i-1]===null) continue;
+    const xUp=macd[i-1]<=sig[i-1]&&macd[i]>sig[i], xDn=macd[i-1]>=sig[i-1]&&macd[i]<sig[i];
+    if(xUp&&rsi[i]!==null&&rsi[i]<62) signals.push({i,side:'buy'});
+    if(xDn&&rsi[i]!==null&&rsi[i]>55) signals.push({i,side:'sell'});
+  }
+  return {ma20,ma50,ma200,bbU,bbL,rsi,macd,sig,hist,volAvg,signals};
+}
+
+/* ═══════════════ Format ═══════════════ */
+const fUSD=x=>x>=1000?x.toLocaleString('nb-NO',{maximumFractionDigits:0}):x.toFixed(2);
+const fVol=x=>x>=1e9?(x/1e9).toFixed(2)+' mrd':x>=1e6?(x/1e6).toFixed(1)+'M':x>=1e3?(x/1e3).toFixed(0)+'k':''+x;
+const fDate=d=>`${UKE[d.getDay()]} ${d.getDate()}. ${MND[d.getMonth()]} ${d.getFullYear()}`;
+const fDateS=d=>`${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getFullYear()).slice(2)}`;
+
+/* ═══════════════ Layout / skala ═══════════════ */
+function niceTicks(min,max,cnt){const span=max-min;if(span<=0)return[min];
+  let st=Math.pow(10,Math.floor(Math.log10(span/cnt)));const e=span/cnt/st;
+  st*=e>=7.5?10:e>=3.5?5:e>=1.5?2:1;const t=[];
+  for(let v=Math.ceil(min/st)*st;v<=max+1e-9;v+=st)t.push(v);return t}
+
+const wraps={}, ctxs={}, ovs={};
+document.querySelectorAll('.cwrap').forEach(w=>{wraps[w.dataset.p]=w});
+function sizeAll(){
+  for(const k in wraps){const w=wraps[k];const r=w.getBoundingClientRect();
+    const dpr=window.devicePixelRatio||1;
+    for(const cls of ['base','ov']){const cv=w.querySelector('canvas.'+cls);
+      cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.height*dpr);
+      const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+      (cls==='base'?ctxs:ovs)[k]=ctx;}
+    wraps[k]._w=r.width; wraps[k]._h=r.height;}
+}
+
+function visRange(){const n=state.bars.length;
+  const s=state.range>0?Math.max(0,n-state.range):0;return{s,e:n}}
+function xGeom(k){const w=wraps[k]._w;const {s,e}=visRange();const n=e-s;
+  const plotW=w-PADL-AXW;return{plotW,n,s,x:i=>PADL+((i-s)+0.5)*plotW/n,bw:plotW/n}}
+
+/* ═══════════════ Tegning ═══════════════ */
+function drawAxisY(ctx,k,lo,hi,y,fmt){
+  const w=wraps[k]._w,h=wraps[k]._h;
+  ctx.font='10.5px -apple-system,Segoe UI,sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';
+  for(const t of niceTicks(lo,hi,4)){const yy=y(t);
+    ctx.strokeStyle=COL.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(PADL,yy+.5);ctx.lineTo(w-AXW,yy+.5);ctx.stroke();
+    ctx.fillStyle=COL.ax2;ctx.fillText(fmt(t),w-AXW+6,yy)}
+}
+function xTicks(){const {s,e}=visRange();const bars=state.bars;const n=e-s;const out=[];
+  let prevM=-1,prevD=-1;
+  for(let i=s;i<e;i++){const d=bars[i].d;
+    if(n>150){if(d.getMonth()!==prevM){out.push({i,lb:MND[d.getMonth()]+(d.getMonth()===0||out.length===0?' '+String(d.getFullYear()).slice(2):'')});prevM=d.getMonth()}}
+    else if(n>45){if(d.getMonth()!==prevM){out.push({i,lb:MND[d.getMonth()]+' '+String(d.getFullYear()).slice(2)});prevM=d.getMonth()}
+      else if(d.getDate()>=15&&prevD<15){out.push({i,lb:'15.'});}
+      prevD=d.getDate()}
+    else{if(d.getDay()===1){out.push({i,lb:d.getDate()+'. '+MND[d.getMonth()]})}}}
+  return out}
+function drawXGrid(ctx,k,ticks,g,labels){
+  const h=wraps[k]._h;
+  for(const t of ticks){const xx=Math.round(g.x(t.i))+.5;
+    ctx.strokeStyle=COL.grid;ctx.beginPath();ctx.moveTo(xx,PADT);ctx.lineTo(xx,h-(labels?22:4));ctx.stroke();
+    if(labels){ctx.fillStyle=COL.ax2;ctx.font='10.5px -apple-system,Segoe UI,sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(t.lb,xx,h-16)}}
+}
+function linePath(ctx,arr,g,y,s,e,color,width){
+  ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineJoin='round';ctx.beginPath();let pen=false;
+  for(let i=s;i<e;i++){const v=arr[i];if(v===null||v===undefined){pen=false;continue}
+    const xx=g.x(i),yy=y(v);if(!pen){ctx.moveTo(xx,yy);pen=true}else ctx.lineTo(xx,yy)}
+  ctx.stroke()}
+
+function drawPrice(){
+  const k='price',ctx=ctxs[k],w=wraps[k]._w,h=wraps[k]._h,g=xGeom(k),{s,e}=visRange();
+  const b=state.bars,I=state.ind;
+  ctx.clearRect(0,0,w,h);
+  let lo=Infinity,hi=-Infinity;
+  for(let i=s;i<e;i++){lo=Math.min(lo,b[i].l);hi=Math.max(hi,b[i].h)}
+  if(state.tgl.bb)for(let i=s;i<e;i++){if(I.bbU[i]!==null){hi=Math.max(hi,I.bbU[i]);lo=Math.min(lo,I.bbL[i])}}
+  const pad=(hi-lo)*0.06;lo-=pad;hi+=pad;
+  const y=v=>PADT+(hi-v)/(hi-lo)*(h-PADT-6);
+  const ticks=xTicks();
+  drawAxisY(ctx,k,lo,hi,y,fUSD);drawXGrid(ctx,k,ticks,g,false);
+  // Bollinger
+  if(state.tgl.bb){ctx.fillStyle=COL.bbFill;ctx.beginPath();let pen=false;
+    for(let i=s;i<e;i++){if(I.bbU[i]===null)continue;const xx=g.x(i);
+      if(!pen){ctx.moveTo(xx,y(I.bbU[i]));pen=true}else ctx.lineTo(xx,y(I.bbU[i]))}
+    for(let i=e-1;i>=s;i--){if(I.bbL[i]===null)continue;ctx.lineTo(g.x(i),y(I.bbL[i]))}
+    ctx.closePath();ctx.fill();
+    linePath(ctx,I.bbU,g,y,s,e,COL.bbLine,1);linePath(ctx,I.bbL,g,y,s,e,COL.bbLine,1)}
+  // Event-linjer
+  if(state.tgl.events){ctx.setLineDash([3,4]);
+    for(const ev of state.events){if(ev.i<s||ev.i>=e)continue;const xx=Math.round(g.x(ev.i))+.5;
+      ctx.strokeStyle=COL.evLine;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(xx,PADT+16);ctx.lineTo(xx,h-4);ctx.stroke()}
+    ctx.setLineDash([]);
+    for(const ev of state.events){if(ev.i<s||ev.i>=e)continue;const xx=g.x(ev.i);
+      ctx.fillStyle='#1c3a6e';ctx.beginPath();ctx.arc(xx,PADT+8,8,0,7);ctx.fill();
+      ctx.strokeStyle='#2f5eb3';ctx.lineWidth=1;ctx.stroke();
+      ctx.fillStyle='#dbe7ff';ctx.font='bold 9.5px -apple-system,Segoe UI,sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(''+ev.n,xx,PADT+8.5)}}
+  // Candles
+  const bw=Math.max(1,Math.min(14,g.bw*0.66));
+  for(let i=s;i<e;i++){const bar=b[i],up=bar.c>=bar.o,cc=up?COL.up:COL.dn,xx=g.x(i);
+    ctx.strokeStyle=cc;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(xx,y(bar.h));ctx.lineTo(xx,y(bar.l));ctx.stroke();
+    const yo=y(bar.o),yc=y(bar.c);
+    ctx.fillStyle=cc;ctx.fillRect(xx-bw/2,Math.min(yo,yc),bw,Math.max(1,Math.abs(yc-yo)))}
+  // MAs
+  if(state.tgl.ma20) linePath(ctx,I.ma20,g,y,s,e,COL.ma20,1.6);
+  if(state.tgl.ma50) linePath(ctx,I.ma50,g,y,s,e,COL.ma50,1.6);
+  if(state.tgl.ma200)linePath(ctx,I.ma200,g,y,s,e,COL.ma200,1.8);
+  // Kjøp/salg-signaler
+  if(state.tgl.signals){for(const sg of I.signals){if(sg.i<s||sg.i>=e)continue;
+    const xx=g.x(sg.i);
+    if(sg.side==='buy'){const yy=y(b[sg.i].l)+9;ctx.fillStyle=COL.up;
+      ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx-5,yy+8);ctx.lineTo(xx+5,yy+8);ctx.closePath();ctx.fill()}
+    else{const yy=y(b[sg.i].h)-9;ctx.fillStyle=COL.dn;
+      ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx-5,yy-8);ctx.lineTo(xx+5,yy-8);ctx.closePath();ctx.fill()}}}
+  // Sist pris-etikett
+  const lc=b[e-1].c,ly=y(lc),lup=b[e-1].c>=b[e-1].o;
+  ctx.fillStyle=lup?COL.up:COL.dn;ctx.fillRect(w-AXW+1,ly-8,AXW-2,16);
+  ctx.fillStyle='#fff';ctx.font='bold 10.5px -apple-system,Segoe UI,sans-serif';
+  ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(fUSD(lc),w-AXW+6,ly);
+  wraps[k]._y=y;wraps[k]._lo=lo;wraps[k]._hi=hi;
+}
+function drawVol(){
+  const k='vol',ctx=ctxs[k],w=wraps[k]._w,h=wraps[k]._h,g=xGeom(k),{s,e}=visRange();
+  const b=state.bars,I=state.ind;ctx.clearRect(0,0,w,h);
+  let hi=0;for(let i=s;i<e;i++)hi=Math.max(hi,b[i].v);hi*=1.08;
+  const y=v=>PADT+(hi-v)/hi*(h-PADT-6);
+  drawAxisY(ctx,k,0,hi,y,fVol);drawXGrid(ctx,k,xTicks(),g,false);
+  const bw=Math.max(1,Math.min(14,g.bw*0.66));
+  for(let i=s;i<e;i++){const up=b[i].c>=b[i].o;
+    ctx.fillStyle=up?'rgba(8,153,129,.55)':'rgba(242,54,69,.55)';
+    ctx.fillRect(g.x(i)-bw/2,y(b[i].v),bw,h-6-y(b[i].v))}
+  ctx.setLineDash([4,4]);linePath(ctx,I.volAvg,g,y,s,e,COL.ma20,1.4);ctx.setLineDash([]);
+  wraps[k]._y=y;wraps[k]._lo=0;wraps[k]._hi=hi;
+}
+function drawRsi(){
+  const k='rsi',ctx=ctxs[k],w=wraps[k]._w,h=wraps[k]._h,g=xGeom(k),{s,e}=visRange();
+  const I=state.ind;ctx.clearRect(0,0,w,h);
+  const y=v=>PADT+(100-v)/100*(h-PADT-6);
+  drawXGrid(ctx,k,xTicks(),g,false);
+  // 30–70-sone
+  ctx.fillStyle='rgba(108,133,179,.07)';ctx.fillRect(PADL,y(70),w-PADL-AXW,y(30)-y(70));
+  ctx.font='10.5px -apple-system,Segoe UI,sans-serif';ctx.textBaseline='middle';ctx.textAlign='left';
+  for(const lv of [30,50,70]){const yy=y(lv);
+    ctx.setLineDash(lv===50?[2,4]:[4,4]);
+    ctx.strokeStyle=lv===70?'rgba(242,54,69,.4)':lv===30?'rgba(8,153,129,.4)':COL.grid;
+    ctx.beginPath();ctx.moveTo(PADL,yy+.5);ctx.lineTo(w-AXW,yy+.5);ctx.stroke();
+    ctx.fillStyle=COL.ax2;ctx.fillText(''+lv,w-AXW+6,yy)}
+  ctx.setLineDash([]);
+  // linje farget etter sone
+  ctx.lineWidth=1.7;ctx.lineJoin='round';
+  let px=null,py=null;
+  for(let i=s;i<e;i++){const v=I.rsi[i];if(v===null){px=null;continue}
+    const xx=g.x(i),yy=y(v);
+    if(px!==null){ctx.strokeStyle=v>70?COL.rsiOb:v<30?COL.rsiOs:COL.rsiMid;
+      ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(xx,yy);ctx.stroke()}
+    px=xx;py=yy}
+  wraps[k]._y=y;wraps[k]._lo=0;wraps[k]._hi=100;
+}
+function drawMacd(){
+  const k='macd',ctx=ctxs[k],w=wraps[k]._w,h=wraps[k]._h,g=xGeom(k),{s,e}=visRange();
+  const I=state.ind;ctx.clearRect(0,0,w,h);
+  let lo=0,hi=0;
+  for(let i=s;i<e;i++){for(const a of [I.macd,I.sig,I.hist]){const v=a[i];
+    if(v!==null){lo=Math.min(lo,v);hi=Math.max(hi,v)}}}
+  const pad=(hi-lo)*0.1||1;lo-=pad;hi+=pad;
+  const y=v=>PADT+(hi-v)/(hi-lo)*(h-PADT-24);
+  const ticks=xTicks();
+  drawAxisY(ctx,k,lo,hi,y,v=>v.toFixed(1));drawXGrid(ctx,k,ticks,g,true);
+  // nullinje
+  ctx.strokeStyle='rgba(148,163,184,.25)';ctx.beginPath();ctx.moveTo(PADL,y(0)+.5);ctx.lineTo(w-AXW,y(0)+.5);ctx.stroke();
+  const bw=Math.max(1,Math.min(12,g.bw*0.6));
+  for(let i=s;i<e;i++){const v=I.hist[i];if(v===null)continue;
+    ctx.fillStyle=v>=0?'rgba(8,153,129,.5)':'rgba(242,54,69,.5)';
+    const yy=y(Math.max(v,0)),hh=Math.abs(y(v)-y(0));
+    ctx.fillRect(g.x(i)-bw/2,v>=0?y(v):y(0),bw,Math.max(1,hh))}
+  linePath(ctx,I.macd,g,y,s,e,COL.teal,1.8);
+  linePath(ctx,I.sig,g,y,s,e,COL.sig,1.5);
+  wraps[k]._y=y;wraps[k]._lo=lo;wraps[k]._hi=hi;
+}
+
+/* ═══════════════ Chips / header / tabell ═══════════════ */
+function chip(color,label,val,valCls){return `<span class="chip">${color?`<span class="sw" style="background:${color}"></span>`:''}${label} <b${valCls?` class="${valCls}"`:''}>${val}</b></span>`}
+function updateReadout(i){
+  const b=state.bars,I=state.ind;const{e}=visRange();
+  if(i<0||i>=b.length)i=e-1;
+  const bar=b[i],up=bar.c>=bar.o,cls=up?'pos':'neg';
+  const pc=i>0?b[i-1].c:bar.o;const chg=(bar.c/pc-1)*100;
+  document.getElementById('chipsPrice').innerHTML=
+    chip(null,'O',fUSD(bar.o),cls)+chip(null,'H',fUSD(bar.h),cls)+chip(null,'L',fUSD(bar.l),cls)+
+    chip(null,'C',fUSD(bar.c),cls)+chip(null,'',(chg>=0?'+':'')+chg.toFixed(2)+'%',cls)+
+    (state.tgl.ma20?chip(COL.ma20,'MA20',I.ma20[i]!==null?fUSD(I.ma20[i]):'–'):'')+
+    (state.tgl.ma50?chip(COL.ma50,'MA50',I.ma50[i]!==null?fUSD(I.ma50[i]):'–'):'')+
+    (state.tgl.ma200?chip(COL.ma200,'MA200',I.ma200[i]!==null?fUSD(I.ma200[i]):'–'):'');
+  document.getElementById('chipsVol').innerHTML=
+    chip(up?COL.up:COL.dn,'Vol',fVol(bar.v))+chip(COL.ma20,'Snitt 20d',I.volAvg[i]!==null?fVol(I.volAvg[i]):'–');
+  const rv=I.rsi[i];
+  document.getElementById('chipsRsi').innerHTML=
+    chip(rv===null?COL.ax2:rv>70?COL.rsiOb:rv<30?COL.rsiOs:COL.rsiMid,'RSI',rv===null?'–':rv.toFixed(1))+
+    `<span class="chip">${rv===null?'':rv>70?'⚠ Overkjøpt':rv<30?'✓ Oversolgt':'Nøytral sone'}</span>`;
+  document.getElementById('chipsMacd').innerHTML=
+    chip(COL.teal,'MACD',I.macd[i]===null?'–':I.macd[i].toFixed(2))+
+    chip(COL.sig,'Signal',I.sig[i]===null?'–':I.sig[i].toFixed(2))+
+    chip(I.hist[i]===null?COL.ax2:I.hist[i]>=0?COL.up:COL.dn,'Hist',I.hist[i]===null?'–':I.hist[i].toFixed(2));
+}
+function updateHeader(){
+  const b=state.bars,n=b.length;if(!n)return;
+  const last=b[n-1],prev=b[n-2]||last;
+  const chg=(last.c/prev.c-1)*100;
+  let hi=0,lo=Infinity;const from=Math.max(0,n-252);
+  for(let i=from;i<n;i++){hi=Math.max(hi,b[i].h);lo=Math.min(lo,b[i].l)}
+  document.getElementById('qPrice').textContent='$'+fUSD(last.c);
+  const qc=document.getElementById('qChg');
+  qc.textContent=(chg>=0?'+':'')+chg.toFixed(2)+' % ('+fDateS(last.d)+')';
+  qc.className=chg>=0?'pos':'neg';
+  document.getElementById('qRange').textContent=`52u: H ${fUSD(hi)} / L ${fUSD(lo)}`;
+  const qs=document.getElementById('qSource');
+  qs.textContent=state.src;qs.className='badge'+(state.src.includes('live')?' live':'');
+}
+function renderTable(){
+  const b=state.bars,I=state.ind,{s,e}=visRange();
+  let html='<tr><th>Dato</th><th>Åpne</th><th>Høy</th><th>Lav</th><th>Slutt</th><th>±%</th><th>Volum</th><th>RSI</th><th>MACD</th></tr>';
+  const rows=Math.min(60,e-s);
+  for(let i=e-1;i>=e-rows;i--){const bar=b[i];const pc=i>0?b[i-1].c:bar.o;const ch=(bar.c/pc-1)*100;
+    html+=`<tr><td>${fDateS(bar.d)}</td><td>${fUSD(bar.o)}</td><td>${fUSD(bar.h)}</td><td>${fUSD(bar.l)}</td>`+
+      `<td>${fUSD(bar.c)}</td><td class="${ch>=0?'pos':'neg'}">${(ch>=0?'+':'')+ch.toFixed(2)}</td>`+
+      `<td>${fVol(bar.v)}</td><td>${I.rsi[i]===null?'–':I.rsi[i].toFixed(1)}</td><td>${I.macd[i]===null?'–':I.macd[i].toFixed(2)}</td></tr>`}
+  document.getElementById('dataTable').innerHTML=html;
+}
+function renderEventLegend(){
+  const el=document.getElementById('eventLegend');
+  el.className=state.tgl.events?'show':'';
+  el.innerHTML=state.events.map(ev=>`<div><span class="no">${ev.n}</span>${fDateS(state.bars[ev.i].d)} — ${ev.t}</div>`).join('');
+}
+
+/* ═══════════════ Crosshair + tooltip ═══════════════ */
+const tip=document.getElementById('tooltip');
+function clearOv(){for(const k in ovs)ovs[k].clearRect(0,0,wraps[k]._w,wraps[k]._h)}
+function onMove(ev,k){
+  const w=wraps[k],r=w.getBoundingClientRect();
+  const mx=ev.clientX-r.left,my=ev.clientY-r.top;
+  const g=xGeom(k),{s,e}=visRange();
+  let i=s+Math.floor((mx-PADL)/g.plotW*g.n);i=Math.max(s,Math.min(e-1,i));
+  state.hover=i;clearOv();
+  const xx=Math.round(g.x(i))+.5;
+  for(const kk in ovs){const o=ovs[kk],hh=wraps[kk]._h;
+    o.strokeStyle='rgba(180,195,215,.35)';o.setLineDash([3,3]);o.lineWidth=1;
+    o.beginPath();o.moveTo(xx,PADT);o.lineTo(xx,hh-(kk==='macd'?24:4));o.stroke();o.setLineDash([])}
+  // horisontal linje + verdi i akse på panelet man er over
+  const o=ovs[k];
+  o.strokeStyle='rgba(180,195,215,.35)';o.setLineDash([3,3]);
+  o.beginPath();o.moveTo(PADL,my+.5);o.lineTo(w._w-AXW,my+.5);o.stroke();o.setLineDash([]);
+  const val=w._hi-(my-PADT)/((w._h-PADT-(k==='macd'?24:6)))*(w._hi-w._lo);
+  o.fillStyle='#2b3648';o.fillRect(w._w-AXW+1,my-8,AXW-2,16);
+  o.fillStyle='#e6edf3';o.font='10.5px -apple-system,Segoe UI,sans-serif';o.textAlign='left';o.textBaseline='middle';
+  o.fillText(k==='vol'?fVol(Math.max(0,val)):k==='rsi'?Math.max(0,Math.min(100,val)).toFixed(0):val.toFixed(2),w._w-AXW+6,my);
+  updateReadout(i);
+  // tooltip
+  const b=state.bars[i],I=state.ind,pc=i>0?state.bars[i-1].c:b.o,ch=(b.c/pc-1)*100;
+  const evHere=state.events.find(x=>x.i===i);
+  tip.innerHTML=`<b>${fDate(b.d)}</b><br>`+
+    `O <b>${fUSD(b.o)}</b> H <b>${fUSD(b.h)}</b> L <b>${fUSD(b.l)}</b> C <b class="${ch>=0?'pos':'neg'}">${fUSD(b.c)}</b> `+
+    `<span class="${ch>=0?'pos':'neg'}">${(ch>=0?'+':'')+ch.toFixed(2)} %</span><br>`+
+    `Vol <b>${fVol(b.v)}</b> · RSI <b>${I.rsi[i]===null?'–':I.rsi[i].toFixed(1)}</b> · MACD <b>${I.macd[i]===null?'–':I.macd[i].toFixed(2)}</b>`+
+    (evHere?`<span class="ev">📌 ${evHere.t}</span>`:'');
+  tip.style.display='block';
+  const tw=tip.offsetWidth;
+  tip.style.left=(ev.clientX+16+tw>window.innerWidth?ev.clientX-tw-14:ev.clientX+14)+'px';
+  tip.style.top=Math.min(window.innerHeight-tip.offsetHeight-10,ev.clientY+12)+'px';
+}
+function onLeave(){state.hover=-1;clearOv();tip.style.display='none';updateReadout(-1)}
+for(const k in wraps){
+  wraps[k].addEventListener('mousemove',e=>onMove(e,k));
+  wraps[k].addEventListener('mouseleave',onLeave);
+}
+
+/* ═══════════════ Render alt ═══════════════ */
+function recompute(){
+  state.ind=computeInd(state.bars);
+  state.events=EVENTS.map((e,ix)=>{
+    const t=new Date(e.d+'T12:00:00').getTime();let best=-1;
+    for(let i=0;i<state.bars.length;i++){if(state.bars[i].d.getTime()>=t-4e7){best=i;break}}
+    return best<0?null:{i:best,n:ix+1,t:e.t}}).filter(Boolean);
+}
+function renderAll(){
+  sizeAll();drawPrice();drawVol();drawRsi();drawMacd();
+  updateReadout(-1);updateHeader();renderTable();renderEventLegend();
+}
+
+/* ═══════════════ Kontroller ═══════════════ */
+document.getElementById('rangeGrp').addEventListener('click',e=>{
+  const btn=e.target.closest('button.rng');if(!btn)return;
+  document.querySelectorAll('button.rng').forEach(b=>b.classList.toggle('on',b===btn));
+  state.range=+btn.dataset.r;renderAll()});
+document.getElementById('tglGrp').addEventListener('click',e=>{
+  const lb=e.target.closest('label.tgl');if(!lb)return;
+  setTimeout(()=>{const k=lb.dataset.k;state.tgl[k]=lb.querySelector('input').checked;
+    lb.classList.toggle('on',state.tgl[k]);renderAll()},0)});
+let rsz;window.addEventListener('resize',()=>{clearTimeout(rsz);rsz=setTimeout(renderAll,120)});
+// Re-render når panelet får/endrer størrelse (dekker også lasting i skjult fane)
+new ResizeObserver(()=>{const w=wraps.price.getBoundingClientRect().width;
+  if(w>0&&Math.abs(w-(wraps.price._w||0))>1){clearTimeout(rsz);rsz=setTimeout(renderAll,80)}})
+  .observe(document.getElementById('charts'));
+
+/* ═══════════════ Live-oppdatering ═══════════════ */
+const statusEl=document.getElementById('status');
+function setStatus(msg,cls){statusEl.textContent=msg;statusEl.className=cls||''}
+function fetchT(url,ms){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);
+  return fetch(url,{signal:c.signal}).finally(()=>clearTimeout(t))}
+
+async function fetchYahoo(){
+  const y='https://query1.finance.yahoo.com/v8/finance/chart/NBIS?range=2y&interval=1d';
+  const routes=[u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
+                u=>'https://corsproxy.io/?url='+encodeURIComponent(u), u=>u];
+  for(const rt of routes){
+    try{const res=await fetchT(rt(y),12000);if(!res.ok)continue;
+      const j=await res.json();const r=j.chart&&j.chart.result&&j.chart.result[0];
+      if(!r||!r.timestamp)continue;
+      const q=r.indicators.quote[0],out=[];
+      for(let i=0;i<r.timestamp.length;i++){
+        if(q.close[i]==null||q.open[i]==null)continue;
+        out.push({d:new Date(r.timestamp[i]*1000),o:r2(q.open[i]),h:r2(q.high[i]),
+          l:r2(q.low[i]),c:r2(q.close[i]),v:q.volume[i]||0})}
+      if(out.length>30)return{bars:out,src:'Yahoo Finance (live)'};
+    }catch(_){/* prøv neste rute */}}
+  return null;
+}
+async function fetchAlphaVantage(key){
+  try{const res=await fetchT('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=NBIS&outputsize=full&apikey='+encodeURIComponent(key),15000);
+    const j=await res.json();const ts=j['Time Series (Daily)'];if(!ts)return null;
+    const out=Object.keys(ts).sort().map(d=>({d:new Date(d+'T16:00:00'),
+      o:r2(+ts[d]['1. open']),h:r2(+ts[d]['2. high']),l:r2(+ts[d]['3. low']),
+      c:r2(+ts[d]['4. close']),v:+ts[d]['5. volume']}));
+    return out.length>30?{bars:out,src:'Alpha Vantage (live)'}:null;
+  }catch(_){return null}
+}
+async function liveUpdate(silent){
+  const btn=document.getElementById('btnLive');btn.disabled=true;
+  if(!silent)setStatus('Henter live-data …');
+  const key=localStorage.getItem('nbis_av_key');
+  let got=null;
+  if(key)got=await fetchAlphaVantage(key);
+  if(!got)got=await fetchYahoo();
+  btn.disabled=false;
+  if(got){state.bars=got.bars;state.src='v1.1 · '+got.src;recompute();renderAll();
+    setStatus('✓ Oppdatert '+new Date().toLocaleTimeString('nb-NO',{hour:'2-digit',minute:'2-digit'})+' — '+got.src,'ok')}
+  else setStatus('Live-henting feilet (nett/CORS) — viser rekonstruerte data. Prøv igjen, eller legg inn Alpha Vantage-nøkkel nederst.','err');
+}
+document.getElementById('btnLive').addEventListener('click',()=>liveUpdate(false));
+setInterval(()=>{if(document.getElementById('autoRef').checked&&!document.hidden)liveUpdate(true)},300000);
+
+/* Alpha Vantage-nøkkel */
+const avKey=document.getElementById('avKey'),avState=document.getElementById('avState');
+if(localStorage.getItem('nbis_av_key')){avKey.value=localStorage.getItem('nbis_av_key');avState.textContent='✓ lagret'}
+document.getElementById('avSave').addEventListener('click',()=>{
+  if(avKey.value.trim()){localStorage.setItem('nbis_av_key',avKey.value.trim());avState.textContent='✓ lagret'}
+  else{localStorage.removeItem('nbis_av_key');avState.textContent='fjernet'}});
+
+/* ═══════════════ Init ═══════════════ */
+if(!DATA){
+  setStatus('⚠ Fant ikke nbis_data.js — filen må ligge i samme mappe som denne HTML-filen.','err');
+}else{
+  state.bars=genData();recompute();renderAll();
+  liveUpdate(true);  // hent ekte kurs automatisk ved lasting
+}
+</script>
+</body>
+</html>

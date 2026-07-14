@@ -49,6 +49,7 @@
   <button class="tab-btn"        data-tab="dcnews">       <span class="tab-num">7</span><span data-i18n="tab_dcnews">DC News</span></button>
   <button class="tab-btn"        data-tab="thesis">       <span class="tab-num">8</span><span data-i18n="tab_thesis">Thesis</span></button>
   <button class="tab-btn"        data-tab="insiders">     <span class="tab-num">9</span><span data-i18n="tab_insiders">Insiders</span></button>
+  <button class="tab-btn"        data-tab="charts">       <span class="tab-num">10</span><span data-i18n="tab_charts">Tech Charts</span></button>
 </nav>
 
 <main>
@@ -403,6 +404,21 @@
     <p class="source-note">
       Source: <code>data/insiders.json</code> · As of 2026-05-07 · 10 transactions covering 2026-03-31 → 2026-05-04 ·
       <em>All entries are sells. CEO Bunina Elena leads volume. Volozh and Korolenko largest single sellers. No insider buys in this period — bearish signal worth noting in the thesis.</em>
+    </p>
+  </section>
+
+  <!-- ═══ 10. NBIS TECHNICAL CHARTS SUITE ═══ -->
+  <section id="sec-charts" class="section">
+    <h1 class="section-h1" data-i18n="h1_charts">NBIS Technical Charts Suite</h1>
+    <p class="section-sub" data-i18n="sub_charts">Candlestick + MA, RSI, MACD and volume — live data from Yahoo Finance (v1.1).</p>
+    <div class="iframe-wrap">
+      <iframe src="charts/v1.1/index.html" title="NBIS Technical Charts Suite v1.1" loading="lazy"></iframe>
+    </div>
+    <p class="source-note">
+      <a href="charts/v1.1/index.html" target="_blank" rel="noopener">Open v1.1 fullscreen ↗</a> ·
+      <a href="charts/v1.0/index.html" target="_blank" rel="noopener">v1.0 standalone ↗</a> ·
+      Source: <code>alpha/charts/</code> · Data config: <code>alpha/charts/v1.1/nbis_data.js</code> ·
+      Local master: <code>C:\GitHub\vjanrikard\Finance\Nebius\NBIS Technical Charts Suite v1.0 / v1.1</code>
     </p>
   </section>
 
