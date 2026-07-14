@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════
 // Nebius Power DC Map — Data v1.0
-// Updated: 2026-05-09
-// 19 sites, sorted by MW descending (largest first)
+// Updated: 2026-07-14
+// 20 sites, sorted by MW descending (largest first)
 // Regions: Americas / Europe / Middle East / APAC
 // Each site: id, name, lat, lng, status, mw, region, chips,
 //            partner, delivery, online, note, desc, risk, riskReason, sources
@@ -34,13 +34,27 @@ const SITES = [
     status: "construction", mw: 1200, region: "Americas",
     chips: ["NVIDIA GB200", "GB300"], partner: "Independence Power Partners (IPP)",
     delivery: "2028-Q1", online: "2028 (Phase 1)",
-    note: "Eastgate 398-acre; 250 MW Oct 2027 → 1.1 GW Dec 2029",
-    desc: "Largest US AI factory. Council approval Mar 3 2026. 398-acre Eastgate Commerce Center, 10 buildings. IPP power plant: 250 MW Oct 2027 → 1.1 GW Dec 2029.",
+    note: "Eastgate 398-acre; 250 MW Oct 2027 → 1.1 GW Dec 2029; city moratorium Jul 2026 (existing build unaffected)",
+    desc: "Largest US AI factory. Council approval Mar 3 2026, groundbreaking May 12 2026. 398-acre Eastgate Commerce Center, 10 buildings. IPP power plant: 250 MW Oct 2027 → 1.1 GW Dec 2029. Jul 7 2026: City Council voted 7-0 for a 6-month moratorium on NEW data center approvals — Nebius construction continues unaffected, but zoning reclassification (>2.5 MW = special use permit) is under review.",
     risk: "HIGH",
-    riskReason: "Largest single CapEx commitment ($10.6B/yr 2028-2030); greenfield IPP power plant scaling 250 MW → 1.1 GW from scratch by 2029.",
+    riskReason: "Largest single CapEx commitment ($10.6B/yr 2028-2030); greenfield IPP power plant scaling 250 MW → 1.1 GW from scratch by 2029. Rising local opposition: Jul 2026 city moratorium on new DC approvals, Independence Guard Alliance threatening legal action — Vineland-style community-risk pattern.",
     sources: [
       "https://nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory",
-      "https://www.datacenterdynamics.com/en/news/nebius-plans-800mw-data-center-campus-in-kansas-city-missouri/"
+      "https://www.datacenterdynamics.com/en/news/nebius-plans-800mw-data-center-campus-in-kansas-city-missouri/",
+      "https://www.kctv5.com/2026/07/08/independence-hits-pause-data-centers-nebius-construction-moves-forward/"
+    ]
+  },
+  { id: 20, name: "Pennsylvania, USA", lat: 40.2732, lng: -76.8867,
+    status: "planned", mw: 1200, region: "Americas",
+    chips: ["TBD"], partner: "TBD (Meta/Microsoft named as customers/financing)",
+    delivery: "2027-EOY (lights-up)", online: "End 2027: 250-350 MW",
+    note: "Announced May 13-14 2026; 2nd US GW-campus; +300 MW/yr to 1.2 GW; site undisclosed",
+    desc: "Second US gigawatt-scale campus. Up to 1.2 GW secured power and land, announced May 13-14 2026. Lights-up end of 2027 with 250-350 MW, then ~300 MW added per year up to 1.2 GW. Exact site/county not yet disclosed. Note: Bloom Energy SOFC deal (May 21 2026, up to 328 MW behind-the-meter at an undisclosed US site) may be linked to this or another US site.",
+    risk: "MEDIUM",
+    riskReason: "Early-stage: site, power source and investment not disclosed. Part of raised $20-25B 2026 CapEx plan.",
+    sources: [
+      "https://www.datacenterdynamics.com/en/news/nebius-plans-second-us-gigawatt-scale-data-center-campus-in-pennsylvania/",
+      "https://www.theaiconsultingnetwork.com/blog/nebius-pennsylvania-1-2gw-ai-data-center-cre-investors-2026"
     ]
   },
   { id: 8, name: "Lappeenranta, Finland", lat: 61.0587, lng: 28.1887,
@@ -83,9 +97,9 @@ const SITES = [
   { id: 9, name: "Béthune, France", lat: 50.5306, lng: 2.6388,
     status: "construction", mw: 240, region: "Europe",
     chips: ["NVIDIA Blackwell", "Vera Rubin"], partner: "Azur Datacenter",
-    delivery: "2026-07", online: "Jul 2026 (Phase 1)",
-    note: "Phase 1 Jul 2026; 120 MW EOY 2026; 240 MW EOY 2027",
-    desc: "240 MW on former Bridgestone tyre plant. 26,000 sqm. Phase 1 Jul 2026, 120 MW EOY 2026, 240 MW EOY 2027.",
+    delivery: "2026-Q3", online: "Late summer 2026 (Phase 1: 60 MW)",
+    note: "Phase 1 = 60 MW late summer 2026; ~120 MW EOY 2026; 240 MW EOY 2027",
+    desc: "240 MW on former Bridgestone tyre plant. 26,000 sqm. Phase 1 (60 MW) targeted late summer 2026 — France's first AI-dedicated facility. ~120 MW energized EOY 2026, full 240 MW EOY 2027.",
     risk: "LOW",
     riskReason: "Phase 1 on schedule; established Azur partnership; brownfield lowers permitting risk.",
     sources: ["https://www.datacenterdynamics.com/en/news/nebius-plans-240mw-data-center-in-b%C3%A9thune-france/"]
@@ -196,15 +210,18 @@ const SITES = [
       "https://www.datacenter-forum.com/datacenter-forum/nebius-announces-new-colocation-in-iceland"
     ]
   },
-  { id: 13, name: "Madrid, Spain", lat: 40.4168, lng: -3.7038,
-    status: "planned", mw: 10, region: "Europe",
-    chips: ["TBD"], partner: "Colocation TBD",
+  { id: 13, name: "Madrid (Getafe), Spain", lat: 40.3058, lng: -3.7327,
+    status: "construction", mw: 18, region: "Europe",
+    chips: ["TBD"], partner: "Merlin Properties",
     delivery: "2026", online: "2026 (estimated)",
-    note: "Job listings indicate colo under setup; partner + MW TBD",
-    desc: "Planned colocation — evidence from Nebius job listings (Data Center IT Manager, on-site Madrid). Capacity and partner not yet officially announced.",
+    note: "18 MW colo lease signed ~Jul 3 2026; part of 68 MW Getafe campus (2 buildings, 20+48 MW); PUE 1.15",
+    desc: "18 MW colocation lease with Merlin Properties at the Getafe campus near Madrid — Nebius's first Spain site and 5th European country. Part of a larger 68 MW two-building campus (20 MW + 48 MW), PUE 1.15. Confirms earlier job-listing evidence. Note: an earlier, separate GW-scale Nebius plan for Andalusia (Navalmoral de la Mata, Cáceres) was abandoned Feb 2026 due to lack of guaranteed power — unrelated to this Getafe lease.",
     risk: "LOW",
-    riskReason: "Early-stage; small expected footprint; evidence from job listings, no committed CapEx disclosed.",
-    sources: ["https://cloudnews.tech/neubius-launches-new-ai-data-center-in-madrid/"]
+    riskReason: "Colocation lease (not owned build) — lower capital/permitting risk. Early-stage but now contractually confirmed rather than job-listing inference.",
+    sources: [
+      "https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-spain-data-center-report/",
+      "https://bruno.digital/news/nebius-grabs-18mw-in-madrid-and-europe-s-ai-compute-race-opens-a-spanish-front"
+    ]
   },
   { id: 18, name: "East London, UK", lat: 51.5424, lng: 0.0055,
     status: "planned", mw: 10, region: "Europe",
@@ -283,8 +300,20 @@ const EVENTS = [
     title: "Nebius Expands into Asia-Pacific", desc: "APAC expansion. New GM in Singapore for Singapore/Japan/Korea/India.", tags: ["APAC"] },
   { date: "Apr 29, 2026", label: "Q1 2026: >2 GW contracted", color: "#a78bfa", pos: "bot",
     title: "Q1 2026 Earnings — >2 GW Contracted", desc: ">2 GW contracted. Guidance raised to >3 GW. $4B convertible raised.", tags: ["Earnings"] },
+  { date: "May 13, 2026", label: "Pennsylvania 1.2 GW", color: "#f59e0b", pos: "top",
+    title: "2nd US Gigawatt Campus — Pennsylvania", desc: "Up to 1.2 GW power + land secured in Pennsylvania. Lights-up end 2027 with 250-350 MW, then ~300 MW/yr to 1.2 GW. Site undisclosed. CapEx 2026 raised to $20-25B.", tags: ["Pennsylvania", "Expansion"] },
+  { date: "May 21, 2026", label: "Bloom Energy 328 MW SOFC", color: "#00d4ff", pos: "bot",
+    title: "Bloom Energy Fuel Cell Deal", desc: "Up to 328 MW Solid Oxide Fuel Cells (behind-the-meter, near-zero pollutants) at an undisclosed US site — operational in 2026. Fuel-agnostic (gas/biogas/hydrogen), 800V DC-aligned. Answers the gas-engine criticism from Vineland.", tags: ["Power", "Bloom"] },
   { date: "2026 Target", label: ">3 GW / 800 MW live", color: "#22c55e", pos: "top",
     title: "2026 Target", desc: "Targets >3 GW contracted, 800 MW–1 GW connected. 16+ DCs. Revenue $3–$3.4B.", tags: ["Target"] },
+  { date: "Jun 22, 2026", label: "Nasdaq-100 inclusion", color: "#22c55e", pos: "bot",
+    title: "Nebius Joins Nasdaq-100", desc: "NBIS added to Nasdaq-100 alongside Astera Labs, CoreWeave, Rocket Lab, Teradyne. Stock +19.5% in June on inclusion + revenue growth. Also: AI Cloud v3.6 launched, Physical AI Living Lab (UK/EU) opened for robotics startups.", tags: ["Index", "Product"] },
+  { date: "Jul 1, 2026", label: "Meta Compute threat", color: "#ef4444", pos: "top",
+    title: "Meta Building Own Cloud Business", desc: "Bloomberg: Meta building 'Meta Compute' to sell surplus GPU capacity — turns Nebius's #2 anchor customer ($27B deal) into a potential competitor. NBIS fell 15–26% in the days after; down ~30% from its early-July peak. SemiAnalysis argues the fear is overblown (Meta's own buildout should still grow Nebius volume).", tags: ["Risk", "Meta"] },
+  { date: "Jul 3, 2026", label: "Madrid, Spain — 18 MW", color: "#00d4ff", pos: "bot",
+    title: "Nebius Enters Spain (Getafe, Madrid)", desc: "18 MW colocation lease with Merlin Properties, part of a 68 MW two-building Getafe campus. 5th European country. Separate GW-scale Andalusia plan was abandoned Feb 2026 (no guaranteed power).", tags: ["Spain", "Expansion"] },
+  { date: "Jul 7, 2026", label: "Independence moratorium", color: "#ef4444", pos: "top",
+    title: "Independence MO: 6-Month DC Moratorium", desc: "City Council voted 7-0 to pause NEW data center approvals for 6 months. Nebius's existing 1.2 GW build continues unaffected, but zoning reclassification (>2.5 MW = special use permit) is under review and Independence Guard Alliance threatens legal action.", tags: ["Risk", "Missouri"] },
   { date: "2027 Target", label: "Lappeenranta + IPP 250 MW", color: "#f59e0b", pos: "bot",
     title: "2027: Lappeenranta P1 + IPP 250 MW", desc: "Lappeenranta Phase 1 live. IPP 250 MW phase by Oct 2027. Béthune ramps to full 240 MW EOY 2027.", tags: ["Target", "2027"] },
   { date: "2028 Target", label: "Independence MO P1", color: "#a78bfa", pos: "top",
@@ -295,19 +324,24 @@ const EVENTS = [
     title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-05-09";
+const LAST_UPDATE = "2026-07-14";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
-  contractedPowerGW: 2.0,
-  contractedGuidanceGW: 3.0,
+  contractedPowerGW: 3.5,
+  contractedGuidanceGW: 4.0,
   connectedTargetEnd2026: "800 MW – 1 GW",
-  connectedTargetEnd2026Note: "guided Q1 2026",
-  contractedQ1Note: "raised from 2.5 GW",
+  connectedTargetEnd2026Note: "guided Q1 2026, reaffirmed as of Jul 2026",
+  contractedQ1Note: "raised from 2.0 GW (Q1 print) to >3.5 GW as of Jul 2026; 2026 guidance raised to >=4 GW",
   revenueGuidance2026: "$3.0 – $3.4B",
-  capExPlan2026: "$16 – $20B",
+  capExPlan2026: "$20 – $25B",
+  capExPlan2026Note: "raised from $16-20B as of Jul 2026",
   convertibleDebtRaised: "$4B",
   ebitdaMarginTarget: "40%",
   msftContractValue: "$17.4B",
   msftContractDuration: "Through 2031",
-  metaContractValue: "$27B / 5 years"
+  metaContractValue: "$27B / 5 years",
+  metaContractNote: "Jul 1 2026: Meta reported building own 'Meta Compute' cloud business — turns this anchor customer into a potential competitor. See EVENTS.",
+  q2_2026EarningsDate: "2026-07-28/29 (not yet released)",
+  marketCapJul2026: "~$55B (peaked ~$61B Jul 1, before Meta Compute selloff)",
+  analystConsensusJul2026: "Buy, 12 analysts, 79% buy, avg target ~$232-237 (range $129-$291), source TipRanks 2026-07-08"
 };
