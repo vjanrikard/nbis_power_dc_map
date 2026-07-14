@@ -1,6 +1,6 @@
 {
   "lastUpdate": "2026-07-14",
-  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-07-13). Per-firm ratings unchanged — update those manually after analyst actions.",
+  "lastUpdateSource": "Per-firm ratings refreshed 2026-07-14 from Benzinga itemized table (15 new 2026 entries). Market data auto-updated by update_technicals.js (Yahoo, close 2026-07-13).",
   "marketData": {
     "asOf": "2026-07-13",
     "currentPrice": 210.51,
@@ -30,6 +30,146 @@
   },
   "ratings": [
     {
+      "date": "2026-06-08",
+      "firm": "B of A Securities",
+      "analyst": "Tal Liani",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 280,
+      "prevTarget": 240,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-06-02",
+      "firm": "BNP Paribas",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Neutral",
+      "target": 255,
+      "prevTarget": null,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-05-18",
+      "firm": "DA Davidson",
+      "analyst": "—",
+      "action": "Assumes",
+      "rating": "Neutral",
+      "target": 250,
+      "prevTarget": null,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-05-15",
+      "firm": "Citigroup",
+      "analyst": "—",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 287,
+      "prevTarget": 169,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-05-14",
+      "firm": "B of A Securities",
+      "analyst": "Tal Liani",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 240,
+      "prevTarget": 205,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-05-14",
+      "firm": "Morgan Stanley",
+      "analyst": "—",
+      "action": "Maintains",
+      "rating": "Equal-Weight",
+      "target": 144,
+      "prevTarget": 126,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-05-14",
+      "firm": "Citizens",
+      "analyst": "Greg P. Miller",
+      "action": "Maintains",
+      "rating": "Market Outperform",
+      "target": 270,
+      "prevTarget": 175,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-05-14",
+      "firm": "DA Davidson",
+      "analyst": "Alex Platt",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 250,
+      "prevTarget": 200,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-05-11",
+      "firm": "B of A Securities",
+      "analyst": "Tal Liani",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 205,
+      "prevTarget": 175,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-04-16",
+      "firm": "Wolfe Research",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Peer Perform",
+      "target": null,
+      "prevTarget": null,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-04-09",
+      "firm": "Cantor Fitzgerald",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Overweight",
+      "target": 129,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-03-24",
+      "firm": "B of A Securities",
+      "analyst": "Tal Liani",
+      "action": "Initiates",
+      "rating": "Buy",
+      "target": 150,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-03-16",
+      "firm": "Citigroup",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Buy",
+      "target": 169,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-02-18",
+      "firm": "Compass Point",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Buy",
+      "target": 150,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
+    {
       "date": "2026-03-16",
       "firm": "DA Davidson",
       "analyst": "Alex Platt",
@@ -58,6 +198,16 @@
       "target": 130,
       "prevTarget": 130,
       "sentiment": "bullish"
+    },
+    {
+      "date": "2026-01-15",
+      "firm": "Morgan Stanley",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Equal-Weight",
+      "target": 126,
+      "prevTarget": null,
+      "sentiment": "neutral"
     },
     {
       "date": "2025-11-13",
@@ -130,5 +280,5 @@
       "sentiment": "bullish"
     }
   ],
-  "note": "10 ratings from 4 firms (DA Davidson, BWS Financial, Northland Capital Markets, Goldman Sachs). Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low."
+  "note": "25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
 }
