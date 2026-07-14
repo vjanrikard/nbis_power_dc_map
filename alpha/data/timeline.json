@@ -76,7 +76,34 @@
       "category": "Partnership",
       "tags": ["Partnership", "Technology"],
       "summary": "Nebius and NVIDIA announced a partnership to develop hyperscale AI cloud infrastructure, strengthening access to AI accelerators and technical collaboration for large deployments."
+    },
+    {
+      "date": "2026-06-22",
+      "year": 2026,
+      "title": "Index inclusion — Nebius joins the Nasdaq-100",
+      "category": "Capital Markets",
+      "tags": ["Index", "Capital Markets"],
+      "summary": "NBIS added to the Nasdaq-100 alongside Astera Labs, CoreWeave, Rocket Lab and Teradyne — structural inclusion drove passive-fund buying. Stock rose ~19.5% in June 2026 on inclusion plus continued revenue growth. Same month: AI Cloud v3.6 launched and the Physical AI Living Lab (UK/EU) opened for robotics startups.",
+      "source": "https://www.fool.com/investing/2026/07/04/why-did-nebius-stock-jump-20-in-june/"
+    },
+    {
+      "date": "2026-07-01",
+      "year": 2026,
+      "title": "Risk event — Meta reported building competing cloud business",
+      "category": "Risk",
+      "tags": ["Risk", "Meta", "Competition"],
+      "summary": "Bloomberg reported Meta is building 'Meta Compute' to sell surplus AI compute capacity to third parties — the same customer pool as Nebius/CoreWeave. Material because Meta is simultaneously Nebius's #2 anchor customer (up to $27B, 5-year deal), turning a key customer into a potential competitor. NBIS and CoreWeave fell 15-26% in the following days; NBIS down ~30% from its early-July peak. SemiAnalysis has argued the fear is overblown since Meta's own buildout should keep growing Nebius's addressable volume.",
+      "source": "https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html"
+    },
+    {
+      "date": "2026-07-03",
+      "year": 2026,
+      "title": "Expansion — First Spain site (Madrid/Getafe, Merlin Properties)",
+      "category": "Expansion",
+      "tags": ["Expansion", "Spain"],
+      "summary": "18 MW colocation lease with Merlin Properties at a 68 MW two-building Getafe campus near Madrid — Nebius's 5th European country. A separate, earlier GW-scale Andalusia proposal was abandoned in Feb 2026 due to lack of guaranteed power.",
+      "source": "https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-spain-data-center-report/"
     }
   ],
-  "note": "All dates and content sourced verbatim from the user-provided journey file. Mid-2025 'capital markets activity' uses an approximate anchor date (2025-06-15) since the source describes a multi-stage program rather than a single closing — flagged via dateNote."
+  "note": "All dates and content sourced verbatim from the user-provided journey file, except the three 2026-06/07 entries appended 2026-07-10 by Alpha from web search (sources inline on those entries). Mid-2025 'capital markets activity' uses an approximate anchor date (2025-06-15) since the source describes a multi-stage program rather than a single closing — flagged via dateNote."
 }

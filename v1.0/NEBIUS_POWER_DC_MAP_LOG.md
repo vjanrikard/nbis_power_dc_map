@@ -4,6 +4,22 @@ Living change log for material updates to the Nebius (NBIS) data center map. Dai
 
 ---
 
+## 2026-07-10 — Madrid Spania bekreftet, CapEx/kontraktert strøm oppdatert, Meta Compute-risiko lagt til
+
+**Madrid (Getafe), Spain (status: planned → construction)** — 18 MW colocation-leieavtale med Merlin Properties bekreftet (~3. juli 2026), del av 68 MW to-bygnings Getafe-campus (20+48 MW), PUE 1,15. Erstatter tidligere "TBD"-oppføring basert på stillingsannonser. Note lagt til om at det separate GW-skala Andalusia-forslaget ble skrinlagt februar 2026 (manglende strømgaranti — ikke samme prosjekt). ([DCD](https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-spain-data-center-report/))
+
+**Kontraktert strøm** — Oppdatert fra 2,0 GW (Q1-print) til >3,5 GW (juli 2026), 2026-mål hevet til ≥4 GW.
+
+**CapEx 2026** — Hevet fra $16–20B til $20–25B.
+
+**Ny risiko: Meta Compute** — Bloomberg rapporterte 1. juli 2026 at Meta bygger egen cloud-virksomhet for å selge overskudds-GPU-kapasitet, og går fra å være Nebius' nest største ankerkunde ($27B-avtale) til potensiell konkurrent. NBIS falt 15–26% i dagene etter, ned ~30% fra toppen (~$61B markedsverdi 1. juli → ~$55B). Lagt til som ny EVENT, ikke som egen risk-node på et fysisk anlegg siden det er en konsern-/kunderisiko, ikke stedsspesifikk.
+
+**Andre juni/juli-hendelser lagt til i EVENTS** — Nasdaq-100-inklusjon (22. juni), AI Cloud v3.6, Physical AI Living Lab (UK/EU).
+
+**Ikke oppdatert i denne runden** — Q2 2026-resultater er ikke sluppet ennå (ventet 28.–29. juli 2026); Vineland NJ-status og Missouri-detaljer var allerede rimelig oppdatert fra tidligere logg-poster og er ikke endret nå. Analytiker-snitt-mål oppdatert kun i Alpha Portal (analysts.json), ikke i data.js.
+
+---
+
 ## 2026-05-09 — data.js oppdatert: Birmingham construction + East London + Amsterdam lagt til
 
 **Birmingham AL (status: planned → construction)** — Substation variance godkjent etter protest-forsinkelse i april 2026. GC Hoar Construction, 80 acres på 201 Milan Parkway. Phase 1 ~100 MW mål vår 2027, Phase 2 ~200 MW mål høst 2028. SELC (Southern Environmental Law Center) og Humane Society søksmål innlevert — samme Environmental Justice-opplegg som Vineland. Risk oppgradert til HIGH. Risikoprofil: aktiv rettslig prosess kan forsinke Phase 1.

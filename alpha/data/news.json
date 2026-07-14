@@ -1,6 +1,33 @@
 {
-  "asOf": "2026-05-08",
+  "asOf": "2026-07-10",
   "entries": [
+    {
+      "date": "2026-07-03",
+      "headline": "Nebius enters Spain — 18 MW colocation lease with Merlin Properties (Madrid/Getafe)",
+      "category": "Expansion",
+      "body": "18 MW colocation lease at a 68 MW two-building Getafe campus near Madrid, PUE 1.15 — Nebius's 5th European country. Confirms earlier job-listing evidence. A separate, larger Andalusia GW-scale plan was abandoned Feb 2026 due to lack of guaranteed power.",
+      "source": "https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-spain-data-center-report/",
+      "sourceLabel": "Data Center Dynamics",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-07-01",
+      "headline": "Bloomberg: Meta building own AI cloud business — NBIS falls 15-26% on customer-turned-competitor risk",
+      "category": "Risk",
+      "body": "Meta reportedly building 'Meta Compute' to sell surplus GPU capacity — same customer pool as Nebius/CoreWeave. Meta is simultaneously Nebius's #2 anchor customer (up to $27B, 5-year deal). NBIS and CoreWeave shares fell 15-26% in the days after; NBIS down ~30% from its early-July peak (~$61B to ~$55B market cap). SemiAnalysis has pushed back, arguing the fear is overblown since Meta's own buildout should keep growing Nebius's addressable volume.",
+      "source": "https://finance.yahoo.com/technology/ai/articles/nebius-coreweave-iren-tumble-meta-162444225.html",
+      "sourceLabel": "Yahoo Finance",
+      "impact": "bear"
+    },
+    {
+      "date": "2026-06-22",
+      "headline": "NBIS joins the Nasdaq-100; stock +19.5% in June",
+      "category": "Capital Markets",
+      "body": "Nebius added to the Nasdaq-100 alongside Astera Labs, CoreWeave, Rocket Lab and Teradyne, driving passive-fund buying. Stock rose ~19.5% over June on inclusion plus continued revenue growth. Same period: AI Cloud v3.6 launched; Physical AI Living Lab (UK/EU) opened for robotics startups.",
+      "source": "https://www.fool.com/investing/2026/07/04/why-did-nebius-stock-jump-20-in-june/",
+      "sourceLabel": "The Motley Fool",
+      "impact": "bull"
+    },
     {
       "date": "2026-05-07",
       "headline": "NBIS hits new all-time high $195.09 — +33% in 4 days from May 4 close",

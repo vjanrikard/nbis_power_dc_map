@@ -1,16 +1,17 @@
 {
-  "lastUpdate": "2026-05-05",
-  "lastUpdateSource": "Web search (TradingView/Investing.com/Barchart aggregate)",
+  "lastUpdate": "2026-07-10",
+  "lastUpdateSource": "Web search 2026-07-10 (aggregate). Only price fields refreshed — full indicator snapshot (RSI/MACD/EMA/etc.) NOT re-retrieved this pass, values below left at prior 2026-05-05 snapshot with status 'unknown' preserved rather than guessed.",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
   "price": {
-    "current": 175.40,
-    "dayLow": 158.00,
-    "dayHigh": 179.40,
-    "previousMove": "+13.24% on 2026-05-04",
-    "yearHigh": 179.40,
+    "current": 227.59,
+    "dayLow": 219.55,
+    "dayHigh": 227.70,
+    "previousMove": "peaked ~$261 (intraday, ~2026-07-01) then fell 15-26% on Meta Compute news; closed $227.59 on 2026-07-09",
+    "yearHigh": 227.70,
     "yearLow": 23.25,
-    "asOf": "2026-05-05"
+    "asOf": "2026-07-09",
+    "note": "yearHigh/yearLow not independently re-verified beyond the observed 2026-07-09 range and prior 2026-05-05 snapshot; treat as approximate."
   },
   "snapshot": {
     "rsi14":     { "value": 60.25, "status": "neutral", "note": "Below 70 overbought, above 30 oversold — comfortably neutral" },
