@@ -1,6 +1,15 @@
 {
-  "asOf": "2026-07-10",
+  "asOf": "2026-07-14",
   "entries": [
+    {
+      "date": "2026-07-07",
+      "headline": "Independence MO: 6-month moratorium on new data center approvals — Nebius build continues",
+      "category": "Risk",
+      "body": "City Council voted 7-0 to pause NEW data center approvals for six months while zoning is rewritten (proposal: >2.5 MW reclassified as special use permit). Nebius's 1.2 GW Eastgate build, which broke ground May 12, continues unaffected. Independence Guard Alliance threatens legal action — same community-opposition pattern as Vineland NJ.",
+      "source": "https://www.kctv5.com/2026/07/08/independence-hits-pause-data-centers-nebius-construction-moves-forward/",
+      "sourceLabel": "KCTV5",
+      "impact": "bear"
+    },
     {
       "date": "2026-07-03",
       "headline": "Nebius enters Spain — 18 MW colocation lease with Merlin Properties (Madrid/Getafe)",
@@ -26,6 +35,24 @@
       "body": "Nebius added to the Nasdaq-100 alongside Astera Labs, CoreWeave, Rocket Lab and Teradyne, driving passive-fund buying. Stock rose ~19.5% over June on inclusion plus continued revenue growth. Same period: AI Cloud v3.6 launched; Physical AI Living Lab (UK/EU) opened for robotics startups.",
       "source": "https://www.fool.com/investing/2026/07/04/why-did-nebius-stock-jump-20-in-june/",
       "sourceLabel": "The Motley Fool",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-05-21",
+      "headline": "Bloom Energy deal: up to 328 MW fuel cells for US data centers",
+      "category": "Power",
+      "body": "Nebius to deploy Bloom Energy Solid Oxide Fuel Cells (up to 328 MW, behind-the-meter) at an undisclosed US site, operational in 2026. Fuel-agnostic (gas/biogas/hydrogen), near-zero pollutants, aligned to 800V DC standards. Strategically answers the gas-engine criticism from Vineland NJ.",
+      "source": "https://www.datacenterdynamics.com/en/news/nebius-to-deploy-bloom-energy-fuel-cells-to-power-its-us-data-centers/",
+      "sourceLabel": "Data Center Dynamics",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-05-13",
+      "headline": "Pennsylvania: second US gigawatt campus — up to 1.2 GW secured",
+      "category": "Expansion",
+      "body": "Nebius secured up to 1.2 GW of power and land for a new owned AI factory in Pennsylvania. Lights-up targeted end of 2027 with 250-350 MW, then ~300 MW added per year to 1.2 GW. Exact site undisclosed. Announced alongside raised 2026 CapEx plan ($20-25B) and 4 GW contracted-power target.",
+      "source": "https://www.datacenterdynamics.com/en/news/nebius-plans-second-us-gigawatt-scale-data-center-campus-in-pennsylvania/",
+      "sourceLabel": "Data Center Dynamics",
       "impact": "bull"
     },
     {

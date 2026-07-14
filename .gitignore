@@ -51,4 +51,8 @@ desktop.ini
 
 # ───────── Logs ─────────
 *.log
+
+# ───────── Arbeidsfiler (rå Tavily-søkelogg — kuratert innhold går i data/news.json) ─────────
+alpha/TAVILY_SEARCH_NEBIUS_LATEST_NEWS.md
+nbis_dc_tracker.*
 logs/
