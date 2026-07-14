@@ -1,39 +1,40 @@
 {
-  "lastUpdate": "2026-07-10",
-  "lastUpdateSource": "Web search 2026-07-10 (aggregate). Only price fields refreshed — full indicator snapshot (RSI/MACD/EMA/etc.) NOT re-retrieved this pass, values below left at prior 2026-05-05 snapshot with status 'unknown' preserved rather than guessed.",
+  "lastUpdate": "2026-07-14",
+  "lastUpdateSource": "Computed 2026-07-14 from Yahoo Finance daily OHLCV (431 bars, close 2026-07-13) using the same formulas as NBIS_Alpha_Dashboard.pine. VWAP requires intraday data and is intentionally left null.",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
   "price": {
-    "current": 227.59,
-    "dayLow": 219.55,
-    "dayHigh": 227.70,
-    "previousMove": "peaked ~$261 (intraday, ~2026-07-01) then fell 15-26% on Meta Compute news; closed $227.59 on 2026-07-09",
-    "yearHigh": 227.70,
-    "yearLow": 23.25,
-    "asOf": "2026-07-09",
-    "note": "yearHigh/yearLow not independently re-verified beyond the observed 2026-07-09 range and prior 2026-05-05 snapshot; treat as approximate."
+    "current": 210.51,
+    "dayLow": 204.70,
+    "dayHigh": 219.00,
+    "previousMove": "peaked ~$261 intraday ~2026-07-01, then Meta Compute selloff; closed $210.51 on 2026-07-13 (-4.16% on day)",
+    "yearHigh": 299.86,
+    "yearLow": 48.80,
+    "asOf": "2026-07-13",
+    "note": "Price and 52w range from Yahoo Finance chart API (fetched 2026-07-14)."
   },
   "snapshot": {
-    "rsi14":     { "value": 60.25, "status": "neutral", "note": "Below 70 overbought, above 30 oversold — comfortably neutral" },
-    "stoch":     { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from Pine Script export" },
-    "williamsR": { "value": -39.49,"status": "neutral", "note": "Above -80 (oversold), below -20 (overbought) — neutral mid-range" },
-    "macd":      { "value": 9.80,  "status": "unknown", "note": "Positive value but signal-line cross status not retrieved" },
-    "ao":        { "value": null,  "status": "unknown", "note": "Awesome Oscillator (5,34) — not retrieved" },
-    "mom10":     { "value": null,  "status": "unknown", "note": "Pure value not retrieved (price up +13.24% on May 4 is context, not measurement)" },
-    "adx14":     { "value": null,  "status": "unknown", "note": "Not retrieved — ADX < 20 = don't trade momentum" },
-    "ema21":     { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from chart" },
-    "ema50":     { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from chart" },
-    "ema200":    { "value": null,  "status": "unknown", "note": "Not retrieved — fetch from chart" },
-    "vwap":      { "value": null,  "status": "unknown", "note": "Not retrieved — verify intraday on TradingView" },
-    "atrPct":    { "value": null,  "status": "unknown", "note": "Not retrieved — ATR > 4% = reduce position size" },
-    "volSpike":  { "value": null,  "status": "unknown", "note": "Not retrieved (May 4 +13.24% suggests volume but not measured)" }
+    "rsi14":     { "value": 43.90,  "status": "neutral", "note": "Below 50 midline after selloff, but well above 30 oversold — weak-neutral" },
+    "stoch":     { "value": 21.51,  "status": "neutral", "note": "%K 21.5 / %D 19.9 (14,3,3) — approaching oversold (<20), watch for cross up" },
+    "williamsR": { "value": -82.61, "status": "bull",    "note": "Below -80 = OVERSOLD — mean-reversion buy zone in the Pine alert set" },
+    "macd":      { "value": -4.45,  "status": "bear",    "note": "MACD -4.45 below signal +2.22 — bearish cross active since Meta Compute selloff" },
+    "ao":        { "value": -28.45, "status": "bear",    "note": "Awesome Oscillator (5,34) negative — medium-term momentum down" },
+    "mom10":     { "value": -29.79, "status": "bear",    "note": "10-day momentum -$29.79 — sharp deceleration from early-July peak" },
+    "adx14":     { "value": 14.52,  "status": "neutral", "note": "ADX < 20 = weak/no trend — Pine rule: do NOT trade momentum signals now" },
+    "ema21":     { "value": 230.81, "status": "bear",    "note": "Price $210.51 BELOW EMA21 — short-term trend lost" },
+    "ema50":     { "value": 216.76, "status": "bear",    "note": "Price BELOW EMA50 — reevaluation point per swing plan" },
+    "ema200":    { "value": 147.46, "status": "bull",    "note": "Price 43% ABOVE EMA200 — long-term bull regime intact" },
+    "vwap":      { "value": null,   "status": "neutral", "note": "Requires intraday data — check TradingView. Daily bars cannot compute session VWAP." },
+    "atrPct":    { "value": 11.68,  "status": "bear",    "note": "ATR 11.7% — EXTREME volatility (>4% = reduce size). Position sizing warning active." },
+    "volSpike":  { "value": 0.61,   "status": "neutral", "note": "Volume 0.61x 20-day average — no spike; selloff volume fading, no capitulation signal" }
   },
   "score": {
-    "bull": null,
-    "bear": null,
+    "bull": 2,
+    "bear": 5,
     "max": 8,
-    "verdict": "Insufficient data — only RSI/Williams %R/MACD value retrieved. Run NBIS_Alpha_Dashboard.pine for complete score."
+    "verdict": "Bear lean 5/8 vs 2/8 — but ADX 14.5 says weak trend (momentum unreliable) and Williams %R is oversold. Correction within intact long-term bull regime (43% above EMA200). ATR 11.7%: half size or wait."
   },
+  "scoreMethod": "8 mirrored checks per side: AO sign, MOM10 sign, MACD vs signal, price vs EMA21, EMA21 vs EMA50, price vs EMA200, RSI zone (bull: 50-70 / bear: <50), volume spike direction (>1.5x avg). 6+ = strong consensus, per NBIS_Alpha_Dashboard.pine.",
   "alerts": [
     "MACD cross up", "MACD cross down",
     "Stochastic oversold", "Stochastic overbought",
@@ -41,5 +42,5 @@
     "Strong bull (6+)", "Strong bear (6+)",
     "High volatility (ATR > 4%)"
   ],
-  "note": "Only values directly retrieved from web search. Inferred/derived values set to null with status 'unknown' rather than guessed. For complete snapshot, export from NBIS_Alpha_Dashboard.pine."
+  "note": "All values computed from Yahoo daily OHLCV with Pine-equivalent formulas (RSI/ADX/ATR use Wilder smoothing). Cross-check against TradingView may differ by decimals due to data vendor differences."
 }
