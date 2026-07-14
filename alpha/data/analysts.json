@@ -110,6 +110,16 @@
       "sentiment": "bullish"
     },
     {
+      "date": "2026-05-14",
+      "firm": "Northland Capital Markets",
+      "analyst": "Nehal Chokshi",
+      "action": "Raises",
+      "rating": "Outperform",
+      "target": 248,
+      "prevTarget": 215,
+      "sentiment": "bullish"
+    },
+    {
       "date": "2026-05-11",
       "firm": "B of A Securities",
       "analyst": "Tal Liani",
@@ -280,5 +290,5 @@
       "sentiment": "bullish"
     }
   ],
-  "note": "25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
+  "note": "26 ratings from 12 firms. Northland raise to $248 (2026-05-14, Bitget-verified) approved by RikardV 2026-07-14; the interim $211->$215 step is unsourced, and Chokshi's post-selloff reiteration (ca. 2026-07-13, date unverified) is logged in ANALYST_RATINGS_LOG.md but kept out of ratings[] until dated. Previously: 25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
 }
