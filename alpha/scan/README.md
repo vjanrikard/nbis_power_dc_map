@@ -30,11 +30,12 @@ flagged as follow-up tasks for the operator to review and apply manually.
 
 ## Files in this folder
 
-| File              | Role                                                                  |
-|-------------------|-----------------------------------------------------------------------|
-| README.md         | This file — operator overview                                         |
-| scheduled_task.md | The Alpha prompt the scheduled task runs (full step-by-step spec)     |
-| sources.md        | Curated source list, grouped into 5 tiers + standing fallback queries |
+| File                  | Role                                                                  |
+|-----------------------|-----------------------------------------------------------------------|
+| README.md             | This file — operator overview                                         |
+| scheduled_task.md     | The Alpha prompt the scheduled task runs (full step-by-step spec)     |
+| sources.md            | Curated source list, grouped into 5 tiers + standing fallback queries |
+| update_technicals.js  | **Tab 2 + 3 updater** — computes all Pine-equivalent indicators (RSI, Stoch, W%R, MACD, AO, MOM, ADX, EMA21/50/200, ATR%, session VWAP, vol spike, bull/bear score) from Yahoo Finance and rewrites `data/technicals.json` + the `marketData` block in `data/analysts.json`. Run from repo root: `node alpha/scan/update_technicals.js` (add `--push` to commit, push and trigger a Pages build). Recommended: daily after US close, e.g. 22:15 local. Remember to bump `SHARES_OUTSTANDING` in the script after dilution events. |
 
 ---
 
