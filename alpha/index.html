@@ -529,16 +529,21 @@ function renderAnalysts() {
   if (md) {
     document.getElementById('md-asof').textContent = md.asOf ? '· as of ' + md.asOf : '';
     // Price is cyan (brand). Daily change keeps green/red signal.
-    document.getElementById('md-price').textContent = '$' + md.currentPrice.toFixed(2);
+    // All fields are null-safe: unconfirmed data renders as '—' instead of crashing the tab.
+    document.getElementById('md-price').textContent = md.currentPrice != null ? '$' + md.currentPrice.toFixed(2) : '—';
     document.getElementById('md-price').style.color = 'var(--teal)';
-    const changeStr = `${md.priceChange >= 0 ? '+' : ''}${md.priceChange.toFixed(2)} (${md.changePct >= 0 ? '+' : ''}${md.changePct.toFixed(2)}%) today`;
-    document.getElementById('md-change').textContent = changeStr;
-    document.getElementById('md-change').style.color = md.changePct < 0 ? 'var(--red)' : 'var(--green)';
+    if (md.priceChange != null && md.changePct != null) {
+      document.getElementById('md-change').textContent =
+        `${md.priceChange >= 0 ? '+' : ''}${md.priceChange.toFixed(2)} (${md.changePct >= 0 ? '+' : ''}${md.changePct.toFixed(2)}%) today`;
+      document.getElementById('md-change').style.color = md.changePct < 0 ? 'var(--red)' : 'var(--green)';
+    } else {
+      document.getElementById('md-change').textContent = '— today';
+    }
     const lowStr  = md.yearLow  != null ? '$' + md.yearLow.toFixed(2)  : '—';
     const highStr = md.yearHigh != null ? '$' + md.yearHigh.toFixed(2) : '—';
     document.getElementById('md-range').textContent = `${lowStr} → ${highStr}`;
-    document.getElementById('md-mcap').textContent = fmtMcap(md.marketCap);
-    document.getElementById('md-vol').textContent = fmtVol(md.volume);
+    document.getElementById('md-mcap').textContent = md.marketCap != null ? fmtMcap(md.marketCap) : '—';
+    document.getElementById('md-vol').textContent = md.volume != null ? fmtVol(md.volume) : '—';
   }
 
   // ── Consensus from latest per firm ──
