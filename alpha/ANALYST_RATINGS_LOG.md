@@ -22,6 +22,18 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-07-13 — Northland Securities — Reiterates — $248 (no change) — Buy
+
+**Analyst:** Nehal Chokshi. **Source:** [moomoo wire pickup](https://www.moomoo.com/community/feed/nebius-nbis-us-northland-securities-analyst-nehal-chokshi-maintains-nebius-116751825829894) · scan 2026-07-14. *Exact event date unverified — post-selloff reiteration, ca. 2026-07-10/13.*
+
+Chokshi defends NBIS after the Meta Compute selloff: Nebius is building a reliable business around higher-margin AI-native customers, and the Meta deal (~300 MW) is backed by an investment-grade customer.
+
+## 2026-05-14 — Northland Securities — Raises — $248 (▲33 vs prev $215) — Outperform
+
+**Analyst:** Nehal Chokshi. **Source:** [Bitget wire pickup, dated 2026-05-14](https://www.bitget.com/news/detail/12560605412113) · scan 2026-07-14.
+
+Target raised $215 → $248 following the Q1 2026 update (revenue +684% to $399M, ARR $1.9B) — strong neocloud demand and better-than-expected profitability. Note: analysts.json still carries Northland at $211 (Nov 2025); the interim $211 → $215 step is not yet sourced.
+
 ## 2026-06-08 — B of A Securities — Maintains — $280 (▲40 vs prev $240) — Buy
 
 **Analyst:** Tal Liani. **Source:** [Benzinga NBIS analyst ratings](https://www.benzinga.com/quote/NBIS/analyst-ratings) · backfilled 2026-07-14.
