@@ -71,14 +71,17 @@ op — resume nbis-analyst-ratings-daily-scan
 Run these in order. Activate **after** the Alpha Portal is live so the
 `git push` flow keeps the analyst log fresh.
 
-- [ ] Verify the repo is pushed and the Alpha Portal renders Section 2.
-- [ ] Open **sources.md** and confirm tier-1 and tier-2 URLs are reachable.
-- [ ] Run once ad-hoc: `op — run nbis-analyst-ratings-daily-scan now`.
-- [ ] Inspect new entries in `alpha/ANALYST_RATINGS_LOG.md` for quality.
-- [ ] Verify the commit landed: `git log --oneline -3`.
-- [ ] Verify Pages re-deployed by reloading the Alpha Portal.
-- [ ] Activate the schedule: `op — register nbis-analyst-ratings-daily-scan`.
+- [x] Verify the repo is pushed and the Alpha Portal renders Section 2. *(2026-07-14)*
+- [x] Open **sources.md** and confirm tier-1 and tier-2 URLs are reachable. *(2026-07-14 — Benzinga/Bitget/moomoo used in first run; tipranks/stockanalysis/blockonomi returned 403/404 to automated fetch, fine via search)*
+- [x] Run once ad-hoc: `op — run nbis-analyst-ratings-daily-scan now`. *(2026-07-14 — found 2 Northland events)*
+- [x] Inspect new entries in `alpha/ANALYST_RATINGS_LOG.md` for quality. *(2026-07-14)*
+- [x] Verify the commit landed: `git log --oneline -3`. *(6780e6c "Analyst scan 2026-07-14: 2 new ratings")*
+- [x] Verify Pages re-deployed by reloading the Alpha Portal. *(2026-07-14)*
+- [x] Activate the schedule: `op — register nbis-analyst-ratings-daily-scan`. *(2026-07-14 — registered as Claude scheduled task, daily 07:10)*
 - [ ] Next morning: confirm the daily chat briefing arrives.
+
+> Note (2026-07-14): the spec's TASKS.md follow-up mechanism is not set up —
+> structural `analysts.json` changes are flagged in the chat briefing instead.
 
 ---
 
