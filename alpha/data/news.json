@@ -1,6 +1,33 @@
 {
-  "asOf": "2026-07-14",
+  "asOf": "2026-07-17",
   "entries": [
+    {
+      "date": "2026-07-15",
+      "headline": "Nebius launches asset-light partnership model — stock -7.8% on margin concerns",
+      "category": "Strategic Pivot",
+      "body": "Nebius introduced an asset-light business model letting infrastructure partners finance, own, and operate AI data centers running Nebius's full-stack AI cloud platform inside their own facilities. Announced as a global scaling mechanism without full CAPEX burden. Market reaction negative: NBIS -7.8% on the day on concerns over lower margins and reduced operational control. Strategically opens the door to faster international footprint growth.",
+      "source": "https://nebius.com/newsroom",
+      "sourceLabel": "Nebius newsroom",
+      "impact": "bear"
+    },
+    {
+      "date": "2026-07-09",
+      "headline": "Birmingham AL: neighbor lawsuit filed to stop BHM01 — noise, water, power concerns escalate",
+      "category": "Risk",
+      "body": "Construction has begun on the Nebius AI factory off Lakeshore Parkway in Oxmoor Valley. Two neighbors filed a lawsuit seeking to stop the project. Dozens of residents rallied against the AI factory, citing construction noise, water use, and long-term operational impact. This is on top of the existing SELC / Humane Society litigation — community-opposition risk continues to mirror the Vineland NJ pattern.",
+      "source": "https://www.wbrc.com/2026/07/09/nebius-ai-data-center-construction-draws-neighbor-concerns",
+      "sourceLabel": "WBRC",
+      "impact": "bear"
+    },
+    {
+      "date": "2026-06-13",
+      "headline": "Birmingham AL: data center moratorium ends — Nebius withdraws design change under new zoning ordinance",
+      "category": "Regulatory",
+      "body": "Birmingham's moratorium on new data centers ended June 13, replaced by a new zoning ordinance for the industry. Nebius had asked the city to adjust the design of its second BHM01 building (add basement for mechanical equipment + increase building height) — the company subsequently backtracked on the change to comply with the new rules. Any future changes to the BHM01 campus, or any new Nebius data center projects, will be subject to Birmingham's updated ordinance.",
+      "source": "https://www.al.com/business/2026/06/ai-company-backtracks-on-change-to-data-center-campus-after-birminghams-new-rules.html",
+      "sourceLabel": "AL.com",
+      "impact": "bear"
+    },
     {
       "date": "2026-07-07",
       "headline": "Independence MO: 6-month moratorium on new data center approvals — Nebius build continues",

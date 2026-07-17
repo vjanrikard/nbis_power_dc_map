@@ -85,13 +85,15 @@ const SITES = [
     status: "construction", mw: 300, region: "Americas",
     chips: ["NVIDIA Blackwell"], partner: "Hoar Construction",
     delivery: "2027-2028", online: "Phase 1: Spring 2027",
-    note: "Construction underway; substation variance approved; SELC lawsuit pending",
-    desc: "80 acres at 201 Milan Parkway. GC: Hoar Construction. Phase 1 ~100 MW spring 2027, Phase 2 ~200 MW fall 2028. Substation variance approved after April 2026 delay. SELC/Humane Society lawsuits filed — same EJ playbook as Vineland.",
+    note: "Construction underway; new zoning ordinance active Jun 13 2026; neighbor lawsuit Jul 9 2026 adds to SELC/Humane Society litigation",
+    desc: "80 acres at 201 Milan Parkway. GC: Hoar Construction. Phase 1 ~100 MW spring 2027, Phase 2 ~200 MW fall 2028. Substation variance approved after April 2026 delay. Jun 13 2026: city moratorium ended, replaced by new DC zoning ordinance — Nebius withdrew a design change (basement + added building height) to comply. Jul 9 2026: two neighbors filed a fresh lawsuit to stop the project, on top of SELC/Humane Society suits — same EJ playbook as Vineland.",
     risk: "HIGH",
-    riskReason: "Active litigation (SELC + Humane Society). Environmental Justice exposure mirrors Vineland NJ. Substation approved but legal challenges could delay Phase 1.",
+    riskReason: "Multiple active lawsuits (SELC + Humane Society + Jul 2026 neighbor suit). Rising local opposition (protests, water/noise/power concerns). Environmental Justice exposure mirrors Vineland NJ. New Birmingham zoning ordinance constrains future design changes; Phase 1 timing at risk.",
     sources: [
       "https://yellowhammernews.com/permit-filed-for-multibillion-dollar-75-acre-data-center-in-birmingham/",
-      "https://www.wbrc.com/2026/04/19/birmingham-residents-rally-against-proposed-ai-factory/"
+      "https://www.wbrc.com/2026/04/19/birmingham-residents-rally-against-proposed-ai-factory/",
+      "https://www.al.com/business/2026/06/ai-company-backtracks-on-change-to-data-center-campus-after-birminghams-new-rules.html",
+      "https://www.wbrc.com/2026/07/09/nebius-ai-data-center-construction-draws-neighbor-concerns"
     ]
   },
   { id: 9, name: "Béthune, France", lat: 50.5306, lng: 2.6388,
@@ -314,6 +316,10 @@ const EVENTS = [
     title: "Nebius Enters Spain (Getafe, Madrid)", desc: "18 MW colocation lease with Merlin Properties, part of a 68 MW two-building Getafe campus. 5th European country. Separate GW-scale Andalusia plan was abandoned Feb 2026 (no guaranteed power).", tags: ["Spain", "Expansion"] },
   { date: "Jul 7, 2026", label: "Independence moratorium", color: "#ef4444", pos: "top",
     title: "Independence MO: 6-Month DC Moratorium", desc: "City Council voted 7-0 to pause NEW data center approvals for 6 months. Nebius's existing 1.2 GW build continues unaffected, but zoning reclassification (>2.5 MW = special use permit) is under review and Independence Guard Alliance threatens legal action.", tags: ["Risk", "Missouri"] },
+  { date: "Jul 9, 2026", label: "Birmingham neighbor lawsuit", color: "#ef4444", pos: "bot",
+    title: "Birmingham AL: Neighbor Lawsuit + Protests", desc: "Construction under way on BHM01 (Oxmoor Valley). Two neighbors filed a lawsuit to stop the project, on top of existing SELC/Humane Society suits. Residents rallied over noise, water use, and long-term operational impact — Vineland-style EJ playbook continues. Also: Jun 13 2026 Birmingham lifted its DC moratorium in favor of a new zoning ordinance; Nebius withdrew a design change (basement + added height) to comply.", tags: ["Risk", "Alabama"] },
+  { date: "Jul 15, 2026", label: "Asset-light partnership model", color: "#f59e0b", pos: "top",
+    title: "Nebius Launches Asset-Light AI DC Partnership Model", desc: "New business model: infrastructure partners finance, own, and operate AI data centers running Nebius's full-stack AI cloud inside their own facilities. Enables faster global scaling without full CAPEX burden. Market reaction negative: NBIS -7.8% on the day on margin/control concerns. Long-term potentially bullish for global footprint growth.", tags: ["Strategic Pivot", "Business Model"] },
   { date: "2027 Target", label: "Lappeenranta + IPP 250 MW", color: "#f59e0b", pos: "bot",
     title: "2027: Lappeenranta P1 + IPP 250 MW", desc: "Lappeenranta Phase 1 live. IPP 250 MW phase by Oct 2027. Béthune ramps to full 240 MW EOY 2027.", tags: ["Target", "2027"] },
   { date: "2028 Target", label: "Independence MO P1", color: "#a78bfa", pos: "top",
@@ -324,7 +330,7 @@ const EVENTS = [
     title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-07-14";
+const LAST_UPDATE = "2026-07-17";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
   contractedPowerGW: 3.5,
