@@ -71,13 +71,15 @@ const SITES = [
     status: "construction", mw: 300, region: "Americas",
     chips: ["NVIDIA Blackwell", "B200"], partner: "DataOne / Microsoft",
     delivery: "2026-11", online: "Nov 2026 (full)",
-    note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target",
-    desc: "First major US AI data center. ~2.6M sqft. Built by DataOne with Nebius-designed infrastructure. Phased in 100 MW modules. PILOT ordinance approved Jan 27 2026. $17.4B Microsoft contract anchor through 2031.",
+    note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target; NJDEP air permit still pending (deficiency notices, single-source review)",
+    desc: "First major US AI data center. ~2.6M sqft. Built by DataOne with Nebius-designed infrastructure. Phased in 100 MW modules. PILOT ordinance approved Jan 27 2026. $17.4B Microsoft contract anchor through 2031. Construction began early 2025 ahead of final NJDEP air permits; DataOne holds firm on Nov 2026 phase-1 delivery, while nebius.com/vinelandnj cites 2027 for full operation.",
     risk: "CRITICAL",
-    riskReason: "Single-customer anchor concentration ($17.4B MSFT through 2031); residual NJ EJ Law community-opposition exposure.",
+    riskReason: "Single-customer anchor concentration ($17.4B MSFT through 2031). NJDEP air permit still pending as of Jul 2026: technical deficiency notices probe common control with neighboring Corning plant — single-source aggregation would trigger federal (EPA) permitting and public hearings, potentially adding 1-2 years. Ongoing NJ EJ Law community opposition (Sierra Club, Sustain South Jersey, local farmers, Feb 2026).",
     sources: [
       "https://northwiseproject.com/nbis-stock-vineland-nj-data-center/",
-      "https://www.reddit.com/r/NBIS_Stock/comments/1l7yvvo/nj_datacenter_update/",
+      "https://cleanview.co/data-centers/new-jersey/798/nebius--dataone-vineland-phase-1",
+      "https://whyy.org/articles/data-center-artificial-intelligence-vineland-new-jersey/",
+      "https://www.sierraclub.org/new-jersey/blog/2026/02/sierra-club-sustain-south-jersey-and-local-farmers-oppose-massive-vineland",
       "https://www.aiwire.net/2025/03/05/nebius-accelerates-ai-cloud-growth-with-us-and-european-expansion/"
     ]
   },
@@ -320,6 +322,8 @@ const EVENTS = [
     title: "Birmingham AL: Neighbor Lawsuit + Protests", desc: "Construction under way on BHM01 (Oxmoor Valley). Two neighbors filed a lawsuit to stop the project, on top of existing SELC/Humane Society suits. Residents rallied over noise, water use, and long-term operational impact — Vineland-style EJ playbook continues. Also: Jun 13 2026 Birmingham lifted its DC moratorium in favor of a new zoning ordinance; Nebius withdrew a design change (basement + added height) to comply.", tags: ["Risk", "Alabama"] },
   { date: "Jul 15, 2026", label: "Asset-light partnership model", color: "#f59e0b", pos: "top",
     title: "Nebius Launches Asset-Light AI DC Partnership Model", desc: "New business model: infrastructure partners finance, own, and operate AI data centers running Nebius's full-stack AI cloud inside their own facilities. Enables faster global scaling without full CAPEX burden. Market reaction negative: NBIS -7.8% on the day on margin/control concerns. Long-term potentially bullish for global footprint growth.", tags: ["Strategic Pivot", "Business Model"] },
+  { date: "Jul 17, 2026", label: "$775M senior secured debt", color: "#22c55e", pos: "bot",
+    title: "First Senior Secured Debt Deal — $775M, No Dilution", desc: "Nebius closed its first-ever senior secured debt financing (~$775M), backed by deployed GPU infrastructure + contracted cash flows from an investment-grade customer (MSFT tranche delivered concurrently). Facility + customer cash flows cover >100% of CAPEX for the underlying GPU deployment; since the MSFT contract is now in servicing phase, capital is redirected to AI-native/enterprise capacity. Stock +8% on the news, reversing the Jul 16 -13.9% CAPEX-anxiety selloff. Combined with asset-light Jul 15, two fresh non-dilutive financing tracks in one week.", tags: ["Financing", "De-Risk"] },
   { date: "2027 Target", label: "Lappeenranta + IPP 250 MW", color: "#f59e0b", pos: "bot",
     title: "2027: Lappeenranta P1 + IPP 250 MW", desc: "Lappeenranta Phase 1 live. IPP 250 MW phase by Oct 2027. Béthune ramps to full 240 MW EOY 2027.", tags: ["Target", "2027"] },
   { date: "2028 Target", label: "Independence MO P1", color: "#a78bfa", pos: "top",
@@ -330,7 +334,7 @@ const EVENTS = [
     title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-07-17";
+const LAST_UPDATE = "2026-07-20";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
   contractedPowerGW: 3.5,

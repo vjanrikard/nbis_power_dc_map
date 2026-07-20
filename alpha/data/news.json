@@ -1,6 +1,24 @@
 {
-  "asOf": "2026-07-17",
+  "asOf": "2026-07-20",
   "entries": [
+    {
+      "date": "2026-07-17",
+      "headline": "Nebius raises $775M in first senior secured debt deal — no dilution, stock +8%",
+      "category": "Financing",
+      "body": "Nebius closed its first-ever senior secured debt financing (~$775M) to accelerate global AI cloud expansion. Facility is backed by deployed GPU infrastructure plus contracted cash flows from an investment-grade customer (Microsoft delivery of the latest planned capacity tranche was announced concurrently). Combined with the customer cash flows, the financing covers >100% of the CAPEX required to deploy the underlying GPUs. Because the MSFT contract has entered its servicing phase, Nebius will redirect the capital to expanding capacity for AI-native and enterprise customers. Stock jumped ~8% on the news, reversing the July 16 -13.9% selloff that had been driven by dilution/CAPEX fears around the $20-25B 2026 plan. Two new financing tracks (this + asset-light Jul 15) in one week materially de-risk the CAPEX ramp.",
+      "source": "https://www.benzinga.com/markets/large-cap/26/07/60528689/nebius-raises-775-million-without-dilution-to-speed-ai-cloud-expansion",
+      "sourceLabel": "Benzinga",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-07-16",
+      "headline": "NBIS -13.9% on tech risk-off + $20-25B CAPEX financing anxiety",
+      "category": "Price",
+      "body": "Nebius fell 13.90% to $171.77 on July 16 as a broader tech-sector retreat renewed investor focus on the financing burden implied by the raised 2026 CAPEX plan of $20-25B. Comes on top of the July 15 -7.8% asset-light reaction; combined 2-day drawdown ~20%. Reversed the following day on the $775M senior secured debt deal.",
+      "source": "https://bingx.com/en/news/post/why-is-nebius-group-nbis-stock-price-down-today-july-billion-capex-plan-pressures-shares",
+      "sourceLabel": "BingX",
+      "impact": "bear"
+    },
     {
       "date": "2026-07-15",
       "headline": "Nebius launches asset-light partnership model — stock -7.8% on margin concerns",
