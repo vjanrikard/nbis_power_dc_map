@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-07-21 — Baird — Initiates — $250 (new) — Outperform
+
+**Analyst:** n/a. **Source:** [Investing.com – Baird initiates Nebius with Outperform on AI inference positioning](https://www.investing.com/news/analyst-ratings/baird-initiates-nebius-stock-with-outperform-on-ai-inference-positioning-93CH-4804780) · manual entry 2026-07-24.
+
+Baird initiates NBIS at Outperform, $250 PT (~15% upside vs then-price $216.92). Four-pillar bull thesis: full-stack inference positioning, diversifying customer base, highest sector growth, veteran Yandex-carve-out management. Same day, Baird also initiated CoreWeave Outperform — signals broader neocloud conviction.
+
 ## 2026-07-13 — Northland Securities — Reiterates — $248 (no change) — Buy
 
 **Analyst:** Nehal Chokshi. **Source:** [moomoo wire pickup](https://www.moomoo.com/community/feed/nebius-nbis-us-northland-securities-analyst-nehal-chokshi-maintains-nebius-116751825829894) · scan 2026-07-14. *Exact event date unverified — post-selloff reiteration, ca. 2026-07-10/13.*

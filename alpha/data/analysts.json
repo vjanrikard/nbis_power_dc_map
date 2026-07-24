@@ -1,6 +1,6 @@
 {
-  "lastUpdate": "2026-07-22",
-  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-07-22). Per-firm ratings unchanged — update those manually after analyst actions.",
+  "lastUpdate": "2026-07-24",
+  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-07-22). Ratings updated 2026-07-24: Baird initiated Outperform $250 on 2026-07-21.",
   "marketData": {
     "asOf": "2026-07-22",
     "currentPrice": 225.66,
@@ -29,6 +29,16 @@
     "lowTarget": 129
   },
   "ratings": [
+    {
+      "date": "2026-07-21",
+      "firm": "Baird",
+      "analyst": "—",
+      "action": "Initiates",
+      "rating": "Outperform",
+      "target": 250,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
     {
       "date": "2026-06-08",
       "firm": "B of A Securities",

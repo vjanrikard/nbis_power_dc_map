@@ -1,6 +1,24 @@
 {
-  "asOf": "2026-07-20",
+  "asOf": "2026-07-24",
   "entries": [
+    {
+      "date": "2026-07-21",
+      "headline": "Baird initiates NBIS with Outperform, $250 target — inference thesis + full-stack + growth leadership",
+      "category": "Analyst",
+      "body": "Robert W. Baird initiated coverage on Nebius with an Outperform rating and $250 price target (~15% upside vs then-price $216.92). Baird's four-pillar bullish thesis: (1) full-stack offering positioning Nebius as AI workloads shift from training to inference, (2) diversifying customer base beyond hyperscaler concentration, (3) highest growth rate in the AI infrastructure sector, and (4) veteran management team and technical bench inherited from the Yandex carve-out. Same day Baird also initiated CoreWeave Outperform — signals broadened neocloud sector conviction on Wall Street.",
+      "source": "https://www.investing.com/news/analyst-ratings/baird-initiates-nebius-stock-with-outperform-on-ai-inference-positioning-93CH-4804780",
+      "sourceLabel": "Investing.com",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-07-20",
+      "headline": "NVIDIA 13G filing reveals 9.3% stake in Nebius — stock rallies up to +19% over two sessions",
+      "category": "Ownership",
+      "body": "NVIDIA disclosed a 9.3% passive beneficial ownership stake in Nebius via a Schedule 13G filed with the SEC on July 13, 2026 and made public July 20. Position totals 22,256,412 Class A ordinary shares: 1,190,476 directly held + 21,065,936 shares underlying a pre-funded warrant acquired March 11, 2026 (part of the ~$2B strategic investment). The warrant cannot be exercised — and shares cannot be sold — before September 11, 2026 (lock-up). SEC required inclusion in beneficial ownership because exercise falls within the 60-day rule. Market reaction: after-hours +2.5-4.6% on July 20 → intraday +6-19% on July 21-22 across sessions. Stock re-rated from ~$196 to $219-225 range. Signals ongoing NVIDIA-Nebius strategic alignment on next-gen GPU deployment; passive filing means no board control, but material anchor investor status confirmed.",
+      "source": "https://www.stocktitan.net/sec-filings/NBIS/schedule-13g-nebius-group-n-v-passive-investment-disclosure-5-217fda175b0d.html",
+      "sourceLabel": "StockTitan / SEC 13G",
+      "impact": "bull"
+    },
     {
       "date": "2026-07-17",
       "headline": "Nebius raises $775M in first senior secured debt deal — no dilution, stock +8%",
