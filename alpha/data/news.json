@@ -3,6 +3,15 @@
   "entries": [
     {
       "date": "2026-07-30",
+      "headline": "Microsoft Q4 FY2026 beat: Azure +43% YoY accelerates, $100B annual crossed — direct volume signal for NBIS anchor contract",
+      "category": "Anchor Customer",
+      "body": "Microsoft reported Q4 FY2026 (ended June 30, 2026) after market close July 30. Headline numbers: revenue $90.01B (+18% YoY) beat $87.62B consensus by ~$2.4B; net income $31.5B. Microsoft Cloud +27% YoY to $59.3B. Azure & other cloud services +43% YoY, accelerating from +40% the prior quarter. Azure crossed $100B in annual revenue for the first time in FY2026 (+41% YoY). MSFT stock +1.2% (trimming June loss to -17.2%). Direct NBIS read-through: Microsoft is NBIS's anchor customer with $19.4B of the ~$46B contracted backlog (per Q1 2026 report). Azure acceleration = tangible volume signal for external compute-partner demand — not just sentiment. Same-session NBIS surged +9.57% to $162.41 on the cloud-momentum read-through, reinforcing the earlier-day Nvidia-SK $500B partnership catalyst. Two major bull-catalysts on a single trading day: the July 1 'Meta Compute' TAM-shrinkage narrative is now clearly rejected by both anchor-customer volume evidence (MSFT) and structural ecosystem validation (Nvidia-SK).",
+      "source": "https://www.microsoft.com/en-us/Investor",
+      "sourceLabel": "Microsoft Investor Relations",
+      "impact": "bull"
+    },
+    {
+      "date": "2026-07-30",
       "headline": "Nvidia-SK Group $500B+ partnership: HBM4 co-development + 2 GW SK Telecom AI Cloud — sector-wide validation of AI-infra super-cycle",
       "category": "Sector",
       "body": "Nvidia and SK Group (SK hynix + SK Telecom) formalized a multi-year strategic partnership valued at $500B+, spanning three pillars: (1) long-term HBM4 supply and co-development for Nvidia's Vera Rubin AI supercomputers, Vera CPUs, RTX Spark PCs, and Jetson Thor robotics platforms; (2) SK Telecom deploying a 2 GW-scale AI Cloud in South Korea using Nvidia DSX infrastructure and Vera Rubin systems, first facility launching 2027; (3) SK hynix implementing Nvidia Omniverse, OpenUSD, and CUDA-X libraries to drive fully autonomous fab operations via digital-twin simulation. NBIS read-through (indirect bull): Nvidia continues building an ecosystem of non-hyperscaler compute partners — NBIS 9.3% Nvidia stake + $2B strategic + Vera Rubin roadmap alignment sit in the same strategic bucket as this Korea deal. The $500B scale materially validates the AI-infrastructure super-cycle thesis and pushes back on the July 1 'Meta Compute' TAM-shrinkage narrative. NBIS pre-market +8.79% on the read-through ($161.25). Structural angle: Nvidia is deliberately picking non-US neocloud/memory partners (Nebius NL, SK Korea) — the coverage-gap in these under-owned names becomes an alpha-source as US institutions are forced to rebalance toward Nvidia-satellite exposure.",
