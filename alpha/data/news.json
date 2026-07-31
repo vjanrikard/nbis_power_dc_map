@@ -3,6 +3,15 @@
   "entries": [
     {
       "date": "2026-07-30",
+      "headline": "Aschenbrenner hedge fund AI losses (CNBC) — forced-selling a likely driver of July NBIS $250→$148 selloff; bottom formation confirmed",
+      "category": "Sentiment",
+      "body": "CNBC reported July 30 that Leopold Aschenbrenner's hedge fund (Situational Awareness LLC), a prominent AGI-thesis AI-concentrated fund, faced steep losses through July 2026. Read-through for NBIS: the fund is understood to have held concentrated positions in AI infrastructure names, and forced-unwinding likely contributed to the broader AI-sector de-risking that pushed NBIS from ~$250 (early-July peak) to $148 intraday low on July 30. Consistent with observed pattern: NBIS fell faster than fundamentals justified — the selloff was hedge-fund flow-driven, not NBIS-specific. Combined driver stack July 1-30: (a) Bloomberg 'Meta Compute' TAM-fear July 1, (b) Aschenbrenner-fund unwind pressure, (c) broad tech risk-off around July 16 CAPEX concerns. Timing implication: the July 30 low coincides with (i) fund-selling exhaustion, (ii) Nvidia-SK $500B partnership catalyst, (iii) MSFT Q4 Azure +43% catalyst — forming a classic 'bottom formation' where forced sellers finish just as fundamental catalysts arrive. NBIS $148 → $188 same day = mechanical bounce once flow-selling ended.",
+      "source": "https://www.cnbc.com/2026/07/30/leopold-aschenbrenners-hedge-fund-is-facing-steep-ai-losses.html",
+      "sourceLabel": "CNBC",
+      "impact": "bear"
+    },
+    {
+      "date": "2026-07-30",
       "headline": "Microsoft Q4 FY2026 beat: Azure +43% YoY accelerates, $100B annual crossed — direct volume signal for NBIS anchor contract",
       "category": "Anchor Customer",
       "body": "Microsoft reported Q4 FY2026 (ended June 30, 2026) after market close July 30. Headline numbers: revenue $90.01B (+18% YoY) beat $87.62B consensus by ~$2.4B; net income $31.5B. Microsoft Cloud +27% YoY to $59.3B. Azure & other cloud services +43% YoY, accelerating from +40% the prior quarter. Azure crossed $100B in annual revenue for the first time in FY2026 (+41% YoY). MSFT stock +1.2% (trimming June loss to -17.2%). Direct NBIS read-through: Microsoft is NBIS's anchor customer with $19.4B of the ~$46B contracted backlog (per Q1 2026 report). Azure acceleration = tangible volume signal for external compute-partner demand — not just sentiment. Same-session NBIS surged +9.57% to $162.41 on the cloud-momentum read-through, reinforcing the earlier-day Nvidia-SK $500B partnership catalyst. Two major bull-catalysts on a single trading day: the July 1 'Meta Compute' TAM-shrinkage narrative is now clearly rejected by both anchor-customer volume evidence (MSFT) and structural ecosystem validation (Nvidia-SK).",
