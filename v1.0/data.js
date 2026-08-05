@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════
 // Nebius Power DC Map — Data v1.0
-// Updated: 2026-07-14
-// 20 sites, sorted by MW descending (largest first)
+// Updated: 2026-08-05
+// 21 sites, sorted by MW descending (largest first)
 // Regions: Americas / Europe / Middle East / APAC
 // Each site: id, name, lat, lng, status, mw, region, chips,
 //            partner, delivery, online, note, desc, risk, riskReason, sources
@@ -68,7 +68,7 @@ const SITES = [
     sources: ["https://nebius.com/newsroom/nebius-to-construct-310-mw-ai-factory-in-finland"]
   },
   { id: 1, name: "Vineland, NJ", lat: 39.4864, lng: -75.0260,
-    status: "construction", mw: 300, region: "Americas",
+    status: "construction", mw: 400, region: "Americas",
     chips: ["NVIDIA Blackwell", "B200"], partner: "DataOne / Microsoft",
     delivery: "2026-11", online: "Nov 2026 (full)",
     note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target; NJDEP air permit still pending (deficiency notices, single-source review)",
@@ -334,10 +334,10 @@ const EVENTS = [
     title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-07-20";
+const LAST_UPDATE = "2026-08-05";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
-  contractedPowerGW: 3.5,
+  contractedPowerGW: 4.0,
   contractedGuidanceGW: 4.0,
   connectedTargetEnd2026: "800 MW – 1 GW",
   connectedTargetEnd2026Note: "guided Q1 2026, reaffirmed as of Jul 2026",
@@ -355,3 +355,4 @@ const NEBIUS_EARNINGS_Q1_2026 = {
   marketCapJul2026: "~$55B (peaked ~$61B Jul 1, before Meta Compute selloff)",
   analystConsensusJul2026: "Buy, 12 analysts, 79% buy, avg target ~$232-237 (range $129-$291), source TipRanks 2026-07-08"
 };
+```
