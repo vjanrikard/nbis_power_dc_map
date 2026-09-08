@@ -22,6 +22,66 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-08-25 — Goldman Sachs — Maintains — $328 (▲42 vs prev $286) — Buy
+
+**Analyst:** Alexander Duval. **Source:** [TipRanks – Nebius Stock (NBIS) Jumps as Goldman Sets Street-High $328 Price Target on Strong Demand](https://www.tipranks.com/news/nebius-stock-nbis-jumps-as-goldman-sets-street-high-328-price-target-on-strong-demand) · scan 2026-09-09. *(ca. — sources cite Aug 24–25, 2026; exact date unverified.)*
+
+Duval lifted his target 15% to a new Wall Street high, citing robust AI-infrastructure demand after Q2 2026 revenue climbed 454% YoY to $582.3M. Buy rating reaffirmed.
+
+## 2026-08-18 — DA Davidson — Raises — $250 (▲75 vs prev $175) — Neutral
+
+**Analyst:** Gil Luria. **Source:** [24/7 Wall St. – DA Davidson Reverses Course on Nebius Target Cut in Just 1 Week](https://247wallst.com/investing/2026/08/18/da-davidson-reverses-course-on-nebius-target-cut-in-just-1-week-what-is-going-on/) · scan 2026-09-09.
+
+One week after slashing the target on Vineland construction-delay fears, Luria restored $250 after the Vineland data center received permit approval, which he said "removes a significant risk" and unblocks roughly a third of Nebius's 2026 connected-power goal.
+
+## 2026-08-14 — Citigroup — Maintains — $324 (▲46 vs prev $278) — Buy
+
+**Analyst:** n/a. **Source:** [GuruFocus – NBIS Maintained by Citigroup, Price Target Raised to $324](https://www.gurufocus.com/news/9035450/nbis-maintained-by-citigroup-price-target-raised-to-324) · scan 2026-09-09.
+
+Citi raises target again just nine days after trimming it, alongside the broader Q2-earnings target-hike wave (Baird, B of A same week). Buy rating maintained.
+
+## 2026-08-13 — Baird — Raises — $340 (▲90 vs prev $250) — Outperform
+
+**Analyst:** n/a. **Source:** [MarketBeat – Robert W. Baird Forecasts Strong Price Appreciation for Nebius Group (NBIS)](https://www.marketbeat.com/instant-alerts/robert-w-baird-forecasts-strong-price-appreciation-for-nebius-group-nasdaqnbis-stock-2026-08-13/) · scan 2026-09-09. *(ca. — some wire pickups date this Aug 17; MarketBeat alert timestamp used.)*
+
+Baird lifts its target 36% same-day as B of A's Q2-earnings reaction, keeping Outperform.
+
+## 2026-08-13 — B of A Securities — Maintains — $310 (▲30 vs prev $280) — Buy
+
+**Analyst:** Tal Liani. **Source:** [CNBC – Nebius has tripled in 2026, but it can rise more, Bank of America says](https://www.cnbc.com/2026/08/13/nebius-has-tripled-in-2026-but-it-can-rise-more-bank-of-america-says.html) · scan 2026-09-09.
+
+Q2 2026 beat (revenue $582.3M vs $569.9M consensus) plus the 800MW–1GW connected-power plan by year-end drove the hike. Buy maintained.
+
+## 2026-08-11 — DA Davidson — Lowers — $175 (▼75 vs prev $250) — Neutral
+
+**Analyst:** Gil Luria. **Source:** [Yahoo Finance – DA Davidson cuts Nebius target 30% as Vineland delays threaten 2026 guidance](https://finance.yahoo.com/markets/stocks/articles/da-davidson-cuts-nebius-target-153630956.html) · scan 2026-09-09.
+
+A site visit and local public hearing led Luria to conclude the Vineland facility might not finish in 2026, threatening the execution edge versus peer neoclouds. Neutral rating kept. (Reversed one week later — see 2026-08-18 entry.)
+
+## 2026-08-05 — Compass Point — Raises — $300 (▲40 vs prev $260) — Buy
+
+**Analyst:** n/a. **Source:** [Yahoo Finance – Compass Point Raises Price Target on Nebius Group (NBIS) Following Strong AI Cloud Growth](https://finance.yahoo.com/markets/stocks/articles/compass-point-raises-price-target-093745745.html) · scan 2026-09-09. *(ca. — exact date unverified, tied to Q2 2026 earnings reaction.)*
+
+Cited AI cloud run-rate revenue rising to $3.0B from $1.9B QoQ. Buy maintained. Note: an interim $150→$260 step (~May 2026, post-Q1) surfaced in this scan but is not independently sourced — flagged below for operator review.
+
+## 2026-08-05 — Citigroup — Maintains — $278 (▼9 vs prev $287) — Buy
+
+**Analyst:** n/a. **Source:** [GuruFocus – NBIS Maintained by Citigroup, Price Target Lowered to $278](https://www.gurufocus.com/news/9007527/nbis-maintained-by-citigroup-price-target-lowered-to-278) · scan 2026-09-09.
+
+Citi trims its target heading into Q2 earnings while staying "constructive" on neoclouds, saying the recent selloff created a more attractive entry point. Buy kept.
+
+## 2026-08-04 — Piper Sandler — Initiates — $224 (new) — Neutral
+
+**Analyst:** James Fish. **Source:** [StreetInsider – Piper Sandler Starts Nebius Group (NBIS) at Neutral](https://www.streetinsider.com/AI/Piper+Sandler+Starts+Nebius+Group+(NBIS)+at+Neutral/26857826.html) · scan 2026-09-09.
+
+New coverage initiated at Neutral, $224 target. Fish favors the public neocloud sector overall but prefers CoreWeave over Nebius given execution risk tied to the then-upcoming Aug 5 Vineland hearing. **New firm — not yet in `analysts.json` ratings[] — flagged for operator review.**
+
+## 2026-07-20 — Northland Securities — Raises — $410 (▲162 vs prev $248) — Outperform
+
+**Analyst:** Nehal Chokshi. **Source:** [Investing.com – Nebius Group stock price target raised to $410 by Northland on market share outlook](https://www.investing.com/news/analyst-ratings/nebius-group-stock-price-target-raised-to-410-by-northland-on-market-share-outlook-93CH-4801318) · scan 2026-09-09. *(ca. — exact date unverified, sourced from article metadata.)*
+
+DCF-based target assumes ~14% share of an $800B AIaaS market (~$29/share attributed to non-core AIaaS businesses). Currently the highest live target on the Street. Outperform maintained.
+
 ## 2026-07-21 — Baird — Initiates — $250 (new) — Outperform
 
 **Analyst:** n/a. **Source:** [Investing.com – Baird initiates Nebius with Outperform on AI inference positioning](https://www.investing.com/news/analyst-ratings/baird-initiates-nebius-stock-with-outperform-on-ai-inference-positioning-93CH-4804780) · manual entry 2026-07-24.
