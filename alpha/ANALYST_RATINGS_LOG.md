@@ -22,6 +22,24 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-09-21 — Rothschild & Co Redburn — Initiates — $84 (new) — Sell
+
+**Analyst:** Alex Haissl (per TipRanks; not named in MarketBeat). **Source:** [MarketBeat – Nebius Group (NASDAQ:NBIS) Now Covered by Rothschild & Co Redburn](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-now-covered-by-rothschild-co-redburn-2026-09-21/) · scan 2026-09-22. Also: [Yahoo Finance – CRWV, NBIS Stocks Get 'Sell' Ratings](https://finance.yahoo.com/markets/stocks/articles/crwv-nbis-stocks-sell-ratings-120653484.html).
+
+Redburn started coverage at Sell with a Street-low $84 target (~62% below price at the time), arguing the stock discounts an overly optimistic compute-pricing scenario and that credit markets are flagging risks (unit economics, funding costs, in-house hyperscaler capacity) that equities are ignoring. **New firm and first Sell on the Street — not yet in `analysts.json` ratings[] — flagged for operator review.**
+
+## 2026-08-19 — Cantor Fitzgerald — Maintains — $260 (▲131 vs prev $129) — Overweight
+
+**Analyst:** Brett Knoblauch. **Source:** [GuruFocus / TradingView – Cantor Sees More Upside for Nebius Investors](https://www.tradingview.com/news/gurufocus:dfe0205ee094b:0-cantor-sees-more-upside-for-nebius-investors/) · scan 2026-09-19. *(ca. — article undated; tied to PA Gov. Shapiro's Aug 18, 2026 data-center executive order, exact date unverified.)*
+
+Knoblauch reaffirmed Buy and a $260 target after Pennsylvania's tougher data-center permitting order, arguing it formalizes stricter rules rather than an outright ban; flagged Nebius's newly acquired Highridge, PA site as one to watch. **Target has moved substantially from the $129 initiation in `analysts.json` ratings[] — flagged for operator review.**
+
+## 2026-09-09 — Truist — Initiates — $355 (new) — Buy
+
+**Analyst:** Arvind Ramnani. **Source:** [Investing.com – Truist initiates Nebius stock with buy rating on AI infrastructure growth](https://www.investing.com/news/analyst-ratings/truist-initiates-nebius-stock-with-buy-rating-on-ai-infrastructure-growth-93CH-4895826) · scan 2026-09-12.
+
+Truist started coverage at Buy with a Street-high $355 target, citing a ~$2.1T annual cloud-layer revenue opportunity by 2030 and multiple paths to 20–30% adjusted EBIT margins over the medium term. **New firm — not yet in `analysts.json` ratings[] — flagged for operator review.**
+
 ## 2026-08-25 — Goldman Sachs — Maintains — $328 (▲42 vs prev $286) — Buy
 
 **Analyst:** Alexander Duval. **Source:** [TipRanks – Nebius Stock (NBIS) Jumps as Goldman Sets Street-High $328 Price Target on Strong Demand](https://www.tipranks.com/news/nebius-stock-nbis-jumps-as-goldman-sets-street-high-328-price-target-on-strong-demand) · scan 2026-09-09. *(ca. — sources cite Aug 24–25, 2026; exact date unverified.)*
