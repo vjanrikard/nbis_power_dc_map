@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-09-24 — BNP Paribas — Upgrades — $399 (▲139 vs prev $260) — Outperform
+
+**Analyst:** Daniel Wang (per GuruFocus). **Source:** [GuruFocus – NBIS Upgraded by BNP Paribas -- Price Target Raised to $399](https://www.gurufocus.com/news/9095778/nbis-upgraded-by-bnp-paribas-price-target-raised-to-399) · scan 2026-09-29. Also: [Yahoo Finance – Nebius Stock Soars 8% as BNP Paribas Delivers Massive Price Target Hike](https://finance.yahoo.com/markets/stocks/articles/nebius-stock-soars-8-bnp-180550903.html).
+
+BNP Paribas Exane upgraded from Neutral to Outperform and lifted its target 53%, tied to Nebius's Oct 1 price increases (~17–21% on selected NVIDIA GPU instances, ~25% on some AMD EPYC Genoa CPU services) as a sign of tight AI-compute demand. **Rating and target changed vs `analysts.json` ratings[] (Neutral / $255 at 2026-06-02 initiation) — flagged for operator review.**
+
 ## 2026-09-21 — Rothschild & Co Redburn — Initiates — $84 (new) — Sell
 
 **Analyst:** Alex Haissl (per TipRanks; not named in MarketBeat). **Source:** [MarketBeat – Nebius Group (NASDAQ:NBIS) Now Covered by Rothschild & Co Redburn](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-now-covered-by-rothschild-co-redburn-2026-09-21/) · scan 2026-09-22. Also: [Yahoo Finance – CRWV, NBIS Stocks Get 'Sell' Ratings](https://finance.yahoo.com/markets/stocks/articles/crwv-nbis-stocks-sell-ratings-120653484.html).
