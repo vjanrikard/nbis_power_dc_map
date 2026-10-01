@@ -75,9 +75,9 @@
       "note": "ATR 6.92% — high volatility, reduce position size"
     },
     "volSpike": {
-      "value": 0.77,
+      "value": 0.79,
       "status": "neutral",
-      "note": "Volume 0.77x 20-day average — no spike"
+      "note": "Volume 0.79x 20-day average — no spike"
     }
   },
   "score": {
