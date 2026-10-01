@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-09-30 — William Blair — Initiates — no target (new) — Outperform
+
+**Analyst:** Jason Ader. **Source:** [Investing.com – Why is Nebius stock gaining today?](https://www.investing.com/news/stock-market-news/why-is-nebius-stock-gaining-today-93CH-4924889) · scan 2026-10-02. Also: [Seeking Alpha – William Blair starts coverage of CoreWeave, Nebius with Outperform ratings](https://seekingalpha.com/news/4648506-william-blair-starts-coverage-of-coreweave-nebius-with-outperform-ratings).
+
+William Blair started coverage at Outperform (no published price target, per house practice), citing infrastructure scale, software capabilities, major customer relationships and low-cost access to capital, and arguing the valuation does not fully reflect long-term earnings power; NBIS rose ~3% premarket. **New firm — not yet in `analysts.json` ratings[] — flagged for operator review.**
+
 ## 2026-09-24 — BNP Paribas — Upgrades — $399 (▲139 vs prev $260) — Outperform
 
 **Analyst:** Daniel Wang (per GuruFocus). **Source:** [GuruFocus – NBIS Upgraded by BNP Paribas -- Price Target Raised to $399](https://www.gurufocus.com/news/9095778/nbis-upgraded-by-bnp-paribas-price-target-raised-to-399) · scan 2026-09-29. Also: [Yahoo Finance – Nebius Stock Soars 8% as BNP Paribas Delivers Massive Price Target Hike](https://finance.yahoo.com/markets/stocks/articles/nebius-stock-soars-8-bnp-180550903.html).
