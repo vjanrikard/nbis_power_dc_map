@@ -29,6 +29,21 @@
     "lowTarget": 129
   },
   "ratings": [
+    { "date": "2026-09-30", "firm": "William Blair", "analyst": "Jason Ader", "action": "Initiates", "rating": "Outperform", "target": null, "prevTarget": null, "sentiment": "bullish" },
+    { "date": "2026-09-24", "firm": "BNP Paribas", "analyst": "Daniel Wang", "action": "Upgrades", "rating": "Outperform", "target": 399, "prevTarget": 260, "sentiment": "bullish" },
+    { "date": "2026-09-21", "firm": "Rothschild & Co Redburn", "analyst": "Alex Haissl", "action": "Initiates", "rating": "Sell", "target": 84, "prevTarget": null, "sentiment": "bearish" },
+    { "date": "2026-09-09", "firm": "Truist", "analyst": "Arvind Ramnani", "action": "Initiates", "rating": "Buy", "target": 355, "prevTarget": null, "sentiment": "bullish" },
+    { "date": "2026-08-25", "firm": "Goldman Sachs", "analyst": "Alexander Duval", "action": "Maintains", "rating": "Buy", "target": 328, "prevTarget": 286, "sentiment": "bullish" },
+    { "date": "2026-08-19", "firm": "Cantor Fitzgerald", "analyst": "Brett Knoblauch", "action": "Maintains", "rating": "Overweight", "target": 260, "prevTarget": 129, "sentiment": "bullish" },
+    { "date": "2026-08-18", "firm": "DA Davidson", "analyst": "Gil Luria", "action": "Raises", "rating": "Neutral", "target": 250, "prevTarget": 175, "sentiment": "neutral" },
+    { "date": "2026-08-14", "firm": "Citigroup", "analyst": "—", "action": "Maintains", "rating": "Buy", "target": 324, "prevTarget": 278, "sentiment": "bullish" },
+    { "date": "2026-08-13", "firm": "Baird", "analyst": "—", "action": "Raises", "rating": "Outperform", "target": 340, "prevTarget": 250, "sentiment": "bullish" },
+    { "date": "2026-08-13", "firm": "B of A Securities", "analyst": "Tal Liani", "action": "Maintains", "rating": "Buy", "target": 310, "prevTarget": 280, "sentiment": "bullish" },
+    { "date": "2026-08-11", "firm": "DA Davidson", "analyst": "Gil Luria", "action": "Lowers", "rating": "Neutral", "target": 175, "prevTarget": 250, "sentiment": "neutral" },
+    { "date": "2026-08-05", "firm": "Compass Point", "analyst": "—", "action": "Raises", "rating": "Buy", "target": 300, "prevTarget": 260, "sentiment": "bullish" },
+    { "date": "2026-08-05", "firm": "Citigroup", "analyst": "—", "action": "Maintains", "rating": "Buy", "target": 278, "prevTarget": 287, "sentiment": "bullish" },
+    { "date": "2026-08-04", "firm": "Piper Sandler", "analyst": "James Fish", "action": "Initiates", "rating": "Neutral", "target": 224, "prevTarget": null, "sentiment": "neutral" },
+    { "date": "2026-07-20", "firm": "Northland Capital Markets", "analyst": "Nehal Chokshi", "action": "Raises", "rating": "Outperform", "target": 410, "prevTarget": 248, "sentiment": "bullish" },
     {
       "date": "2026-07-21",
       "firm": "Baird",
@@ -300,5 +315,5 @@
       "sentiment": "bullish"
     }
   ],
-  "note": "26 ratings from 12 firms. Northland raise to $248 (2026-05-14, Bitget-verified) approved by RikardV 2026-07-14; the interim $211->$215 step is unsourced, and Chokshi's post-selloff reiteration (ca. 2026-07-13, date unverified) is logged in ANALYST_RATINGS_LOG.md but kept out of ratings[] until dated. Previously: 25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
+  "note": "42 ratings from 17 firms. 15 entries (2026-07-20 → 2026-09-30) synced from ANALYST_RATINGS_LOG.md, approved by RikardV 2026-10-02: new firms William Blair, Rothschild & Co Redburn, Truist, Piper Sandler (Baird already present). Date caveats from the log: Goldman 08-25, Cantor 08-19, Compass Point 08-05 and Northland 07-20 dates are approximate; Cantor prevTarget 129 is the initiation target (intermediate steps unsourced); BNP prevTarget 260 per source (json previously had 255 — interim step unsourced). Compass Point's interim $150→$260 step remains unsourced and is not itemized. Previously: 26 ratings from 12 firms. Northland raise to $248 (2026-05-14, Bitget-verified) approved by RikardV 2026-07-14; the interim $211->$215 step is unsourced, and Chokshi's post-selloff reiteration (ca. 2026-07-13, date unverified) is logged in ANALYST_RATINGS_LOG.md but kept out of ratings[] until dated. Previously: 25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
 }
