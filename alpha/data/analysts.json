@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-01",
+  "lastUpdate": "2026-10-02",
   "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-10-01). Per-firm ratings unchanged — update those manually after analyst actions.",
   "marketData": {
     "asOf": "2026-10-01",
@@ -10,8 +10,8 @@
     "dayLow": 228.47,
     "dayHigh": 239.63,
     "marketCap": 59928239685,
-    "volume": 12244013,
-    "avgDailyVolume": 15523246,
+    "volume": 12271000,
+    "avgDailyVolume": 15524595,
     "yearLow": 73.52,
     "yearHigh": 299.86,
     "currency": "USD",
@@ -29,21 +29,156 @@
     "lowTarget": 129
   },
   "ratings": [
-    { "date": "2026-09-30", "firm": "William Blair", "analyst": "Jason Ader", "action": "Initiates", "rating": "Outperform", "target": null, "prevTarget": null, "sentiment": "bullish" },
-    { "date": "2026-09-24", "firm": "BNP Paribas", "analyst": "Daniel Wang", "action": "Upgrades", "rating": "Outperform", "target": 399, "prevTarget": 260, "sentiment": "bullish" },
-    { "date": "2026-09-21", "firm": "Rothschild & Co Redburn", "analyst": "Alex Haissl", "action": "Initiates", "rating": "Sell", "target": 84, "prevTarget": null, "sentiment": "bearish" },
-    { "date": "2026-09-09", "firm": "Truist", "analyst": "Arvind Ramnani", "action": "Initiates", "rating": "Buy", "target": 355, "prevTarget": null, "sentiment": "bullish" },
-    { "date": "2026-08-25", "firm": "Goldman Sachs", "analyst": "Alexander Duval", "action": "Maintains", "rating": "Buy", "target": 328, "prevTarget": 286, "sentiment": "bullish" },
-    { "date": "2026-08-19", "firm": "Cantor Fitzgerald", "analyst": "Brett Knoblauch", "action": "Maintains", "rating": "Overweight", "target": 260, "prevTarget": 129, "sentiment": "bullish" },
-    { "date": "2026-08-18", "firm": "DA Davidson", "analyst": "Gil Luria", "action": "Raises", "rating": "Neutral", "target": 250, "prevTarget": 175, "sentiment": "neutral" },
-    { "date": "2026-08-14", "firm": "Citigroup", "analyst": "—", "action": "Maintains", "rating": "Buy", "target": 324, "prevTarget": 278, "sentiment": "bullish" },
-    { "date": "2026-08-13", "firm": "Baird", "analyst": "—", "action": "Raises", "rating": "Outperform", "target": 340, "prevTarget": 250, "sentiment": "bullish" },
-    { "date": "2026-08-13", "firm": "B of A Securities", "analyst": "Tal Liani", "action": "Maintains", "rating": "Buy", "target": 310, "prevTarget": 280, "sentiment": "bullish" },
-    { "date": "2026-08-11", "firm": "DA Davidson", "analyst": "Gil Luria", "action": "Lowers", "rating": "Neutral", "target": 175, "prevTarget": 250, "sentiment": "neutral" },
-    { "date": "2026-08-05", "firm": "Compass Point", "analyst": "—", "action": "Raises", "rating": "Buy", "target": 300, "prevTarget": 260, "sentiment": "bullish" },
-    { "date": "2026-08-05", "firm": "Citigroup", "analyst": "—", "action": "Maintains", "rating": "Buy", "target": 278, "prevTarget": 287, "sentiment": "bullish" },
-    { "date": "2026-08-04", "firm": "Piper Sandler", "analyst": "James Fish", "action": "Initiates", "rating": "Neutral", "target": 224, "prevTarget": null, "sentiment": "neutral" },
-    { "date": "2026-07-20", "firm": "Northland Capital Markets", "analyst": "Nehal Chokshi", "action": "Raises", "rating": "Outperform", "target": 410, "prevTarget": 248, "sentiment": "bullish" },
+    {
+      "date": "2026-09-30",
+      "firm": "William Blair",
+      "analyst": "Jason Ader",
+      "action": "Initiates",
+      "rating": "Outperform",
+      "target": null,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-09-24",
+      "firm": "BNP Paribas",
+      "analyst": "Daniel Wang",
+      "action": "Upgrades",
+      "rating": "Outperform",
+      "target": 399,
+      "prevTarget": 260,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-09-21",
+      "firm": "Rothschild & Co Redburn",
+      "analyst": "Alex Haissl",
+      "action": "Initiates",
+      "rating": "Sell",
+      "target": 84,
+      "prevTarget": null,
+      "sentiment": "bearish"
+    },
+    {
+      "date": "2026-09-09",
+      "firm": "Truist",
+      "analyst": "Arvind Ramnani",
+      "action": "Initiates",
+      "rating": "Buy",
+      "target": 355,
+      "prevTarget": null,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-25",
+      "firm": "Goldman Sachs",
+      "analyst": "Alexander Duval",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 328,
+      "prevTarget": 286,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-19",
+      "firm": "Cantor Fitzgerald",
+      "analyst": "Brett Knoblauch",
+      "action": "Maintains",
+      "rating": "Overweight",
+      "target": 260,
+      "prevTarget": 129,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-18",
+      "firm": "DA Davidson",
+      "analyst": "Gil Luria",
+      "action": "Raises",
+      "rating": "Neutral",
+      "target": 250,
+      "prevTarget": 175,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-08-14",
+      "firm": "Citigroup",
+      "analyst": "—",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 324,
+      "prevTarget": 278,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-13",
+      "firm": "Baird",
+      "analyst": "—",
+      "action": "Raises",
+      "rating": "Outperform",
+      "target": 340,
+      "prevTarget": 250,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-13",
+      "firm": "B of A Securities",
+      "analyst": "Tal Liani",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 310,
+      "prevTarget": 280,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-11",
+      "firm": "DA Davidson",
+      "analyst": "Gil Luria",
+      "action": "Lowers",
+      "rating": "Neutral",
+      "target": 175,
+      "prevTarget": 250,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-08-05",
+      "firm": "Compass Point",
+      "analyst": "—",
+      "action": "Raises",
+      "rating": "Buy",
+      "target": 300,
+      "prevTarget": 260,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-05",
+      "firm": "Citigroup",
+      "analyst": "—",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 278,
+      "prevTarget": 287,
+      "sentiment": "bullish"
+    },
+    {
+      "date": "2026-08-04",
+      "firm": "Piper Sandler",
+      "analyst": "James Fish",
+      "action": "Initiates",
+      "rating": "Neutral",
+      "target": 224,
+      "prevTarget": null,
+      "sentiment": "neutral"
+    },
+    {
+      "date": "2026-07-20",
+      "firm": "Northland Capital Markets",
+      "analyst": "Nehal Chokshi",
+      "action": "Raises",
+      "rating": "Outperform",
+      "target": 410,
+      "prevTarget": 248,
+      "sentiment": "bullish"
+    },
     {
       "date": "2026-07-21",
       "firm": "Baird",
