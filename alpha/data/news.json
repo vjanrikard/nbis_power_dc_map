@@ -1,6 +1,15 @@
 {
-  "asOf": "2026-07-30",
+  "asOf": "2026-09-08",
   "entries": [
+    {
+      "date": "2026-09-08",
+      "headline": "Palantir names Nebius its preferred sovereign AI infrastructure partner — compute/inference moves inside Palantir's enterprise perimeter",
+      "category": "Partnership",
+      "body": "Palantir Technologies (PLTR) and Nebius Group (NBIS) announced a strategic partnership on September 8, 2026 (Nebius Form 6-K, Exhibit 99.1; Nebius newsroom, Miami/Amsterdam dateline). Palantir named Nebius its preferred sovereign AI infrastructure partner: after an integration period, Nebius's AI-native compute and inference endpoints will sit inside Palantir's enterprise/commercial security perimeter, letting eligible Palantir customers run open models and fine-tune on proprietary data while retaining control over compute, data and models. Basis: shared thesis that open models continually adapted on a customer's own looped data produce better domain-specific intelligence with stronger security than closed alternatives. Alex Karp (Palantir CEO) framed it as underpinning the data sovereignty regulated/government customers are demanding. No dollar terms, revenue guide, or contract length disclosed in the release — this is a GTM/product-integration partnership announcement, not a priced contract. Market reaction: NBIS +2.6% pre-market same day (TradingKey), broadly in line across sources; move was NBIS-specific versus a roughly flat Nasdaq futures tape. Second, larger-scale Palantir-linked exposure alongside the existing ZETA position (June 2026 Zeta/Foundry alliance) — same counterparty relationship now touches two separate portfolio positions from different angles (adtech data vs. compute infrastructure).",
+      "source": "https://nebius.com/newsroom/palantir-and-nebius-partner-to-deliver-a-complete-sovereign-ai-stack-to-palantir-customers",
+      "sourceLabel": "Nebius newsroom / SEC 6-K Exhibit 99.1",
+      "impact": "bull"
+    },
     {
       "date": "2026-07-30",
       "headline": "Aschenbrenner hedge fund AI losses (CNBC) — forced-selling a likely driver of July NBIS $250→$148 selloff; bottom formation confirmed",
