@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-02",
+  "lastUpdate": "2026-10-05",
   "lastUpdateSource": "alpha/scan/update_technicals.js — Yahoo Finance daily OHLCV (489 bars, close 2026-10-02) + 5-min intraday VWAP. Pine-equivalent formulas (Wilder smoothing).",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
