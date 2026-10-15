@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-10-08 — Rosenblatt Securities — Initiates — $304 (new) — Buy
+
+**Analyst:** John McPeake (per StockAnalysis). **Source:** [GuruFocus – NBIS Initiated Coverage by Rosenblatt -- Rating Set to Buy](https://www.gurufocus.com/news/9115347/nbis-initiated-coverage-by-rosenblatt-rating-set-to-buy) · scan 2026-10-15. Also: [TIKR – Rosenblatt Launches Nebius Stock Coverage With Buy Rating and Bold Price Target](https://www.tikr.com/blog/rosenblatt-initiates-nebius-coverage-buy-rating-price-target), [MarketBeat alert 2026-10-09](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-stock-rating-upgraded-by-rosenblatt-securities-2026-10-09/). *(ca. — sources cite Oct 7–9, 2026; exact date unverified.)*
+
+Rosenblatt started coverage at Buy with a $304 target (~38% upside vs ~$220), from a 10-year DCF (12% discount rate, 12x terminal FCF), projecting ~98% annual revenue growth FY26–FY30 and ranking Nebius near the top of the neocloud group alongside CoreWeave; flags that further debt/equity raises will be needed. **New firm — not yet in `analysts.json` ratings[] — flagged for operator review.**
+
 ## 2026-09-30 — William Blair — Initiates — no target (new) — Outperform
 
 **Analyst:** Jason Ader. **Source:** [Investing.com – Why is Nebius stock gaining today?](https://www.investing.com/news/stock-market-news/why-is-nebius-stock-gaining-today-93CH-4924889) · scan 2026-10-02. Also: [Seeking Alpha – William Blair starts coverage of CoreWeave, Nebius with Outperform ratings](https://seekingalpha.com/news/4648506-william-blair-starts-coverage-of-coreweave-nebius-with-outperform-ratings).
