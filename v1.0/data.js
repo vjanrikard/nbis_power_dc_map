@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════
 // Nebius Power DC Map — Data v1.0
-// Updated: 2026-08-05
-// 21 sites, sorted by MW descending (largest first)
+// Updated: 2026-10-19
+// 20 sites, sorted by MW descending (largest first)
 // Regions: Americas / Europe / Middle East / APAC
 // Each site: id, name, lat, lng, status, mw, region, chips,
 //            partner, delivery, online, note, desc, risk, riskReason, sources
@@ -30,18 +30,31 @@ const REGION_CONFIG = {
 
 // Sites sorted by MW descending. id is preserved (not renumbered).
 const SITES = [
+  // [2026-10-19] Updated note/desc/riskReason/sources. Verified sources (publish date):
+  //   KSHB Oct 2026 + FOX4 Oct 2026: TRO + motion-to-dismiss hearing Oct 22 2026 9 a.m., Eastern Jackson County Courthouse
+  //   City of Independence Nebius FAQ (accessed 2026-10-19): Blue Valley/IPP initial phase 200 MW + 600 MW later, >=800 MW needed
+  //   KC Star via GovTech 2026-01-28: Blue Valley reopens Oct 2027; NextEra ~$10.7M Jun26-May27, Evergy ~$5.6M Jun-Nov27
+  //   KCUR 2026-04-09 (two at-large members ousted), KSHB 2026-09-01 (Perkins recalled)
+  //   Fjord Journal (reviewed 2026-10-14, SECONDARY): city Dec 8 2025 presentation 225 MW initial generator estimate; Jul 6 moratorium excludes Nebius
   { id: 2, name: "Independence, MO", lat: 39.0911, lng: -94.4155,
     status: "construction", mw: 1200, region: "Americas",
     chips: ["NVIDIA GB200", "GB300"], partner: "Independence Power Partners (IPP)",
     delivery: "2028-Q1", online: "2028 (Phase 1)",
-    note: "Eastgate 398-acre; 250 MW Oct 2027 → 1.1 GW Dec 2029; city moratorium Jul 2026 (existing build unaffected)",
-    desc: "Largest US AI factory. Council approval Mar 3 2026, groundbreaking May 12 2026. 398-acre Eastgate Commerce Center, 10 buildings. IPP power plant: 250 MW Oct 2027 → 1.1 GW Dec 2029. Jul 7 2026: City Council voted 7-0 for a 6-month moratorium on NEW data center approvals — Nebius construction continues unaffected, but zoning reclassification (>2.5 MW = special use permit) is under review.",
+    note: "Eastgate 398-acre; 250 MW Oct 2027 → 1.1 GW Dec 2029; city moratorium Jul 2026 (Nebius excluded); GUARD Alliance TRO hearing Oct 22 2026 9 a.m. CT",
+    desc: "Largest US AI factory. Council approval Mar 3 2026, groundbreaking May 12 2026. 398-acre Eastgate Commerce Center, 10 buildings. IPP power plant: 250 MW Oct 2027 → 1.1 GW Dec 2029. Jul 7 2026: City Council voted 7-0 for a 6-month moratorium on NEW data center approvals — Nebius construction continues unaffected, but zoning reclassification (>2.5 MW = special use permit) is under review. Power (city FAQ): IPP Blue Valley plant initial phase 200 MW, +600 MW when fully operational (>=800 MW needed; city Dec 8 2025 presentation cited a 225 MW initial generator estimate - secondary source). KC Star (Jan 28 2026): Blue Valley reopens Oct 2027; bridge power via city pass-through contracts reimbursed by Nebius - NextEra ~$10.7M (Jun 2026-May 2027) and Evergy ~$5.6M (Jun-Nov 2027). The 180-day moratorium (from Jul 6 2026, i.e. to ~Jan 2 2027) explicitly excludes Nebius. Politics: Apr 7 2026 voters ousted two at-large council members who backed the tax abatement (McCandless, Fears); Sep 1 2026 District 1 Councilman John Perkins was recalled (~68%). Legal: Independence GUARD Alliance suit (filed Aug 2026) vs the city, Missouri ADC Holdings (Nebius) and IPP; hearing on TRO + motion to dismiss Oct 22 2026, 9 a.m., Eastern Jackson County Courthouse (a TRO could carry a bond).",
     risk: "HIGH",
-    riskReason: "Largest single CapEx commitment ($10.6B/yr 2028-2030); greenfield IPP power plant scaling 250 MW → 1.1 GW from scratch by 2029. Rising local opposition: Jul 2026 city moratorium on new DC approvals, Independence Guard Alliance threatening legal action — Vineland-style community-risk pattern.",
+    riskReason: "Largest single CapEx commitment ($10.6B/yr 2028-2030); greenfield IPP power plant scaling 250 MW → 1.1 GW from scratch by 2029. Rising local opposition: Jul 2026 city moratorium on new DC approvals, Independence Guard Alliance threatening legal action — Vineland-style community-risk pattern. Oct 2026: GUARD Alliance TRO hearing Oct 22 could pause construction; 2 pro-abatement council members ousted (Apr 2026) + 1 recalled (Sep 2026).",
     sources: [
       "https://nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory",
       "https://www.datacenterdynamics.com/en/news/nebius-plans-800mw-data-center-campus-in-kansas-city-missouri/",
-      "https://www.kctv5.com/2026/07/08/independence-hits-pause-data-centers-nebius-construction-moves-forward/"
+      "https://www.kctv5.com/2026/07/08/independence-hits-pause-data-centers-nebius-construction-moves-forward/",
+      "https://www.kshb.com/news/local-news/hearing-set-for-october-22-on-temporary-restraining-order-for-nebius-data-center-project",
+      "https://fox4kc.com/news/judge-could-order-nebius-to-halt-data-center-construction-in-independence/",
+      "https://www.independencemo.gov/community-faqs/nebius-data-center-faqs",
+      "https://www.govtech.com/artificial-intelligence/independence-mo-to-reopen-old-power-plant-for-ai-data-center",
+      "https://www.kcur.org/politics-elections-and-government/2026-04-09/after-these-independence-councilmembers-supported-an-ai-data-center-voters-ousted-them",
+      "https://www.kshb.com/news/local-news/independence-mo-councilman-recalled-by-voters-in-his-district-after-his-vote-for-data-center-tax-incentives",
+      "https://fjordjournal.com/projects/nebius-independence/"
     ]
   },
   { id: 20, name: "Pennsylvania, USA", lat: 40.2732, lng: -76.8867,
@@ -67,20 +80,33 @@ const SITES = [
     riskReason: "On-track per Mar 2026 announcement; strong Finnish industrial track record; staged delivery from 2027.",
     sources: ["https://nebius.com/newsroom/nebius-to-construct-310-mw-ai-factory-in-finland"]
   },
+  // [2026-10-19] Updated note/desc/riskReason/sources. Verified sources (publish date):
+  //   Vineland Planning Board minutes 2026-08-17 + WHYY/nj.com/NBC10 2026-08-18: amended Phase 2 site plan (Bloom fuel cells, LNG) approved 8-1
+  //   NJDEP AONOCAPA + Governor statement 2026-09-22, ENR 2026-09-23: $1,072,000 penalty, 62 unpermitted CAT G3516H gas generators (~123 MW)
+  //   Guardian 2026-08-27: NJDEP "has issued no permits, nor are any permit applications under review for power generators"
   { id: 1, name: "Vineland, NJ", lat: 39.4864, lng: -75.0260,
-    status: "construction", mw: 400, region: "Americas",
+    // [2026-10-19] mw 400 -> 300: site designed for ~300 MW per Vineland Planning Board minutes 2026-08-17 (applicant testimony), WHYY 2026-08-18, nj.com 2026-08-18
+    status: "construction", mw: 300, region: "Americas",
     chips: ["NVIDIA Blackwell", "B200"], partner: "DataOne / Microsoft",
     delivery: "2026-11", online: "Nov 2026 (full)",
-    note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target; NJDEP air permit still pending (deficiency notices, single-source review)",
-    desc: "First major US AI data center. ~2.6M sqft. Built by DataOne with Nebius-designed infrastructure. Phased in 100 MW modules. PILOT ordinance approved Jan 27 2026. $17.4B Microsoft contract anchor through 2031. Construction began early 2025 ahead of final NJDEP air permits; DataOne holds firm on Nov 2026 phase-1 delivery, while nebius.com/vinelandnj cites 2027 for full operation.",
+    note: "$17.4B MSFT anchor; phased 100 MW; Nov 2026 target; Phase 2 (Bloom fuel cells + LNG) site plan approved 8-1 Aug 17 2026; NJDEP $1.07M fine Sep 22 2026 for 62 unpermitted gas generators, permit-or-cease deadline ~early Nov 2026",
+    desc: "First major US AI data center. ~2.6M sqft. Built by DataOne with Nebius-designed infrastructure. Phased in 100 MW modules. PILOT ordinance approved Jan 27 2026. $17.4B Microsoft contract anchor through 2031. Construction began early 2025 ahead of final NJDEP air permits; DataOne holds firm on Nov 2026 phase-1 delivery, while nebius.com/vinelandnj cites 2027 for full operation. Aug 17 2026: Vineland Planning Board approved DataOne's amended Phase 2 site plan 8-1 (Bloom fuel-cell power areas, LNG tank + filling station, water treatment; per NBC10 the Phase 2 building was approved earlier and the vote covered the power-source change). Sep 22 2026: NJDEP assessed a $1.07M penalty (largest ever vs a NJ data center) for installing and operating 62 Caterpillar G3516H natural-gas generators (~123 MW) without air permits, found at a Jul 29 inspection; order requires permit applications within 45 days of receipt (~early Nov 2026) or the generators must stop. DataOne disputes the finding but says it will apply.",
     risk: "CRITICAL",
-    riskReason: "Single-customer anchor concentration ($17.4B MSFT through 2031). NJDEP air permit still pending as of Jul 2026: technical deficiency notices probe common control with neighboring Corning plant — single-source aggregation would trigger federal (EPA) permitting and public hearings, potentially adding 1-2 years. Ongoing NJ EJ Law community opposition (Sierra Club, Sustain South Jersey, local farmers, Feb 2026).",
+    riskReason: "Single-customer anchor concentration ($17.4B MSFT through 2031). NJDEP air permit still pending as of Jul 2026: technical deficiency notices probe common control with neighboring Corning plant — single-source aggregation would trigger federal (EPA) permitting and public hearings, potentially adding 1-2 years. Ongoing NJ EJ Law community opposition (Sierra Club, Sustain South Jersey, local farmers, Feb 2026). Sep 22 2026: NJDEP $1.07M penalty over 62 unpermitted gas generators (~123 MW) with a 45-day permit-or-cease order (~early Nov 2026); NJDEP said in Aug 2026 that no generator permits were issued or under review.",
     sources: [
       "https://northwiseproject.com/nbis-stock-vineland-nj-data-center/",
       "https://cleanview.co/data-centers/new-jersey/798/nebius--dataone-vineland-phase-1",
       "https://whyy.org/articles/data-center-artificial-intelligence-vineland-new-jersey/",
       "https://www.sierraclub.org/new-jersey/blog/2026/02/sierra-club-sustain-south-jersey-and-local-farmers-oppose-massive-vineland",
-      "https://www.aiwire.net/2025/03/05/nebius-accelerates-ai-cloud-growth-with-us-and-european-expansion/"
+      "https://www.aiwire.net/2025/03/05/nebius-accelerates-ai-cloud-growth-with-us-and-european-expansion/",
+      "https://www.vinelandcity.org/Archive/Planning%20Board/Minutes/2026/Minutes%208-17-26%20%20%28Special%20Meeting%29.pdf",
+      "https://whyy.org/articles/vineland-planning-board-approves-data-center-plan/",
+      "https://www.nj.com/business/2026/08/you-sold-us-out-nj-town-approves-next-phase-of-massive-ai-data-center-as-residents-erupt.html",
+      "https://www.nbcphiladelphia.com/news/local/vineland-planning-board-votes-to-approve-phase-2-of-controversial-data-center/4449653/",
+      "https://dep.nj.gov/wp-content/uploads/newsrel/2026/dataone75894-aonocapa.pdf",
+      "https://www.nj.gov/governor/news/2026/20260922a.shtml",
+      "https://www.enr.com/articles/63694-nj-fines-data-center-1m-over-123-mw-of-unpermitted-generation",
+      "https://www.theguardian.com/environment/2026/aug/27/new-jersey-vineland-datacenter-permits"
     ]
   },
   { id: 4, name: "Birmingham, AL (BHM01)", lat: 33.5186, lng: -86.8104,
@@ -324,6 +350,15 @@ const EVENTS = [
     title: "Nebius Launches Asset-Light AI DC Partnership Model", desc: "New business model: infrastructure partners finance, own, and operate AI data centers running Nebius's full-stack AI cloud inside their own facilities. Enables faster global scaling without full CAPEX burden. Market reaction negative: NBIS -7.8% on the day on margin/control concerns. Long-term potentially bullish for global footprint growth.", tags: ["Strategic Pivot", "Business Model"] },
   { date: "Jul 17, 2026", label: "$775M senior secured debt", color: "#22c55e", pos: "bot",
     title: "First Senior Secured Debt Deal — $775M, No Dilution", desc: "Nebius closed its first-ever senior secured debt financing (~$775M), backed by deployed GPU infrastructure + contracted cash flows from an investment-grade customer (MSFT tranche delivered concurrently). Facility + customer cash flows cover >100% of CAPEX for the underlying GPU deployment; since the MSFT contract is now in servicing phase, capital is redirected to AI-native/enterprise capacity. Stock +8% on the news, reversing the Jul 16 -13.9% CAPEX-anxiety selloff. Combined with asset-light Jul 15, two fresh non-dilutive financing tracks in one week.", tags: ["Financing", "De-Risk"] },
+  // [2026-10-19] Added 4 verified events (sources: SEC 6-K 2026-08-12, Vineland PB minutes 2026-08-17, NJDEP 2026-09-22, KSHB/FOX4 Oct 2026)
+  { date: "Aug 12, 2026", label: "Q2 2026: ARR $3.0B, 5 GW target", color: "#a78bfa", pos: "top",
+    title: "Q2 2026 Earnings - ARR $3.0B", desc: "Revenue $582.3M (+454% YoY), ARR $3.0B, adj. EBITDA $236.2M (~41% margin). Year-end contracted power target raised to 5 GW; plans to deploy >1 GW/yr from 2027. FY2026 guidance reaffirmed: ARR $7-9B, revenue $3.0-3.4B, ~40% adj. EBITDA margin, capex $20-25B.", tags: ["Earnings"] },
+  { date: "Aug 17, 2026", label: "Vineland Phase 2 approved 8-1", color: "#f59e0b", pos: "bot",
+    title: "Vineland NJ: Amended Phase 2 Site Plan Approved", desc: "Vineland Planning Board voted 8-1 to approve DataOne's amended Phase 2 site plan: Bloom fuel-cell power areas, LNG tank + filling station, water treatment plant. Strong public opposition at the hearing.", tags: ["NJ", "Power"] },
+  { date: "Sep 22, 2026", label: "NJDEP $1.07M fine (Vineland)", color: "#ef4444", pos: "top",
+    title: "NJDEP Fines DataOne $1.07M", desc: "Largest NJ data center penalty: 62 Caterpillar natural-gas generators (~123 MW) installed and operated without air permits (Jul 29 inspection). 45 days from receipt to apply for permits or stop the generators (~early Nov 2026). DataOne disputes but will apply.", tags: ["Risk", "NJ"] },
+  { date: "Oct 22, 2026", label: "Independence TRO hearing", color: "#ef4444", pos: "bot",
+    title: "Independence MO: TRO Hearing", desc: "9 a.m., Eastern Jackson County Courthouse: hearing on Independence GUARD Alliance motion for a temporary restraining order to halt Nebius construction, plus defendants' motion to dismiss. No halt ordered as of Oct 19 2026.", tags: ["Risk", "Missouri"] },
   { date: "2027 Target", label: "Lappeenranta + IPP 250 MW", color: "#f59e0b", pos: "bot",
     title: "2027: Lappeenranta P1 + IPP 250 MW", desc: "Lappeenranta Phase 1 live. IPP 250 MW phase by Oct 2027. Béthune ramps to full 240 MW EOY 2027.", tags: ["Target", "2027"] },
   { date: "2028 Target", label: "Independence MO P1", color: "#a78bfa", pos: "top",
@@ -334,7 +369,7 @@ const EVENTS = [
     title: "2030: Independence Fully Operational", desc: "Independence MO 1.2 GW fully operational. End of $10.6B/yr CapEx ramp.", tags: ["Target", "2030"] }
 ];
 
-const LAST_UPDATE = "2026-08-05";
+const LAST_UPDATE = "2026-10-19";
 
 const NEBIUS_EARNINGS_Q1_2026 = {
   contractedPowerGW: 4.0,
@@ -355,4 +390,30 @@ const NEBIUS_EARNINGS_Q1_2026 = {
   marketCapJul2026: "~$55B (peaked ~$61B Jul 1, before Meta Compute selloff)",
   analystConsensusJul2026: "Buy, 12 analysts, 79% buy, avg target ~$232-237 (range $129-$291), source TipRanks 2026-07-08"
 };
-```
+
+// [2026-10-19] Q2 2026 results (quarter ended 2026-06-30), reported 2026-08-12. Verified sources:
+//   SEC 6-K ex99-1 (2026-08-12): revenue, segment revenue, adj. EBITDA, cash
+//   SEC 6-K ex99-2 Q2 shareholder letter (2026-08-12): ARR $3.0B, 5 GW contracted target, >1 GW/yr from 2027
+//   Motley Fool transcript / MarketBeat call highlights (Aug 2026): FY2026 guidance reaffirmed
+const NEBIUS_EARNINGS_Q2_2026 = {
+  reportDate: "2026-08-12",
+  revenueQ2: "$582.3M (+454% YoY)",
+  aiCloudRevenueQ2: "$574.9M (+514% YoY)",
+  arrJun30: "$3.0B",
+  adjEbitdaQ2: "$236.2M (~41% margin)",
+  aiCloudAdjEbitdaQ2: "$285.7M (~49.7% margin)",
+  contractedGuidanceGW: 5.0,
+  contractedGuidanceNote: "year-end 2026 contracted power target raised to 5 GW (from >=4 GW)",
+  deploymentPlan: ">1 GW per year starting 2027",
+  arrGuidanceEnd2026: "$7 - 9B (reaffirmed)",
+  revenueGuidance2026: "$3.0 - 3.4B (reaffirmed)",
+  ebitdaMarginTarget: "~40% (FY2026, reaffirmed)",
+  capExPlan2026: "$20 - 25B (reaffirmed)",
+  cashJun30: "$8.04B",
+  sources: [
+    "https://www.sec.gov/Archives/edgar/data/1513845/000110465926094844/nbis-20260812xex99d1.htm",
+    "https://www.sec.gov/Archives/edgar/data/1513845/000110465926094568/tm2622968d1_ex99-2.htm",
+    "https://www.fool.com/earnings/call-transcripts/2026/08/19/nebius-nbis-q2-2026-earnings-call-transcript/",
+    "https://www.marketbeat.com/instant-alerts/nebius-group-q2-earnings-call-highlights-2026-08-12/"
+  ]
+};

@@ -111,7 +111,10 @@ function renderCapacityRollup() {
     .map(r => ({ "Americas": "AM", "Europe": "EU", "Middle East": "ME", "APAC": "APAC" }[r] || r))
     .join(" / ");
 
-  const e = (typeof NEBIUS_EARNINGS_Q1_2026 !== "undefined") ? NEBIUS_EARNINGS_Q1_2026 : {};
+  // [2026-10-19] Prefer Q2 2026 figures; fall back to Q1 for fields Q2 does not carry (e.g. connected target)
+  const e = Object.assign({},
+    (typeof NEBIUS_EARNINGS_Q1_2026 !== "undefined") ? NEBIUS_EARNINGS_Q1_2026 : {},
+    (typeof NEBIUS_EARNINGS_Q2_2026 !== "undefined") ? NEBIUS_EARNINGS_Q2_2026 : {});
 
   const stats = [
     { label: "Sites tracked",         value: SITES.length,                       detail: "across " + regionShort },
@@ -120,7 +123,7 @@ function renderCapacityRollup() {
     { label: "Under construction",    value: con + " MW",                        detail: conCount + " sites" },
     { label: "Planned / permitting",  value: plan + " MW",                       detail: planCount + " sites" },
     { label: "2026 connected target", value: e.connectedTargetEnd2026 || "—",    detail: e.connectedTargetEnd2026Note || "" },
-    { label: "Contracted (Q1 2026)",  value: ">" + (e.contractedGuidanceGW || 3) + " GW", detail: e.contractedQ1Note || "" }
+    { label: "Contracted target (Q2 2026)", value: (e.contractedGuidanceGW || 3) + " GW", detail: e.contractedGuidanceNote || e.contractedQ1Note || "" }
   ];
 
   document.getElementById("capacity-rollup").innerHTML = stats.map(s => `
