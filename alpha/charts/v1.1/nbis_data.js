@@ -67,7 +67,7 @@ window.NBIS_DATA = {
   /* Milepæler — vises som nummererte merker + i event-listen */
   events: [
     { d: '2024-10-21', t: 'Relisting på Nasdaq etter Yandex-splitten' },
-    { d: '2025-02-10', t: 'NJ Vineland: miljøtillatelse blokkert (EJ Law)' },
+    { d: '2025-02-10', t: 'NJ Vineland: tillatelsesprosess (EJ Law) – forsinkelse' },
     { d: '2025-09-08', t: 'Microsoft-avtale $17.4B (Vineland-kapasitet)' },
     { d: '2026-02-20', t: 'Q4 2025-rapport: EBITDA-margin 24 %' },
     { d: '2026-03-05', t: 'NVIDIA investerer $2B i Nebius' },
@@ -75,5 +75,7 @@ window.NBIS_DATA = {
     { d: '2026-05-06', t: 'Kjøper Eigen AI — Token Factory styrkes' },
     { d: '2026-05-12', t: 'Ny topp $197.89 · AI Cloud 3.5 lansert' },
     { d: '2026-05-20', t: '$4.3B konvertibelt obligasjonslån lukket' }
+    // Merk: kursdata hentes nå fra alpha/data/nbis_bars.json (daglig). anchors/pinned/settings
+    // brukes kun som reserve hvis den filen mangler.
   ]
 };

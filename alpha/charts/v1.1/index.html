@@ -577,6 +577,15 @@ async function fetchAlphaVantage(key){
     return out.length>30?{bars:out,src:'Alpha Vantage (live)'}:null;
   }catch(_){return null}
 }
+/* Daily file written by alpha/scan/update_technicals.js (same origin, no CORS) */
+async function fetchBarsFile(){
+  try{const res=await fetchT('../../data/nbis_bars.json?t='+Date.now(),10000);if(!res.ok)return null;
+    const j=await res.json();if(!j||!Array.isArray(j.bars)||j.bars.length<30)return null;
+    const out=j.bars.filter(b=>b&&b.d&&b.c!=null).map(b=>({d:new Date(b.d+'T16:00:00'),
+      o:r2(+(b.o??b.c)),h:r2(+b.h),l:r2(+b.l),c:r2(+b.c),v:+b.v||0}));
+    return out.length>30?{bars:out,src:(j.lastBarComplete===false?'Intraday ':'Daily close ')+j.asOf+' (Yahoo, update_technicals.js)',asOf:j.asOf}:null;
+  }catch(_){return null}
+}
 async function liveUpdate(silent){
   const btn=document.getElementById('btnLive');btn.disabled=true;
   if(!silent)setStatus('Henter live-data …');
@@ -584,9 +593,11 @@ async function liveUpdate(silent){
   let got=null;
   if(key)got=await fetchAlphaVantage(key);
   if(!got)got=await fetchYahoo();
+  if(!got&&!silent&&!state.fromFile)got=await fetchBarsFile();
   btn.disabled=false;
   if(got){state.bars=got.bars;state.src='v1.1 · '+got.src;recompute();renderAll();
     setStatus('✓ Oppdatert '+new Date().toLocaleTimeString('nb-NO',{hour:'2-digit',minute:'2-digit'})+' — '+got.src,'ok')}
+  else if(state.fromFile){if(!silent)setStatus('Live-henting feilet (nett/CORS) - viser daglig fil (close '+state.fromFile+').','err')}
   else setStatus('Live-henting feilet (nett/CORS) — viser rekonstruerte data. Prøv igjen, eller legg inn Alpha Vantage-nøkkel nederst.','err');
 }
 document.getElementById('btnLive').addEventListener('click',()=>liveUpdate(false));
@@ -600,12 +611,18 @@ document.getElementById('avSave').addEventListener('click',()=>{
   else{localStorage.removeItem('nbis_av_key');avState.textContent='fjernet'}});
 
 /* ═══════════════ Init ═══════════════ */
-if(!DATA){
-  setStatus('⚠ Fant ikke nbis_data.js — filen må ligge i samme mappe som denne HTML-filen.','err');
-}else{
-  state.bars=genData();recompute();renderAll();
-  liveUpdate(true);  // hent ekte kurs automatisk ved lasting
-}
+(async()=>{
+  const file=await fetchBarsFile();
+  if(file){state.bars=file.bars;state.src='v1.1 \u00b7 '+file.src;state.fromFile=file.asOf;recompute();renderAll();
+    setStatus('Ekte daglige kurser, siste close '+file.asOf+' (nbis_bars.json).','ok');
+    if(localStorage.getItem('nbis_av_key'))liveUpdate(true);  // valgfri live-oppdatering
+  }else if(!DATA){
+    setStatus('Fant verken nbis_bars.json eller nbis_data.js.','err');
+  }else{
+    state.bars=genData();recompute();renderAll();
+    liveUpdate(true);  // fallback: rekonstruerte data, pr\u00f8v live
+  }
+})();
 </script>
 </body>
 </html>
