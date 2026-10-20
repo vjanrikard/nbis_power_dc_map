@@ -30,6 +30,28 @@
   },
   "ratings": [
     {
+      "date": "2026-10-18",
+      "firm": "Truist",
+      "analyst": "Arvind Ramnani",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 355,
+      "prevTarget": 355,
+      "sentiment": "bullish",
+      "source": "https://www.investing.com/news/stock-market-news/buy-these-2-stocks-amid-ai-financing-concerns-analyst-4955896 ; https://finance.yahoo.com/technology/ai/articles/nebius-shares-rise-3-6-102148015.html"
+    },
+    {
+      "date": "2026-10-07",
+      "firm": "Rosenblatt",
+      "analyst": "John McPeake",
+      "action": "Initiates",
+      "rating": "Buy",
+      "target": 304,
+      "prevTarget": null,
+      "sentiment": "bullish",
+      "source": "https://www.tradingview.com/news/tradingview:bfa96c51f37ca:0-rosenblatt-initiates-coverage-of-nebius-group-with-buy-rating-304-price-target/ ; https://finance.yahoo.com/markets/stocks/articles/rosenblatt-initiates-nebius-buy-304-152433026.html"
+    },
+    {
       "date": "2026-09-30",
       "firm": "William Blair",
       "analyst": "Jason Ader",
