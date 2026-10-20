@@ -1,13 +1,13 @@
 {
-  "lastUpdate": "2026-10-19",
+  "lastUpdate": "2026-10-20",
   "lastUpdateSource": "alpha/scan/update_technicals.js — Yahoo Finance daily OHLCV (500 bars, close 2026-10-19) + 5-min intraday VWAP. Pine-equivalent formulas (Wilder smoothing).",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
   "price": {
-    "current": 170.91,
+    "current": 170.24,
     "dayLow": 166.59,
     "dayHigh": 176.69,
-    "previousMove": "prev close $165.47 (2026-10-16) -> close $170.91 (+3.29%) on 2026-10-19",
+    "previousMove": "prev close $165.47 (2026-10-16) -> close $170.24 (+2.88%) on 2026-10-19",
     "yearHigh": 299.86,
     "yearLow": 73.52,
     "asOf": "2026-10-19",
@@ -15,24 +15,24 @@
   },
   "snapshot": {
     "rsi14": {
-      "value": 33.37,
+      "value": 33.04,
       "status": "neutral",
       "note": "Neutral zone (30-70), below 50 midline"
     },
     "stoch": {
-      "value": 12.68,
+      "value": 12.43,
       "status": "bull",
-      "note": "%K 12.68 / %D 13.24 (14,3,3) — OVERSOLD, watch for cross up"
+      "note": "%K 12.43 / %D 13.16 (14,3,3) — OVERSOLD, watch for cross up"
     },
     "williamsR": {
-      "value": -91.67,
+      "value": -92.41,
       "status": "bull",
       "note": "Below -80 = OVERSOLD — mean-reversion buy zone"
     },
     "macd": {
-      "value": -11.88,
+      "value": -11.94,
       "status": "bear",
-      "note": "MACD -11.88 vs signal -4.18 — bearish cross active"
+      "note": "MACD -11.94 vs signal -4.19 — bearish cross active"
     },
     "ao": {
       "value": -38.33,
@@ -40,9 +40,9 @@
       "note": "Awesome Oscillator (5,34) negative — medium-term momentum down"
     },
     "mom10": {
-      "value": -61.66,
+      "value": -62.33,
       "status": "bear",
-      "note": "10-day momentum $-61.66"
+      "note": "10-day momentum $-62.33"
     },
     "adx14": {
       "value": 19.3,
@@ -50,34 +50,34 @@
       "note": "ADX < 20 = weak/no trend — Pine rule: do NOT trade momentum signals now"
     },
     "ema21": {
-      "value": 210.64,
+      "value": 210.58,
       "status": "bear",
       "note": "Price BELOW EMA21 — short-term trend lost"
     },
     "ema50": {
-      "value": 216.46,
+      "value": 216.43,
       "status": "bear",
       "note": "Price BELOW EMA50 — reevaluation point per swing plan"
     },
     "ema200": {
-      "value": 181.53,
+      "value": 181.52,
       "status": "bear",
-      "note": "Price -5.85% BELOW — REGIME BREAK"
+      "note": "Price -6.22% BELOW — REGIME BREAK"
     },
     "vwap": {
-      "value": 171.51,
+      "value": 170.82,
       "status": "bear",
-      "note": "Session VWAP 2026-10-19 from Yahoo 5-min bars (39 bars). Close BELOW — sellers held control into the close. Resets daily."
+      "note": "Session VWAP 2026-10-19 from Yahoo 5-min bars (78 bars). Close BELOW — sellers held control into the close. Resets daily."
     },
     "atrPct": {
-      "value": 9.93,
+      "value": 9.97,
       "status": "bear",
-      "note": "ATR 9.93% — EXTREME volatility (>4% = reduce size)"
+      "note": "ATR 9.97% — EXTREME volatility (>4% = reduce size)"
     },
     "volSpike": {
-      "value": 0.85,
+      "value": 1.38,
       "status": "neutral",
-      "note": "Volume 0.85x 20-day average — no spike"
+      "note": "Volume 1.38x 20-day average — no spike"
     }
   },
   "score": {
