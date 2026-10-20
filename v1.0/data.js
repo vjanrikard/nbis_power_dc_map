@@ -39,7 +39,9 @@ const SITES = [
   { id: 2, name: "Independence, MO", lat: 39.0911, lng: -94.4155,
     status: "construction", mw: 1200, region: "Americas",
     chips: ["NVIDIA GB200", "GB300"], partner: "Independence Power Partners (IPP)",
-    delivery: "2028-Q1", online: "2028 (Phase 1)",
+    // [2026-10-20] Phase 1 2028 -> 2027: Nebius Q1 2026 shareholder letter (2026-05-13) says Missouri operational in 2027 (no quarter given);
+    //   Q2 2026 letter (SEC 6-K ex99-2, 2026-08-12) lists Missouri with capacity coming online through 2027. Source: https://assets.nebius.com/assets/aa1bc2e6-df83-40cd-a6a2-95e7cda3d16c/Nebius%20SHL_Q1%202026.pdf
+    delivery: "2027", online: "2027 (first operations, per Nebius Q1 2026 shareholder letter; quarter not given)",
     note: "Eastgate 398-acre; 250 MW Oct 2027 → 1.1 GW Dec 2029; city moratorium Jul 2026 (Nebius excluded); GUARD Alliance TRO hearing Oct 22 2026 9 a.m. CT",
     desc: "Largest US AI factory. Council approval Mar 3 2026, groundbreaking May 12 2026. 398-acre Eastgate Commerce Center, 10 buildings. IPP power plant: 250 MW Oct 2027 → 1.1 GW Dec 2029. Jul 7 2026: City Council voted 7-0 for a 6-month moratorium on NEW data center approvals — Nebius construction continues unaffected, but zoning reclassification (>2.5 MW = special use permit) is under review. Power (city FAQ): IPP Blue Valley plant initial phase 200 MW, +600 MW when fully operational (>=800 MW needed; city Dec 8 2025 presentation cited a 225 MW initial generator estimate - secondary source). KC Star (Jan 28 2026): Blue Valley reopens Oct 2027; bridge power via city pass-through contracts reimbursed by Nebius - NextEra ~$10.7M (Jun 2026-May 2027) and Evergy ~$5.6M (Jun-Nov 2027). The 180-day moratorium (from Jul 6 2026, i.e. to ~Jan 2 2027) explicitly excludes Nebius. Politics: Apr 7 2026 voters ousted two at-large council members who backed the tax abatement (McCandless, Fears); Sep 1 2026 District 1 Councilman John Perkins was recalled (~68%). Legal: Independence GUARD Alliance suit (filed Aug 2026) vs the city, Missouri ADC Holdings (Nebius) and IPP; hearing on TRO + motion to dismiss Oct 22 2026, 9 a.m., Eastern Jackson County Courthouse (a TRO could carry a bond).",
     risk: "HIGH",
@@ -361,8 +363,9 @@ const EVENTS = [
     title: "Independence MO: TRO Hearing", desc: "9 a.m., Eastern Jackson County Courthouse: hearing on Independence GUARD Alliance motion for a temporary restraining order to halt Nebius construction, plus defendants' motion to dismiss. No halt ordered as of Oct 19 2026.", tags: ["Risk", "Missouri"] },
   { date: "2027 Target", label: "Lappeenranta + IPP 250 MW", color: "#f59e0b", pos: "bot",
     title: "2027: Lappeenranta P1 + IPP 250 MW", desc: "Lappeenranta Phase 1 live. IPP 250 MW phase by Oct 2027. Béthune ramps to full 240 MW EOY 2027.", tags: ["Target", "2027"] },
-  { date: "2028 Target", label: "Independence MO P1", color: "#a78bfa", pos: "top",
-    title: "2028: Independence MO Phase 1", desc: "1.2 GW Independence MO Phase 1 online. CapEx ramps to >$10.6B annually 2028-2030.", tags: ["Target", "2028"] },
+  // [2026-10-20] Was "2028 Target: Independence MO Phase 1"; Nebius Q1 2026 shareholder letter (2026-05-13) targets Missouri operational in 2027 (quarter not given)
+  { date: "2027 Target", label: "Independence MO first ops", color: "#a78bfa", pos: "top",
+    title: "2027: Independence MO First Operations", desc: "Independence MO first operations targeted 2027 (Nebius Q1 2026 shareholder letter; quarter not given). Blue Valley IPP plant expected Oct 2027. CapEx ramps to >$10.6B annually 2028-2030.", tags: ["Target", "2027"] },
   { date: "2029 Target", label: "IPP scales to 1.1 GW", color: "#00d4ff", pos: "bot",
     title: "2029: IPP Power Plant 1.1 GW", desc: "IPP scales 250 MW (Oct 2027) to 1.1 GW by Dec 2029.", tags: ["Target", "2029"] },
   { date: "2030 Target", label: "Independence full op", color: "#22c55e", pos: "top",
