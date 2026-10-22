@@ -1,21 +1,21 @@
 {
-  "lastUpdate": "2026-10-21",
-  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-10-20). Per-firm ratings unchanged — update those manually after analyst actions.",
+  "lastUpdate": "2026-10-22",
+  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-10-21). Per-firm ratings unchanged — update those manually after analyst actions.",
   "marketData": {
-    "asOf": "2026-10-20",
-    "currentPrice": 171.45,
-    "previousClose": 170.24,
-    "priceChange": 1.21,
-    "changePct": 0.71,
-    "dayLow": 160.25,
-    "dayHigh": 174.74,
-    "marketCap": 44234099213,
-    "volume": 22140100,
-    "avgDailyVolume": 19767225,
+    "asOf": "2026-10-21",
+    "currentPrice": 171.57,
+    "previousClose": 171.45,
+    "priceChange": 0.12,
+    "changePct": 0.07,
+    "dayLow": 164,
+    "dayHigh": 178.85,
+    "marketCap": 44265061890,
+    "volume": 19352000,
+    "avgDailyVolume": 20207930,
     "yearLow": 73.52,
     "yearHigh": 299.86,
     "currency": "USD",
-    "note": "Auto-generated from Yahoo Finance (close 2026-10-20). Market cap = price x 258M shares (SHARES_OUTSTANDING in update_technicals.js — update after dilution)."
+    "note": "Auto-generated from Yahoo Finance (close 2026-10-21). Market cap = price x 258M shares (SHARES_OUTSTANDING in update_technicals.js — update after dilution)."
   },
   "consensusAggregate": {
     "asOf": "2026-07-08",
@@ -29,6 +29,17 @@
     "lowTarget": 129
   },
   "ratings": [
+    {
+      "date": "2026-10-21",
+      "firm": "Piper Sandler",
+      "analyst": "",
+      "action": "Lowers",
+      "rating": "",
+      "target": 185,
+      "prevTarget": null,
+      "sentiment": "neutral",
+      "source": "https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-price-target-cut-to-18500-by-analysts-at-piper-sandler-2026-10-21"
+    },
     {
       "date": "2026-10-18",
       "firm": "Truist",
