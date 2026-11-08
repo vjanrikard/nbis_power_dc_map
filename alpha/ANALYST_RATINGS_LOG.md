@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-04 — Citigroup — Lowers — $265 (▼59 vs prev $324) — Buy
+
+**Analyst:** Tyler Radke. **Source:** [TIKR – Could Nebius Actually Climb 87%? Or Is Citi Totally Wrong?](https://www.tikr.com/blog/could-nebius-actually-climb-87-or-is-citi-totally-wrong) · scan 2026-11-08. Also: [ad-hoc-news – Nebius Stock: A $3.5 Billion Citi Facility, a Trimmed Price Target, and the Execution Test Ahead](https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/nebius-stock-a-3-5-billion-citi-facility-a-trimmed-price-target-and-the-execution-test-ahead/70472036).
+
+Citi kept Buy but cut its target ~18% from $324 to $265 ahead of the Q3 2026 report, still implying ~87% upside vs the ~$141.5 close that day (stock fell ~6.7% on Nov 4). **Target changed vs `analysts.json` ratings[] (Citigroup $324 at 2026-08-14) — flagged for operator review.**
+
 ## 2026-10-08 — Rosenblatt Securities — Initiates — $304 (new) — Buy
 
 **Analyst:** John McPeake (per StockAnalysis). **Source:** [GuruFocus – NBIS Initiated Coverage by Rosenblatt -- Rating Set to Buy](https://www.gurufocus.com/news/9115347/nbis-initiated-coverage-by-rosenblatt-rating-set-to-buy) · scan 2026-10-15. Also: [TIKR – Rosenblatt Launches Nebius Stock Coverage With Buy Rating and Bold Price Target](https://www.tikr.com/blog/rosenblatt-initiates-nebius-coverage-buy-rating-price-target), [MarketBeat alert 2026-10-09](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-stock-rating-upgraded-by-rosenblatt-securities-2026-10-09/). *(ca. — sources cite Oct 7–9, 2026; exact date unverified.)*
