@@ -22,6 +22,18 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-12 — Piper Sandler — Lowers — $148 (▼37 vs prev $185) — Neutral
+
+**Analyst:** James Fish (per prior Piper notes; not named in source). **Source:** [Intellectia – Tech Stocks Hit Hard as Investor Concerns Mount](https://intellectia.ai/news/stock/tech-stocks-hit-hard-as-investor-concerns-mount) · scan 2026-11-13. *(ca. — single source; date taken from its ratings widget, not yet on StockAnalysis/MarketBeat; exact date unverified.)*
+
+Piper kept Neutral but cut its target a second time in under a month ($237 → $185 on Oct 21, now $185 → $148) after the Q3 2026 report, where Nebius guided 2026 revenue to the low end of $3.0–3.4B and pushed capacity it expected online before year-end 2026 into H1 2027; the stock fell ~17% on Nov 12. **Target changed vs `analysts.json` ratings[] (Piper Sandler $185 at 2026-10-21) — flagged for operator review.**
+
+## 2026-11-12 — Baird — Lowers — $200 (▼140 vs prev $340) — Outperform
+
+**Analyst:** Robert (Rob) Oliver. **Source:** [StockAnalysis – Nebius Group (NBIS) Stock Forecast & Analyst Price Targets](https://stockanalysis.com/stocks/nbis/forecast/) · scan 2026-11-13. Also: [Intellectia – Tech Stocks Hit Hard as Investor Concerns Mount](https://intellectia.ai/news/stock/tech-stocks-hit-hard-as-investor-concerns-mount).
+
+Baird kept Outperform but cut its target ~41% from $340 to $200 on the day of the Q3 2026 report, which beat on revenue (~$981M vs ~$908M consensus) but trimmed 2026 guidance to the low end and delayed capacity activation into H1 2027; the new target still implies ~55% upside vs the $128.64 close. **Target changed vs `analysts.json` ratings[] (Baird $340 at 2026-08-13) — flagged for operator review.**
+
 ## 2026-11-04 — Citigroup — Lowers — $265 (▼59 vs prev $324) — Buy
 
 **Analyst:** Tyler Radke. **Source:** [TIKR – Could Nebius Actually Climb 87%? Or Is Citi Totally Wrong?](https://www.tikr.com/blog/could-nebius-actually-climb-87-or-is-citi-totally-wrong) · scan 2026-11-08. Also: [ad-hoc-news – Nebius Stock: A $3.5 Billion Citi Facility, a Trimmed Price Target, and the Execution Test Ahead](https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/nebius-stock-a-3-5-billion-citi-facility-a-trimmed-price-target-and-the-execution-test-ahead/70472036).
