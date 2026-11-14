@@ -22,6 +22,30 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-13 — DA Davidson — Lowers — $125 (▼125 vs prev $250) — Neutral
+
+**Analyst:** Gil Luria. **Source:** [Investing.com – DA Davidson cuts Nebius stock price target on data center delays](https://www.investing.com/news/analyst-ratings/da-davidson-cuts-nebius-stock-price-target-on-data-center-delays-93CH-5025602) · scan 2026-11-14. Also: [MarketBeat alert 2026-11-13](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-price-target-cut-to-12500-by-analysts-at-da-davidson-2026-11-13/), [TIKR – D.A. Davidson Just Cut Its Nebius Target From $250 to $125](https://www.tikr.com/blog/d-a-davidson-just-cut-its-nebius-target-from-250-to-125).
+
+DA Davidson kept Neutral but halved its target the day after Q3 2026, citing third-party data center delays (NJ phases pushed to Q2 2027) and Nebius now pointing to ~$7B ARR by February 2027 instead of $7–9B by year-end 2026. New target is the second-lowest on the Street (only Redburn's $84 is lower). **Target changed vs `analysts.json` ratings[] (DA Davidson $250 at 2026-08-18) — flagged for operator review.**
+
+## 2026-11-13 — B of A Securities — Lowers — $265 (▼45 vs prev $310) — Buy
+
+**Analyst:** Tal Liani (per StockAnalysis). **Source:** [24/7 Wall St. – Nebius Sinks 13% as Baird and BofA Slash Price Targets Over Data Center Delays](https://247wallst.com/investing/2026/11/13/nebius-sinks-13-as-baird-and-bofa-slash-price-targets-over-data-center-delays-coreweave-tumbles-11-nvidia-falls-4/) · scan 2026-11-14. Also: [Investing.com – Why is Nebius stock sliding today?](https://www.investing.com/news/stock-market-news/why-is-nebius-stock-sliding-today-93CH-5026373), [StockAnalysis forecast](https://stockanalysis.com/stocks/nbis/forecast/).
+
+BofA reiterated Buy but cut its target ~15% after the Q3 report (revenue beat incl. ~$325M non-recurring, 2026 guide trimmed to $3.0–3.2B, capacity activation delayed); NBIS fell ~10% to ~$116 on Nov 13. **Target changed vs `analysts.json` ratings[] (Bank of America $310 at 2026-10-22) — flagged for operator review.**
+
+## 2026-11-13 — Truist — Lowers — $245 (▼110 vs prev $355) — Buy
+
+**Analyst:** Arvind Ramnani. **Source:** [StockAnalysis – Nebius Group (NBIS) Stock Forecast & Analyst Price Targets](https://stockanalysis.com/stocks/nbis/forecast/) · scan 2026-11-14. *(Single aggregator source; no news write-up found yet.)*
+
+Truist kept Buy but cut its target ~31% post-Q3, in line with the Street-wide reset on capacity-activation delays and higher capex (~$27B for 2026, $40–45B guided for 2027). **Target changed vs `analysts.json` ratings[] (Truist $355 at 2026-10-18) — flagged for operator review.**
+
+## 2026-11-13 — Northland Capital Markets — Lowers — $380 (▼30 vs prev $410) — Outperform
+
+**Analyst:** Nehal Chokshi. **Source:** [StockAnalysis – Nebius Group (NBIS) Stock Forecast & Analyst Price Targets](https://stockanalysis.com/stocks/nbis/forecast/) · scan 2026-11-14. *(Single aggregator source, which lists the rating as "Buy"; Northland's house rating is Outperform.)*
+
+Northland trimmed only ~7% and remains the Street-high target after Q3, implying the delays are treated as timing rather than demand (in line with management's comment). **Target changed vs `analysts.json` ratings[] (Northland $410 at 2026-07-20) — flagged for operator review.**
+
 ## 2026-11-12 — Piper Sandler — Lowers — $148 (▼37 vs prev $185) — Neutral
 
 **Analyst:** James Fish (per prior Piper notes; not named in source). **Source:** [Intellectia – Tech Stocks Hit Hard as Investor Concerns Mount](https://intellectia.ai/news/stock/tech-stocks-hit-hard-as-investor-concerns-mount) · scan 2026-11-13. *(ca. — single source; date taken from its ratings widget, not yet on StockAnalysis/MarketBeat; exact date unverified.)*
