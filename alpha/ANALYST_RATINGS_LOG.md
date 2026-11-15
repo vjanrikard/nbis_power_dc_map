@@ -22,6 +22,18 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-13 — Compass Point — Lowers — $245 (▼55 vs prev $300) — Buy
+
+**Analyst:** n/a (not named in available sources). **Source:** [Investing.com – Compass Point cuts Nebius stock price target on higher capex plans](https://www.investing.com/news/analyst-ratings/compass-point-cuts-nebius-stock-price-target-on-higher-capex-plans-93CH-5025314) · scan 2026-11-15. *(ca. — date per search summaries tying it to the day after Q3; exact date unverified, article page not opened.)*
+
+Compass Point kept Buy but cut its target ~18% after the Q3 2026 report, citing the higher capex plan (~$27B for 2026, up from $20–25B), while noting Q3 contract pricing rose >20% per GPU-hour and prepayments on 1-year+ deals exceeded related capex. **Target changed vs `analysts.json` ratings[] (Compass Point $300) — flagged for operator review.**
+
+## 2026-11-13 — Citigroup — Maintains — $265 (no change vs prev $265) — Buy
+
+**Analyst:** Tyler Radke. **Source:** [StockAnalysis – Nebius Group (NBIS) Analyst Ratings](https://stockanalysis.com/stocks/nbis/ratings/) · scan 2026-11-15. *(Single aggregator source; no news write-up found.)*
+
+Citi reiterated Buy and its $265 target after the Q3 2026 report, i.e. it did not follow the Street-wide post-earnings cuts (it had already trimmed $324 → $265 on Nov 4 ahead of the print). **Target $265 vs `analysts.json` ratings[] (Citigroup $324 at 2026-08-14) still out of date — flagged for operator review.**
+
 ## 2026-11-13 — DA Davidson — Lowers — $125 (▼125 vs prev $250) — Neutral
 
 **Analyst:** Gil Luria. **Source:** [Investing.com – DA Davidson cuts Nebius stock price target on data center delays](https://www.investing.com/news/analyst-ratings/da-davidson-cuts-nebius-stock-price-target-on-data-center-delays-93CH-5025602) · scan 2026-11-14. Also: [MarketBeat alert 2026-11-13](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-price-target-cut-to-12500-by-analysts-at-da-davidson-2026-11-13/), [TIKR – D.A. Davidson Just Cut Its Nebius Target From $250 to $125](https://www.tikr.com/blog/d-a-davidson-just-cut-its-nebius-target-from-250-to-125).
