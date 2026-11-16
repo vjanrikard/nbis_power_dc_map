@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-13 — Rosenblatt Securities — Reiterates — $304 (no change vs prev $304) — Buy
+
+**Analyst:** John McPeake. **Source:** [MarketBeat – Nebius Group (NASDAQ:NBIS) Stock Rating Reaffirmed as "Buy" by Rosenblatt Securities](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-stock-rating-reaffirmed-as-buy-by-rosenblatt-securities-2026-11-13/) · scan 2026-11-16. Also: [Benzinga – Analyst shrugs off Nebius data center delay as slight blemish on strong quarter](https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/11/63256318/analyst-shrugs-off-nebius-data-center-delay-as-slight-blemish-on-strong-quarter). *(Event predates the 24h window; picked up late, not previously logged.)*
+
+Rosenblatt held Buy and $304 after Q3 2026 and called the Vineland, NJ data center delay a temporary "slight blemish" on an otherwise strong quarter, one of the few brokers not to cut. Matches `analysts.json` ratings[] (Rosenblatt $304, 2026-10-07): only the date would update.
+
 ## 2026-11-13 — Compass Point — Lowers — $245 (▼55 vs prev $300) — Buy
 
 **Analyst:** n/a (not named in available sources). **Source:** [Investing.com – Compass Point cuts Nebius stock price target on higher capex plans](https://www.investing.com/news/analyst-ratings/compass-point-cuts-nebius-stock-price-target-on-higher-capex-plans-93CH-5025314) · scan 2026-11-15. *(ca. — date per search summaries tying it to the day after Q3; exact date unverified, article page not opened.)*
