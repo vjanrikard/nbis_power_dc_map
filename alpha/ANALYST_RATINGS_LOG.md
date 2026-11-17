@@ -22,6 +22,18 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-16 — Citigroup — Lowers — $215 (▼50 vs prev $265) — Buy
+
+**Analyst:** Tyler Radke. **Source:** [MarketBeat – Citigroup Issues Pessimistic Forecast for Nebius Group (NASDAQ:NBIS) Stock Price](https://www.marketbeat.com/instant-alerts/analyst-citigroup-issues-pessimistic-forecast-for-nebius-group-nasdaq-nbis-stock-price-2026-11-16/) · scan 2026-11-17. Also: [Yahoo Finance / TIKR – Citi Cut Its Nebius Target to $215. It Still Sees 86% Upside](https://finance.yahoo.com/markets/stocks/articles/citi-cut-nebius-target-215-173218180.html), [Futu – Citi: Lowers NEBIUS target price to $215](https://news.futunn.com/en/post/1004611769/citi-lowers-nebius-target-price-to-215).
+
+Citi kept Buy but cut its target a second time this month ($324 → $265 on Nov 4, now $265 → $215) after Nebius trimmed 2026 guidance and pushed third-party capacity into 2027; $215 still implies ~86% upside vs the $115.88 Nov 13 close but now sits below the Street mean. **Target changed vs `analysts.json` ratings[] (Citigroup $324 at 2026-08-14) — flagged for operator review.**
+
+## 2026-11-16 — Freedom Capital — Maintains — $314 (prev n/a) — Buy
+
+**Analyst:** n/a (not named in source). **Source:** [Invezz via TradingView – Nebius stock continues to fall as analysts cut target price](https://www.tradingview.com/news/invezz:d19f57014094b:0-nebius-stock-continues-to-fall-as-analysts-cut-target-price/) · scan 2026-11-17. *(ca. — exact date unverified; note undated in article, date taken from the Invezz URL 2026-11-16; previous target not stated.)*
+
+Freedom Capital kept Buy and a $314 target after the Q3 2026 sell-off, calling the issues transitory and the decline a buying opportunity, now among the highest targets on the Street. **New firm — not in `analysts.json` ratings[] — flagged for operator review.**
+
 ## 2026-11-13 — Rosenblatt Securities — Reiterates — $304 (no change vs prev $304) — Buy
 
 **Analyst:** John McPeake. **Source:** [MarketBeat – Nebius Group (NASDAQ:NBIS) Stock Rating Reaffirmed as "Buy" by Rosenblatt Securities](https://www.marketbeat.com/instant-alerts/analyst-nebius-group-nasdaq-nbis-stock-rating-reaffirmed-as-buy-by-rosenblatt-securities-2026-11-13/) · scan 2026-11-16. Also: [Benzinga – Analyst shrugs off Nebius data center delay as slight blemish on strong quarter](https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/11/63256318/analyst-shrugs-off-nebius-data-center-delay-as-slight-blemish-on-strong-quarter). *(Event predates the 24h window; picked up late, not previously logged.)*
