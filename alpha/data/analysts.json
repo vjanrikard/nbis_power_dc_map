@@ -1,21 +1,21 @@
 {
-  "lastUpdate": "2026-11-17",
-  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-11-16). Per-firm ratings unchanged — update those manually after analyst actions.",
+  "lastUpdate": "2026-11-18",
+  "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-11-17). Per-firm ratings unchanged — update those manually after analyst actions.",
   "marketData": {
-    "asOf": "2026-11-16",
-    "currentPrice": 107.13,
-    "previousClose": 115.88,
-    "priceChange": -8.75,
-    "changePct": -7.55,
-    "dayLow": 104.75,
-    "dayHigh": 111.55,
-    "marketCap": 27639539291,
-    "volume": 29940300,
-    "avgDailyVolume": 27978890,
+    "asOf": "2026-11-17",
+    "currentPrice": 106.04,
+    "previousClose": 107.13,
+    "priceChange": -1.09,
+    "changePct": -1.02,
+    "dayLow": 102.25,
+    "dayHigh": 111.9,
+    "marketCap": 27357030945,
+    "volume": 30546000,
+    "avgDailyVolume": 28388430,
     "yearLow": 73.52,
     "yearHigh": 299.86,
     "currency": "USD",
-    "note": "Auto-generated from Yahoo Finance (close 2026-11-16). Market cap = price x 258M shares (SHARES_OUTSTANDING in update_technicals.js — update after dilution)."
+    "note": "Auto-generated from Yahoo Finance (close 2026-11-17). Market cap = price x 258M shares (SHARES_OUTSTANDING in update_technicals.js — update after dilution)."
   },
   "consensusAggregate": {
     "asOf": "2026-07-08",
@@ -29,6 +29,17 @@
     "lowTarget": 129
   },
   "ratings": [
+    {
+      "date": "2026-11-17",
+      "firm": "Citi",
+      "analyst": "Tyler Radke",
+      "action": "Maintains",
+      "rating": "Buy",
+      "target": 215,
+      "prevTarget": 324,
+      "sentiment": "bullish",
+      "source": "https://www.theglobeandmail.com/investing/markets/stocks/NBIS/pressreleases/8871703/citi-sticks-to-their-buy-rating-for-nebius-group-nbis"
+    },
     {
       "date": "2026-11-13",
       "firm": "Baird",
@@ -505,5 +516,5 @@
       "sentiment": "bullish"
     }
   ],
-  "note": "47 ratings from 19 firms. Piper Sandler Lowers to $185 (2026-10-21) was added by the ratings importer and corrected 2026-10-23 (rating, analyst, prevTarget), approved by CoS on behalf of RikardV. Previously: 44 ratings from 18 firms. 15 entries (2026-07-20 → 2026-09-30) synced from ANALYST_RATINGS_LOG.md, approved by RikardV 2026-10-02: new firms William Blair, Rothschild & Co Redburn, Truist, Piper Sandler (Baird already present). Date caveats from the log: Goldman 08-25, Cantor 08-19, Compass Point 08-05 and Northland 07-20 dates are approximate; Cantor prevTarget 129 is the initiation target (intermediate steps unsourced); BNP prevTarget 260 per source (json previously had 255 — interim step unsourced). Compass Point's interim $150→$260 step remains unsourced and is not itemized. Previously: 26 ratings from 12 firms. Northland raise to $248 (2026-05-14, Bitget-verified) approved by RikardV 2026-07-14; the interim $211->$215 step is unsourced, and Chokshi's post-selloff reiteration (ca. 2026-07-13, date unverified) is logged in ANALYST_RATINGS_LOG.md but kept out of ratings[] until dated. Previously: 25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
+  "note": "48 ratings from 19 firms. Piper Sandler Lowers to $185 (2026-10-21) was added by the ratings importer and corrected 2026-10-23 (rating, analyst, prevTarget), approved by CoS on behalf of RikardV. Previously: 44 ratings from 18 firms. 15 entries (2026-07-20 → 2026-09-30) synced from ANALYST_RATINGS_LOG.md, approved by RikardV 2026-10-02: new firms William Blair, Rothschild & Co Redburn, Truist, Piper Sandler (Baird already present). Date caveats from the log: Goldman 08-25, Cantor 08-19, Compass Point 08-05 and Northland 07-20 dates are approximate; Cantor prevTarget 129 is the initiation target (intermediate steps unsourced); BNP prevTarget 260 per source (json previously had 255 — interim step unsourced). Compass Point's interim $150→$260 step remains unsourced and is not itemized. Previously: 26 ratings from 12 firms. Northland raise to $248 (2026-05-14, Bitget-verified) approved by RikardV 2026-07-14; the interim $211->$215 step is unsourced, and Chokshi's post-selloff reiteration (ca. 2026-07-13, date unverified) is logged in ANALYST_RATINGS_LOG.md but kept out of ratings[] until dated. Previously: 25 ratings from 12 firms (DA Davidson, BWS Financial, Northland, Goldman Sachs, B of A Securities, Citigroup, Citizens, Morgan Stanley, BNP Paribas, Cantor Fitzgerald, Compass Point, Wolfe Research). 15 entries for 2026 added 2026-07-14 from Benzinga's itemized ratings table. Consensus computed at runtime using 'latest per firm' rule — only the most recent rating per firm counts toward avg/high/low. Analyst '—' = name not disclosed in source. Note: DA Davidson's latest action is 'Assumes Neutral $250' (2026-05-18) — new analyst assumed coverage, replacing Platt's Buy in the consensus."
 }
