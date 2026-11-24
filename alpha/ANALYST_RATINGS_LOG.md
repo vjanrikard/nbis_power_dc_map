@@ -22,6 +22,12 @@ consistent so `analysts.json` updates stay easy.
 
 <!-- ═══ NEW ENTRIES BELOW THIS LINE — PREPEND ABOVE THE SEED BLOCK ═══ -->
 
+## 2026-11-23 — Freedom Broker (Freedom Capital Markets) — Reiterates — $314 (no change vs prev $314) — Buy
+
+**Analyst:** n/a (not named in source). **Source:** [TheFly via TipRanks – Nebius stock drop presents buying opportunity, says Freedom Broker](https://www.tipranks.com/news/the-fly/nebius-stock-drop-presents-buying-opportunity-says-freedom-broker-thefly-news) · scan 2026-11-24 (datePublished 2026-11-23T19:35Z). Also: [GuruFocus – NBIS Maintains Rating by Freedom Capital Markets -- Target at $314](https://gurufocus.com/news/9215637/nbis-maintains-rating-by-freedom-capital-markets-target-at-314) (page not opened, 403).
+
+Freedom Broker reiterated Buy and $314, calling the Q3 capacity-addition delay "not that surprising" and the share drop on a transitory issue a buying opportunity. Same firm, target and rationale as the 2026-11-16 entry below — possibly a late wire pickup of that note rather than a fresh one; no change in rating or target either way. **Firm still not in `analysts.json` ratings[] — flagged for operator review.**
+
 ## 2026-11-16 — Citigroup — Lowers — $215 (▼50 vs prev $265) — Buy
 
 **Analyst:** Tyler Radke. **Source:** [MarketBeat – Citigroup Issues Pessimistic Forecast for Nebius Group (NASDAQ:NBIS) Stock Price](https://www.marketbeat.com/instant-alerts/analyst-citigroup-issues-pessimistic-forecast-for-nebius-group-nasdaq-nbis-stock-price-2026-11-16/) · scan 2026-11-17. Also: [Yahoo Finance / TIKR – Citi Cut Its Nebius Target to $215. It Still Sees 86% Upside](https://finance.yahoo.com/markets/stocks/articles/citi-cut-nebius-target-215-173218180.html), [Futu – Citi: Lowers NEBIUS target price to $215](https://news.futunn.com/en/post/1004611769/citi-lowers-nebius-target-price-to-215).
