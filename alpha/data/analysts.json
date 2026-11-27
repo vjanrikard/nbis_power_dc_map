@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-11-26",
+  "lastUpdate": "2026-11-27",
   "lastUpdateSource": "Market data auto-updated by update_technicals.js (Yahoo, close 2026-11-25). Per-firm ratings unchanged — update those manually after analyst actions.",
   "marketData": {
     "asOf": "2026-11-25",
@@ -10,8 +10,8 @@
     "dayLow": 75.6,
     "dayHigh": 87.26,
     "marketCap": 21927419449,
-    "volume": 40180600,
-    "avgDailyVolume": 33445015,
+    "volume": 40766800,
+    "avgDailyVolume": 33474325,
     "yearLow": 73.52,
     "yearHigh": 299.86,
     "currency": "USD",

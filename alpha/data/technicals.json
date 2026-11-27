@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-11-26",
+  "lastUpdate": "2026-11-27",
   "lastUpdateSource": "alpha/scan/update_technicals.js — Yahoo Finance daily OHLCV (501 bars, close 2026-11-25) + 5-min intraday VWAP. Pine-equivalent formulas (Wilder smoothing).",
   "ticker": "NBIS",
   "exchange": "NASDAQ",
@@ -75,9 +75,9 @@
       "note": "ATR 19.99% — EXTREME volatility (>4% = reduce size)"
     },
     "volSpike": {
-      "value": 1.2,
+      "value": 1.22,
       "status": "neutral",
-      "note": "Volume 1.2x 20-day average — no spike"
+      "note": "Volume 1.22x 20-day average — no spike"
     }
   },
   "score": {
